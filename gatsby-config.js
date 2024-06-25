@@ -59,20 +59,27 @@ module.exports = {
       },
     },
     'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp', {
-      resolve: 'gatsby-source-filesystem',
+    'gatsby-transformer-sharp', 
+    {
+      resolve: `gatsby-source-filesystem`,
       options: {
-        'name': 'images',
-        'path': './src/images/'
+        name: `images`,
+        path: `${__dirname}/src/images`,
       },
-      __key: 'images'
-    }, {
+    }, 
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         'name': 'pages',
         'path': './src/pages/'
       },
       __key: 'pages'
-}
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/data/`,
+      },
+    },
   ]
 };
