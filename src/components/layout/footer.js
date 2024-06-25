@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Footer = styled.footer`
     background-color: var(--color-crimson);
+    border: 1px solid red;
     color: #fff;
     padding: 4rem 2rem;
     margin-top: 3rem;

@@ -1,11 +1,11 @@
 import React from "react"
 import Menu from './menu'
 import { Footer } from './footer'
-import { Markdown } from './mdxComponents'
+import { MDXProvider } from "@mdx-js/react"
 
 export default function Layout({ children }) {
   return (
-    <Markdown>
+    <MDXProvider components={{ }}>
       <div style={{
         margin: `0 auto`,
         maxWidth: 1000,
@@ -17,6 +17,6 @@ export default function Layout({ children }) {
         {children}
         <Footer />
       </div>
-    </Markdown>
+    </MDXProvider>
   )
 };
