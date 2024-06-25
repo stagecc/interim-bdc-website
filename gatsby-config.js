@@ -4,17 +4,45 @@
 module.exports = {
   siteMetadata: {
     title: `BioData Catalyst`,
-    siteUrl: `https://www.yourdomain.tld`
-  },
-  plugins: [
+    shortTitle: `BDC`,
+    description: `BioData Catalyst serves as a cloud-based platform of tools, applications, and workflows to help NHLBI research investigators securely find, access, share, store, cross-link, and compute on large scale data sets,`,
+    author: `BioData Catalyst`,
+    keywords: [
+      "data",
+      "cloud",
+      "computing",
+      "research",
+      "platform",
+      "NIH",
+      "NHLBI",
+      "discovery",
+      "science",
+      "diagnostic tools",
+      "therapeutic options",
+      "prevention strategies",
+      "heart",
+      "lung",
+      "blood",
+      "sleep",
+      "disorders",
+    ],
+    siteUrl: "https://biodatacatalyst.nhlbi.nih.gov/",
+    twitterUsername: "",
+  },  plugins: [
     'gatsby-plugin-styled-components',
     'gatsby-plugin-image',
     'gatsby-plugin-sitemap',
     {
-      resolve: 'gatsby-plugin-manifest',
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        'icon': 'src/images/icon.png'
-      }
+        name: `biodata-catalyst`,
+        short_name: `bdc`,
+        start_url: `/`,
+        background_color: `#c1272d`,
+        theme_color: `#c1272d`,
+        display: `minimal-ui`,
+        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
+      },
     },
     {
       resolve: `gatsby-plugin-mdx`,
