@@ -1,22 +1,26 @@
 import React from "react"
-import Menu from './menu'
-import { Footer } from './footer'
-import { MDXProvider } from "@mdx-js/react"
+import { Menu } from '../menus/menu'
+import { Footer } from './'
+import { Markdown } from '../mdxComponents'
+import { menuItems } from "../../data/menu";
+import "../../styles/normalize.css";
+import "../../styles/customize.css";
 
-export default function Layout({ children }) {
+export function Layout({ children }) {
   return (
-    <MDXProvider components={{ }}>
+    <Markdown>
+      <Menu items={menuItems} />
       <div style={{
         margin: `0 auto`,
         maxWidth: 1000,
-        border: '10px dashed crimson',
         padding: `0 1rem`,
       }}>
-        <Menu />
         <hr />
         {children}
-        <Footer />
+        <Footer>
+          footer links?
+        </Footer>
       </div>
-    </MDXProvider>
+    </Markdown>
   )
 };

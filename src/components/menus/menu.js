@@ -1,54 +1,171 @@
-import React from "react"
-import { Link } from 'gatsby'
+import React, { Fragment, useState } from "react";
+import { Match } from "@reach/router";
+import styled from "styled-components";
+import { Link } from "../../components/link";
+import { ChevronDownIcon } from "../icons";
 
-export default function Menu() {
+export const MenuContainer = styled.nav`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: stretch;
+  background-color: transparent;
+`;
+
+export const MenuLink = styled(Link)`
+  display: flex;
+
+  align-items: center;
+  text-transform: uppercase;
+  color: #444;
+  text-decoration: none;
+  padding: 1.5rem 1rem;
+  margin: 0;
+  background-color: transparent;
+  letter-spacing: 2px;
+  position: relative;
+  height: 100%;
+  font-weight: 400;
+  transition: color 500ms, background-color 150ms;
+  &:hover,
+  &:focus {
+    background-color: #ccc;
+  }
+  &.active {
+    color: #fff;
+    background-color: var(--color-crimson);
+  }
+`;
+
+export const MenuItem = styled.span`
+  background-color: inherit;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`;
+
+export const SubmenuHeader = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  padding: 0.5rem 1.25rem;
+  margin: 0;
+  background-color: ${(props) =>
+    props.active ? "var(--color-crimson)" : "transparent"};
+  color: ${(props) => (props.active ? "#fff" : "#333")};
+  letter-spacing: 2px;
+  position: relative;
+  font-weight: 400;
+  cursor: pointer;
+  transition: color 500ms, background-color 250ms;
+  height: 100%;
+  & svg {
+    transition: transform 50ms;
+    transform: ${(props) =>
+      props.open ? "translateY(0.15rem)" : "translateY(0)"};
+    fill: ${(props) => (props.active ? "#fff" : "#333")};
+  }
+  &:hover svg {
+    transition: transform 250ms;
+  }
+`;
+
+const Submenu = styled.nav.attrs({ className: "submenu" })`
+  color: #eee;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  left: 50%;
+  font-size: 80%;
+  min-width: 100%;
+  border: 0;
+  background-color: #fff;
+  // border-bottom-left-radius: 0.25rem;
+  // border-bottom-right-radius: 0.25rem;
+  overflow: hidden;
+  z-index: -1;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 150ms, opacity 250ms;
+  transform-origin: 50% 0%;
+  transform: ${(props) =>
+      props.open ? "scaleY(1) translateY(0)" : "scaleY(0) translateY(-2rem)"}
+    translateX(-50%);
+  opacity: ${(props) => (props.open ? 1.0 : 0.1)};
+`;
+
+export const Menu = ({ items, showBrand }) => {
+  const [openSubmenu, setOpenSubmenu] = useState(-1);
+
+  const handleOpenSubmenu = (index) => (event) => setOpenSubmenu(index);
+  const handleCloseAllSubmenus = () => setOpenSubmenu(-1);
+
   return (
-    <div style={{ border: `1px solid crimson` }}>
-    <ul style={{ display: 'flex', flexDirection: 'row' }}>
-      <li><Link to="/">Home</Link></li>
-      <li>
-        Use BDC
-        <ul>
-          <li><Link to="/use-bdc/explore">Explore BDC Data</Link></li>
-          <li><Link to="/use-bdc/analyze">Analyze Data</Link></li>
-          <li><Link to="/use-bdc/share">Share Data</Link></li>
-          <li><Link to="/use-bdc/impute">Impute Genotypes</Link></li>
-        </ul>
-      </li>
-      <li>
-        User Resources
-        <ul>
-          <li><Link to="/user-resources/user-faqs">User FAQs</Link></li>
-          <li><Link to="/user-resources/usage-costs">Usage Costs</Link></li>
-          <li><Link to="/user-resources/documentation">Documentation</Link></li>
-          <li><Link to="/user-resources/terms-of-use">Terms of Use</Link></li>
-        </ul>
-      </li>
-      <li>
-        News & Events
-        <ul>
-          <li><Link to="/news-and-events/published-research">Published Research</Link></li>
-          <li><Link to="/news-and-events/news-coverage">News Coverage</Link></li>
-          <li><Link to="/news-and-events/latest-updates">Latest Updates</Link></li>
-          <li><Link to="/news-and-events/events">Events</Link></li>
-        </ul>
-      </li>
-      <li>
-        About
-        <ul>
-          <li><Link to="/about/overview">Overview</Link></li>
-          <li><Link to="/about/research-communities">Research Communities</Link></li>
-          <li><Link to="/about/key-collaborations">Key Collaborations</Link></li>
-        </ul>
-      </li>
-      <li>
-        Help & Support
-        <ul>
-          <li><Link to="/help-and-support/support">Support</Link></li>
-          <li><Link to="/help-and-support/contact-us">Contact Us</Link></li>
-        </ul>
-      </li>
-    </ul>
-    </div>
-  )
+    <MenuContainer>
+      {items.map((item, currentIndex) => {
+        return (
+          <MenuItem
+            key={item.path}
+            onMouseOver={item.submenu && handleOpenSubmenu(currentIndex)}
+            onMouseOut={item.submenu && handleCloseAllSubmenus}
+            onFocus={item.submenu && handleOpenSubmenu(currentIndex)}
+            onBlur={item.submenu && handleCloseAllSubmenus}
+          >
+            {item.submenu ? (
+              <Fragment>
+                <Match path={item.path}>
+                  {(props) => {
+                    // "active" means we're looking at a page whose route contains the submenu's root route
+                    const thisSubmenuIsActive = props.location.pathname.includes(
+                      item.path
+                    );
+                    // Reach Router can style _links_ that are partially active out of the box.
+                    // However, here, we want to style the submenu header (not a Link component)
+                    // according to whether there is a partial location match.
+                    // This substring check is how the value of the "active" prop is determined below.
+                    // console.log(props.location.pathname, 'contains', item.path, ':', props.location.pathname.includes(item.path))
+                    return (
+                      <SubmenuHeader
+                        active={thisSubmenuIsActive}
+                        open={openSubmenu === currentIndex}
+                        aria-label={`${item.text} submenu`}
+                      >
+                        {item.text} &nbsp;
+                        <ChevronDownIcon size={16} />
+                      </SubmenuHeader>
+                    );
+                  }}
+                </Match>
+                <Submenu
+                  open={openSubmenu === currentIndex}
+                  onClick={handleCloseAllSubmenus}
+                >
+                  {item.submenu.map((subitem) => (
+                    <MenuLink
+                      key={subitem.path}
+                      to={subitem.path}
+                      activeClassName="active"
+                      partiallyActive={true}
+                    >
+                      {subitem.text}
+                    </MenuLink>
+                  ))}
+                </Submenu>
+              </Fragment>
+            ) : (
+              <MenuLink
+                to={item.path}
+                activeClassName="active"
+                partiallyActive={false}
+              >
+                {item.text}
+              </MenuLink>
+            )}
+          </MenuItem>
+        );
+      })}
+    </MenuContainer>
+  );
 };
