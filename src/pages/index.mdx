@@ -1,10 +1,9 @@
-# Home
+import { PageContent, Container } from "../components/layout";
 
-- one
-- two
-  + thre
-- four
+import { Carousel } from "../components/carousel";
+import carouselData from "../data/data-carousel.json"
 
-```js
-const f = (a, b) => a + b;
-```
+<PageContent>
+  <Carousel panels={ carouselData } />
+
+</PageContent>
