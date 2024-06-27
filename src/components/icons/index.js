@@ -4,6 +4,7 @@ export * from "./close-icon";
 export * from "./data-bolt-icon"
 export * from "./education-icon"
 export * from "./estimate-icon"
+export * from "./external-link-icon"
 export * from "./join-icon"
 export * from "./play-icon";
 export * from "./pause-icon";
