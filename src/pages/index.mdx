@@ -6,6 +6,9 @@ import carouselData from "../data/data-carousel.json"
 
 import { HexMenu } from "../components/menus"
 
+import { Card, CardHeader, CardBody } from "../components/card";
+import { VideoPlayer } from "../components/video-player"
+
 <PageContent>
   <Carousel panels={ carouselData } />
 
@@ -18,6 +21,27 @@ import { HexMenu } from "../components/menus"
     <Hidden xs sm md>
       <HexMenu />      
     </Hidden>
+
+    <Card>
+      <CardHeader size="large">What is NHLBI BioData Catalyst<sup>®</sup>&nbsp;(BDC)?</CardHeader>
+      <CardBody>
+        NHLBI BioData Catalyst<sup>®</sup> (BDC) is a cloud-based ecosystem that
+        offers researchers data, analytic tools, applications, and
+        workflows in secure workspaces. It is a community where
+        researchers can find, access, share, store, and analyze heart,
+        lung, blood, and sleep data resources. And it is one of NHLBI’s
+        data repositories, where researchers share scientific data from
+        NHLBI-funded research so they and others can reproduce findings
+        and reuse data to advance science. By increasing access to NHLBI
+        data and innovative analytic capabilities, BDC accelerates
+        reproducible biomedical research to drive scientific advances
+        that can help prevent, diagnose, and treat heart, lung, blood,
+        and sleep disorders.
+      </CardBody>
+      <CardBody>
+        <VideoPlayer url="https://youtu.be/enWIpA0aJb4" controls={ true } />
+      </CardBody>
+    </Card>
 
   </Container>
 
