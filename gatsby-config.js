@@ -55,6 +55,15 @@ module.exports = {
               maxWidth: 1200,
             },
           },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              offsetY: `1000`,
+              removeAccents: true,
+              isIconAfterHeader: true,
+              elements: [`h2`, `h3`],
+            },
+          },
         ],
       },
     },
