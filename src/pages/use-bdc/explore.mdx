@@ -1,7 +1,27 @@
+---
+menu:
+  - heading: About BDC Data
+    href: about-bdc-data  
+  - heading: Search Hosted Data
+    href: search-hosted-data  
+  - heading: Data from Research Community Collaborators
+    href: data-from-research-community-collaborators  
+  - heading: Requirements for Accessing BDC Hosted Data
+    href: requirements-for-accessing-bdc-hosted-data  
+  - heading: Assess Feasibility
+    href: assess-feasibility  
+  - heading: Build a Cohort
+    href: build-a-cohort
+---
 import { PageContent } from "../../components/layout";
 import { Button, ButtonContainer } from "../../components/buttons"
+import { Container as Grid, Row, Col, Visible } from "react-grid-system";
+import { List, ListItem } from "../../components/list"
+import { Link } from "../../components/link";
+import { MenuListItem, StickyLeftMenu, StickyLeftMenuContainer } from "../../components/layout/sticky-menu"
 
 <PageContent width="95%" maxWidth="1200px" center gutters>
+<StickyLeftMenuContainer menuItems={props.pageContext.frontmatter.menu}>
 
 # Explore BDC Data
 
@@ -56,6 +76,7 @@ eRA commons credentials can check their data access approvals:
 <ButtonContainer>
   <Button as="a" href="https://www.renci.org">Check Data Access</Button>
 </ButtonContainer>
+
 Researchers who do not have approved DARs for the controlled data should [read the dbGaP section of 
 the Understanding Access page in the BDC documentation](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/data-access/understanding-access-requirements-for-biodata-catalyst#dbgap) and [Submitting a dbGaP Data Access Request](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/data-access/submitting-a-dbgap-data-access-request) 
 in BDC's documentation.
@@ -77,4 +98,5 @@ conduct a feasibility assessment), researchers need to do the following:
 To build a cohort using hosted data, researchers need to complete the same steps as Assessing 
 Feasibility and have eRA Commons credentials.
 
+</StickyLeftMenuContainer>
 </PageContent>
