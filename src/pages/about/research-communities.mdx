@@ -1,6 +1,40 @@
+---
+menu:
+  - heading: TOPMed
+    href: topmed
+  - heading: RECOVER
+    href: recover
+  - heading: Bench to Bassinet
+    href: bench-to-bassinet
+  - heading: BioLINCC
+    href: biolincc
+  - heading: C4R
+    href: c4r
+  - heading: CONNECTS
+    href: connects
+  - heading: Cure Sickle Cell Initiative
+    href: cure-sickle-cell-initiative
+  - heading: HeartShare
+    href: heartshare
+  - heading: LungMap
+    href: lungmap
+  - heading: National Sleep Research Resource (NSRR)
+    href: national-sleep-research-resource-nsrr
+  - heading: Pediatric Heart Network
+    href: pediatric-heart-network
+  - heading: PETAL Network
+    href: petal-network
+  - heading: Regenerative Medicine Innovation Project (RMIP)
+    href: regenerative-medicine-innovation-project-rmip
+  - heading: Propose New Research Community Collaborations
+    href: propose-new-research-community-collaborations
+---
 import { PageContent } from "../../components/layout";
+import { MenuListItem, StickyLeftMenu, StickyLeftMenuContainer } from "../../components/layout/sticky-menu"
 
 <PageContent width="95%" maxWidth="1200px" center gutters>
+<StickyLeftMenuContainer menuItems={props.pageContext.frontmatter.menu}>
+
 # Research Communities Using BDC
 
 BDC collaborates with many of NHLBI's largest research communities by importing their data, 
@@ -195,4 +229,5 @@ Other major extramural NHLBI scientific initiatives with large amounts of human 
 interested in collaborating with BDC should contact the BDC Data Management Core (DMC) at 
 [bdcatalystdatasharing@nih.gov](mailto:bdcatalystdatasharing@nih.gov).
 
+</StickyLeftMenuContainer>
 </PageContent>
