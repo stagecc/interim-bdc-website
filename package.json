@@ -24,11 +24,15 @@
     "gatsby-plugin-sharp": "^5.13.1",
     "gatsby-plugin-sitemap": "^6.13.1",
     "gatsby-plugin-styled-components": "^6.13.1",
+    "gatsby-remark-autolink-headers": "^6.13.1",
     "gatsby-remark-images": "^7.13.1",
     "gatsby-source-filesystem": "^5.13.1",
     "gatsby-transformer-sharp": "^5.13.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-grid-system": "^7.3.2",
+    "react-player": "^2.16.0",
+    "react-spring": "^8.0.27",
     "styled-components": "^6.1.11"
   }
 }
