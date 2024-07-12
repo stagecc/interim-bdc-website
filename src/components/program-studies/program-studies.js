@@ -6,11 +6,11 @@ import {
   CardSection,
   Programs,
   Studies
-} from "../../components/program-studies";
+} from "./index";
 import { kebabCase } from "../../utils/casing";
 import { useQueryParams } from "../../hooks/use-query-params";
 
-const ProgramStudies = () => {
+export const ProgramStudiesTable = () => {
   const [program, setProgram] = useQueryParams(null, "program");
 
   return (
@@ -41,8 +41,6 @@ const ProgramStudies = () => {
     </PageContent>
   );
 };
-
-export default ProgramStudies;
 
 const Card = styled.div`
   display: flex;
