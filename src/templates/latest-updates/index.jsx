@@ -1,18 +1,25 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { PageContent } from '../../components/layout'
-import { ArticleNavigation } from '../../components/latest-updates';
+import { ArticleNavigation, ResearcherCard } from '../../components/latest-updates';
 import { Title }  from '../../components/typography'
 import './module.css'
 
 const LatestUpdatesPost = ({ data: { mdx }, pageContext, children }) => {
-  const { frontmatter: { title }} = mdx
+  const { frontmatter: { title, researcher }} = mdx
   const { prev, next } = pageContext;
 
   return (
     <PageContent width="95%" maxWidth="1200px" center gutters>
       <Title>{title}</Title>
 
+      {/* todo: consider moving this researcher card inside the mdx file */}
+
+      {
+        researcher && (
+          <ResearcherCard researcher={researcher} partial/>
+        )
+      }
       {children}
 
       <hr/>
@@ -28,6 +35,19 @@ export const newsItemQuery = graphql`
       body
       frontmatter {
         title
+        researcher {
+          name
+          description
+          image {
+            childImageSharp {
+              gatsbyImageData(
+                width: 400
+                placeholder: BLURRED
+                formats: [AUTO, WEBP, AVIF]
+              )
+            }
+          }
+        }
       }
     }
   }
