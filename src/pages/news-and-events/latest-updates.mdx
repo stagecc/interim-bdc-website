@@ -2,4 +2,48 @@
 title: Latest Updates
 slug: /news-and-events/latest-updates
 ---
+import { PageContent } from "../../components/layout";
+import { graphql, Link } from "gatsby";
+import { NewsListItem } from '../../components/latest-updates'
+
+export const query = graphql`
+  query {
+    allMdx(
+      sort: {frontmatter: {date: DESC}}
+      filter: {internal: {contentFilePath: {regex: "/data/latest-updates/"}}}
+    ) {
+      edges {
+        node {
+          id
+          excerpt(pruneLength: 250)
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            path
+            title
+            tags
+          }
+          internal {
+            contentFilePath
+          }
+        }
+      }
+    }
+  }
+`;
+
+<PageContent width="95%" maxWidth="1200px" center gutters>
+
 # Latest Updates
+
+{props.data.allMdx.edges.map(({ node }) => (
+  <NewsListItem
+    key={node.frontmatter.path}
+    title={node.frontmatter.title}
+    path={node.frontmatter.path}
+    date={node.frontmatter.date}
+    tags={node.frontmatter.tags}
+    content={node.excerpt}
+  />
+))}
+
+</PageContent>
