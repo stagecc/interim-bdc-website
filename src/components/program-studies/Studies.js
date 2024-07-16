@@ -40,7 +40,7 @@ export const Studies = ({ programKey }) => {
         },
         {
           key: "id",
-          headerCell: "DbGaP ID",
+          headerCell: "dbGaP Accession",
           width: "25%",
           render: ({ id, url }) => <Link to={url}>{id}</Link>,
         },
