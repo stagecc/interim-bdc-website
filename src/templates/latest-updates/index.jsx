@@ -1,9 +1,9 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { graphql } from "gatsby"
 import { PageContent } from '../../components/layout'
-import { Title, Subtitle } from "../../components/typography";
+import { Title, Subtitle, Heading, Paragraph } from "../../components/typography";
 import { HorizontalRule } from "../../components/horizontal-rule";
-import { PublishDateByLine, ArticleNavigation, ResearcherCard } from '../../components/latest-updates';
+import { PublishDateByLine, ArticleNavigation, ResearcherCard, ContributorCard } from '../../components/latest-updates';
 import { LinkedTagsList } from "../../components/list"
 import './module.css'
 
@@ -12,6 +12,7 @@ const LatestUpdatesPost = ({ data: { mdx }, pageContext, children }) => {
     frontmatter: { 
       title, subtitle, date, author, tags, 
       researcher,
+      contributor
     }, 
     fields: { timeToRead }} = mdx
   const { prev, next } = pageContext;
@@ -29,8 +30,10 @@ const LatestUpdatesPost = ({ data: { mdx }, pageContext, children }) => {
       }
 
       <PublishDateByLine date={date} author={author} timeToRead={Math.ceil(timeToRead.minutes)}/>
-
+      
       { tags && <LinkedTagsList tags={tags}/>}
+
+      {/* todo: consider moving this researcher card inside the mdx file */}
 
       {
         researcher && (
@@ -38,6 +41,24 @@ const LatestUpdatesPost = ({ data: { mdx }, pageContext, children }) => {
         )
       }
       {children}
+
+      { contributor && (
+        <Fragment>
+          <HorizontalRule></HorizontalRule>
+
+          <Heading>About This Article</Heading>
+          <Paragraph>
+            This article was written with information provided by the following participants.
+          </Paragraph>
+
+          {contributor.map((contributor, id) => (
+            <div key={`contributor-${id}`}>
+              <ContributorCard contributor={contributor}/>
+            </div>
+          ))}
+
+        </Fragment>
+      )}
 
       <HorizontalRule />
 
@@ -65,6 +86,19 @@ export const newsItemQuery = graphql`
         author
         tags
         researcher {
+          name
+          description
+          image {
+            childImageSharp {
+              gatsbyImageData(
+                width: 400
+                placeholder: BLURRED
+                formats: [AUTO, WEBP, AVIF]
+              )
+            }
+          }
+        }
+        contributor {
           name
           description
           image {
