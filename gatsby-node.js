@@ -25,6 +25,13 @@ exports.createSchemaCustomization = ({ actions }) => {
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
   const articleTemplate = path.resolve(`src/templates/latest-updates/index.jsx`);
+  const eventTemplate = path.resolve(`src/templates/events/event-template.js`);
+  const upcomingEventsTemplate = path.resolve(
+    `src/templates/events/upcoming-events-template.js`
+  );
+  const eventsArchiveTemplate = path.resolve(
+    `src/templates/events/past-events-template.js`
+  );
 
   const results = await graphql(`
     {
@@ -80,8 +87,22 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       },
     });
   });
+  const events = results.data.allMdx.edges.filter(({node}) =>
+    node.internal.contentFilePath.includes("/data/events/")
+  )
+  events.forEach(({ node }, index) => {
+    createPage({
+      path: node.frontmatter.path,
+      component: `${eventTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
+      context: {
+        // additional data passed via context
+        prev: index === 0 ? null : events[index - 1].node,
+        next: index === events.length - 1 ? null : events[index + 1].node,
+      },
+    });
+  });
 
-  return [...articles];
+  return [...articles, ...events];
 };
 
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
