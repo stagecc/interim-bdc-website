@@ -1,23 +1,37 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { PageContent } from '../../components/layout'
+import { Title, Subtitle } from "../../components/typography";
+import { HorizontalRule } from "../../components/horizontal-rule";
 import { PublishDateByLine, ArticleNavigation, ResearcherCard } from '../../components/latest-updates';
-import { Title }  from '../../components/typography'
+import { LinkedTagsList } from "../../components/list"
 import './module.css'
 
 const LatestUpdatesPost = ({ data: { mdx }, pageContext, children }) => {
   const { 
-    frontmatter: { title, date, author, researcher },
-    fields: { timeToRead }
-  } = mdx
+    frontmatter: { 
+      title, subtitle, date, author, tags, 
+      researcher,
+    }, 
+    fields: { timeToRead }} = mdx
   const { prev, next } = pageContext;
 
   return (
     <PageContent width="95%" maxWidth="1200px" center gutters>
       <Title>{title}</Title>
 
+      {
+        subtitle && (
+          <Subtitle className="article-subtitle">
+            {subtitle}
+          </Subtitle>
+        )
+      }
+
       <PublishDateByLine date={date} author={author} timeToRead={Math.ceil(timeToRead.minutes)}/>
-      
+
+      { tags && <LinkedTagsList tags={tags}/>}
+
       {
         researcher && (
           <ResearcherCard researcher={researcher} partial/>
@@ -25,7 +39,8 @@ const LatestUpdatesPost = ({ data: { mdx }, pageContext, children }) => {
       }
       {children}
 
-      <hr/>
+      <HorizontalRule />
+
       <ArticleNavigation prev={prev} next={next} />
 
     </PageContent>
@@ -46,7 +61,9 @@ export const newsItemQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         path
         title
+        subtitle
         author
+        tags
         researcher {
           name
           description

@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
-
+import { Meta } from "../typography"
+import { TagLink } from "../link"
 export const TagsList = ({
   items,
   separator = ", ",
@@ -26,3 +26,12 @@ TagsList.propTypes = {
   separator: PropTypes.string,
   noItemsIndicator: PropTypes.any,
 };
+
+export const LinkedTagsList = ({ tags }) => (
+  <Meta>
+    <TagsList
+      title="Tags"
+      items={tags.map(tag => <TagLink key={`tag-${ tag }`} tag={tag} />)}
+    />
+  </Meta>
+)
