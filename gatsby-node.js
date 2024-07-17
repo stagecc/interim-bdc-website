@@ -1,4 +1,26 @@
 const path = require(`path`);
+const readingTime = require('reading-time');
+
+exports.onCreateNode = ({ node, actions }) => {
+  const { createNodeField } = actions;
+  if (node.internal.type === 'Mdx') {
+    createNodeField({
+      node,
+      name: 'timeToRead',
+      value: readingTime(node.body)
+    });
+  }
+};
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  createTypes(`
+    type Mdx implements Node {
+      timeToRead: Float @proxy(from: "fields.timeToRead.minutes")
+      wordCount: Int @proxy(from: "fields.timeToRead.words")
+    }
+  `);
+};
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
@@ -21,6 +43,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             }
             internal {
               contentFilePath
+            }
+            fields {
+              timeToRead {
+                text
+                minutes
+                time
+                words
+              }
             }
           }
         }
@@ -46,6 +76,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         // additional data passed via context
         prev: index === 0 ? null : articles[index - 1].node,
         next: index === articles.length - 1 ? null : articles[index + 1].node,
+        timeToRead: node.fields.timeToRead
       },
     });
   });
