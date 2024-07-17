@@ -27,7 +27,13 @@ const PublishDate = styled.span`
   flex: 1;
 `;
 
-export const NewsListItem = ({ date, path, title, tags, content }) => {
+const TimeToRead = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const NewsListItem = ({ date, path, title, timeToRead, tags, content }) => {
   const { isCompact } = useWindowWidth();
   return (
     <ArticlePreview>
@@ -36,6 +42,7 @@ export const NewsListItem = ({ date, path, title, tags, content }) => {
       </Heading>
       <Details compact={isCompact}>
         <PublishDate>Published on {date}</PublishDate>
+        <TimeToRead>&nbsp; {timeToRead} minute read</TimeToRead>
       </Details>
       <Tags>
         <TagsList

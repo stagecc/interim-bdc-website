@@ -25,6 +25,14 @@ export const query = graphql`
           internal {
             contentFilePath
           }
+          fields {
+            timeToRead {
+              text
+              minutes
+              time
+              words
+            }
+          }
         }
       }
     }
@@ -41,6 +49,7 @@ export const query = graphql`
     title={node.frontmatter.title}
     path={node.frontmatter.path}
     date={node.frontmatter.date}
+    timeToRead={Math.ceil(node.fields.timeToRead.minutes)}
     tags={node.frontmatter.tags}
     content={node.excerpt}
   />
