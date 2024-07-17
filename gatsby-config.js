@@ -28,7 +28,16 @@ module.exports = {
     ],
     siteUrl: "https://biodatacatalyst.nhlbi.nih.gov/",
     twitterUsername: "",
-  },  plugins: [
+  },  
+  plugins: [
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        google: {
+          families: ["Montserrat:300,400,500,600"],
+        },
+      },
+    },
     'gatsby-plugin-styled-components',
     'gatsby-plugin-image',
     'gatsby-plugin-sitemap',
