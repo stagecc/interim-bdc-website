@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { Heading, Subheading, } from "../typography";
 import { Markdown } from "../mdxComponents"
 import { useWindowWidth } from "../../hooks";
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { getImage } from "gatsby-plugin-image"
+import { HeadshotPhoto } from "./"
 
 const ResearcherWrapper = styled.div(({ compact, partial }) => (`
   display: flex;
@@ -20,22 +21,6 @@ const ResearcherWrapper = styled.div(({ compact, partial }) => (`
   filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 0.1));
 `));
 
-const PhotoWrapper = styled.div`
-  margin: 1rem;
-  filter: drop-shadow(0 0 0.25rem rgba(0, 0, 0, 0.2));
-`;
-
-const ResearcherPhoto = styled(GatsbyImage)`
-  max-width: 200px;
-  max-height: 200px;
-  min-width: 200px;
-  min-height: 200px;
-  clip-path: circle(100%);
-  transition: filter 250ms;
-  border: 6px solid #b33243;
-  border-radius: 50%;
-`;
-
 const ResearcherDetails = styled.div`
   flex: 1;
   padding: 0 1rem;
@@ -51,9 +36,7 @@ export const ResearcherCard = ({researcher, partial}) => {
   
   return (
     <ResearcherWrapper compact={isCompact} partial={partial}>
-      <PhotoWrapper>
-        <ResearcherPhoto image={image} />
-      </PhotoWrapper>
+      <HeadshotPhoto image={image} />
 
         <ResearcherDetails >
           {researcher.name && (
