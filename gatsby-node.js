@@ -102,6 +102,33 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     });
   });
 
+  // get date to sort events into upcoming and past event lists
+  const todaysDate = new Date();
+  const dateString = `${todaysDate.getFullYear()}-${
+    todaysDate.getMonth() + 1 < 10 ? "0" : ""
+  }${todaysDate.getMonth() + 1}-${
+    todaysDate.getDate() < 10 ? "0" : ""
+  }${todaysDate.getDate()}`;
+
+  // Create upcoming event list page
+  createPage({
+    path: "/about/events",
+    component: upcomingEventsTemplate,
+    context: {
+      todaysDate: dateString,
+    },
+  });
+
+  // Create archived event list page
+  createPage({
+    path: "/about/events/archive",
+    component: eventsArchiveTemplate,
+    context: {
+      todaysDate: dateString,
+    },
+  });
+
+
   return [...articles, ...events];
 };
 
