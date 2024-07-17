@@ -1,1 +1,62 @@
-# Events
+---
+title: Events
+slug: /news-and-events/events
+---
+import { PageContent, Module } from "../../components/layout";
+import { graphql, Link } from "gatsby";
+import {
+  Title,
+  Paragraph,
+} from "../../components/typography";
+import { ButtonLink } from "../../components/buttons";
+import { EventsList } from '../../components/events'
+import { Avatar } from '@mui/material/';
+import BDCLogo from '../../images/favicon.png'
+
+export const allEventsQuery = graphql`
+  query {
+    events: allMdx(
+      sort: {frontmatter: {date: ASC}}
+      filter: {
+        internal: { contentFilePath: {regex: "/data/events/"} }
+      }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            date(formatString: "MMM D, YYYY")
+            display_date
+            path
+            title
+            url
+            time
+            location
+            externalEvent
+          }
+          excerpt(pruneLength: 280)
+        }
+      }
+    }
+  }
+`;
+
+
+<PageContent width="95%" maxWidth="1200px" center gutters>
+  # Upcoming Events
+
+  <Paragraph>
+    The following is a list of upcoming events supported by the BDC ecosystem. Items denoted with a <Avatar 
+      src={BDCLogo} 
+      alt='BDC logo' 
+      component="span" 
+      sx={{
+        width: 20, height: 20,
+        border: '1px solid #c5cfe8',
+        display: 'inline-block',
+        margin: '0 0.2rem'
+      }}/> {" "}indicate events hosted by BDC.
+  </Paragraph>
+  
+  <EventsList events={props.data.events.edges} />
+
+</PageContent>
