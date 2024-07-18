@@ -155,7 +155,6 @@ export const DialogProvider = ({ children }) => {
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState();
   const [continueHandler, setContinueHandler] = useState(() => () => {
-    console.log("adasdsd");
   });
 
   const open = () => setIsOpen(true);
