@@ -10,7 +10,9 @@ export const query = graphql`
   query {
     allMdx(
       sort: {frontmatter: {date: DESC}}
-      filter: {internal: {contentFilePath: {regex: "/data/latest-updates/"}}}
+      filter: {
+        internal: {contentFilePath: {regex: "/data/latest-updates/"}}
+      }
     ) {
       edges {
         node {

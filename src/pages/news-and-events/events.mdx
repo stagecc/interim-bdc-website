@@ -59,4 +59,10 @@ export const allEventsQuery = graphql`
   
   <EventsList events={props.data.events.edges} />
 
+  <Paragraph center>
+    <ButtonLink primary={true} to="/news-and-events/events/archive">
+      View our past events
+    </ButtonLink>
+  </Paragraph>
+
 </PageContent>

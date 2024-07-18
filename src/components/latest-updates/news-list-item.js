@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Title, Heading, Meta } from "../typography";
+import { Heading, Meta } from "../typography";
 import { TagsList } from "../list";
 import { TagLink } from "../link";
 import { useWindowWidth } from "../../hooks";

@@ -25,7 +25,7 @@ exports.createSchemaCustomization = ({ actions }) => {
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
   const articleTemplate = path.resolve(`src/templates/latest-updates/index.jsx`);
-  const eventTemplate = path.resolve(`src/templates/events/event-template.js`);
+  const eventTemplate = path.resolve(`src/templates/events/event-template.jsx`);
   const upcomingEventsTemplate = path.resolve(
     `src/templates/events/upcoming-events-template.js`
   );
@@ -90,11 +90,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const events = results.data.allMdx.edges.filter(({node}) =>
     node.internal.contentFilePath.includes("/data/events/")
   )
+  const todaysDate = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD'
+
   events.forEach(({ node }, index) => {
     createPage({
       path: node.frontmatter.path,
       component: `${eventTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
       context: {
+        id: node.id,
         // additional data passed via context
         prev: index === 0 ? null : events[index - 1].node,
         next: index === events.length - 1 ? null : events[index + 1].node,
@@ -103,28 +106,22 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   });
 
   // get date to sort events into upcoming and past event lists
-  const todaysDate = new Date();
-  const dateString = `${todaysDate.getFullYear()}-${
-    todaysDate.getMonth() + 1 < 10 ? "0" : ""
-  }${todaysDate.getMonth() + 1}-${
-    todaysDate.getDate() < 10 ? "0" : ""
-  }${todaysDate.getDate()}`;
 
   // Create upcoming event list page
   createPage({
     path: "/about/events",
     component: upcomingEventsTemplate,
     context: {
-      todaysDate: dateString,
+      todaysDate: todaysDate,
     },
   });
 
   // Create archived event list page
   createPage({
-    path: "/about/events/archive",
+    path: "/news-and-events/events/archive",
     component: eventsArchiveTemplate,
     context: {
-      todaysDate: dateString,
+      todaysDate: todaysDate,
     },
   });
 

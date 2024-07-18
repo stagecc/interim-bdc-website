@@ -1,11 +1,13 @@
 import React from "react";
+import { graphql } from "gatsby";
 import { Title, Paragraph } from "../../components/typography";
 import { ButtonLink } from "../../components/buttons";
 import { Module, PageContent } from "../../components/layout";
+import { PastEventsList } from "../../components/events/past-event-list-grid"
 import Avatar from '@mui/material/Avatar';
 import BDCLogo from '../../images/favicon.png'
 
-export default () => {
+const PastEventsTemplate = ({data, pageContext}) => {
 
   return (
     <PageContent width="95%" maxWidth="1200px" center gutters>
@@ -26,9 +28,11 @@ export default () => {
             }}/> {" "}indicate events hosted by BDC.
         </Paragraph>
       </Module>
+      <PastEventsList events={data.events.edges} />
+
 
       <Paragraph center>
-        <ButtonLink primary={true} to="/about/events">
+        <ButtonLink primary={true} to="/news-and-events/events">
           View our upcoming events
         </ButtonLink>
       </Paragraph>
@@ -36,3 +40,31 @@ export default () => {
   );
 };
 
+export default PastEventsTemplate
+
+export const allEventsQuery = graphql`
+  query{
+    events: allMdx(
+      sort: {frontmatter: {date: DESC}}
+      filter: {
+        internal: {contentFilePath: {regex: "/data/events/"}}
+      }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            display_date
+            path
+            title
+            url
+            time
+            location
+            forum_post
+            externalEvent
+          }
+        }
+      }
+    }
+  }
+`;

@@ -1,9 +1,10 @@
 import React from "react";
+import styled from "styled-components";
 import { Link } from "../link";
 import { Visible } from "react-grid-system";
 import { Meta } from "../typography"
 
-export const ArticleNavigation = ({ prev, next }) => {
+export const EventNavigation = ({ prev, next }) => {
   return (
     <div style={{ display: "flex" }}>
       <div style={{ flex: 1, textAlign: "left" }}>
@@ -11,10 +12,14 @@ export const ArticleNavigation = ({ prev, next }) => {
           <Link to={prev.frontmatter.path}>
             PREVIOUS{" "}
             <Visible md lg xl>
-              ARTICLE
-            </Visible>
+              EVENT
+            </Visible>{" "}
             <br />
-            <Meta>{prev.frontmatter.title}</Meta>
+            <Meta>
+              {prev.frontmatter.title}
+              <br />
+              <small>on {prev.frontmatter.date}</small>
+            </Meta>
           </Link>
         )}
       </div>
@@ -23,10 +28,14 @@ export const ArticleNavigation = ({ prev, next }) => {
           <Link to={next.frontmatter.path}>
             NEXT{" "}
             <Visible md lg xl>
-              ARTICLE
-            </Visible>
+              EVENT
+            </Visible>{" "}
             <br />
-            <Meta>{next.frontmatter.title}</Meta>
+            <Meta>
+              {next.frontmatter.title}
+              <br />
+              <small>on {next.frontmatter.date}</small>
+            </Meta>
           </Link>
         )}
       </div>

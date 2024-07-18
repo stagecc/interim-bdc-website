@@ -97,5 +97,12 @@ module.exports = {
         name: "latest-updates",
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./src/data/events`,
+        name: "events",
+      },
+    },
   ]
 };
