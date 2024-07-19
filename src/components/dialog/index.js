@@ -1,2 +1,2 @@
-export * from './overlay'
-export * from './dialog'
+export * from './dialog-overlay'
+export * from './dialog-elements'
