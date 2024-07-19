@@ -6,11 +6,9 @@ import React, {
   useRef,
   useState
 } from "react";
-import styled from "styled-components";
-import { Heading } from "../components/typography";
 import { Button, IconButton } from "../components/buttons";
 import { CloseIcon } from "../components/icons";
-import { animated, useSpring } from "react-spring";
+import { useSpring } from "react-spring";
 import { Overlay, Wrapper, Header, Title, Body, Actions } from "../components/dialog"
 
 const Dialog = ({ onContinue }) => {

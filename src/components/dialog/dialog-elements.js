@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { animated, useSpring } from "react-spring";
+import { animated } from "react-spring";
 import { Heading } from "../typography";
 
 export const Wrapper = styled(animated.div).attrs({ role: "dialog" })`
