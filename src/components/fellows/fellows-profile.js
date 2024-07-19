@@ -2,9 +2,8 @@ import React from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components";
 import { useWindowWidth } from "../../hooks";
-import { Subheading, Subsubheading } from "../typography";
+import { Subheading, Subsubheading, Paragraph } from "../typography";
 import { kebabCase } from "../../utils";
-import { Markdown } from '../mdxComponents';
 
 const Wrapper = styled.article`
   display: flex;
@@ -18,8 +17,7 @@ const FellowHeadingSection = styled.div`
   flex-direction:  ${(props) => (props.compact ? "column" : "row" )};
   justify-content: center;
   align-items: center;
-  margin-top: -2.75rem;
-  margin-bottom: ${(props) => (props.compact ? "1rem" : 0)};
+  margin-bottom: ${(props) => (props.compact ? "1rem" : "0.5rem")};
 `
 
 const FellowName = styled(Subheading)`
@@ -40,11 +38,14 @@ const FellowPhoto = styled(GatsbyImage)`
   margin-right: 1rem;
 `;
 
+const FellowsDetailsSection = styled.div`
+margin-bottom: 0.5rem;
+`
 const FellowDetailsHeading = styled(Subsubheading)`
   margin-bottom: 0.75rem;
   line-height: 1.25;
 `
-const FellowsDetailsText = styled.div`
+const FellowsDetailsText = styled(Paragraph)`
   font-size: 90%;
   line-height: 1.3;
 `
@@ -64,14 +65,14 @@ export const FellowsProfile = ({ fellow }) => {
           <FellowSubtitle center noMargin>Cohort I</FellowSubtitle>
         </div>
       </FellowHeadingSection>
-      <FellowDetailsHeading noMargin>Biography</FellowDetailsHeading>
-      <FellowsDetailsText>
-        <Markdown>{bio}</Markdown>
-      </FellowsDetailsText>
-      <FellowDetailsHeading>Project</FellowDetailsHeading>
-      <FellowsDetailsText>
-        <strong>{project.title}: </strong><Markdown>{project.abstract}</Markdown>
-      </FellowsDetailsText>
+      <FellowsDetailsSection>
+        <FellowDetailsHeading noMargin>Biography</FellowDetailsHeading>
+        <FellowsDetailsText>{bio}</FellowsDetailsText>
+        <FellowDetailsHeading>Project</FellowDetailsHeading>
+        <FellowsDetailsText>
+          <strong>{project.title}: </strong>{project.abstract}
+        </FellowsDetailsText>
+      </FellowsDetailsSection>
     </Wrapper>
   );
 };

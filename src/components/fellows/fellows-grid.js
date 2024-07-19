@@ -11,7 +11,7 @@ import { useFellows } from "../../hooks"
 import { FellowsProfile, FellowsLinkList, FellowsLinkListItem } from "./";
 import { IconButton } from "../buttons";
 import { CloseIcon } from "../icons";
-import { Overlay, Wrapper, Header, Body } from "../dialog"
+import { Overlay, Wrapper, FellowsHeader, Body } from "../dialog"
 import { useSpring } from "react-spring";
 
 const Container = styled.div`
@@ -82,11 +82,11 @@ const Dialog = ({ isOpen, closeDialog, contents }) => {
     <Fragment>
       <Overlay onClick={closeDialog} />
       <Wrapper onKeyDown={handleKeyDown} ref={dialogRef} style={animation}>
-        <Header>
+        <FellowsHeader>
           <IconButton onClick={closeDialog}>
             <CloseIcon size={24} fill="var(--color-crimson)" />
           </IconButton>
-        </Header>
+        </FellowsHeader>
         <Body>{contents}</Body>
       </Wrapper>
     </Fragment>

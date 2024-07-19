@@ -13,7 +13,7 @@ export const Wrapper = styled(animated.div).attrs({ role: "dialog" })`
   border-radius: 4px;
   background-color: #eee;
   color: var(--color-eggplant);
-  padding: 0;
+  padding: 0.5rem 1rem;
   filter: drop-shadow(0 0 0.25rem rgba(0, 0, 0, 0.5));
   overflow-y: auto;
   max-height: calc(100vh - 2rem);
@@ -22,8 +22,13 @@ export const Wrapper = styled(animated.div).attrs({ role: "dialog" })`
 export const Header = styled.div`
   padding: 1rem;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 `;
+
+export const FellowsHeader = styled.div`
+  display: flex;
+  justify-content: end;
+`
 
 export const Title = styled(Heading)`
   flex: 1;
