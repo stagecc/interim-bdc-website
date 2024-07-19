@@ -1,7 +1,6 @@
 import React, {
   Fragment,
   useCallback,
-  useContext,
   useEffect,
   useRef,
   useState
@@ -10,11 +9,10 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { useFellows } from "../../hooks"
 import { FellowsProfile, FellowsLinkList, FellowsLinkListItem } from "./";
-import { useDialog } from "../../hooks";
-import { Button, IconButton } from "../buttons";
+import { IconButton } from "../buttons";
 import { CloseIcon } from "../icons";
-import { Overlay, Wrapper, Header, Title, Body, Actions } from "../dialog"
-import { animated, useSpring } from "react-spring";
+import { Overlay, Wrapper, Header, Body } from "../dialog"
+import { useSpring } from "react-spring";
 
 const Container = styled.div`
   padding: 0 20px;
