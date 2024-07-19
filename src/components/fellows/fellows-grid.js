@@ -20,7 +20,7 @@ const Container = styled.div`
   padding: 0 20px;
 `;
 
-const Dialog = ({ isOpen, closeDialog, title, contents }) => {
+const Dialog = ({ isOpen, closeDialog, contents }) => {
   const dialogRef = useRef();
   const [focusableElements, setFocusableElements] = useState([]);
 
@@ -85,7 +85,6 @@ const Dialog = ({ isOpen, closeDialog, title, contents }) => {
       <Overlay onClick={closeDialog} />
       <Wrapper onKeyDown={handleKeyDown} ref={dialogRef} style={animation}>
         <Header>
-          <Title>{title}</Title>
           <IconButton onClick={closeDialog}>
             <CloseIcon size={24} fill="var(--color-crimson)" />
           </IconButton>
@@ -135,7 +134,6 @@ export const FellowsGrid = () => {
       <Dialog
         isOpen={isOpen}
         closeDialog={closeDialog}
-        title={selectedPerson ? selectedPerson.name : ''}
         contents={dialogContent}
       />
     </Container>
