@@ -2,6 +2,7 @@
 name: Anthony Zannas, PhD
 university: University of North Carolina at Chapel Hill
 photo: zannas-anthony.jpg
+cohort: 3
 project:
   title: Psychosocial stress, DNA methylation, and incident atherosclerotic disease
   abstract: >

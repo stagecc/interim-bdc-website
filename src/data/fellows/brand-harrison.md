@@ -2,6 +2,7 @@
 name: Harrison Brand, PhD
 university: Massachusetts General Hospital
 photo: brand-harrison.jpg
+cohort: 1
 project:
   title: Investigation of the Impact of Structural Variation on the Genetic Etiology of Type 2 Diabetes and Glycemic Traits
   abstract: >

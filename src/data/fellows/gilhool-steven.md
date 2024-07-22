@@ -2,6 +2,7 @@
 name: Steven Gilhool, PhD
 university: Children's Hospital of Philadelphia
 photo: gilhool-steven.jpg
+cohort: 3
 project:
   title: Large-scale genome-wide Rare Variant and Copy Number Variant analyses of asthmatics across diverse populations
   abstract: >

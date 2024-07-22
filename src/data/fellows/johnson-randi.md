@@ -2,6 +2,7 @@
 name: Randi Johnson, PhD, MPH
 university: University of Colorado Anschutz Medical Campus
 photo: johnson-randi.jpg
+cohort: 2
 project:
   title: Prediction and characterization of genetically regulated expression of target tissues in asthma
   abstract: >

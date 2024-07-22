@@ -2,6 +2,7 @@
 name: Merry-Lynn McDonald, PhD
 university: University of Alabama at Birmingham
 photo: mcdonald-merry-lynn.jpg
+cohort: 3
 project:
   title: Genomics of Weight Loss in COPD
   abstract: >

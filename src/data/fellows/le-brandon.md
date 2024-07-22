@@ -2,6 +2,7 @@
 name: Brandon Lê, BA
 university: Duke University
 photo: le-brandon.jpg
+cohort: 2
 project:
   title: Modeling Sickle Cell Disease phenotypes through supervised learning of patient multi-omic data
   abstract: >

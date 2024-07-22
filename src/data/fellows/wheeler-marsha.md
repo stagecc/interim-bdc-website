@@ -2,6 +2,7 @@
 name: Marsha Wheeler, PhD
 university: University of Washington
 photo: wheeler-marsha.jpg
+cohort: 3
 project:
   title: Using a multi-omics approach to assess X chromosome inactivation (XCI) skewing in females and its association with hematological and hemostasis traits
   abstract: >

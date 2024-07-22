@@ -2,6 +2,7 @@
 name: Jinling Liu, PhD
 university: Missouri University of Science and Technology
 photo: liu-jinling.jpg
+cohort: 2
 project:
   title: Apply and evaluate an instance-specific causal machine learning framework for identifying the causative genomic variants of cardiovascular diseases
   abstract: >

@@ -2,6 +2,7 @@
 name: Jasmine Olvany
 university: Case Western Reserve University
 photo: olvany-jasmine.jpg
+cohort: 3
 project:
   title: Identifying an asymptomatic malaria population using whole genome sequence data
   abstract: >

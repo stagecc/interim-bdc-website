@@ -2,6 +2,7 @@
 name: Stephanie Cook, MPH, DrPH
 university: New York University
 photo: cook-stephanie.jpg
+cohort: 3
 project:
   title: "Understanding physiological and health behavior pathways linking minority stress to carotid IMT and carotid plaque burden: The Multi-Ethnic Study of Atherosclerosis"
   abstract: >

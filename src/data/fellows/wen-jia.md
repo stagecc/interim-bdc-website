@@ -2,6 +2,7 @@
 name: Jia Wen, PhD
 university: University of North Carolina at Chapel Hill
 photo: wen-jia.jpg
+cohort: 2
 project:
   title: Discovery of modifier loci of lung disease severity in cystic fibrosis (CF) by CF-tailored genotype imputation and scanning of candidate regulatory regions
   abstract: >

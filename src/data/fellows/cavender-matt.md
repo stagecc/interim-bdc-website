@@ -2,6 +2,7 @@
 name: Matt Cavender, MD, PhD
 university: University of North Carolina at Chapel Hill
 photo: cavender-matt.jpg
+cohort: 3
 project:
   title: "Team Proposal Utilization of Machine Learning Techniques to Identify Clinical and Genetic Determinants of Calcific Aortic Valve Disease"
   abstract: >

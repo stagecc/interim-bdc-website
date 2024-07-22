@@ -2,6 +2,7 @@
 name: Magdalena Sevilla-Gonzalez, PhD
 university: Massachusetts General Hospital
 photo: sevilla-gonzalez-magdalena.jpg
+cohort: 3
 project:
   title: Comprehensive analysis of omics signatures across race/ethnic groups and implications for cardiometabolic diseases
   abstract: >

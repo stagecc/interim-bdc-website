@@ -2,6 +2,7 @@
 name: Pranav Rajpurkar, MS
 university: Stanford University
 photo: rajpurkar-pranav.jpg
+cohort: 2
 project:
   title: Computational Methods for Detection of Unseen Pathologies with Deep Learning Algorithms for Chest X-ray Interpretation
   abstract: >
