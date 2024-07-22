@@ -9,7 +9,7 @@ import { Avatar } from '@mui/material/';
 import BDCLogo from '../../images/favicon.png'
 
 
-const UpcomingEventsList = ({  }) => {
+const UpcomingEventsList = ({ data }) => {
 
   return (
     <PageContent width="95%" maxWidth="1200px" center gutters>

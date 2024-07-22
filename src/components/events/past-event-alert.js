@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Link } from "../../components/link";
 import { Meta } from "../../components/typography";
 import { Card, CardBody } from "../../components/card";

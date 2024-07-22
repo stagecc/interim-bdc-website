@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import { Link } from "../link";
 import { Visible } from "react-grid-system";
 import { Meta } from "../typography"
