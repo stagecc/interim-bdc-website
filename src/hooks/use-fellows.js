@@ -7,6 +7,7 @@ export const fellowFragment = graphql`
     frontmatter {
       name
       university
+      cohort
       project {
         title
         abstract

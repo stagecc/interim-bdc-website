@@ -52,7 +52,7 @@ const FellowsDetailsText = styled(Paragraph)`
 
 export const FellowsProfile = ({ fellow }) => {
   const { isCompact } = useWindowWidth();
-  const { name, university, bio, project, photo} = fellow
+  const { name, university, cohort, bio, project, photo} = fellow
   const image = getImage(photo)
   
   return (
@@ -62,7 +62,7 @@ export const FellowsProfile = ({ fellow }) => {
         <div>
           <FellowName center noMargin>{name}</FellowName>
           <FellowSubtitle center noMargin>{university}</FellowSubtitle>
-          <FellowSubtitle center noMargin>Cohort I</FellowSubtitle>
+          <FellowSubtitle center noMargin>Cohort {cohort}</FellowSubtitle>
         </div>
       </FellowHeadingSection>
       <FellowsDetailsSection>
