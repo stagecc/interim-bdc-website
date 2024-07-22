@@ -101,7 +101,10 @@ export const FellowsGrid = () => {
   const [dialogContent, setDialogContent] = useState(null);
 
   const openDialog = () => setIsOpen(true);
-  const closeDialog = () => setIsOpen(false);
+  const closeDialog = () => {
+    setSelectedPerson(null);
+    setIsOpen(false)
+  };
 
   const handleClick = (person) => {
     setSelectedPerson(person);
