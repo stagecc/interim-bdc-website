@@ -1,10 +1,14 @@
 import React from "react";
+import styled from "styled-components";
 import { Link } from "../components/link";
 import { graphql } from "gatsby";
-import { Title, Heading, Paragraph, Meta } from "../components/typography";
-import { TagsList } from "../components/list";
-import { TagLink } from "../components/link";
+import { Title, Heading, Subheading, Paragraph, Meta } from "../components/typography";
+import { LinkedTagsList } from "../components/list";
 import { PageContent } from "../components/layout";
+
+const TagHeading = styled(Subheading)`
+  font-size: 1rem;
+`
 
 const TagTemplate = ({ data, pageContext }) => {
   const { tag } = pageContext;
@@ -25,18 +29,13 @@ const TagTemplate = ({ data, pageContext }) => {
               const { title, path, date, tags } = article.frontmatter;
               return (
                 <article key={title}>
-                  <h5 style={{ lineHeight: 1.5 }}>
+                  <TagHeading>
                     <Link to={path}>{title}</Link>
-                  </h5>
+                  </TagHeading>
                   <Meta>
                     <strong>Publication Date:</strong> {date}
                     <br />
-                    <TagsList
-                      title="Tags"
-                      items={tags.map((tag) => (
-                        <TagLink tag={tag} />
-                      ))}
-                    />
+                    <LinkedTagsList tags={tags} />
                   </Meta>
                 </article>
               );
@@ -56,17 +55,13 @@ const TagTemplate = ({ data, pageContext }) => {
               const { title, path, date, tags } = event.frontmatter;
               return (
                 <article key={title}>
-                  <h5 style={{ lineHeight: 1.5 }}>
+                  <TagHeading>
                     <Link to={path}>{title}</Link>
-                  </h5>
+                  </TagHeading>
                   <Meta>
                     <strong>Event Date:</strong> {date} <br />
-                    <TagsList
-                      title="Tags"
-                      items={tags.map((tag) => (
-                        <TagLink tag={tag} />
-                      ))}
-                    />
+                    <LinkedTagsList tags={tags} />
+
                   </Meta>
                 </article>
               );
