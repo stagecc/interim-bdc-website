@@ -4,12 +4,14 @@ import { Meta } from "../typography"
 import { TagLink } from "../link"
 
 export const TagsList = ({
+  title,
   items,
   separator = ", ",
   noItemsIndicator = " ∅",
 }) => {
   return (
     <Fragment>
+      {title && <strong>{title}: </strong>}
       {items.length > 0
         ? items.map((item, i) => (
             <Fragment key={i}>
@@ -24,6 +26,7 @@ export const TagsList = ({
 
 TagsList.propTypes = {
   items: PropTypes.array.isRequired,
+  title: PropTypes.string,
   separator: PropTypes.string,
   noItemsIndicator: PropTypes.any,
 };
