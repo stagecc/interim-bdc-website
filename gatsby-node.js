@@ -32,6 +32,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const eventsArchiveTemplate = path.resolve(
     `src/templates/events/past-events-template.js`
   );
+  const tagTemplate = path.resolve(`src/templates/tag-template.jsx`);
+
 
   const results = await graphql(`
     {
@@ -90,7 +92,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const events = results.data.allMdx.edges.filter(({node}) =>
     node.internal.contentFilePath.includes("/data/events/")
   )
-  const todaysDate = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD'
 
   events.forEach(({ node }, index) => {
     createPage({
@@ -106,6 +107,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   });
 
   // get date to sort events into upcoming and past event lists
+  const todaysDate = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD'
 
   // Create upcoming event list page
   createPage({
@@ -124,6 +126,31 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       todaysDate: todaysDate,
     },
   });
+
+  // Create tag pages
+  const allTags = new Set();
+  results.data.allMdx.edges.concat(events).forEach(
+    ({
+      node: {
+        frontmatter: { tags },
+      },
+    }) => {
+      if (tags && Array.isArray(tags)) {
+        tags.forEach((tag) => allTags.add(tag));
+      }
+    }
+  );
+
+  allTags.forEach((tag) => {
+    createPage({
+      path: `/tagged/${tag}`,
+      component: tagTemplate,
+      context: { tag },
+    });
+  });
+
+
+
 
 
   return [...articles, ...events];
