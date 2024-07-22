@@ -6,63 +6,10 @@ import React, {
   useRef,
   useState
 } from "react";
-import styled from "styled-components";
-import { Heading } from "../components/typography";
 import { Button, IconButton } from "../components/buttons";
 import { CloseIcon } from "../components/icons";
-import { animated, useSpring } from "react-spring";
-
-const Overlay = styled.div`
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #00000099;
-  z-index: 999;
-`;
-
-const Wrapper = styled(animated.div).attrs({ role: "dialog" })`
-  width: 95%;
-  max-width: 800px;
-  position: fixed;
-  z-index: 9999;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 4px;
-  background-color: #eee;
-  color: var(--color-eggplant);
-  padding: 0;
-  filter: drop-shadow(0 0 0.25rem rgba(0, 0, 0, 0.5));
-  overflow-y: auto;
-  max-height: calc(100vh - 2rem);
-`;
-
-const Header = styled.div`
-  padding: 1rem;
-  display: flex;
-  align-items: flex-start;
-`;
-
-const Title = styled(Heading)`
-  flex: 1;
-  padding: 0;
-  margin: 0;
-`;
-
-const Body = styled.div`
-  padding: 0 1rem;
-  text-align: left;
-`;
-
-const Actions = styled.div`
-  padding: 1rem;
-  text-align: right;
-  & button {
-    margin: 0.25rem 0.5rem;
-  }
-`;
+import { useSpring } from "react-spring";
+import { Overlay, Wrapper, Header, Title, Body, Actions } from "../components/dialog"
 
 const Dialog = ({ onContinue }) => {
   const dialog = useContext(DialogContext);
@@ -155,7 +102,6 @@ export const DialogProvider = ({ children }) => {
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState();
   const [continueHandler, setContinueHandler] = useState(() => () => {
-    console.log("adasdsd");
   });
 
   const open = () => setIsOpen(true);
