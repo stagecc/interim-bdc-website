@@ -8,6 +8,7 @@ import { PageContent } from "../components/layout";
 
 const TagHeading = styled(Subheading)`
   font-size: 1rem;
+  margin-bottom: 0.5rem;
 `
 
 const TagTemplate = ({ data, pageContext }) => {
@@ -29,14 +30,15 @@ const TagTemplate = ({ data, pageContext }) => {
               const { title, path, date, tags } = article.frontmatter;
               return (
                 <article key={title}>
-                  <TagHeading>
+                  <TagHeading noMargin>
                     <Link to={path}>{title}</Link>
                   </TagHeading>
-                  <Meta>
+                  <Meta noMargin>
                     <strong>Publication Date:</strong> {date}
                     <br />
-                    <LinkedTagsList tags={tags} />
+                    <LinkedTagsList noMargin tags={tags} />
                   </Meta>
+                  <br/>
                 </article>
               );
             })
@@ -55,13 +57,13 @@ const TagTemplate = ({ data, pageContext }) => {
               const { title, path, date, tags } = event.frontmatter;
               return (
                 <article key={title}>
-                  <TagHeading>
+                  <TagHeading noMargin>
                     <Link to={path}>{title}</Link>
                   </TagHeading>
-                  <Meta>
+                  <Meta noMargin>
                     <strong>Event Date:</strong> {date} <br />
-                    <LinkedTagsList tags={tags} />
-
+                    <LinkedTagsList noMargin tags={tags} />
+                    <br/>
                   </Meta>
                 </article>
               );

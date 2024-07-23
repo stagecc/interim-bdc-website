@@ -21,6 +21,11 @@ a:active {
   text-decoration-color: var(--color-blueberry);
 }
 
+b,
+strong {
+  font-weight: 600;
+}
+
 :root {
   --color-white: #eee;
   --color-lightgrey: #a0a2a4;

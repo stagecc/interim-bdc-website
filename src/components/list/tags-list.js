@@ -31,8 +31,8 @@ TagsList.propTypes = {
   noItemsIndicator: PropTypes.any,
 };
 
-export const LinkedTagsList = ({ tags }) => (
-  <Meta>
+export const LinkedTagsList = ({ tags, noMargin }) => (
+  <Meta noMargin={noMargin}>
     <TagsList
       title="Tags"
       items={tags.map(tag => <TagLink key={`tag-${ tag }`} tag={tag} />)}
