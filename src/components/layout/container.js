@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
 import { Seo } from "../seo";
 import { Title } from "../typography";
+import { StickyLeftMenuContainer } from "./"
 
 export const Container = styled.div`
   // & * { border: 1px solid #f99; }
@@ -53,13 +54,26 @@ export const BackgroundImageContainer = styled(Container)`
   }
 `;
 
-export const PageContent = ({title, hideTitle, children, ...props}) => {
+export const PageContent = ({title, hideTitle, menuItems, children, ...props}) => {
 
   return (
     <PageContainer {...props}>
-      { (title && !hideTitle) && <Title>{title}</Title> }
       { title && <Seo title={title} description="" keywords="" /> }
-      {children}
+      
+      { menuItems ? (
+          <StickyLeftMenuContainer menuItems={menuItems}>
+            { (title && !hideTitle) && <Title>{title}</Title> }
+            {children}
+          </StickyLeftMenuContainer>
+      ) : (
+        <Fragment>
+          { (title && !hideTitle) && <Title>{title}</Title> }
+
+          {children}
+        </Fragment>
+      )
+      }
+      
     </PageContainer>
   )
 }

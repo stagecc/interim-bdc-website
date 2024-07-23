@@ -6,6 +6,7 @@ export * from "./layout";
 export * from "./line-break";
 export * from "./main";
 export * from "./module";
+export * from "./sticky-menu"
 export * from "./sticky-wrapper";
 export * from "./subfooter";
 export * from "./toolbar";

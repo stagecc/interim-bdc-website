@@ -36,10 +36,8 @@ import { ButtonLink, ButtonContainer } from "../../components/buttons";
 <PageContent 
   title="Research Communities"
   width="95%" maxWidth="1200px" center gutters
+  menuItems={props.pageContext.frontmatter.menu}
 >
-<StickyLeftMenuContainer menuItems={props.pageContext.frontmatter.menu}>
-
-# Research Communities
 
 BDC collaborates with many of NHLBI's largest research communities by ingesting their data, integrating their resources (as appropriate), and providing their research communities with analytical tools, applications, workflows, and secure workspaces where they compute data from their programs as well as other BDC-hosted data. As part of these collaborations, BDC identifies, develops, and deploys ecosystem enhancements needed to meet the communities' needs and tailors the onboarding of researchers in these communities to help them join the BDC community.
 
@@ -253,5 +251,4 @@ Other major extramural NHLBI scientific initiatives with large amounts of human 
 interested in collaborating with BDC should contact the BDC Data Management Core (DMC) at 
 [bdcatalystdatasharing@nih.gov](mailto:bdcatalystdatasharing@nih.gov).
 
-</StickyLeftMenuContainer>
 </PageContent>

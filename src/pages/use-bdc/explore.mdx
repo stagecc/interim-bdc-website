@@ -20,9 +20,8 @@ import { MenuListItem, StickyLeftMenu, StickyLeftMenuContainer } from "../../com
 <PageContent 
   title="Explore BDC Data"
   width="95%" maxWidth="1200px" center gutters
-><StickyLeftMenuContainer menuItems={props.pageContext.frontmatter.menu}>
-
-# Explore BDC Data
+  menuItems={props.pageContext.frontmatter.menu}
+>
 
 ## About BDC Data
 
@@ -97,5 +96,4 @@ conduct a feasibility assessment), researchers need to do the following:
 To build a cohort using hosted data, researchers need to complete the same steps as Assessing 
 Feasibility and have eRA Commons credentials.
 
-</StickyLeftMenuContainer>
 </PageContent>
