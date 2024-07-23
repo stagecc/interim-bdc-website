@@ -27,10 +27,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const articleTemplate = path.resolve(`src/templates/latest-updates/index.jsx`);
   const eventTemplate = path.resolve(`src/templates/events/event-template.jsx`);
   const upcomingEventsTemplate = path.resolve(
-    `src/templates/events/upcoming-events-template.js`
+    `src/templates/events/upcoming-events-template.jsx`
   );
   const eventsArchiveTemplate = path.resolve(
-    `src/templates/events/past-events-template.js`
+    `src/templates/events/past-events-template.jsx`
   );
   const tagTemplate = path.resolve(`src/templates/tag-template.jsx`);
 
