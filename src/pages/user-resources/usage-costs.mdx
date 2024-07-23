@@ -12,10 +12,11 @@ import { PageContent } from "../../components/layout";
 import { MenuListItem, StickyLeftMenu, StickyLeftMenuContainer } from "../../components/layout/sticky-menu"
 import { ButtonContainer, ButtonLink } from "../../components/buttons"
 
-<PageContent width="95%" maxWidth="1200px" center gutters>
+<PageContent 
+  title="Usage Costs"
+  width="95%" maxWidth="1200px" center gutters
+>
 <StickyLeftMenuContainer menuItems={props.pageContext.frontmatter.menu}>
-# Usage Costs
-
 ## Usage Costs
 
 There are no costs to BDC users for creating accounts or [exploring the data](/use-bdc/explore-data) BDC hosts. Users do incur costs for computation, storage of uploaded or imported data ([BYOD](/use-bdc/analyze-data)), storage of derived results (including egress costs for downloads of derived data), and file transfers (see [Cloud Infrastructure Pricing](https://sb-biodatacatalyst.readme.io/docs/about-pricing)). Computation costs depend on the compute instance size, the duration of the instance use, and the cloud providers' pricing of the compute instance at the time of execution. Storage costs depend on the file size, the duration the file is stored, and the cloud providers' pricing of the storage classes.

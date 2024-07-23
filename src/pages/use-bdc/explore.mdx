@@ -17,8 +17,10 @@ import { PageContent } from "../../components/layout";
 import { Button, ButtonContainer } from "../../components/buttons"
 import { MenuListItem, StickyLeftMenu, StickyLeftMenuContainer } from "../../components/layout/sticky-menu"
 
-<PageContent width="95%" maxWidth="1200px" center gutters>
-<StickyLeftMenuContainer menuItems={props.pageContext.frontmatter.menu}>
+<PageContent 
+  title="Explore BDC Data"
+  width="95%" maxWidth="1200px" center gutters
+><StickyLeftMenuContainer menuItems={props.pageContext.frontmatter.menu}>
 
 # Explore BDC Data
 
