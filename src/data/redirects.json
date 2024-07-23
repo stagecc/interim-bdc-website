@@ -1,0 +1,10 @@
+[
+  {
+    "from": "/fellows/",
+    "to": "/about/bdc-fellows"
+  },
+  {
+    "from": "/fellows/program/",
+    "to": "/about/bdc-fellows"
+  }
+]

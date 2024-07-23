@@ -4,8 +4,6 @@ import PropTypes from "prop-types";
 export const Heading = styled.h2`
     color: ${props => (props.light ? "#eef" : "var(--color-blueberry)")};
     text-align: center;
-    margin-top: 1rem;
-    scroll-margin-top: 7rem;
     ${props => props.left && "text-align: left;"}
     ${props => props.noMargin && "margin: 0;"}
     ${props => props.eventHeading && "font-size: 130%;"}
