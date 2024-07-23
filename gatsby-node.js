@@ -33,7 +33,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     `src/templates/events/past-events-template.jsx`
   );
   const tagTemplate = path.resolve(`src/templates/tag-template.jsx`);
-
+  const redirectTemplate = path.resolve(`src/templates/redirect-template.jsx`);
 
   const results = await graphql(`
     {
@@ -61,6 +61,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
                 words
               }
             }
+          }
+        }
+      }
+      allRedirectsJson {
+        edges {
+          node {
+            from
+            to
           }
         }
       }
@@ -149,8 +157,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     });
   });
 
-
-
+  // Create redirects
+  results.data.allRedirectsJson.edges.forEach(({ node }) => {
+    console.log(`Creating redirect: ${node.from} > ${node.to}`);
+    createPage({
+      path: node.from,
+      component: redirectTemplate,
+      context: node,
+    });
+  });
 
 
   return [...articles, ...events];

@@ -113,5 +113,6 @@ module.exports = {
         name: "events",
       },
     },
+    `gatsby-transformer-json`
   ]
 };
