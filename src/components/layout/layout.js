@@ -14,7 +14,7 @@ import {
 } from "../layout";
 import { Paragraph } from "../typography";
 import { Link } from "../link";
-import { Menu } from '../menus/menu';
+import { Menu, MobileMenu } from '../menus';
 import { Markdown } from '../mdxComponents';
 import { menuItems } from "../../data/menu";
 import { List, ListItem } from "../list";
@@ -83,7 +83,10 @@ export function Layout({ children }) {
         <StickyWrapper stuck={true}>
           <Header>
             <Brand width="380px" compact={isCompact} />
-            <Visible lg xl xxl>
+            <Visible xs sm md lg>
+              <MobileMenu items={menuItems} />
+            </Visible>
+            <Visible xl xxl>
               <Menu items={menuItems} />
             </Visible>
           </Header>
@@ -96,7 +99,7 @@ export function Layout({ children }) {
         </Main>
 
         <Footer>
-          <Container width="95%" maxWidth="1080px" center>
+          <Container width="95%" maxWidth="1200px" center>
             <Grid fluid>
               <Row>
                 <Col xs={12} md={5} push={{ md: 7 }}>
