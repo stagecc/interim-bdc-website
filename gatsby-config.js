@@ -113,6 +113,14 @@ module.exports = {
         name: "events",
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./src/data/publications`,
+        name: "publications",
+      },
+    },
+    `gatsby-transformer-yaml`,
     `gatsby-transformer-json`
   ]
 };

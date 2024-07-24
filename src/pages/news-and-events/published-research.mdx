@@ -1,1 +1,30 @@
-# Published Research
+import { Fragment } from "react"
+import { PageContent } from "../../components/layout";
+import { graphql } from "gatsby";
+import { Heading, Paragraph, Title } from "../../components/typography";
+import { Link } from "../../components/link";
+import { Publication } from "../../components/publications"
+
+export const query = graphql`
+  query {
+    publications: allPublicationsYaml(sort: {date: DESC}) {
+      nodes {
+        id
+        title
+        date(formatString: "MMMM Do, YYYY")
+        location
+        url
+      }
+    }
+  }
+`;
+
+<PageContent 
+  title="Published Research"
+  width="95%" maxWidth="1200px" center gutters
+>
+
+{
+  props.data.publications.nodes.map((node)=> <Publication node={node}/>)
+}
+</PageContent>
