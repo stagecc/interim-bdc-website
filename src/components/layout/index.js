@@ -1,5 +1,6 @@
 export * from "./brand";
 export * from "./container";
+export * from "./floating-content";
 export * from "./footer";
 export * from "./header";
 export * from "./layout";
