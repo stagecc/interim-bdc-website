@@ -1,0 +1,52 @@
+[
+  {
+    "newsTitle": "NIH RECOVER Opens Long COVID Dataset To Researchers Via Database",
+    "newsLink": "https://insidehealthpolicy.com/daily-news/nih-recover-opens-long-covid-dataset-researchers-database",
+    "newsDate": "April 26, 2024",
+    "newsSource": "InsideHealthPolicy",
+    "external": true,
+    "loginRequired": true
+  },
+  {
+    "newsTitle": "NIH eyes addition of imagery to Biomedical Platform",
+    "newsLink": "https://executivegov.com/2024/04/nih-eyes-addition-of-imagery-other-data-types-to-researcher-cloud-platform",
+    "newsDate": "April 1, 2024",
+    "newsSource": "ExecutiveGov",
+    "external": true
+  },
+  {
+    "newsTitle": "Discrimination drives smoking habits, hurt heart health",
+    "newsLink": "https://www.nyu.edu/about/news-publications/news/2024/february/discrimination-smoking-heart-health.html",
+    "newsDate": "February 26, 2024",
+    "newsSource": "NYU News",
+    "external": true
+  },
+  {
+    "newsTitle": "GA4GH Announces 10 New 'Driver' Projects, Including First Pediatric Partner",
+    "newsLink": "https://www.genomeweb.com/informatics/ga4gh-announces-10-new-driver-projects-including-first-pediatric-partner",
+    "newsDate": "September 21, 2023",
+    "newsSource": "GenomeWeb",
+    "external": true
+  },
+  {
+    "newsTitle": "A Cloud-Based Data Democratization Tool",
+    "newsLink": "https://www.rti.org/impact/data-democratization-tool",
+    "newsDate": "",
+    "newsSource": "RTI International",
+    "external": true
+  },
+  {
+    "newsTitle": "Accelerating heart failure research",
+    "newsLink": "https://www.nhlbi.nih.gov/news/2022/accelerating-heart-failure-research",
+    "newsDate": "December 14, 2022",
+    "newsSource": "NHLBI NIH",
+    "external": false
+  },
+  {
+    "newsTitle": "Listen: The Open-Data Cloud Platform Transforming NIH Research",
+    "newsLink": "https://governmentciomedia.com/listen-open-data-cloud-platform-transforming-nih-research",
+    "newsDate": "January 25, 2022",
+    "newsSource": "HealthCast Podcast, GovCIO Media & Research",
+    "external": true
+  }
+]

@@ -2,4 +2,36 @@
 title: News Coverage
 slug: /news-and-events/news-coverage
 ---
-# News Coverage
+import { Fragment } from "react"
+import { PageContent } from "../../components/layout";
+import { graphql } from "gatsby";
+import { Heading, Paragraph, Title } from "../../components/typography";
+import { Link } from "../../components/link";
+import { Container as Grid, Row, Col } from "react-grid-system";
+import { NewsCard } from "../../components/card";
+import newsCoverage from '../../data/newsCoverage.json'
+
+
+<PageContent 
+  title="News Coverage"
+  width="95%" maxWidth="1200px" center gutters
+>
+
+View recent news and media coverage for BDC.
+
+  <Grid style={{maxWidth: '1200px'}}>
+    <Row gutterWidth={ 32 } justify="start" style={{ marginLeft: '-32px', marginRight: '-32px'}}>
+      {
+        newsCoverage && newsCoverage.map((newsItem) => {
+          return (
+            <Col xs={ 12 } lg={ 4 } style={{ marginBottom: '32px' }}>
+              <NewsCard newsItem={newsItem} noIcon/>
+            </Col>
+          )
+        })
+      }
+    </Row>
+  </Grid>
+
+
+</PageContent>
