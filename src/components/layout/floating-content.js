@@ -1,6 +1,4 @@
-import React, { Fragment } from "react";
 import styled from "styled-components";
-
 
 export const FloatingContentWrapper = styled.div(({placement, type})=>`
   width: 45%;
@@ -14,8 +12,5 @@ export const FloatingContentWrapper = styled.div(({placement, type})=>`
     width: 100%;
     float: none;
     padding: 0.5rem 1.5rem;
-    
-
   }
-
 `)
