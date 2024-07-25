@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Heading, Paragraph, Title } from "../typography";
+import { Heading, Paragraph } from "../typography";
 import { Link } from "../link";
 
 export const Publication = ({node}) => {
