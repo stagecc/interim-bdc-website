@@ -41,7 +41,7 @@ export const Tabs = ({
 
   return (
     <div role="tablist" aria-labelledby={ariaLabeledBy}>
-      {data.map(({ key, title, subtitle }, tabIndex) => (
+      {data.map(({ key, title, subtitle, additionalData }, tabIndex) => (
         <Tab
           key={key}
           id={`tab-${kebabCase(key)}`}
@@ -67,7 +67,10 @@ export const Tabs = ({
             <p>{title}</p>
             {selectedTab === key ? <Check /> : null}
           </TabHeader>
-          <Subtitle>{subtitle}</Subtitle>
+          <TabDescription>
+            <Subtitle>{subtitle}</Subtitle>
+            <AdditionalData>{additionalData}</AdditionalData>
+          </TabDescription>
         </Tab>
       ))}
     </div>
@@ -85,6 +88,7 @@ const Check = () => (
     strokeLinecap="round"
     strokeLinejoin="round"
     className="check"
+    style={{ flexShrink: 0 }}
   >
     <polyline points="20 6 9 17 4 12"></polyline>
   </svg>
@@ -97,12 +101,16 @@ const Tab = styled.button`
   border: none;
   background-color: ${props => props.selected ? "var(--color-lightgrey)" : "transparent"};
   text-align: left;
-  display: block;
   width: 100%;
   border-bottom: 1px solid var(--color-grey);
   padding: var(--x-padding) 10px;
   cursor: pointer;
-
+  
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2px;
+  
   ${
     props => props.selected ? `
       --border-width: 4px;
@@ -132,8 +140,26 @@ const TabHeader = styled.div`
   }
 `
 
-const Subtitle = styled.span`
-  font-size: 1rem;
+const TabDescription = styled.span`
+  display: flex;
+  justify-content: space-between;
+  gap: 1ch;
   color: #505050;
+  font-size: 0.9rem;
+`
+
+const Subtitle = styled.span`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-style: italic;
+
+  // Since this subtitle is italic, and there is overflow hidden,
+  // need to add padding so the text isn't clipped when it is slanted.
+  padding-right: 3px;
+`
+
+const AdditionalData = styled.span`
+  flex-shrink: 0;
+  white-space: nowrap;
 `

@@ -20,10 +20,11 @@ export const Programs = ({
   if (isLoading || !data) return <LoadingPanel />;
   if (error) return "Something went wrong!";
 
-  const tabData = data.map(({ name, numberOfStudies }) => ({
+  const tabData = data.map(({ name, numberOfStudies, description }) => ({
     key: name,
     title: name,
-    subtitle: `${compactNum(numberOfStudies)} stud${new Intl.PluralRules("en-US").select(numberOfStudies) === "one" ? "y" : "ies"}`,
+    subtitle: description,
+    additionalData: `${compactNum(numberOfStudies)} stud${new Intl.PluralRules("en-US").select(numberOfStudies) === "one" ? "y" : "ies"}`
   }));
 
   return (
@@ -56,5 +57,6 @@ const getProgramList = async () => {
     name: original.key,
     documentCount: original.doc_count,
     numberOfStudies: original.No_of_studies.value,
+    description: original.description,
   }));
 }

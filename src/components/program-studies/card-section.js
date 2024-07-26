@@ -7,7 +7,7 @@ const Section = styled.div`
   flex-direction: column;
 
   &:first-of-type {
-    max-width: 300px;
+    max-width: 350px;
   }
 `
 
