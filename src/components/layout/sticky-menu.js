@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Container as Grid, Row, Col, Visible } from "react-grid-system";
 import { List, ListItem } from "../../components/list"
 import { navigate } from "gatsby";

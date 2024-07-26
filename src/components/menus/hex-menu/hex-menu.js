@@ -5,7 +5,6 @@ import {
   EducationIcon,
   ToolsIcon,
   ByodIcon,
-  EstimateIcon,
   JoinIcon,
 } from "../../icons";
 import { useWindowWidth } from "../../../hooks";
