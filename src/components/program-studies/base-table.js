@@ -10,7 +10,7 @@ export const Table = ({
       <THead>
         <tr>
           {columns.map(({ headerCell, key }) => (
-            <TH key={String(key)}>{headerCell}</TH>
+            <Th key={String(key)}>{headerCell}</Th>
           ))}
         </tr>
       </THead>
@@ -18,13 +18,13 @@ export const Table = ({
         {rows.map((row, rowIndex) => (
           <tr key={rowIndex}>
             {columns.map(({ key, render, width }) => (
-              <TD
+              <Td
                 style={{ width }}
                 title={!render ? row[key] : undefined}
                 key={String(key)}
               >
                 {render ? render(row) : row[key]}
-              </TD>
+              </Td>
             ))}
           </tr>
         ))}
@@ -46,12 +46,12 @@ const THead = styled.thead`
   top: 0;
 `
 
-const TH = styled.th`
+const Th = styled.th`
   padding: 10px;
   border-bottom: 1px solid var(--color-grey);
 `
 
-const TD = styled.td`
+const Td = styled.td`
   padding: 10px;
   border-bottom: 1px solid var(--color-grey);
   display: table-cell;
