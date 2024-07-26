@@ -1,3 +1,4 @@
+export * from "./blog-icon"
 export * from "./bring-your-own-data-icon";
 export * from "./chevron-icons";
 export * from "./close-icon";
