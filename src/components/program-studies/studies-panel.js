@@ -1,5 +1,5 @@
 import React from "react";
-import { Table } from "./table";
+import { Table } from "./base-table";
 import { Link } from "../link/link";
 import { LoadingPanel } from "./loading-panel";
 import { DescriptorPanel } from "./descriptor-panel";

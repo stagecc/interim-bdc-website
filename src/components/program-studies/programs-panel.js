@@ -1,7 +1,7 @@
 import React from "react";
 import { compactNum } from "../../utils/compact-num";
 import { LoadingPanel } from "./loading-panel";
-import { Tabs } from "./tabs";
+import { Tabs } from "./vertical-tabs";
 import { useQuery } from "../../hooks/use-query";
 
 export const Programs = ({

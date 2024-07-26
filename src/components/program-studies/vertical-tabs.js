@@ -36,6 +36,7 @@ export const Tabs = ({
       case "ArrowUp":   focusTab((tabIndex - 1 + length) % length); break;
       case "Home":      focusTab(0);                                break;
       case "End":       focusTab(length - 1);                       break;
+      default: break;
     }
   };
 
