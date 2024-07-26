@@ -5,52 +5,51 @@ import {
   EducationIcon,
   ToolsIcon,
   ByodIcon,
-  EstimateIcon,
   JoinIcon,
 } from "../../icons";
 import { useWindowWidth } from "../../../hooks";
 import { Hexagon } from "./hexagon";
 import { MenuItemDescription } from "./hex-menu-descriptions";
 
-const carouselItems = [
+const hexagonItems = [
   {
-    text: "Learn",
-    description: "Get the support you need to explore, analyze, and discover",
+    text: "Explore Data",
+    description: "Explore the data in BDC (no login required)",
     icon: EducationIcon,
-    path: "/resources/learn",
+    path: "/use-bdc/explore-data",
   },
   {
-    text: "Data",
-    description: "Access biomedical data when you need it and how you need it",
+    text: "Analyze Data",
+    description: "Set up private, secure workspaces for running analyses at scale",
     icon: DataBoltIcon,
-    path: "/resources/data",
+    path: "/use-bdc/analyze-data",
   },
   {
-    text: "Services",
+    text: "Share Data",
     description:
-      "Take control of your data with customizable tools and workflows",
-    icon: ToolsIcon,
-    path: "/resources/services",
-  },
-  {
-    text: "BYOD",
-    description:
-      "Use the BDC ecosystem to build on your existing work",
+      "Learn about using BDC as a data repository",
     icon: ByodIcon,
-    path: "/resources/byod",
+    path: "/use-bdc/share-data",
   },
   {
-    text: "Estimate",
-    description: "Explore pilot funding and budgeting for future cloud costs",
-    icon: EstimateIcon,
-    path: "/resources/cloud-credits",
+    text: "Impute Genomes",
+    description:
+      "Upload phased or unphased GWAS genotypes and get phased and imputed genomes",
+    icon: ByodIcon,
+    path: "https://imputation.biodatacatalyst.nhlbi.nih.gov/#!",
   },
   {
     text: "Join",
-    description:
-      "Join our community of researchers making advances in HLBS science",
+    description: "Join the BDC community to stay up to date about BDC",
     icon: JoinIcon,
-    path: "/contact/ecosystem",
+    path: "/join-bdc",
+  },
+  {
+    text: "Support",
+    description:
+      "Get support to advance your research in BDC",
+    icon: ToolsIcon,
+    path: "/help-and-support/support",
   },
 ];
 
@@ -89,14 +88,14 @@ export const HexMenu = () => {
   return (
     <Wrapper>
       <Descriptions>
-        {carouselItems.map((item, i) => (
+        {hexagonItems.map((item, i) => (
           <MenuItemDescription key={i} active={index === i}>
             {item.description}
           </MenuItemDescription>
         ))}
       </Descriptions>
       <MenuItems>
-        {carouselItems.map((tab, i) => (
+        {hexagonItems.map((tab, i) => (
           <Hexagon
             key={i}
             path={tab.path}

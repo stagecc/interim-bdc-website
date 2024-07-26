@@ -14,6 +14,9 @@ const transitionBrightness = `
 export const ButtonLink = styled(Button).attrs({ as: Link })`
   ${transitionBrightness};
   text-align: center;
+  max-width: 100%;
+  text-wrap: wrap;
+  line-height: 1.5;
 `; 
 
 export const ButtonExternalLink = styled(ButtonLink)

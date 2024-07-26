@@ -1,4 +1,8 @@
+import React, { Fragment } from "react";
 import styled from "styled-components";
+import { Seo } from "../seo";
+import { Title } from "../typography";
+import { StickyLeftMenuContainer } from "./"
 
 export const Container = styled.div`
   // & * { border: 1px solid #f99; }
@@ -11,7 +15,7 @@ export const Container = styled.div`
 const TOP_GUTTER = "3rem";
 const BOTTOM_GUTTER = "3rem";
 
-export const PageContent = styled(Container)`
+export const PageContainer = styled(Container)`
   margin-top: ${props => (props.gutters ? TOP_GUTTER : 0)};
   margin-bottom: ${props => (props.gutters ? BOTTOM_GUTTER : 0)};
 `;
@@ -49,3 +53,27 @@ export const BackgroundImageContainer = styled(Container)`
     clip-path: polygon(0% 5rem, 50% 8rem, 100% 5rem, 100% 100%, 0% 100%);
   }
 `;
+
+export const PageContent = ({title, hideTitle, menuItems, children, ...props}) => {
+
+  return (
+    <PageContainer {...props}>
+      { title && <Seo title={title} description="" keywords="" /> }
+      
+      { menuItems ? (
+          <StickyLeftMenuContainer menuItems={menuItems}>
+            { (title && !hideTitle) && <Title>{title}</Title> }
+            {children}
+          </StickyLeftMenuContainer>
+      ) : (
+        <Fragment>
+          { (title && !hideTitle) && <Title>{title}</Title> }
+
+          {children}
+        </Fragment>
+      )
+      }
+      
+    </PageContainer>
+  )
+}

@@ -50,6 +50,11 @@ const HexagonInterior = styled.div`
 
 const HexagonText = styled.span`
   text-transform: uppercase;
+  font-size: 85%;
+  text-wrap: wrap;
+  max-width: 60%;
+  text-align: center;
+  margin-top: 5px;
 `;
 
 export const Hexagon = ({
@@ -76,7 +81,7 @@ export const Hexagon = ({
         onMouseOver={hoverHandler}
         onFocus={hoverHandler}
       >
-        <Icon size={Math.ceil(size / 3)} fill="#fff" />
+        <Icon size={Math.ceil(size / 4)} fill="#fff" />
         {showtext && <HexagonText>{text}</HexagonText>}
       </HexagonInterior>
     </HexagonWrapper>

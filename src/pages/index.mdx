@@ -9,7 +9,10 @@ import { HexMenu } from "../components/menus"
 import { Card, CardHeader, CardBody } from "../components/card";
 import { VideoPlayer } from "../components/video-player"
 
-<PageContent>
+import BlurChartCheckUpCurve from "../images/blur-chart-check-up-curve.jpg";
+import { NewsFeedModule } from "../components/modules";
+
+<PageContent title="Home" hideTitle>
   <Carousel panels={ carouselData } />
 
   <Container
@@ -40,6 +43,12 @@ import { VideoPlayer } from "../components/video-player"
       </CardBody>
       <CardBody>
         <VideoPlayer url="https://youtu.be/enWIpA0aJb4" controls={ true } />
+      </CardBody>
+    </Card>
+    <Card>
+      <CardHeader size="large">Latest Updates</CardHeader>
+      <CardBody image={{ placement: "left", path: BlurChartCheckUpCurve }}>
+        <NewsFeedModule />
       </CardBody>
     </Card>
 

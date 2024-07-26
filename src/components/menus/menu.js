@@ -3,6 +3,7 @@ import { Match } from "@reach/router";
 import styled from "styled-components";
 import { Link } from "../link";
 import { ChevronDownIcon } from "../icons";
+import { ButtonLink } from "../buttons"
 
 export const MenuContainer = styled.nav`
   display: flex;
@@ -44,6 +45,7 @@ export const MenuItem = styled.span`
   justify-content: center;
   align-items: center;
   height: 100%;
+  
 `;
 
 export const SubmenuHeader = styled.div`
@@ -58,6 +60,7 @@ export const SubmenuHeader = styled.div`
   color: ${(props) => (props.active ? "#fff" : "#333")};
   letter-spacing: 2px;
   position: relative;
+  font-size: 90%;
   font-weight: 400;
   cursor: pointer;
   transition: color 500ms, background-color 250ms;
@@ -77,14 +80,11 @@ const Submenu = styled.nav.attrs({ className: "submenu" })`
   color: #eee;
   position: absolute;
   top: 100%;
-  width: 100%;
   left: 50%;
   font-size: 80%;
   min-width: 100%;
   border: 0;
   background-color: #fff;
-  // border-bottom-left-radius: 0.25rem;
-  // border-bottom-right-radius: 0.25rem;
   overflow: hidden;
   z-index: -1;
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
@@ -95,6 +95,12 @@ const Submenu = styled.nav.attrs({ className: "submenu" })`
     translateX(-50%);
   opacity: ${(props) => (props.open ? 1.0 : 0.1)};
 `;
+
+const JoinBDCButton = styled(ButtonLink)`
+  margin-right: 1rem;
+  margin-left: 1rem;
+  padding: 1rem 2rem;
+`
 
 export const Menu = ({ items, showBrand }) => {
   const [openSubmenu, setOpenSubmenu] = useState(-1);
@@ -166,6 +172,9 @@ export const Menu = ({ items, showBrand }) => {
           </MenuItem>
         );
       })}
+      <MenuItem>
+        <JoinBDCButton to="/join-bdc">Join BDC</JoinBDCButton>
+      </MenuItem>
     </MenuContainer>
   );
 };
