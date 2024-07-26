@@ -1,6 +1,6 @@
 import { graphql } from "gatsby";
 
-export default ({ data }) => {
+const RedirectTemplate = ({ data }) => {
   const { redirectsJson } = data;
   window.location.replace(redirectsJson.to);
   return null;
@@ -14,3 +14,5 @@ export const redirectQuery = graphql`
     }
   }
 `;
+
+export default RedirectTemplate
