@@ -101,6 +101,8 @@ const JoinBDCButton = styled(ButtonLink)`
   margin-right: 1rem;
   margin-left: 1rem;
   padding: 1rem 2rem;
+  background-color: var(--color-blueberry);
+  font-weight: bold;
 `
 
 export const Menu = ({ items, showBrand }) => {
