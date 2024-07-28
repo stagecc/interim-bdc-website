@@ -1,8 +1,8 @@
 {
-  "name": "bio-data-catalyst",
+  "name": "biodata-catalyst",
   "version": "2.0.0",
   "private": true,
-  "description": "bio-data-catalyst",
+  "description": "biodata-catalyst",
   "author": "Matt Watson",
   "keywords": [
     "gatsby"
