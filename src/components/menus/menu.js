@@ -15,7 +15,7 @@ export const MenuContainer = styled.nav`
 
 export const MenuLink = styled(Link)`
   display: flex;
-
+  white-space: nowrap;
   align-items: center;
   text-transform: uppercase;
   color: #444;
@@ -23,7 +23,7 @@ export const MenuLink = styled(Link)`
   padding: 1.5rem 1rem;
   margin: 0;
   background-color: transparent;
-  letter-spacing: 2px;
+  letter-spacing: 0px;
   position: relative;
   height: 100%;
   font-weight: 400;
@@ -58,13 +58,14 @@ export const SubmenuHeader = styled.div`
   background-color: ${(props) =>
     props.active ? "var(--color-crimson)" : "transparent"};
   color: ${(props) => (props.active ? "#fff" : "#333")};
-  letter-spacing: 2px;
+  letter-spacing: 0px;
   position: relative;
   font-size: 90%;
   font-weight: 400;
   cursor: pointer;
   transition: color 500ms, background-color 250ms;
   height: 100%;
+  white-space: nowrap;
   & svg {
     transition: transform 50ms;
     transform: ${(props) =>
