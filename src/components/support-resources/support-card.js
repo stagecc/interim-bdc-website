@@ -1,10 +1,9 @@
 import React from "react";
 import { Card, CardBody } from "../card";
 import { Subheading, Paragraph } from "../typography";
-import { Grid, Stack } from '@mui/material/';
+import { Grid } from '@mui/material/';
 import styled from "styled-components";
 import { Link } from "../link"
-import { ExternalLinkIcon } from "../icons";
 
 export const Badge = styled.span`
   background-color: #fff;
@@ -18,7 +17,7 @@ export const Badge = styled.span`
   /* border: 1px solid red; */
 `;
 export const SupportCard = ({ resource }) => {
-  const { title, icon, description, link, external } = resource
+  const { title, icon, description, link } = resource
   return (
     <Grid item xs={12} sm={12} md={6} lg={4} sx={{
       '& a': {
