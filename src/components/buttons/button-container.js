@@ -4,4 +4,5 @@ export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   text-align: center;
+  padding: 2rem 0;
 `
