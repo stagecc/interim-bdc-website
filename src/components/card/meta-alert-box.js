@@ -4,15 +4,20 @@ import { Meta } from "../../components/typography";
 import { Card, CardBody } from "../../components/card";
 
 const MetaCardBody = styled(CardBody)`
-  background-color: rgba(237, 240, 244, 0.8);
+  padding: 0;
+`
+
+const MetaAlertCard = styled(Card)`
+  margin-top: 2rem;
+  padding: 0;
 `
 
 export const MetaAlertBox = ({children}) => (
-  <Card metaAlert>
+  <MetaAlertCard metaAlert>
     <MetaCardBody>
-      <Meta>
+      <Meta style={{padding: 0}}>
         {children}
       </Meta>
     </MetaCardBody>
-  </Card>
+  </MetaAlertCard>
 )
