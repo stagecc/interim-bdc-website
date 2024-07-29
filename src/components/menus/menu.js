@@ -53,7 +53,7 @@ export const SubmenuHeader = styled.div`
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
-  padding: 0.5rem 1.25rem;
+  padding: 0.5rem 0.75rem;
   margin: 0;
   background-color: ${(props) =>
     props.active ? "var(--color-crimson)" : "transparent"};
@@ -98,9 +98,8 @@ const Submenu = styled.nav.attrs({ className: "submenu" })`
 `;
 
 const JoinBDCButton = styled(ButtonLink)`
-  margin-right: 1rem;
-  margin-left: 1rem;
-  padding: 1rem 2rem;
+  margin: 0 1rem 0 1rem;
+  padding: 1rem;
   background-color: var(--color-blueberry);
   font-weight: bold;
 `
