@@ -2,7 +2,7 @@
 name: Alexander Bick, MD, PhD
 university: Vanderbilt University
 photo: bick-alexander.jpg
-cohort: 2
+cohort: II
 project:
   title: Building resources for identifying and analyzing CHIP
   abstract: >

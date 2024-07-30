@@ -2,7 +2,7 @@
 name: Pietro Nardelli, PhD
 university: Harvard Medical School
 photo: nardelli-pietro.jpg
-cohort: 1
+cohort: I
 project:
   title: CT-Based Pulmonary Hypertension Phenotyping in Smokers Using Artificial Intelligence
   abstract: >

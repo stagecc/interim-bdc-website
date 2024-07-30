@@ -2,7 +2,7 @@
 name: Maggie Stanislawski, PhD
 university: University of Colorado
 photo: stanislawski-maggie.jpg
-cohort: 3
+cohort: III
 project:
   title: Host genetics and gut microbiota in asthma among US Hispanics/Latinos
   abstract: >
