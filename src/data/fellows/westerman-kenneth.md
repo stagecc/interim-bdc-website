@@ -2,7 +2,7 @@
 name: Kenneth Westerman, PhD
 university: Massachusetts General Hospital
 photo: westerman-kenneth.jpg
-cohort: 1
+cohort: I
 project:
   title: Identification and Characterization of Diet-Responsive Genetic Loci for Glycemic Traits
   abstract: >

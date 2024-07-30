@@ -2,7 +2,7 @@
 name: Harriet Dashnow, PhD
 university: University of Utah
 photo: dashnow-harriet.jpg
-cohort: 1
+cohort: I
 project:
   title: Investigating the Role of Short Tandem Repeat Expansions in Congenital Heart Disease and Developing an Str Variation Resource for the Prioritization of Pathogenic Loci
   abstract: >

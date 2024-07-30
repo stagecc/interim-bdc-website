@@ -2,7 +2,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 export const Button = styled.button(
-  ({ small, light, fullWidth }) => `
+  ({ small, light, fullWidth, width }) => `
     background-color: ${light ? "#fff" : "var(--color-crimson)"};
     border-radius: 4px;
     display: inline-block;
@@ -17,15 +17,16 @@ export const Button = styled.button(
     white-space: nowrap;
     cursor: pointer;
     // possibly extend to allow fullWidth prop?
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     ${fullWidth ? `width: 100%;` : undefined}
     position: relative;
     transition: filter 250ms;
     &:hover, &:focus {
         filter: brightness(1.2);
     }
+    text-wrap: wrap;
 `
 );
 

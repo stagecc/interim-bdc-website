@@ -2,7 +2,7 @@
 name: Daniel Harris, PhD
 university: University of Pennsylvania
 photo: harris-daniel.jpg
-cohort: 3
+cohort: III
 project:
   title: Characterizing the Impact of Genetic Variation on Cardiometabolic Traits in Ethnically Diverse African Populations
   abstract: >

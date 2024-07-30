@@ -2,7 +2,7 @@
 name: Jee-Young Moon, PhD
 university: Albert Einstein College of Medicine
 photo: moon-jee-young.jpg
-cohort: 3
+cohort: III
 project:
   title: Host Genetics and Gut Microbiome
   abstract: >

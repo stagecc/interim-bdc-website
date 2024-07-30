@@ -34,7 +34,7 @@ CardBodyContents.propTypes = {
 
 CardBodyContents.defaultProps = {
   fgColor: "inherit",
-  bgColor: "#fff"
+  // bgColor: "#fff"
 };
 
 export const CardBody = ({ children, image, style }) => {

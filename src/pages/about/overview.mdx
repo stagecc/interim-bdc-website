@@ -1,51 +1,72 @@
+---
+menu:
+  - heading: Overview
+    href: overview  
+  - heading: The BDC Community
+    href: the-bdc-community  
+  - heading: BDC Infrastructure
+    href: bdc-infrastructure  
+  - heading: BDC Consortium
+    href: bdc-consortium  
+  - heading: BDC History
+    href: bdc-history  
+---
 import { PageContent } from "../../components/layout";
+import { MetaAlertBox } from "../../components/card";
 
 <PageContent 
   title="About BioData Catalyst® (BDC)"
   width="95%" maxWidth="1200px" center gutters
+  menuItems={props.pageContext.frontmatter.menu}
+
 >
 ## Overview
-NHLBI BioData Catalyst® (BDC) is a cloud-based ecosystem offering researchers data, analytical tools, applications, and workflows in secure workspaces where researchers can find, access, share, store, and compute on hosted data or data they bring to it. BDC is also an NHLBI data repository where researchers share scientific data so they and others can reproduce findings and reuse data to advance science. The TOPMed Imputation Server, where researchers can upload their own phased or unphased GWAS genotypes and receive phased and imputed genomes in return, is also part of the BDC ecosystem. 
+NHLBI BioData Catalyst® (BDC) is a cloud-based ecosystem offering researchers analytical tools, applications, and workflows in secure workspaces where researchers can find, access, share, store, and compute on hosted data or data they bring to it. BDC is also an NHLBI data repository where researchers share scientific data so they and others can reproduce findings and reuse data to advance science. The TOPMed Imputation Server, where researchers can upload their own phased or unphased GWAS genotypes and receive phased and imputed genomes in return, is also part of the BDC ecosystem.
 
 By increasing access to data and innovative analytic capabilities, BDC accelerates biomedical research to drive scientific advances that can help prevent, diagnose, and treat heart, lung, blood, and sleep disorders.
 
 ## The BDC Community
 
-The BDC ecosystem welcomes and supports investigators whether they are conducting research, preparing and submitting scientific data resulting from their research, or both. By using BDC, researchers become members of its community of practice, supporting each other's research and providing feedback that informs future ecosystem enhancements. Members of the BDC community are encouraged to [contribute user resources](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/community/contributing-user-resources-to-bdc)  and leverage the resources others contribute.
+BDC welcomes and supports investigators conducting research, preparing and submitting scientific data resulting from their research, or both. BDC is both an ecosystem and a research community where users help each other and are encouraged to [contribute user resources](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/community/contributing-user-resources-to-bdc) and leverage the resources others contribute. **Users of BDC must abide by the [BDC Terms of Use and Policies, comply with data protection requirements and other policies](/user-resources/usage-terms), uphold the BDC Statement of Conduct (see below), and [cite and/or acknowledge BDC](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/community/citation-and-acknowledgement) appropriately.**
 
-Users of BDC must abide by the BDC [Terms of Use](https://docs.google.com/document/d/1WJbyZqmHXtNdZHlzj9JtLMGjC6CSBndx/edit#bookmark=id.lnxbz9) and the BDC Statement of Conduct, comply with [data protection requirements](https://biodatacatalyst.nhlbi.nih.gov/data-protection)  and other policies, and [cite and/or acknowledge BDC](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/community/citation-and-acknowledgement)  appropriately.
+BDC encourages researchers and others interested in NHLBI data science activities to join the community to stay up to date on ecosystem developments, data going into BDC, research resulting from BDC use, and events that support BDC users. 
+
+[Learn more about joining the BDC community and complete the form](https://biodatacatalyst.nhlbi.nih.gov/join-bdc).
 
 ### Statement of Conduct
-The BioData Catalyst Consortium is dedicated to providing a harassment-free experience for everyone, regardless of gender, gender identity, and expression, age, sexual orientation, disability, physical appearance, body size, race, or religion (or lack thereof). We do not tolerate harassment of community members in any form. Sexual language and imagery are generally not appropriate for any venue, including meetings, presentations, or discussions.
+
+The BioData Catalyst Consortium is dedicated to **providing a harassment-free experience for everyone**, regardless of gender, gender identity, and expression, age, sexual orientation, disability, physical appearance, body size, race, or religion (or lack thereof). We do not tolerate harassment of community members in any form. Sexual language and imagery are generally not appropriate for any venue, including meetings, presentations, or discussions.
 
 ### Focus on Users
 
-Since its inception, BDC has prioritized user feedback to inform the ecosystem's development. In its early stages, NHLBI and ecosystem developers depended on input from an External Expert Panel and initial users. In 2020, NHLBI ensured receipt of more valuable insights by supporting three cohorts of fellowships over three years. NHLBI funded over 45 early-career researchers in researching novel and innovative data science and data-focused research problems while also benefiting from their feedback on improving BDC and its users' experiences.
+Current and potential users of the ecosystem and others are encouraged to provide their input by going to the [Contact Us](https://biodatacatalyst.nhlbi.nih.gov/help-support/contact) webpage and selecting the "Provide Feedback" type (dropdown option). User feedback weighs heavily into the decisions about enhancements to the ecosystem.
 
-Today, BDC engages fellows through Fellowship Collaborations and encourages participants in those programs, current and potential users of the ecosystem, and others to provide their input by going to the Contact Us page and selecting "Provide Feedback" in the type field.
+User and community feedback received since BDC's inception has led to the incorporation of different functionalities and improvements in the way BDC provides user support. In its early stages, NHLBI and ecosystem developers depended on input from an External Expert Panel and initial users. In 2020, NHLBI ensured the receipt of more valuable insights by supporting [three cohorts of fellowships over three years. NHLBI funded over 45 early-career researchers](https://biodatacatalyst.nhlbi.nih.gov/about/overview/bdc-fellows) in researching novel and innovative data science and data-focused research problems while benefiting from their feedback on improving BDC and its users' experiences.
 
-## Coordinating Centers
-NHLBI funds two BDC Coordinating Centers to organize and manage many aspects of the program:
+Today, BDC still welcomes feedback from participants in [Fellowship Collaborations](https://biodatacatalyst.nhlbi.nih.gov/about/key-collaborations) and encourages all users and potential users to provide input to help in our effort to meet users' needs.
 
-The BioData Catalyst Coordinating Center (BDC3) maintains efficient operations within the BDC developer consortium and ensures the ecosystem grows in alignment with NHLBI's strategic vision. BDC3 is comprised of teams from the Renaissance Computing Institute (RENCI) at the University of North Carolina-Chapel Hill and the Research Triangle Institute (RTI).
+## BDC Infrastructure
 
-The BDC Data Management Core (DMC) (RTI) supports the ingestion of human subjects' data into BDC to facilitate its availability to researchers. The DMC works with NHLBI to identify and prioritize data for ingestion, standardize and harmonize data before ingestion, and streamline the data ingestion process.
+The [National Heart, Lung, and Blood Institute (NHLBI)](https://www.nhlbi.nih.gov/), a part of the [National Institutes of Health (NIH)](https://www.nih.gov/), funds two BDC infrastructural components that collaboratively work to support the BDC ecosystem:
 
-## Platforms & Services
+> The BioData Catalyst Coordinating Center ([Renaissance Computing Institute (RENCI)](https://renci.org/) at the University of North Carolina-Chapel Hill) manages operations within the BDC developer consortium and ensures the ecosystem grows in alignment with NHLBI's strategic vision.
 
-The BDC ecosystem integrates selected services offered by select platforms and supports enhancements to those platforms to facilitate researchers’ ability to find, access, share, store, and compute on datasets. 
+> The BDC Data Management Core (DMC) ([Research Triangle Institute International](https://www.rti.org/)) supports the ingestion of heart, lung, blood, and sleep data into BDC to facilitate its availability for reuse by the researcher community. It is responsible for streamlining processes for data ingestion into the ecosystem, aiming to facilitate efficient data integration through the development of procedures and tools related to standards and data harmonization.
 
-### The following is a list of BDC's current primary platforms and the services they provide to users of the ecosystem:
+## BDC Consortium
 
--   [Gen3](https://gen3.org/) authorizes users, manages metadata, and allows users to conduct lexical searches that result in object-level information about BDC-hosted data (e.g., numbers of participants in a dataset). 
+The BDC ecosystem integrates services to facilitate researchers' ability to find, access, share, store, and compute on datasets. BDC prioritizes interoperability, compatibility, portability, and usability of platforms and services to address the variety of research methods and myriad user needs.
 
--   [Dug](https://github.com/helxplatform/dug), performs full-text searches using ontologies and controlled vocabularies to discover connections between elements of datasets to allow users to identify phenotypic concepts and study variables.
+**The following is a list of BDC's current consortium members:**
 
--   [PIC-SURE](https://pic-sure.org/) Authorized Access enables users to search clinical data and genomic variants, conduct feasibility queries, build cohorts in real-time, and export results to BDC workspaces for analysis. PIC-SURE Open Access does not export data to workspaces.
+- [Gen3](https://gen3.org/) manages data and metadata for BDC-hosted data, authenticates and authorizes users, allows users to conduct lexical searches, and provides dynamic cohort building with the ability to export to computational analysis platforms.
+- [Dug](https://github.com/helxplatform/dug) performs full-text searches using ontologies and controlled vocabularies to discover connections between elements of datasets to allow users to identify phenotypic concepts and study variables.
+- [PIC-SURE](https://pic-sure.org/) combines genetic, environmental, imaging, behavioral, and clinical data on individual patients from multiple sources into integrated sets. PIC-SURE Authorized Access* enables users to search clinical data and genomic variants, conduct feasibility queries, build cohorts in real time, and import results to BDC workspaces for analysis. PIC-SURE Open Access enables users to search clinical data without requiring a login to conduct feasibility queries returning aggregate counts.
+- [Seven Bridges](https://www.sevenbridges.com/) ([Velsera](https://velsera.com/))* provides secure, collaborative workspaces for analyzing data using hundreds of optimized Common Workflow Language analysis tools and workflows, as well as Jupyterlab, RStudio, and SAS for interactive analysis. The platform offers researchers the ability to perform common analyses of genomics, transcriptomics, metabolomics, and proteomics data, including association testing and single-cell analysis. The Annotation Explorer and GENESIS workflows support rare variant association testing.
 
--   [Seven Bridges](https://www.sevenbridges.com/) ([Velsera](https://velsera.com/)) provides secure, collaborative workspaces for analyzing data using hundreds of optimized Common Workflow Language analysis tools and workflows; Jupyterlab and RStudio for interactive analysis; Annotation Explorer and workflows for rare variant association testing.
+*Indicates that BDC users must have eRA Commons credentials. See the "Requirements for Accessing BDC Hosted Data" section on the [Explore Data in BDC webpage](https://biodatacatalyst.nhlbi.nih.gov/use-bdc/explore-data).
 
--   Terra???
+While it is not the primary analysis platform in BDC, users may opt to use Terra as an analysis platform. For more information about the differences between BDC's standard workspaces and those provided by BDC Powered by Terra, visit this webpage.
 
 ## BDC History
 
@@ -61,6 +82,26 @@ The BDC ecosystem integrates selected services offered by select platforms and s
 
 - 2022: NHLBI expanded the BDC infrastructure by adding the BDC Data Management Core to help ingest data and offer informational resources about using BDC as a data repository.
 
-- 2023: [NIH's Data Management and Sharing (DMS) Policy](https://grants.nih.gov/grants/guide/notice-files/NOT-OD-21-013.html) went into effect on January 25th, and on May 25th, the [NHLBI Supplement to the NIH Policy for Data Management and Sharing](https://www.nhlbi.nih.gov/grants-and-training/policies-and-guidelines/nhlbi-policy-for-data-sharing) went into effect. The Supplement "encourages submission of data into [NHLBI BioData Catalyst (BDC)](https://biodatacatalyst.nhlbi.nih.gov/), especially for data from studies that must comply with [NHLBI's Accrual of Human Subjects (Milestones) Policy](https://www.nhlbi.nih.gov/grants-and-training/policies-and-guidelines/accrual-of-human-subjects-milestones-policy) and for those projects supported by funding opportunity announcements that encourage data deposition into BDC. NHLBI also encourages the submission of data into BDC for NHLBI projects and ancillary studies to NHLBI parent studies subject to the NIH GDS Policy."
+- 2023: [NIH's Data Management and Sharing (DMS) Policy](https://grants.nih.gov/grants/guide/notice-files/NOT-OD-21-013.html) went into effect on January 25th, and on May 25th, the [NHLBI Supplement to the NIH Policy for Data Management and Sharing](https://www.nhlbi.nih.gov/grants-and-training/policies-and-guidelines/nhlbi-policy-for-data-sharing) went into effect. The Supplement "encourages submission of data into [NHLBI BioData Catalyst (BDC)](https://biodatacatalyst.nhlbi.nih.gov/), especially for data from studies that must comply with [NHLBI's Accrual of Human Subjects (Milestones) Policy](https://www.nhlbi.nih.gov/grants-and-training/policies-and-guidelines/accrual-of-human-subjects-milestones-policy) and for those projects supported by funding opportunity announcements that encourage data deposition into BDC. NHLBI also encourages the submission of data into BDC for NHLBI projects and ancillary studies to NHLBI parent studies subject to the NIH GDS Policy."
+
+<MetaAlertBox>
+
+## Frequent Next Steps
+
+**[Join the BDC Community](/join-bdc)**
+
+**Read About [Research Communities Using BDC](https://biodatacatalyst.nhlbi.nih.gov/about/research-communities/program-data)**
+
+**See BDC's [Key Collaborations](https://biodatacatalyst.nhlbi.nih.gov/about/key-collaborations)**
+
+**[Explore Data in BDC](/use-bdc/explore)**
+- Search Hosted Data
+- Research Community Data
+- Assess Feasibility
+- Data Access Requirements
+
+**Know the [Terms of Use & Policies](/user-resources/terms-of-use)**
+
+</MetaAlertBox>
 
 </PageContent>

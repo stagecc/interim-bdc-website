@@ -96,9 +96,7 @@ return (
       </Stack>
     </Stack>
 
-    <EventInfoLine title="Tags">
-      { tags && <LinkedTagsList tags={tags}/>}
-    </EventInfoLine>
+    { tags && <LinkedTagsList tags={tags}/>}
 
   </Fragment>
 )
