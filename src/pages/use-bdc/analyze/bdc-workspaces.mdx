@@ -1,4 +1,54 @@
+---
+workspaceTable:
+  - row: 
+    - name: Cloud Compute Environments
+    - subheading:
+    - sevenBridges:
+      - Google
+      - AWS
+      - Azure
+    - terra:
+      - Google
+      - Azure
+  - row:
+    - name: Workflow Languages
+    - subheading: Analyze data in batches using large-scale, non-interactive analysis workflows leveraging bioinformatics tools and AI/ML libraries.
+    - sevenBridges:
+      - CWL (1.0 and 1.2)
+      - Nextflow 
+      - WDL
+    - terra:
+      - WDL
+  - row:
+    - name: Interactive Analysis Environments
+    - subheading: Explore data using each environment's interactive analysis tools and libraries, including advanced AI/ML libraries.
+    - sevenBridges:
+      - Jupyter Notebooks (primarily used for Python)
+      - Rstudio (used for R)
+      - SAS Studio
+    - terra:
+      - Jupyter Notebooks (primarily used for Python)
+      - RStudio (used for R)
+      - Galaxy/Bioconductor
+  - row:
+    - name: Applications (apps)
+    - subheading: Use graphical, no-code tools and visualization apps to enhance analysis capabilities.
+    - sevenBridges: >
+      Seven Bridges-specific apps:
+        - Annotation Explorer
+        - Study Variable Explorer
+      RShiny-based apps:
+        - GENESIS model explorer
+        - LocusZoom Shiny App
+        - OmicCircos App
+        - TOPMed Metabolomics Shiny Dashboard
+    - terra: >
+      Terra-specific apps:
+        - Galaxy/Bioconductor
+---
+
 import { PageContent } from "../../../components/layout";
+import { Table } from "../../../components/table";
 
 <PageContent 
   title="BDC's Workspaces"
@@ -7,6 +57,97 @@ import { PageContent } from "../../../components/layout";
 
 References throughout this website to BDC's workspaces refer to BDC's primary analysis platform, BDC Powered by Seven Bridges. BDC supports the use of Terra workspaces as well. Use the following chart to help determine which analysis platform works best for your needs:
 
-`>Insert Table here<`
+<Table>
+  <tr>
+    <th></th>
+    <th>*BDC Powered by Seven Bridges*</th>
+    <th>*BDC Powered by Terra*</th>
+  </tr>
+  {/* Attempt 1: map over data in front matter */}
+  {
+    props.pageContext.frontmatter.workspaceTable.map(({row})=>(
+      <tr>
+        <td>
+          <strong>{row[0].name}</strong><br/>
+          {row[1].subheading && row[1].subheading}
+        </td>
+        <td>
+          {row[2].sevenBridges}        
+        </td>
+        <td>
+          {row[3].terra}        
+        </td>
+     </tr>
+    ))
+  }
+  {/* Attempt 2: hard code table content; retains markdown formatting */}
+  <tr>
+    <td>Cloud Compute Environments</td>
+    <td>
+      - Google 
+      - AWS
+      - Azure
+    </td>
+    <td>
+      - Google 
+      - Azure
+    </td>
+  </tr>
+  <tr>
+    <td>
+      **Workflow Languages**
+
+      Analyze data in batches using large-scale, non-interactive analysis workflows leveraging bioinformatics tools and AI/ML* libraries. 
+    </td>
+    <td>
+      - CWL (1.0 and 1.2)
+      - [Nextflow](https://docs.sevenbridges.com/docs/bring-nextflow-apps-to-the-platform) 
+      - [WDL](https://docs.sevenbridges.com/docs/bring-wdl-apps-to-the-platform)    
+    </td>
+    <td>
+      - WDL 
+    </td>
+  </tr>
+  <tr>
+    <td>
+      **Interactive Analysis Environments**
+
+      Explore data using each environment's interactive analysis tools and libraries, including advanced AI/ML libraries.
+    </td>
+    <td>
+      - Jupyter Notebooks (primarily used for Python)
+      - Rstudio (used for R)
+      - SAS Studio
+    </td>
+    <td>
+      - Jupyter Notebooks (primarily used for Python)
+      - Rstudio (used for R)
+      - Galaxy/Bioconductor
+    </td>
+  </tr>
+<tr>
+    <td>
+      **Applications (apps)**
+
+      Use graphical, no-code tools and visualization apps to enhance analysis capabilities.
+    </td>
+    <td>
+      Seven Bridges-specific apps:
+      - Annotation Explorer
+      - Study Variable Explorer
+
+      RShiny-based apps:
+      - GENESIS model explorer
+      - LocusZoom Shiny App
+      - OmicCircos App
+      - TOPMed Metabolomics Shiny Dashboard
+    </td>
+    <td>
+      Terra-specific apps:
+      - Galaxy/Bioconductor
+    </td>
+  </tr>
+</Table>
+
 
 </PageContent>
