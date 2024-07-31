@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback, useEffect, useRef, useState } from "react";
+import React, { Fragment, useRef, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { Paragraph } from "../typography";
@@ -48,7 +48,6 @@ const ErrorMessage = () => {
 
 export const EcoSystemForm = (props) => {
   const formRef = useRef(null)
-  const token = useRef('')
   const honeypotFieldRef = useRef(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
