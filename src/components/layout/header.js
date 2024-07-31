@@ -10,5 +10,4 @@ export const Header = styled.header `
     justify-content: space-between;
     align-items: stretch;
     transition: min-height 250ms;
-    min-height: 6rem;
 `;

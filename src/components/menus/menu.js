@@ -20,7 +20,7 @@ export const MenuLink = styled(Link)`
   text-transform: uppercase;
   color: #444;
   text-decoration: none;
-  padding: 1.5rem 1rem;
+  padding: 1rem 1rem;
   margin: 0;
   background-color: transparent;
   letter-spacing: 0px;
@@ -30,7 +30,7 @@ export const MenuLink = styled(Link)`
   transition: color 500ms, background-color 150ms;
   &:hover,
   &:focus {
-    background-color: #ccc;
+    background-color: #eee;
   }
   &.active {
     color: #fff;
@@ -45,7 +45,6 @@ export const MenuItem = styled.span`
   justify-content: center;
   align-items: center;
   height: 100%;
-  
 `;
 
 export const SubmenuHeader = styled.div`
@@ -57,6 +56,10 @@ export const SubmenuHeader = styled.div`
   margin: 0;
   background-color: ${(props) =>
     props.active ? "var(--color-crimson)" : "transparent"};
+  &:hover {
+    background-color: ${(props) =>
+      props.active ? "var(--color-crimson)" : "#eee"};
+    }
   color: ${(props) => (props.active ? "#fff" : "#333")};
   letter-spacing: 0px;
   position: relative;
@@ -98,7 +101,7 @@ const Submenu = styled.nav.attrs({ className: "submenu" })`
 `;
 
 const JoinBDCButton = styled(ButtonLink)`
-  margin: 0 1rem 0 1rem;
+  margin: 0 1rem;
   padding: 1rem;
   background-color: var(--color-blueberry);
   font-weight: bold;
