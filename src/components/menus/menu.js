@@ -5,14 +5,6 @@ import { Link } from "../link";
 import { ChevronDownIcon } from "../icons";
 import { ButtonLink } from "../buttons"
 
-export const MenuContainer = styled.nav`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: stretch;
-  background-color: transparent;
-`;
-
 export const MenuLink = styled(Link)`
   display: flex;
   white-space: nowrap;
@@ -54,19 +46,19 @@ export const SubmenuHeader = styled.div`
   text-transform: uppercase;
   padding: 0.5rem 0.75rem;
   margin: 0;
-  background-color: ${(props) =>
-    props.active ? "var(--color-crimson)" : "transparent"};
-  &:hover {
-    background-color: ${(props) =>
-      props.active ? "var(--color-crimson)" : "#eee"};
-    }
-  color: ${(props) => (props.active ? "#fff" : "#333")};
-  letter-spacing: 0px;
+  color: #333;
+  background: ${(props) =>
+    props.active
+      ? "linear-gradient(to top, var(--color-crimson) 4px, #f9f6f3 4px, #f9f6f3 100%)"
+      : props.open
+        ? "linear-gradient(to top, #aaa 4px, #eee 4px, #eee 100%)"
+        : 'white'
+    };
+  letter-spacing: 0;
   position: relative;
   font-size: 90%;
   font-weight: 400;
   cursor: pointer;
-  transition: color 500ms, background-color 250ms;
   height: 100%;
   white-space: nowrap;
   & svg {
@@ -77,6 +69,17 @@ export const SubmenuHeader = styled.div`
   }
   &:hover svg {
     transition: transform 250ms;
+  }
+`;
+
+export const MenuContainer = styled.nav`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: stretch;
+  background-color: transparent;
+  ${SubmenuHeader}[class~="open"]:hover {
+    background: linear-gradient(to top, #aaa 4px, #eee 4px, #eee 100%);
   }
 `;
 
