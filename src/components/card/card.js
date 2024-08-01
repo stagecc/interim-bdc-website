@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const Card = styled.div`
   overflow: hidden;
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.25));
-  border: 2px solid rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(0, 0, 0, 0.25);
   margin-bottom: 3rem;
   display: flex;
   flex-direction: column;
