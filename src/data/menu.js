@@ -88,13 +88,13 @@ export const menuItems = [
     path: "/help-and-support",
     submenu: [
       {
+        text: "Contact Us",
+        path: "/help-and-support/contact-us",
+      },
+      {
         text: "Support",
         path: "/help-and-support/support",
       },
-      {
-        text: "Contact Us",
-        path: "/help-and-support/contact-us",
-      }
     ],
   },
 ];
