@@ -62,10 +62,10 @@ export const SubmenuHeader = styled.div`
   height: 100%;
   white-space: nowrap;
   & svg {
-    transition: transform 50ms;
+    transition: transform 100ms;
     transform: ${(props) =>
-      props.open ? "translateY(0.15rem)" : "translateY(0)"};
-    fill: ${(props) => (props.active ? "#fff" : "#333")};
+      props.open ? "translateY(2px)" : "translateY(0)"};
+    fill: ${(props) => (props.active ? "#222" : "#666")};
   }
   &:hover svg {
     transition: transform 250ms;
