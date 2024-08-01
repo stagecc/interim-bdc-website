@@ -9,17 +9,13 @@ export const MenuLink = styled(Link)`
   display: flex;
   white-space: nowrap;
   align-items: center;
-  text-transform: uppercase;
   color: #444;
   text-decoration: none;
   padding: 1rem 1rem;
   margin: 0;
   background-color: transparent;
-  letter-spacing: 0px;
   position: relative;
   height: 100%;
-  font-weight: 400;
-  transition: color 500ms, background-color 150ms;
   &:hover,
   &:focus {
     background-color: #eee;
@@ -43,7 +39,6 @@ export const SubmenuHeader = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  text-transform: uppercase;
   padding: 0.5rem 0.75rem;
   margin: 0;
   color: #333;
