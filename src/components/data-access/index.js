@@ -7,10 +7,8 @@ import { Authed } from './authed';
 import { Unauthed } from './unauthed';
 
 export const DataAccess = () => {
-  const { user, projects, isLoading, checkAccessUrl } = useFence();
+  const { user, projects, isLoading } = useFence();
   
-  console.log({ user, projects, isLoading, checkAccessUrl });
-
   return (
     <FenceProvider>
       <Card>
