@@ -24,7 +24,10 @@ export const Button = styled.button(
     position: relative;
     transition: filter 250ms;
     &:hover, &:focus {
-        filter: brightness(1.2);
+      filter: brightness(1.2);
+    }
+    &:disabled {
+      filter: saturate(0.25) brightness(1.5);
     }
     text-wrap: wrap;
 `

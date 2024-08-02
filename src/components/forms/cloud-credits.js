@@ -6,14 +6,14 @@ import { Button } from "../buttons";
 import { Card, CardHeader, CardBody } from "../card";
 import { Link } from "../link";
 import {
+  AdornedInput,
   Form,
   FormControl,
-  TextInput,
   HelpText,
-  AdornedInput,
-  Select,
   Option,
+  Select,
   TextArea,
+  TextInput,
 } from "./inputs";
 
 const FRESHDESK_API_KEY = process.env.GATSBY_FRESHDESK_API_KEY;
@@ -45,7 +45,7 @@ const ErrorMessage = () => {
         Sorry &mdash; an error occurred while submitting your request!
       </Paragraph>
       <Paragraph center>
-        Please submit submit your request on{" "}
+        Please submit your request on{" "}
         <Link to="https://bdcatalyst.freshdesk.com">
           our help desk
         </Link>{" "}
@@ -55,109 +55,124 @@ const ErrorMessage = () => {
   );
 };
 
+const FormSubsection = styled.div`
+  background-color: #0001;
+  padding: 0.25rem 1rem 0.5rem 1rem;
+  margin: 2rem 0;
+  border-radius: 4px;
+`
+
 export const CloudCreditsForm = (props) => {
   const honeypotFieldRef = useRef(null);
   const [name, setName] = useState("");
-  const [username, setUserName] = useState("");
-  const [terraUsername, setTerraUserName] = useState("");
-  const [projectPi, setProjectPi] = useState("");
   const [email, setEmail] = useState("");
-  const [how, setHow] = useState("");
+  const [projectPi, setProjectPi] = useState("");
   const [role, setRole] = useState("");
-  const [cloudCreditsRequest, setCloudCreditsRequest] = useState("");
   const [organization, setOrganization] = useState("");
-  const [collaborators, setCollaborators] = useState("");
-  const [relatedResearch, setRelatedResearch] = useState("");
-  const [project, setProject] = useState("");
-  const [justification, setJustification] = useState("");
-  const [previousFundingDetails, setPreviousFundingDetails] = useState("");
-  const [estimate, setEstimate] = useState();
-  const [platform, setPlatform] = useState("Select One");
-  const [preferedAnalysisPlatform, setPreferedAnalysisPlatform] = useState(
-    "Not Applicable"
-  );
-  const [requestedTerraAmount, setRequestedTerraAmount] = useState(0);
-  const [
-    requestedSevenBridgesAmount,
-    setRequestedSevenBridgesAmount,
-  ] = useState(0);
+  const [teamMembers, setTeamMembers] = useState("");
+  const [hlbsRelation, setHlbsRelation] = useState("");
+  const [grapevine, setGrapevine] = useState("");
+  const [oneRequest, setOneRequest] = useState("");
+  // NHLBI BDC Pilot Funding Program
+  const [preferredPlatform, setPreferredPlatform] = useState("");
+  // NHLBI BDC Cloud Credit Support Program
+  const [creditsProjectAbstract, setCreditsProjectAbstract] = useState("");
+  const [creditsPreviouslyReceived, setCreditsPreviouslyReceived] = useState(false);
+  const [creditsReceivedDescription, setCreditsReceivedDescription] = useState("");
+  const [creditsEstimate, setCreditsEstimate] = useState(0);
+  const [creditsRequested, setCreditsRequested] = useState(0);
+  const [creditsAnticipatedTimeline, setCreditsAnticipatedTimeline] = useState("");
+  const [creditsJustification, setCreditsJustification] = useState("");
+  const [creditsCertify, setCreditsCertify] = useState(false);
+  const [creditsResearchLinks, setCreditsResearchLinks] = useState("");
+  // Cloud Credits for Academic Classes and Group Educational Sessions
+  const [courseTitle, setCourseTitle] = useState("");
+  const [courseInstructorsName, setCourseInstructorsName] = useState("");
+  const [courseStudentCount, setCourseStudentCount] = useState("");
+  const [courseLevel, setCourseLevel] = useState("");
+  const [courseDate, setCourseDate] = useState("");
+  const [courseSupportRequested, setCourseSupportRequested] = useState(false);
+  const [courseSupportDescription, setCourseSupportDescription] = useState("");
 
-  const [justificationLength, setJustificationLength] = useState();
-  const [
-    previousFundingDetailsLength,
-    setPreviousFundingDetailsLength,
-  ] = useState();
+  // const [username, setUserName] = useState("");
+  // const [terraUsername, setTerraUserName] = useState("");
+  // const [how, setHow] = useState("");
+  // const [cloudCreditsRequest, setCloudCreditsRequest] = useState("");
 
-  const [projectLength, setProjectLength] = useState(0);
+  const [consent, setConsent] = useState(false);
+
+  // const [collaborators, setCollaborators] = useState("");
+  // const [relatedResearch, setRelatedResearch] = useState("");
+  // const [project, setProject] = useState("");
+  // const [justification, setJustification] = useState("");
+  // const [previousFundingDetails, setPreviousFundingDetails] = useState("");
+  // const [estimate, setEstimate] = useState();
+  // const [platform, setPlatform] = useState("Select One");
+  // const [preferedAnalysisPlatform, setPreferedAnalysisPlatform] = useState("Not Applicable");
+  // const [requestedTerraAmount, setRequestedTerraAmount] = useState(0);
+  // const [requestedSevenBridgesAmount, setRequestedSevenBridgesAmount] = useState(0);
+
+  // const [justificationLength, setJustificationLength] = useState();
+  // const [previousFundingDetailsLength, setPreviousFundingDetailsLength] = useState();
+
+  // const [projectLength, setProjectLength] = useState(0);
 
   const [wasSubmitted, setWasSubmitted] = useState(false);
   const [error, setError] = useState();
-  const [buttonLocked, setbuttonLocked] = useState(false);
+  const [submitButtonLocked, setSubmitButtonLocked] = useState(false);
 
-  const testSubmission = ["staging", "localhost"].includes(
-    window.location.hostname
-  );
-
-  // useEffect(() => {
-  //   // before rendering the form, fetch the options for the Platform select dropown
-  //   const fetchPlatformOptions = async () => {
-  //     await axios
-  //       .get(FRESHDESK_API_TICKET_FIELDS_URL, requestOptions)
-  //       .then((response) => {
-  //         // const platformField = response.data.find(
-  //         //   (field) => field.name === "cf_what_bdcatalyst_service_will_you_use"
-  //         // );
-  //         // setPlatformOptions(platformField.choices);
-  //         // console.log(response);
-  //       })
-  //       .catch((error) => console.error(error));
-  //   };
-  //   fetchPlatformOptions();
-  // }, []);
+  const testSubmission = ["staging", "localhost"].includes(window.location.hostname); // ??
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if(honeypotFieldRef.current?.value !== "") return;
+    if (honeypotFieldRef.current?.value !== "") return;
 
-    let prefix = testSubmission ? "[TEST] " : "";
-    const description =
-      `Name: ${name} ~~~~~ ` +
-      `Email Address: ${email} ~~~~~ ` +
-      `Username (Seven Bridges Only)): ${username} ~~~~~ ` +
-      `Project Pi (If applicable): ${projectPi} ~~~~~ ` +
-      `Role: ${role} ~~~~~ ` +
-      `Company/Organization: ${organization} ~~~~~ ` +
-      `Collaborators: ${collaborators} ~~~~~ ` +
-      `Is your research related to HLBS?: ${relatedResearch} ~~~~~ ` +
-      `How did you learn about BDC?: ${how} ~~~~~ ` +
-      `BDC users may request one of the following: ${cloudCreditsRequest} ~~~~~ ` +
-      `Select your preferred analysis platform (or choose to explore both) ${preferedAnalysisPlatform} ~~~~~ ` +
-      `Project Name & Description: ${project} ~~~~~ ` +
-      `Justification for Credits: ${justification} ~~~~~ ` +
-      `cf_cloud_credits_previous_use_of_cloud_credits: ${previousFundingDetails} ~~~~~ ` +
-      `Estimate of Cloud Credits Needed: $${estimate} ~~~~~ ` +
-      `Platform/Service: ${platform} ~~~~~ ` +
-      `cf_cloud_credits_requested_terra_amount: ${requestedTerraAmount} ~~~~~ ` +
-      `cf_cloud_credits_requested_seven_bridges_amount: ${requestedSevenBridgesAmount} ~~~~~ ` +
-      `~~~~~ ~~~~~ (This ticket was submitted from ${window.location.href}.)`;
+    const prefix = testSubmission ? "[TEST] " : "";
 
-    const additionalFields =
-      cloudCreditsRequest === "Additional cloud credits"
-        ? {
-            cf_cloud_credits_project_namedescription: project,
-            cf_cloud_credits_previous_use_of_cloud_credits: previousFundingDetails,
-            cf_estimated_cloud_credits_requested: Number(estimate),
-            cf_justification_for_credits: justification,
-            cf_what_bdcatalyst_service_will_you_use: platform,
-            cf_cloud_credits_requested_terra_amount: Number(
-              requestedTerraAmount
-            ),
-            cf_cloud_credits_requested_seven_bridges_amount: Number(
-              requestedSevenBridgesAmount
-            ),
-          }
-        : {};
+    const description = ``
+      + `Requestor's name: ${name} <br />`
+      + `Requestor's email: ${email} <br />`
+      // + `Username (Seven Bridges Only)): ${username} <br />`
+      + `Project PI: ${projectPi} <br />`
+      + `Requestor's role: ${role} <br />`
+      + `Requestor's organization: ${organization} <br />`
+      + `Team members: ${teamMembers} <br />`
+      + `How is your research related to HLBS?: ${hlbsRelation} <br />`
+      + `How did the requestor learn about BDC?: ${grapevine} <br />`
+      + `BDC users may request one of the following: ${oneRequest} <br />`
+
+    const cloudCreditsPayload = (oneRequest) => {
+      if (oneRequest === "NHLBI BDC Pilot Funding Program") {
+        return {
+          preferred_analysis_platform: preferredPlatform,
+        }
+      }
+      if (oneRequest === "NHLBI BDC Cloud Credit Support Program") {
+        return {
+          credits_project_abstract: creditsProjectAbstract,
+          credits_previously_received: creditsPreviouslyReceived,
+          credits_received_description: creditsReceivedDescription,
+          credits_estimate: creditsEstimate,
+          credits_requested: creditsRequested,
+          credits_anticipated_timeline: creditsAnticipatedTimeline,
+          credits_justification: creditsJustification,
+          credits_certify: creditsCertify,
+          credits_research_links: creditsResearchLinks,
+        }
+      }
+      if (oneRequest === "Cloud Credits for Academic Classes and Group Educational Sessions") {
+        return {
+          course_title: courseTitle,
+          course_instructors_name: courseInstructorsName,
+          course_student_count: courseStudentCount,
+          course_level: courseLevel,
+          course_date: courseDate,
+          course_support_requested: courseSupportRequested,
+          course_support_description: courseSupportDescription,
+        }
+      }
+    };
 
     const payload = {
       type: "Cloud Credits",
@@ -167,19 +182,7 @@ export const CloudCreditsForm = (props) => {
       status: 2,
       name: name,
       email: email,
-      custom_fields: {
-        cf_cloud_credits_username_seven_bridges_only: username,
-        cf_cloud_credits_terra_user_name: terraUsername,
-        cf_cloud_credits_project_pi: projectPi,
-        cf_cf_cloud_credits_collaborator_information: role,
-        cf_cf_organization: organization,
-        cf_cloud_credits_collaborator_information: collaborators,
-        cf_cloud_credits_related_research_to_hlbs: relatedResearch,
-        cf_cloud_credits_how_did_you_learn_about_bdc: how,
-        cf_cloud_credits_request_type: cloudCreditsRequest,
-        cf_cloud_credits_preferred_analysis_platform_amount: preferedAnalysisPlatform,
-        ...additionalFields,
-      },
+      custom_fields: cloudCreditsPayload(oneRequest),
     };
 
     const submitTicket = async () => {
@@ -188,10 +191,10 @@ export const CloudCreditsForm = (props) => {
         .post(FRESHDESK_API_CREATE_TICKET_URL, payload, requestOptions)
         .then((response) => {
           if (![200, 201].includes(response.status)) {
-            setbuttonLocked(false);
+            // setSubmitButtonLocked(false);
             throw new Error(`Unsuccessful HTTP response, ${response.status}`);
           }
-          setbuttonLocked(true);
+          // setSubmitButtonLocked(true);
         })
         .catch((error) => {
           setError(error);
@@ -200,258 +203,47 @@ export const CloudCreditsForm = (props) => {
     submitTicket();
   };
 
-  const renderSwitch = (platform) => {
-    switch (platform) {
-      case "$250 each on both Seven Bridges and Terra":
-        return (
-          <>
-            <FormControl>
-              <label htmlFor="username">
-                {" "}
-                Seven Bridges users only: Platform User Name (create account{" "}
-                <Link to="https://docs.sevenbridges.com/docs/sign-up">
-                  here
-                </Link>
-                )
-              </label>
-              <TextInput
-                required
-                type="text"
-                id="username"
-                name="username"
-                value={username}
-                onChange={handleChangeUserName}
-              />
-              {/* <HelpText>Seven Bridges users only</HelpText> */}
-            </FormControl>{" "}
-            <FormControl>
-              <label htmlFor="terraUsername">
-                Terra users only: Google identity (create account{" "}
-                <Link to="https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/getting-started/analyze-data-1/terra/account-setup">
-                  here
-                </Link>
-                )
-              </label>
-              <TextInput
-                required
-                type="text"
-                id="terraUsername"
-                name="terraUsername"
-                value={terraUsername}
-                onChange={handleChangeTerraUserName}
-              />
-              {/* <HelpText>Terra users only</HelpText> */}
-            </FormControl>
-          </>
-        );
-      case "Both Seven Bridges and Terra":
-        return (
-          <>
-            <FormControl>
-              <label htmlFor="username">
-                {" "}
-                Seven Bridges users only: Platform User Name (create account{" "}
-                <Link to="https://docs.sevenbridges.com/docs/sign-up">
-                  here
-                </Link>
-                )
-              </label>
-              <TextInput
-                required
-                type="text"
-                id="username"
-                name="username"
-                value={username}
-                onChange={handleChangeUserName}
-              />
-              {/* <HelpText>Seven Bridges users only</HelpText> */}
-            </FormControl>{" "}
-            <FormControl>
-              <label htmlFor="terraUsername">
-                Terra users only: Google identity (create account{" "}
-                <Link to="https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/getting-started/analyze-data-1/terra/account-setup">
-                  here
-                </Link>
-                )
-              </label>
-              <TextInput
-                required
-                type="text"
-                id="terraUsername"
-                name="terraUsername"
-                value={terraUsername}
-                onChange={handleChangeTerraUserName}
-              />
-              {/* <HelpText>Terra users only</HelpText> */}
-            </FormControl>
-          </>
-        );
-      case "$500 on Seven Bridges":
-        return (
-          <>
-            <FormControl>
-              <label htmlFor="username">
-                {" "}
-                Seven Bridges users only: Platform User Name (create account{" "}
-                <Link to="https://docs.sevenbridges.com/docs/sign-up">
-                  here
-                </Link>
-                )
-              </label>
-              <TextInput
-                required
-                type="text"
-                id="username"
-                name="username"
-                value={username}
-                onChange={handleChangeUserName}
-              />
-              {/* <HelpText>Seven Bridges users only</HelpText> */}
-            </FormControl>
-          </>
-        );
-      case "Seven Bridges":
-        return (
-          <>
-            <FormControl>
-              <label htmlFor="username">
-                {" "}
-                Seven Bridges users only: Platform User Name (create account{" "}
-                <Link to="https://docs.sevenbridges.com/docs/sign-up">
-                  here
-                </Link>
-                )
-              </label>
-              <TextInput
-                required
-                type="text"
-                id="username"
-                name="username"
-                value={username}
-                onChange={handleChangeUserName}
-              />
-              {/* <HelpText>Seven Bridges users only</HelpText> */}
-            </FormControl>
-          </>
-        );
-      case "$500 on Terra":
-        return (
-          <>
-            <FormControl>
-              <label htmlFor="terraUsername">
-                Terra users only: Google identity (create account{" "}
-                <Link to="https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/getting-started/analyze-data-1/terra/account-setup">
-                  here
-                </Link>
-                )
-              </label>
-              <TextInput
-                required
-                type="text"
-                id="terraUsername"
-                name="terraUsername"
-                value={terraUsername}
-                onChange={handleChangeTerraUserName}
-              />
-              {/* <HelpText>Terra users only</HelpText> */}
-            </FormControl>
-          </>
-        );
-      case "Terra":
-        return (
-          <>
-            <FormControl>
-              <label htmlFor="terraUsername">
-                Terra users only: Google identity (create account{" "}
-                <Link to="https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/getting-started/analyze-data-1/terra/account-setup">
-                  here
-                </Link>
-                )
-              </label>
-              <TextInput
-                required
-                type="text"
-                id="terraUsername"
-                name="terraUsername"
-                value={terraUsername}
-                onChange={handleChangeTerraUserName}
-              />
-              {/* <HelpText>Terra users only</HelpText> */}
-            </FormControl>
-          </>
-        );
-
-      default:
-        return <></>;
-    }
-  };
-
   const handleChangeName = (event) => setName(event.target.value);
   const handleChangeProjectPi = (event) => setProjectPi(event.target.value);
-  const handleChangeUserName = (event) => setUserName(event.target.value);
-  const handleChangeTerraUserName = (event) =>
-    setTerraUserName(event.target.value);
   const handleChangeEmail = (event) => setEmail(event.target.value);
   const handleChangeRole = (event) => setRole(event.target.value);
-  const handleChangeOrganization = (event) =>
-    setOrganization(event.target.value);
-  const handleChangeCollaborators = (event) =>
-    setCollaborators(event.target.value);
-  const handleChangeProject = (event) => {
-    setProject(event.target.value);
-    setProjectLength(event.target.value.length);
-  };
-  const handleChangeJustification = (event) => {
-    setJustification(event.target.value);
-    setJustificationLength(event.target.value.length);
-  };
-  const handleChangePreviousFundingDetails = (event) => {
-    setPreviousFundingDetails(event.target.value);
-    setPreviousFundingDetailsLength(event.target.value.length);
-  };
-  const handleChangeEstimate = (event) => setEstimate(event.target.value);
-  const handleChangePlatform = (event) => setPlatform(event.target.value);
-  const handleChangeRelatedResearch = (event) =>
-    setRelatedResearch(event.target.value);
-  const handleChangeHow = (event) => setHow(event.target.value);
-  const handleChangeCloudCreditsRequest = (event) =>
-    setCloudCreditsRequest(event.target.value);
-  const handleChangePreferedAnalysisPlatform = (event) =>
-    setPreferedAnalysisPlatform(event.target.value);
-  const handleChangeRequestedSevenBridgesAmount = (event) =>
-    setRequestedSevenBridgesAmount(event.target.value);
-  const handleChangeRequestedTerraAmount = (event) =>
-    setRequestedTerraAmount(event.target.value);
+  const handleChangeOrganization = (event) => setOrganization(event.target.value);
+  const handleChangeTeamMembers = (event) => setTeamMembers(event.target.value);
+  const handleChangeHlbsRelation = (event) => setHlbsRelation(event.target.value);
+  const handleChangeGrapevine = (event) => setGrapevine(event.target.value);
+  //
+  const handleChangeOneRequest = (event) => setOneRequest(event.target.value);
+  // NHLBI BDC Pilot Funding Program
+  const handleChangePreferredPlatform = (event) => setPreferredPlatform(event.target.value);
+  // NHLBI BDC Cloud Credit Support Program
+  const handleChangeCreditsProjectAbstract = (event) => setCreditsProjectAbstract(event.target.value);
+  const handleChangeCreditsPreviouslyReceived = (event) => setCreditsPreviouslyReceived(event.target.checked);
+  const handleChangeCreditsReceivedDescription = (event) => setCreditsReceivedDescription(event.target.value);
+  const handleChangeCreditsEstimate = (event) => setCreditsEstimate(event.target.value);
+  const handleChangeCreditsRequested = (event) => setCreditsRequested(event.target.value);
+  const handleChangeCreditsAnticipatedTimeline = (event) => setCreditsAnticipatedTimeline(event.target.value);
+  const handleChangeCreditsJustification = (event) => setCreditsJustification(event.target.value);
+  const handleChangeCreditsCertify = (event) => setCreditsCertify(event.target.checked);
+  const handleChangeCreditsResearchLinks = (event) => setCreditsResearchLinks(event.target.value);
+  // Cloud Credits for Academic Classes and Group Educational Sessions
+  const handleChangeCourseTitle = (event) => setCourseTitle(event.target.value);
+  const handleChangeCourseInstructorsName = (event) => setCourseInstructorsName(event.target.value);
+  const handleChangeCourseStudentCount = (event) => setCourseStudentCount(event.target.value);
+  const handleChangeCourseLevel = (event) => setCourseLevel(event.target.value);
+  const handleChangeCourseDate = (event) => setCourseDate(event.target.value);
+  const handleChangeCourseSupportRequested = (event) => setCourseSupportRequested(event.target.checked);
+  const handleChangeCourseSupportDescription = (event) => setCourseSupportDescription(event.target.value);
+
+  const handleChangeConsent = (event) => setConsent(event.target.checked);
 
   return (
     <Card {...props}>
       <CardHeader>Cloud Credits Request</CardHeader>
       <CardBody>
-        <Paragraph center noMargin>
-          Before completing this form you must create an account on the
-          applicable platform(s),{" "}
-          <Link to="https://sb-biodatacatalyst.readme.io/docs/sign-up-for-biodata-catalyst-powered-by-seven-bridges">
-            Seven Bridges
-          </Link>{" "}
-          or{" "}
-          <Link to="https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/getting-started/analyze-data-1/terra/account-setup">
-            Terra
-          </Link>
-          .
-        </Paragraph>
-        <Paragraph center>
-          By submitting the following form, you agree to receive emails from BDC. You can opt-out at any time.
-        </Paragraph>
-        <Paragraph right noMargin>
-          * <em>All fields are required.</em>
-        </Paragraph>
         <Form onSubmit={handleSubmit}>
-
           {/* fake field for detecting bots, not visible to user */}
           <FormControl fake>
-            <label htmlFor="website">
-              Website
-            </label>
+            <label htmlFor="website">Website</label>
             <TextInput
               type="text"
               id="website"
@@ -463,9 +255,7 @@ export const CloudCreditsForm = (props) => {
             />
           </FormControl>
           <FormControl>
-            <label htmlFor="name" required>
-              Your Name *
-            </label>
+            <label htmlFor="name" required>Requestor's Name *</label>
             <TextInput
               type="text"
               required
@@ -476,7 +266,7 @@ export const CloudCreditsForm = (props) => {
             />
           </FormControl>
           <FormControl>
-            <label htmlFor="email">Email Address *</label>
+            <label htmlFor="email">Requestor's Email *</label>
             <TextInput
               type="email"
               required
@@ -488,7 +278,7 @@ export const CloudCreditsForm = (props) => {
             <HelpText>Please use an organizational email address.</HelpText>
           </FormControl>
           <FormControl>
-            <label htmlFor="projectPi">Project PI </label>
+            <label htmlFor="projectPi">Project PI</label>
             <TextInput
               type="text"
               id="projectPi"
@@ -499,9 +289,9 @@ export const CloudCreditsForm = (props) => {
             <HelpText>(if applicable)</HelpText>
           </FormControl>
           <FormControl>
-            <label htmlFor="role">Your Role *</label>
+            <label htmlFor="role">Requestor's Role *</label>
             <TextInput
-              type="role"
+              type="text"
               required
               id="role"
               name="role"
@@ -510,9 +300,9 @@ export const CloudCreditsForm = (props) => {
             />
           </FormControl>
           <FormControl>
-            <label htmlFor="organization">Your Organization *</label>
+            <label htmlFor="organization">Requestor's Organization *</label>
             <TextInput
-              type="organization"
+              type="text"
               required
               id="organization"
               name="organization"
@@ -521,267 +311,297 @@ export const CloudCreditsForm = (props) => {
             />
           </FormControl>
           <FormControl>
-            <label htmlFor="collaborators">Collaborators (if applicable)</label>
+            <label required htmlFor="team-members">Team members *</label>
             <TextArea
-              id="collaborators"
-              name="collaborators"
-              placeholder={`Enter each collaborator's name, email, role, and organization.`}
-              value={collaborators}
-              onChange={handleChangeCollaborators}
+              id="team-members"
+              required
+              name="team-members"
+              value={teamMembers}
+              onChange={handleChangeTeamMembers}
+              maxLength="3000"
+              placeholder="name, title, affilition (one person per line)"
             />
             <HelpText>
-              Please list&mdash;one per line&mdash;the Name, Email, Role, and
-              Organization of each PI, Collaborator, and Student.
+              Include all the individuals using BDC to analyze data for the same project
+              or the instructors for the Academic Class and Group Educational Session)*
             </HelpText>
           </FormControl>
           <FormControl>
-            <label htmlFor="relatedResearch">
-              Is your research related to HLBS? *
-            </label>
+            <label required htmlFor="hlbs-relation">How is your research related to HLBS (heart, lung, blood, and sleep)? *</label>
+            <TextArea
+              id="hlbs-relation"
+              required
+              name="hlbs-relation"
+              value={hlbsRelation}
+              onChange={handleChangeHlbsRelation}
+              maxLength="3000"
+            />
+          </FormControl>
+          <FormControl>
+            <label required htmlFor="grapevine">How did the requestor learn about BDC? *</label>
+            <TextArea
+              id="grapevine"
+              required
+              name="grapevine"
+              value={grapevine}
+              onChange={handleChangeGrapevine}
+              maxLength="3000"
+            />
+          </FormControl>
+          <FormControl>
+            <label required htmlFor="one-request">BDC users may request one of the following: *</label>
             <Select
               required
-              id="relatedResearch"
-              name="relatedResearch"
-              value={relatedResearch}
-              onChange={handleChangeRelatedResearch}
+              id="one-request"
+              name="one-request"
+              value={oneRequest}
+              onChange={handleChangeOneRequest}
             >
               <Option value="">Select One</Option>
+              <Option value="NHLBI BDC Pilot Funding Program">NHLBI BDC Pilot Funding Program</Option>
+              <Option value="NHLBI BDC Cloud Credit Support Program">NHLBI BDC Cloud Credit Support Program</Option>
+              <Option value="Cloud Credits for Academic Classes and Group Educational Sessions">Cloud Credits for Academic Classes and Group Educational Sessions</Option>
+            </Select>
+          </FormControl>
 
-              <Option You value={"Yes"}>
-                Yes
-              </Option>
-              <Option You value={"No"}>
-                No
-              </Option>
-            </Select>
-            <HelpText>
-              Cloud Credits are available only to researchers of Heart, Lung,
-              Blood and Sleep (HLBS) disorders.
-            </HelpText>
-          </FormControl>
-          <FormControl>
-            <label htmlFor="how">
-              How did you learn about BDC?
-            </label>
-            <TextArea
-              id="how"
-              name="how"
-              value={how}
-              onChange={handleChangeHow}
-            />
-          </FormControl>
-          <FormControl>
-            <label htmlFor="cloudCreditsRequest">
-              BDC users may request one of the following: *
-            </label>
-            <Select
-              required
-              id="cloudCreditsRequest"
-              name="cloudCreditsRequest"
-              value={cloudCreditsRequest}
-              onChange={handleChangeCloudCreditsRequest}
-            >
-              <Option value="">Select One</Option>
-              <Option
-                You
-                value={
-                  "$500 in initial pilot cloud credits to begin a project or explore the ecosystem"
-                }
-              >
-                $500 in initial pilot cloud credits to begin a project or
-                explore the ecosystem
-              </Option>
-              <Option You value={"Additional cloud credits"}>
-                Additional cloud credits
-              </Option>
-            </Select>
-          </FormControl>
-          {cloudCreditsRequest ===
-            "$500 in initial pilot cloud credits to begin a project or explore the ecosystem" && (
-            <>
-              <FormControl>
-                <label htmlFor="preferedAnalysisPlatform">
-                  Select your preferred analysis platform * (or choose to
-                  explore both)
-                </label>
-                <Select
-                  required
-                  id="preferedAnalysisPlatform"
-                  name="preferedAnalysisPlatform"
-                  value={preferedAnalysisPlatform}
-                  onChange={handleChangePreferedAnalysisPlatform}
-                >
-                  <Option value="">Select One</Option>
-                  <Option You value={"$500 on Seven Bridges"}>
-                    $500 on Seven Bridges
-                  </Option>
-                  <Option You value={"$500 on Terra"}>
-                    $500 on Terra
-                  </Option>
-                  <Option
-                    You
-                    value={"$250 each on both Seven Bridges and Terra"}
+          {
+            oneRequest === "NHLBI BDC Pilot Funding Program" && (
+              <FormSubsection>
+                <FormControl>
+                  <label required htmlFor="preferred-analysis-platform">Preferred analysis platform:</label>
+                  <Select
+                    required
+                    id="preferred-analysis-platform"
+                    name="preferred-analysis-platform"
+                    value={preferredPlatform}
+                    onChange={handleChangePreferredPlatform}
                   >
-                    $250 each on both Seven Bridges and Terra
-                  </Option>
-                </Select>
-              </FormControl>
-              {renderSwitch(preferedAnalysisPlatform)}
-            </>
-          )}
-          {cloudCreditsRequest === "Additional cloud credits" && (
-            <>
-              <FormControl>
-                <label htmlFor="project">Project Name & Description *</label>
-                <TextArea
-                  required
-                  id="project"
-                  name="project"
-                  placeholder={`Enter project name and a brief description.`}
-                  value={project}
-                  onChange={handleChangeProject}
-                  maxLength="3000"
-                />
-                <HelpText>
-                  Limit your response to 3000 characters. (Current length:{" "}
-                  {projectLength} / 3000 characters.)
-                </HelpText>
-              </FormControl>
-              <FormControl>
-                <label htmlFor="previous-funding-details">
-                  Previous use of cloud credits *
-                </label>
-                <TextArea
-                  id="previous-funding-details"
-                  name="previous-funding-details"
-                  placeholder={`Briefly outline your use of previous cloud credit funding.`}
-                  value={previousFundingDetails}
-                  onChange={handleChangePreviousFundingDetails}
-                  maxLength="3000"
-                  required
-                />
-                <HelpText>
-                  Briefly outline your use of previous cloud credit funding.
-                  Limit your response to 3000 characters. (Current length:
-                  {previousFundingDetailsLength} / 3000 characters.)
-                </HelpText>
-              </FormControl>
-              <FormControl>
-                <label htmlFor="estimate">
-                  Estimate of Cloud Credits Needed *
-                </label>
-                <AdornedInput
-                  type="number"
-                  required
-                  min="1"
-                  id="estimate"
-                  name="estimate"
-                  value={estimate}
-                  onChange={handleChangeEstimate}
-                  adornment="$"
-                />
-                <HelpText>
-                  Please enter your estimate in US Dollars. Round up to the
-                  nearest $100 and add a $300 buffer for troubleshooting and
-                  testing.
-                </HelpText>
-              </FormControl>
-              <FormControl>
-                <label htmlFor="justification">
-                  Justification for Credits *
-                </label>
-                <TextArea
-                  required
-                  id="justification"
-                  name="justification"
-                  placeholder={`Enter a brief justification for your request.`}
-                  value={justification}
-                  onChange={handleChangeJustification}
-                  maxLength="6000"
-                />
-                <HelpText>
-                  Reviewers will be interested in: 1.) Significance and goals of
-                  the project; 2.) Datasets, tools, types of analysis to be
-                  used; 3.) Experience using cloud platforms; 4.) Anticipated
-                  timeline for the work; 5.) Whether workflows/pipelines have
-                  been optimized and/or if guidance/consultation from the
-                  platforms has been sought; 6.) Estimated costs split out by
-                  development, testing, analysis optimization, and the running
-                  of the analysis (provide a basis for the estimated costs e.g.
-                  prior research results with reference numbers); 7.) Number of
-                  samples, cost per sample, and whether there is sufficient
-                  power of analysis. Limit your response to 6000 characters.
-                  (Current length: {justificationLength} / 6000 characters.)
-                </HelpText>
-              </FormControl>
-              <FormControl>
-                <label htmlFor="platform">
-                  Select the platform on which you will use the additional
-                  credits: *
-                </label>
-                <Select
-                  required
-                  id="platform"
-                  name="platform"
-                  value={platform}
-                  onChange={handleChangePlatform}
-                >
-                  <Option value="Select One">Select One</Option>
-                  <Option value="Seven Bridges">Seven Bridges</Option>
-                  <Option value="Terra">Terra</Option>
-                  <Option value="Both Seven Bridges and Terra">
-                    Both Seven Bridges and Terra
-                  </Option>
-                </Select>
-              </FormControl>
-              {renderSwitch(platform)}
-              {platform === "Both Seven Bridges and Terra" && (
-                <>
-                  <FormControl>
-                    <label htmlFor="requestedSevenBridgesAmount">
-                      Indicate the amount of cloud credits requested for use on
-                      each platform *
+                    <Option value="">Select One</Option>
+                    <Option value="BDC Seven Bridges">BDC Seven Bridges</Option>
+                    <Option value="BDC-Terra">BDC-Terra</Option>
+                    <Option value="Both BDC Seven Bridges and BDC-Terra">Both BDC Seven Bridges and BDC-Terra</Option>
+                  </Select>
+                </FormControl>
+              </FormSubsection>
+            )
+          }
+          {
+            oneRequest === "NHLBI BDC Cloud Credit Support Program" && (
+              <FormSubsection>
+                <FormControl>
+                  <label required htmlFor="credits-project-abstract">Project abstract with a description of the project’s scientific significance and aims</label>
+                  <TextArea
+                    id="credits-project-abstract"
+                    required
+                    name="credits-project-abstract"
+                    value={creditsProjectAbstract}
+                    onChange={handleChangeCreditsProjectAbstract}
+                    maxLength="3000"
+                  />
+                </FormControl>
+                
+                {/* Project abstract with a description of the project’s scientific significance and aims [long answer] */}
+                <div style={{ display: 'flex' }}>
+                  <div style={{ width: '80px', padding: '1rem 2rem' }}>
+                    <TextInput
+                      type="checkbox"
+                      checked={ creditsPreviouslyReceived }
+                      name="credits-previously-received"
+                      onChange={ handleChangeCreditsPreviouslyReceived }
+                    />
+                  </div>
+                  {/* Previous receipt of cloud credits from BDC (including Pilot Funding and other Cloud Credit Support Program approvals) [yes/no] */}
+                  <div style={{ flex: 1 }}>
+                    <label htmlFor="credits-previously-received">
+                      <Paragraph>
+                        Previous receipt of cloud credits from BDC (including Pilot
+                        Funding and other Cloud Credit Support Program approvals)
+                      </Paragraph>
                     </label>
-                    <AdornedInput
-                      type="number"
-                      required
-                      min="1"
-                      id="requestedSevenBridgesAmount"
-                      name="requestedSevenBridgesAmount"
-                      value={requestedSevenBridgesAmount}
-                      onChange={handleChangeRequestedSevenBridgesAmount}
-                      adornment="$"
-                      placeholder="Seven Bridges:"
+                    {/* If yes, briefly outline your use of previous cloud credit funding */}
+                    {creditsPreviouslyReceived && (
+                      <FormControl>
+                        <label required htmlFor="credits-received-description">If yes, briefly outline your use of previous cloud credit funding</label>
+                        <TextArea
+                          id="credits-received-description"
+                          required
+                          name="credits-received-description"
+                          value={creditsReceivedDescription}
+                          onChange={handleChangeCreditsReceivedDescription}
+                          maxLength="3000"
+                        />
+                      </FormControl>
+                    )}
+                    {/* If no, apply for pilot funding first [no response required] */}
+                  </div>
+                </div>
+                {/* Computational Scope (i.e., computational tasks)  */}
+                <div>Computational Scope</div>
+                {/* Estimated amount of cloud credits needed [dollar amount] */}
+                <FormControl>
+                  <label htmlFor="redits-estimate">Estimated amount of cloud credits needed</label>
+                  <AdornedInput
+                    type="number"
+                    required
+                    min="0"
+                    id="credits-estimate"
+                    name="credits-estimate"
+                    value={creditsEstimate}
+                    onChange={handleChangeCreditsEstimate}
+                    adornment="$"
+                  />
+                </FormControl>
+                {/* Amount of cloud credits being requested [dollar amount] */}
+                <FormControl>
+                  <label htmlFor="credits-requested">Amount of cloud credits being requested</label>
+                  <AdornedInput
+                    type="number"
+                    required
+                    min="0"
+                    id="credits-requested"
+                    name="credits-requested"
+                    value={creditsRequested}
+                    onChange={handleChangeCreditsRequested}
+                    adornment="$"
+                  />
+                </FormControl>
+                {/* Anticipated timeline for the work [short answer] */}
+                <FormControl>
+                  <label htmlFor="credits-antipated-timeline">Anticipated timeline for the work</label>
+                  <TextInput
+                    type="text"
+                    required
+                    id="credits-antipated-timeline"
+                    name="credits-antipated-timeline"
+                    value={creditsAnticipatedTimeline}
+                    onChange={handleChangeCreditsAnticipatedTimeline}
+                  />
+                </FormControl>
+                {/* Describe your compelling need for these funds to conduct this research using BDC [long answer] */}
+                <FormControl>
+                  <label required htmlFor="credits-justification">Describe your compelling need for these funds to conduct this research using BDC</label>
+                  <TextArea
+                    id="credits-justification"
+                    required
+                    name="credits-justification"
+                    value={creditsJustification}
+                    onChange={handleChangeCreditsJustification}
+                    maxLength="3000"
+                  />
+                </FormControl>
+                {/* I certify that the federal or private funding secured for this project is insufficient to support the computational cloud costs I am requesting [checkbox] */}
+                <div style={{ display: 'flex' }}>
+                  <div style={{ width: '80px', padding: '1rem 2rem' }}>
+                    <TextInput
+                      type="checkbox"
+                      checked={ creditsCertify }
+                      name="credits-certify"
+                      onChange={ handleChangeCreditsCertify }
                     />
-                    <HelpText>Seven Bridges</HelpText>
-                    <AdornedInput
-                      type="number"
-                      required
-                      min="1"
-                      id="requestedTerraAmount"
-                      name="requestedTerraAmount"
-                      value={requestedTerraAmount}
-                      onChange={handleChangeRequestedTerraAmount}
-                      adornment="$"
-                      placeholder="Terra:"
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <label htmlFor="credits-certify">
+                      <Paragraph>
+                        I certify that the federal or private funding secured for this project is
+                        insufficient to support the computational cloud costs I am requesting
+                      </Paragraph>
+                    </label>
+                  </div>
+                </div>
+                {/* If available, include a link to a list of your publications/research results [short answer] */}
+                <FormControl>
+                  <label htmlFor="credits-research-links">If available, include a link to a list of your publications/research results</label>
+                  <TextInput type="number" id="credits-research-links" name="credits-research-links" value={creditsResearchLinks} onChange={handleChangeCreditsResearchLinks} />
+                </FormControl>
+              </FormSubsection>
+            )
+          }
+          {
+            oneRequest === "Cloud Credits for Academic Classes and Group Educational Sessions" && (
+              <FormSubsection>
+                <FormControl>
+                  <label htmlFor="course-title">Course Title</label>
+                  <TextInput id="course-title" name="course-title" value={courseTitle} onChange={handleChangeCourseTitle} />
+                </FormControl>
+                <FormControl>
+                  <label htmlFor="course-instructor-name">Course instructor's name</label>
+                  <TextInput id="course-instructor-name" name="course-instructor-name" value={courseInstructorsName} onChange={handleChangeCourseInstructorsName} />
+                </FormControl>
+                <FormControl>
+                  <label htmlFor="course-student-count">Anticipated number of participants/students</label>
+                  <TextInput type="number" id="course-student-count" name="course-student-count" value={courseStudentCount} onChange={handleChangeCourseStudentCount} />
+                </FormControl>
+                <FormControl>
+                  <label htmlFor="course-level">Course level</label>
+                  <TextInput id="course-level" name="course-level" value={courseLevel} onChange={handleChangeCourseLevel} />
+                </FormControl>
+                <FormControl>
+                  <label htmlFor="course-date">Anticipated course/presentation date</label>
+                  <TextInput type="date" id="course-date" name="course-date" value={courseDate} onChange={handleChangeCourseDate} />
+                </FormControl>
+                <div style={{ display: 'flex' }}>
+                  <div style={{ width: '80px', padding: '1rem 2rem' }}>
+                    <TextInput
+                      type="checkbox"
+                      checked={ courseSupportRequested }
+                      name="course-support-requested"
+                      onChange={ handleChangeCourseSupportRequested }
                     />
-                    <HelpText>Terra</HelpText>
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <label htmlFor="course-support-requested">
+                      <Paragraph>
+                        Do you wish to have support during the course/presentation from a BDC representative?
+                      </Paragraph>
+                    </label>
+                  </div>
+                </div>
+                {courseSupportRequested && (
+                  <FormControl>
+                    <label htmlFor="course-support-description">Description of how BDC can support your course</label>
+                    <TextArea
+                      id="course-support-description"
+                      name="course-support-description"
+                      value={courseSupportDescription}
+                      onChange={handleChangeCourseSupportDescription}
+                      maxLength="3000"
+                    />
                   </FormControl>
-                </>
-              )}
-            </>
-          )}
+                )}
+              </FormSubsection>
+            )
+          }
+
+          <FormControl>
+            <div style={{ display: 'flex' }}>
+              <div style={{ width: '80px', padding: '1rem 2rem' }}>
+                <TextInput
+                  type="checkbox"
+                  checked={ consent }
+                  name="consent"
+                  onChange={ handleChangeConsent }
+                />
+              </div>
+              <div style={{ flex: 1 }}>
+                <label htmlFor="consent">
+                  <Paragraph>
+                    By submitting the following form, you agree to the requirements noted above, the BDC Terms of Use and Policies, and to receive emails from BDC. You can opt out of receiving emails at any time. 
+                  </Paragraph>
+                  <Paragraph>
+                    Those approved for NHLBI BDC Cloud Credit Support Program cloud credits also agree to request and receive one-on-one assistance from BDC to manage usage costs. 
+                  </Paragraph>
+                </label>
+              </div>
+            </div>
+          </FormControl>
+
           <br />
-          <SubmitButton disabled={buttonLocked}>Submit</SubmitButton>
+
+          <SubmitButton disabled={submitButtonLocked || !consent}>Submit</SubmitButton>
         </Form>
-        {/* {!wasSubmitted && platformOptions.length === 0 && (
-          <LoadingDots
-            color="var(--color-crimson)"
-            text="Loading form..."
-            textPlacement="top"
-          />
-        )} */}
+
         {wasSubmitted && !error && <ThankYouMessage />}
+
         {wasSubmitted && error && <ErrorMessage />}
       </CardBody>
     </Card>

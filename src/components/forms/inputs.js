@@ -61,8 +61,8 @@ export const Option = styled.option``;
 
 export const TextArea = styled.textarea`
   resize: vertical;
-  height: 200px;
-  min-height: 200px;
+  height: 100px;
+  min-height: 100px;
   max-height: 800px;
   ${inputStyle}
 `;
