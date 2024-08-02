@@ -67,6 +67,22 @@ export const TextArea = styled.textarea`
   ${inputStyle}
 `;
 
+export const Checkbox = ({ ...props }) => {
+  return (
+    <div>
+      <label htmlFor={ props.id }>
+        <input
+          type="checkbox"
+          id={ props.id }
+          value={ props.value }
+          name={ props.name }
+        />
+        &nbsp;&nbsp;{ props.label }
+      </label>
+    </div>
+  )
+}
+
 export const HelpText = styled.small`
   padding: 0.25rem 0;
   font-style: italic;

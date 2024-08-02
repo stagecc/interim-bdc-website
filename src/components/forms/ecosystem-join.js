@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState } from "react";
+import React, { Fragment, useMemo, useRef, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { Paragraph } from "../typography";
@@ -6,15 +6,14 @@ import { Button } from "../buttons";
 import { Card, CardHeader, CardBody } from "../card";
 import { navigate } from "gatsby";
 import {
+  Checkbox,
   Form,
   FormControl,
-  TextInput,
   HelpText,
-  Select,
   Option,
+  Select,
   TextArea,
-  FieldSet,
-  CheckBoxLabel,
+  TextInput,
 } from "./inputs";
 
 const FRESHDESK_USER_NAME = process.env.GATSBY_FRESHDESK_API_KEY;
@@ -46,18 +45,23 @@ const ErrorMessage = () => {
   );
 };
 
-export const EcoSystemForm = (props) => {
+export const EcosystemForm = (props) => {
   const formRef = useRef(null)
   const honeypotFieldRef = useRef(null);
+
   const [name, setName] = useState("");
+  const [eraCommonsId, setEraCommonsId] = useState("");
   const [email, setEmail] = useState("");
-  const [commons, setCommons] = useState("");
   const [organization, setOrganization] = useState("");
-  const [referral, setReferralSource] = useState("");
-  const [other, setOther] = useState("");
-  const [otherTextField, setOtherTextField] = useState(false);
-  const [field, setField] = useState("");
+
+  const [fieldOfStudy, setFieldOfStudy] = useState("");
+  const [otherFieldOfStudySelected, setOtherFieldOfStudySelected] = useState(false);
+  const [otherFieldOfStudy, setOtherFieldOfStudy] = useState("");
+  
   const [interest, setInterest] = useState("");
+  const otherInterestSelected = useMemo(() => interest === "Other", [interest]);
+  const [otherInterest, setOtherInterest] = useState("");
+  
   const [wasSubmitted, setWasSubmitted] = useState(false);
   const [error, setError] = useState();
 
@@ -70,11 +74,10 @@ export const EcoSystemForm = (props) => {
       name: name,
       email: email,
       custom_fields: {
-        era_commons_id: commons,
+        era_commons_id: eraCommonsId,
         contacts_organization: organization,
-        contacts_field: field.toString(),
-        contacts_referral: referral,
-        contacts_other: other,
+        contacts_field: fieldOfStudy.toString(),
+        contacts_other: otherFieldOfStudy,
         contacts_interest: interest,
       },
     };
@@ -94,30 +97,41 @@ export const EcoSystemForm = (props) => {
           setError(error);
         });
     };
+
     submitContact();
   };
 
   const handleChangeName = (event) => setName(event.target.value);
-  const handleChangeCommons = (event) => setCommons(event.target.value);
+  const handleChangeCommons = (event) => setEraCommonsId(event.target.value);
   const handleChangeEmail = (event) => setEmail(event.target.value);
-  const handleChangeOrganization = (event) =>
-    setOrganization(event.target.value);
-  const handleChangeRefferal = (event) => setReferralSource(event.target.value);
-  const handleChangeOther = (event) => {
-    setOther(event.target.value);
+  const handleChangeOrganization = (event) => setOrganization(event.target.value);
+  const handleChangeFieldOfStudy = (event) => {
+    let newFieldOfStudy = [...fieldOfStudy];
+    const index = newFieldOfStudy.indexOf(event.target.value);
+    if (index === -1) {
+      newFieldOfStudy = ([...newFieldOfStudy, event.target.value]);
+    } else {
+      newFieldOfStudy = ([...newFieldOfStudy.slice(0, index), ...newFieldOfStudy.slice(index + 1)]);
+    }
+    setOtherFieldOfStudySelected(newFieldOfStudy.includes("Other"));
+    setFieldOfStudy(newFieldOfStudy);
   };
 
-  const handleChangeField = (event) => {
-    if (event.target.value === "Other") {
-      setOtherTextField(!otherTextField)
-    }
-    setField([...field, event.target.value]);
-  };
+  const handleChangeOtherField = (event) => setOtherFieldOfStudy(event.target.value);
   const handleChangeInterest = (event) => setInterest(event.target.value);
+  const handleChangeOtherInterest = (event) => setOtherInterest(event.target.value);
+
   return (
     <Card {...props}>
       <CardHeader>Join the Ecosystem </CardHeader>
       <CardBody>
+        <Paragraph>
+          Information on this form is considered Personally Identifiable Information (PII).
+          If you wish to protect your privacy, send this information securely through external
+          means such as US mail. Information may be examined, recorded, copied, and used for
+          authorized purposes during monitoring. All information placed on or sent over this
+          system may be monitored.
+        </Paragraph>
         <Paragraph right noMargin>
           <em>Fields with an asterisk (*) are required.</em>
         </Paragraph>
@@ -157,14 +171,13 @@ export const EcoSystemForm = (props) => {
                 type="commons"
                 id="commons"
                 name="commons"
-                value={commons}
+                value={eraCommonsId}
                 onChange={handleChangeCommons}
               />
               <HelpText>
-                eRA Commons ID is a common way to authenticate throughout the
-                ecosystem. Please include your eRA Commons if you already have
-                one for ease of identification. If you do not yet have an eRA
-                Commons ID, you can still join the community.{" "}
+                eRA Commons ID is a common way to authenticate through the ecosystem.
+                Please include your eRA Commons ID if you already have an account.
+                You can still join the community if you do not yet have an eRA Commons account.
               </HelpText>
             </FormControl>
             <FormControl>
@@ -178,8 +191,8 @@ export const EcoSystemForm = (props) => {
                 onChange={handleChangeEmail}
               />
               <HelpText>
-                Please use an organization email address. Your email address
-                will serve as your user account name.
+                Please use an organization email address.
+                Your email address will serve as your user account name.
               </HelpText>
             </FormControl>
             <FormControl>
@@ -193,85 +206,30 @@ export const EcoSystemForm = (props) => {
                 onChange={handleChangeOrganization}
               />
             </FormControl>
-            <FormControl onChange={handleChangeField}>
+            <FormControl onChange={handleChangeFieldOfStudy}>
               <label htmlFor="field">Field of Study or Research Area *</label>
               <HelpText>Select all that apply</HelpText>
-              <FieldSet>
-                <CheckBoxLabel>
-                  <TextInput type="checkbox" value="Heart" name="field" />
-                  &nbsp;Heart
-                </CheckBoxLabel>
-                <CheckBoxLabel>
-                  <TextInput type="checkbox" value="Lung" name="field" />
-                  &nbsp;Lung
-                </CheckBoxLabel>
-                <CheckBoxLabel>
-                  <TextInput type="checkbox" value="Blood" name="field" />
-                  &nbsp;Blood
-                </CheckBoxLabel>
-                <CheckBoxLabel>
-                  <TextInput type="checkbox" value="Sleep" name="field" />
-                  &nbsp;Sleep
-                </CheckBoxLabel>
-                <CheckBoxLabel>
-                  <TextInput type="checkbox" value="Methods" name="field" />
-                  &nbsp;Methods
-                </CheckBoxLabel>
-                <CheckBoxLabel>
-                  <TextInput
-                    type="checkbox"
-                    value="Sickle Cell Disease"
-                    name="field"
-                  />
-                  &nbsp;Sickle Cell Disease
-                </CheckBoxLabel>
-                <CheckBoxLabel>
-                  <TextInput
-                    type="checkbox"
-                    value="Implementation Science"
-                    name="field"
-                  />
-                  &nbsp;Implementation Science
-                </CheckBoxLabel>
-                <CheckBoxLabel>
-                  <TextInput
-                    type="checkbox"
-                    value="Precision Medicine"
-                    name="field"
-                  />
-                  &nbsp;Precision Medicine
-                </CheckBoxLabel>
-                <CheckBoxLabel>
-                  <TextInput
-                    type="checkbox"
-                    value="Clinical Trials Optimization"
-                    name="field"
-                  />
-                  &nbsp;Clinical Trials Optimization
-                </CheckBoxLabel>
-                <CheckBoxLabel>
-                  <TextInput
-                    type="checkbox"
-                    value="Small Business"
-                    name="field"
-                  />
-                  &nbsp;Small Business
-                </CheckBoxLabel>
-                <CheckBoxLabel>
-                  <TextInput type="checkbox" value="HIV/AIDS" name="field" />
-                  &nbsp;HIV/AIDS
-                </CheckBoxLabel>
-                <CheckBoxLabel>
-                  <TextInput type="checkbox" value="COVID-19" name="field" />
-                  &nbsp;COVID-19
-                </CheckBoxLabel>
-                <CheckBoxLabel>
-                  <TextInput type="checkbox" value="Other" name="field" />
-                  &nbsp;Other
-                </CheckBoxLabel>
-              </FieldSet>
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+                gridGap: '1rem',
+              }}>
+                <Checkbox value="Heart" name="field" label="Heart" />
+                <Checkbox value="Lung" name="field" label="Lung" />
+                <Checkbox value="Blood" name="field" label="Blood" />
+                <Checkbox value="Sleep" name="field" label="Sleep" />
+                <Checkbox value="Methods" name="field" label="Methods" />
+                <Checkbox value="Sickle Cell Disease" name="field" label="Sickle Cell Disease" />
+                <Checkbox value="Implementation Science" name="field" label="Implementation Science" />
+                <Checkbox value="Precision Medicine" name="field" label="Precision Medicine" />
+                <Checkbox value="Clinical Trials Optimization" name="field" label="Clinical Trials Optimization" />
+                <Checkbox value="Small Business" name="field" label="Small Business" />
+                <Checkbox value="HIV/AIDS" name="field" label="HIV/AIDS" />
+                <Checkbox value="COVID-19" name="field" label="COVID-19" />
+                <Checkbox value="Other" name="field" label="Other" />
+              </div>
             </FormControl>
-            {otherTextField && (
+            {otherFieldOfStudySelected && (
               <FormControl>
                 <label required htmlFor="other">
                   If Other, please provide a brief description. *
@@ -280,15 +238,15 @@ export const EcoSystemForm = (props) => {
                   id="other"
                   required
                   name="other"
-                  value={other}
-                  onChange={handleChangeOther}
+                  value={otherFieldOfStudy}
+                  onChange={handleChangeOtherField}
                   maxLength="3000"
                 />
               </FormControl>
             )}
             <FormControl>
               <label required htmlFor="interest">
-                Why are you interested in BDC? *
+                Why are you joining BDC?
               </label>
               <Select
                 required
@@ -298,33 +256,38 @@ export const EcoSystemForm = (props) => {
                 onChange={handleChangeInterest}
               >
                 <Option value="">Select One</Option>
-                <Option value="I want to keep up with the latest news on the ecosystem">
-                  I want to keep up with the latest news on the ecosystem.
+                <Option value="I want to conduct research using BDC">
+                  I want to conduct research using BDC
                 </Option>
-                <Option value="I hope to learn how the ecosystem can help me with my research">
-                  I hope to learn how the ecosystem can help me with my research.
+                <Option value="I want to use BDC as a data repository">
+                  I want to use BDC as a data repository
                 </Option>
-                <Option value="I am ready to start using the ecosystem!">
-                  I am ready to start using the ecosystem!
+                <Option value="I want to use the BDC TOPMed Imputation Server">
+                  I want to use the BDC TOPMed Imputation Server
                 </Option>
-                <Option value="Not sure / I am just exploring.">
-                  Not sure / I am just exploring.
+                <Option value="I’m not a researcher, but I want to keep up with the latest news about BDC">
+                  I’m not a researcher, but I want to keep up with the latest news about BDC
+                </Option>
+                <Option value="Other">
+                  Other
                 </Option>
               </Select>
             </FormControl>
-            <FormControl>
-              <label htmlFor="referral">
-                How did you learn about BDC? *
-              </label>
-              <TextArea
-                required
-                id="referral"
-                name="referral"
-                placeholder={`For example, colleague, website, organization`}
-                value={referral}
-                onChange={handleChangeRefferal}
-              />
-            </FormControl>
+            {otherInterestSelected && (
+              <FormControl>
+                <label required htmlFor="other">
+                  If Other, please provide a brief description. *
+                </label>
+                <TextArea
+                  id="other-interest"
+                  required
+                  name="other-interest"
+                  value={otherInterest}
+                  onChange={handleChangeOtherInterest}
+                  maxLength="3000"
+                />
+              </FormControl>
+            )}
 
             <SubmitButton>Submit</SubmitButton>
           </Form>
