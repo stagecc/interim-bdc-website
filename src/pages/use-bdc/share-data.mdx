@@ -1,5 +1,5 @@
 import { PageContent } from "../../components/layout";
-import { Button, ButtonContainer } from "../../components/buttons";
+import { ButtonLink, ButtonContainer } from "../../components/buttons";
 import { NextStepsCard } from "../../components/card";
 
 <PageContent 
@@ -16,12 +16,12 @@ Sharing scientific data accelerates biomedical research discovery by enabling va
 NHLBI provides instructions and support to researchers preparing and submitting data to BDC:
 
 <ButtonContainer>
-  <Button as="a" href="https://www.nhlbi.nih.gov/grants-and-training/policies-and-guidelines/guidelines-for-preparing-clinical-study-data-sets-for-submission-to-the-nhlbi-data-repository" id="data-preparation">
+  <ButtonLink href="https://www.nhlbi.nih.gov/grants-and-training/policies-and-guidelines/guidelines-for-preparing-clinical-study-data-sets-for-submission-to-the-nhlbi-data-repository" id="data-preparation">
     Instructions for Preparing Clinical Research Datasets
-  </Button>
-  <Button as="a" href="https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/data-management/data-submission-instructions" id="data-submission">
+  </ButtonLink>
+  <ButtonLink href="https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/data-management/data-submission-instructions" id="data-submission">
     Instructions for Data Submission to BDC
-  </Button>
+  </ButtonLink>
 </ButtonContainer>
 
 Researchers with BDC data-sharing-related inquiries should go to the [Contact Us webpage](/help-and-support/contact-us) and select the "Data Submission" type (dropdown option).
