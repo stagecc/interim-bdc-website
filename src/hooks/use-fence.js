@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import { useLocation } from "@reach/router";
 import { useLocalStorage } from "./use-local-storage";
 

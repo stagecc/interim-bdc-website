@@ -1,6 +1,6 @@
 import React from "react";
 import { useFence } from "../../hooks";
-import { Dots as LoadingDots } from "../loading";
+import { LoadingDots } from "../loading";
 import { Card, CardHeader, CardBody } from "../card";
 import { FenceProvider } from "../../hooks";
 import { Authed } from './authed';
