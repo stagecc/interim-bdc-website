@@ -1,0 +1,28 @@
+import React from "react";
+import { useFence } from "../../hooks";
+import { Dots as LoadingDots } from "../loading";
+import { Card, CardHeader, CardBody } from "../card";
+import { FenceProvider } from "../../hooks";
+import { Authed } from './authed';
+import { Unauthed } from './unauthed';
+
+export const DataAccess = () => {
+  const { user, projects, isLoading, checkAccessUrl } = useFence();
+  
+  console.log({ user, projects, isLoading, checkAccessUrl });
+
+  return (
+    <FenceProvider>
+      <Card>
+        <CardHeader>My Access</CardHeader>
+        <CardBody>{
+          isLoading
+            ? <LoadingDots />
+            : (user && projects)
+              ? <Authed />
+              : <Unauthed />
+        }</CardBody>
+      </Card>
+    </FenceProvider>
+  );
+};
