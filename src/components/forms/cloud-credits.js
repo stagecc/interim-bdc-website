@@ -191,10 +191,10 @@ export const CloudCreditsForm = (props) => {
         .post(FRESHDESK_API_CREATE_TICKET_URL, payload, requestOptions)
         .then((response) => {
           if (![200, 201].includes(response.status)) {
-            // setSubmitButtonLocked(false);
+            setSubmitButtonLocked(false);
             throw new Error(`Unsuccessful HTTP response, ${response.status}`);
           }
-          // setSubmitButtonLocked(true);
+          setSubmitButtonLocked(true);
         })
         .catch((error) => {
           setError(error);
