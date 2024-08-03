@@ -5,6 +5,7 @@ import {
 import { ExpandMore as ExpandIcon } from '@mui/icons-material'
 import { DataDisplay } from './data-display';
 import Markdown from 'react-markdown';
+import { Heading } from '../../typography'
 
 export const NextStepCard = ({
   clickHandler,
@@ -47,7 +48,8 @@ export const NextStepCard = ({
     >
       <CardActionArea onClick={ clickHandler } disabled={ expanded }>
         <CardHeader
-          title={ title }
+          disableTypography
+          title={ <Heading noMargin>{ title }</Heading> }
           action={ <ExpandIcon color={ expanded ? 'disabled' : 'secondary' } /> }
         />
       </CardActionArea>

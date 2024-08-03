@@ -9,6 +9,7 @@ import {
   BookmarkBorder as CollectionIcon,
   Bookmark as CollectionIconActive,
 } from '@mui/icons-material'
+import { Subsubheading } from '../../typography'
 
 export const CollectionAccordion = ({ title, children, open }) => {
   return (
@@ -46,7 +47,7 @@ export const CollectionAccordion = ({ title, children, open }) => {
         sx={{
         }}
       >
-        <Typography color="secondary">{ title }</Typography>
+        <Subsubheading noMargin>{ title }</Subsubheading>
       </AccordionSummary>
       <AccordionDetails className="details">
         {
