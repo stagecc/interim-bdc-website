@@ -8,8 +8,8 @@ export const CardHeader = styled.div(({
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${props => (props.fgColor ? props.fgColor : "inherit")};
-  background-color: ${props => (props.bgColor ? props.bgColor : "inherit")};
+  color: ${fgColor || "inherit"};
+  background-color: ${bgColor || "inherit"};
   // font-weight: bold;
   text-align: center;
   padding: 0.5rem 2rem;
