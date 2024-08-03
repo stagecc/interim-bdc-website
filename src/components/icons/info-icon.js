@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const InfoIcon = ({ size, fill, ...rest }) => {
+export const InfoIcon = ({ size = 24, fill = "#000", ...rest }) => {
   return (
     <svg
       {...rest}
@@ -23,9 +23,4 @@ export const InfoIcon = ({ size, fill, ...rest }) => {
 InfoIcon.propTypes = {
   size: PropTypes.number.isRequired,
   fill: PropTypes.string.isRequired
-};
-
-InfoIcon.defaultProps = {
-  size: 24,
-  fill: "#000"
 };

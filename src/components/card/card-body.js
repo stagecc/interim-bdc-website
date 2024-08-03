@@ -20,21 +20,16 @@ const CardBodyGraphic = styled.div`
 
 const CardBodyContents = styled.div.attrs({
   className: "card-body__contents"
-})`
+})(({ fgColor = "inherit", bgColor = "#fff" }) => (`
   flex: 1;
   padding: 1rem 2rem 2rem;
-  background-color: ${props => props.bgColor};
-  color: ${props => props.fgColor};
-`;
+  background-color: ${bgColor};
+  color: ${fgColor};
+`));
 
 CardBodyContents.propTypes = {
   fgColor: PropTypes.string.isRequired,
   bgColor: PropTypes.string.isRequired
-};
-
-CardBodyContents.defaultProps = {
-  fgColor: "inherit",
-  // bgColor: "#fff"
 };
 
 export const CardBody = ({ children, image, style }) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const HelpDeskIcon = ({ size, fill, ...rest }) => {
+export const HelpDeskIcon = ({ size = 24, fill = "#000", ...rest }) => {
   return (
     <svg
       {...rest}
@@ -25,9 +25,4 @@ export const HelpDeskIcon = ({ size, fill, ...rest }) => {
 HelpDeskIcon.propTypes = {
   size: PropTypes.number.isRequired,
   fill: PropTypes.string.isRequired
-};
-
-HelpDeskIcon.defaultProps = {
-  size: 24,
-  fill: "#000"
 };

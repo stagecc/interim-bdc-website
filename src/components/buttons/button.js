@@ -2,7 +2,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 export const Button = styled.button(
-  ({ small, light, fullWidth, width }) => `
+  ({ small = false, light = false, fullWidth = false, width }) => `
     background-color: ${light ? "#fff" : "var(--color-crimson)"};
     border-radius: 4px;
     display: inline-block;
@@ -37,10 +37,4 @@ Button.propTypes = {
   light: PropTypes.bool.isRequired,
   small: PropTypes.bool.isRequired,
   fullWidth: PropTypes.bool.isRequired
-};
-
-Button.defaultProps = {
-  light: false,
-  small: false,
-  fullWidth: false
 };

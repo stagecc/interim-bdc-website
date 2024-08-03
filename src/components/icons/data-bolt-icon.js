@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const DataBoltIcon = ({ size, fill, ...rest }) => {
+export const DataBoltIcon = ({ size = 24, fill = "#000", ...rest }) => {
   return (
     <svg
       {...rest}
@@ -28,9 +28,4 @@ export const DataBoltIcon = ({ size, fill, ...rest }) => {
 DataBoltIcon.propTypes = {
   size: PropTypes.number.isRequired,
   fill: PropTypes.string.isRequired
-};
-
-DataBoltIcon.defaultProps = {
-  size: 24,
-  fill: "#000"
 };

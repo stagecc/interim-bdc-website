@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const YoutubeIcon = ({ size, fill, ...rest }) => {
+export const YoutubeIcon = ({ size = 24, fill = "#000", ...rest }) => {
   return (
     <svg
       {...rest}
@@ -22,9 +22,4 @@ export const YoutubeIcon = ({ size, fill, ...rest }) => {
 YoutubeIcon.propTypes = {
   size: PropTypes.number.isRequired,
   fill: PropTypes.string.isRequired
-};
-
-YoutubeIcon.defaultProps = {
-  size: 24,
-  fill: "#000"
 };
