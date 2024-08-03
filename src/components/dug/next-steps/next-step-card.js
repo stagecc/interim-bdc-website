@@ -15,7 +15,7 @@ export const NextStepCard = ({
   title,
   url,
 }) => {
-  console.log({ title, details })
+  
   return ( 
     <Card
       className="next-step-card"
