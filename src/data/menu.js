@@ -5,15 +5,15 @@ export const menuItems = [
     submenu: [
       {
         text: "Explore BDC Data",
-        path: "/use-bdc/explore",
+        path: "/use-bdc/explore-data",
       },
       {
         text: "Analyze Data",
-        path: "/use-bdc/analyze",
+        path: "/use-bdc/analyze-data",
       },
       {
         text: "Share Data",
-        path: "/use-bdc/share",
+        path: "/use-bdc/share-data",
       },
       {
         text: "Impute Genotypes",

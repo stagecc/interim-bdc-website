@@ -8,9 +8,12 @@ import { HexMenu } from "../components/menus"
 
 import { Card, CardHeader, CardBody } from "../components/card";
 import { VideoPlayer } from "../components/video-player"
+import { Link } from "../components/link"
 
 import BlurChartCheckUpCurve from "../images/blur-chart-check-up-curve.jpg";
 import { NewsFeedModule } from "../components/modules";
+
+import { DugForm } from "../components/dug";
 
 <PageContent title="Home" hideTitle>
   <Carousel panels={ carouselData } />
@@ -24,6 +27,10 @@ import { NewsFeedModule } from "../components/modules";
     <Hidden xs sm md>
       <HexMenu />      
     </Hidden>
+
+    <DugForm />
+    
+    _Learn more about <Link to="https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/data-access/submitting-a-dbgap-data-access-request">BDC Semantic Search</Link>_.
 
     <Card>
       <CardHeader size="large">What is NHLBI BioData Catalyst<sup>®</sup>&nbsp;(BDC)?</CardHeader>

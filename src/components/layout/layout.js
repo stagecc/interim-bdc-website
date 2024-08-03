@@ -15,7 +15,7 @@ import {
 import { Paragraph } from "../typography";
 import { Link } from "../link";
 import { Menu, MobileMenu } from '../menus';
-import { Markdown } from '../mdxComponents';
+import { Markdown } from '../markdown';
 import { menuItems } from "../../data/menu";
 import { List, ListItem } from "../list";
 import { useWindowWidth } from "../../hooks";

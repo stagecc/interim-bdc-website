@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
 import { Heading, Subheading, } from "../typography";
-import { Markdown } from "../mdxComponents"
+import { Markdown } from "../markdown"
 import { useWindowWidth } from "../../hooks";
 import { getImage } from "gatsby-plugin-image"
 import { HeadshotPhoto } from "./"
