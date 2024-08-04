@@ -29,7 +29,7 @@ const DugSearchPage = () => {
   return (
     <PageContent width="95%" maxWidth="1400px" center gutters>
       <Box sx={{ position: 'relative' }}>
-        <Title>Semantic Search</Title>
+        <Title>Disease, Phenotype, Biological Process, or Anatomical Entity Search</Title>
         <SidebarToggler
           visible={ sidebarVisibility }
           onClick={ handleClickToggleSidebar }
