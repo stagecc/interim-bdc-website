@@ -82,7 +82,7 @@ export function Layout({ children }) {
         <SkipLink href="#main-content">Skip to main content</SkipLink>
         <StickyWrapper stuck={true}>
           <Header>
-            <Brand width="380px" compact={isCompact ? true : undefined} />
+            <Brand width="350px" compact={isCompact ? true : undefined} />
             <Visible xs sm md lg>
               <MobileMenu items={menuItems} />
             </Visible>
