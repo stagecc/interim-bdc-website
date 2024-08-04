@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { animated } from "react-spring";
-import backgroundImage from "../../../../images/stars-long-exposure.png";
+import backgroundImage from "../../../../images/hexagons-hero.png";
 import { StateNote } from '../subcomponents/StateNote'
 
 export const Overlay = styled.div(({ compact }) => `
@@ -12,6 +12,7 @@ export const Overlay = styled.div(({ compact }) => `
   display: flex;
   flex-direction: ${ compact ? "column" : "row" };
   align-items: stretch;
+  background: linear-gradient(to right, transparent 50%, #000);
 `);
 
 export const Border = styled.div`
@@ -19,7 +20,6 @@ export const Border = styled.div`
 `;
 
 export const Wrapper = styled.div(({ compact }) => `
-  // & * { border: 1px solid #f99; }
   height: 20vw;
   min-height: ${ compact ? "500px" : "300px" };
   max-height: ${ compact ? "600px" : "500px" };
@@ -50,12 +50,12 @@ export const Wrapper = styled.div(({ compact }) => `
 `);
 
 export const StyledPanelWrapper = styled(animated.div)`
-position: absolute;
-left: 0;
-top: 0;
-height: 100%;
-width: 100%;
-display: flex;
-flex-direction: ${props => (props.compact ? "column" : "row")};
-align-items: stretch;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: ${props => (props.compact ? "column" : "row")};
+  align-items: stretch;
 ` 
