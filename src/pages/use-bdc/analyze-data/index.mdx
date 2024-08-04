@@ -1,3 +1,23 @@
+---
+menu:
+  - heading: About Analyzing Data in BDC
+    href: about-analyzing-data-in-bdc
+  - heading: Prepare to Analyze Data
+    href: prepare-to-analyze-data
+  - heading: Build a Cohort for Analysis (Optional)
+    href: build-a-cohort-for-analysis-(optional)
+  - heading: Import Data to a BDC Workspace
+    href: import-data-to-a-bdc-workspace
+  - heading: Utilize Analysis Tools
+    href: utilize-analysis-tools
+  - heading: Utilize Analysis Tools
+    href: utilize-analysis-tools
+  - heading: Bring Your Own Data (BYOD)
+    href: bring-your-own-data-(byod)
+  - heading: Terra Users
+    href: terra-users
+---
+
 import { PageContent } from "../../../components/layout";
 import { FloatingContentWrapper } from "../../../components/layout";
 import { Button, ButtonContainer } from "../../../components/buttons";
@@ -6,11 +26,15 @@ import { NextStepsCard } from "../../../components/card"
 <PageContent 
   title="Analyze Data"
   width="95%" maxWidth="1200px" center gutters
+  menuItems={props.pageContext.frontmatter.menu}
 >
-<FloatingContentWrapper placement="right" type="text">
-### Understanding Usage Costs
 
-BDC users incur costs for computation, storage of uploaded or imported data (BYOD), storage of derived results (including egress costs for downloads of derived data), and file transfers. Read more about BDC Usage Costs. 
+<FloatingContentWrapper placement="right" type="text">
+  ### Understanding Usage Costs
+
+  BDC users incur costs for computation, storage of uploaded or imported data (BYOD),
+  storage of derived results (including egress costs for downloads of derived data),
+  and file transfers. Read more about BDC Usage Costs. 
 </FloatingContentWrapper>
 
 ## About Analyzing Data in BDC
@@ -19,7 +43,8 @@ Researchers can analyze BDC-hosted data (visit the [Explore Data in BDC webpage]
 
 ## Prepare to Analyze Data
 
-BDC workspaces offer private, secure environments for running analyses at scale.  BDC also has RStudio, Jupyterlab, and SAS Notebooks built directly into the platform.
+BDC workspaces offer private, secure environments for running analyses at scale.
+BDC also has RStudio, Jupyterlab, and SAS Notebooks built directly into the platform.
 
 **All users can find and access open-access hosted data on BDC. Researchers with approved data access requests (DARs) and an eRA Commons account can also access controlled-access data and use that data in analyses.** Researchers bringing their own data should refer to [Bring Your Own Data](#bring-your-own-data-byod) below.
 
@@ -43,6 +68,7 @@ Users building cohorts will see exact counts and can import the selected data in
 </ButtonContainer>
 
 ## Import Data to a BDC Workspace
+
 Users who do not build cohorts may import the raw data files into their BDC workspace(s) by [following these instructions](https://sb-biodatacatalyst.readme.io/docs/import-data-from-biodata-catalyst-powered-by-gen3) once they have access to the data (open- and/or controlled-access data).
 
 _If you are using a Terra Workspace, please scroll to the bottom of this webpage for more information. Read more about [the differences between BDC’s standard workspaces BDC Powered by Seven Bridges) and those provided by BDC Powered by Terra](https://biodatacatalyst.nhlbi.nih.gov/use-bdc/analyze-data/bdc-workspaces)_.
@@ -59,12 +85,12 @@ BDC workspaces have tools and features for performing multiple-variant and singl
 
 As described in the [BDC Data Use Policy](/user-resources/usage-terms), researchers can upload data to a BDC workspace to share data with their collaborators via a consortium sharing model (account required; see [Prepare to Analyze Data](#prepare-to-analyze-data) above) if they have the appropriate approvals, provided researchers do not violate the terms of their Data Use Agreements, Limitations, or Institutional Review Board policies and guidelines.
 
-Data can be uploaded from local storage or an HTTP(S)/FTP server or import it from cloud storage. Read "[Upload your data" for more information.](https://sb-biodatacatalyst.readme.io/docs/upload-to-the-platform).
+Data can be uploaded from local storage or an HTTP(S)/FTP server or import it from cloud storage. Read ["Upload your data" for more information.](https://sb-biodatacatalyst.readme.io/docs/upload-to-the-platform).
 
 ## Terra Users
 
--   [Use this link to get to the platform](https://terra.biodatacatalyst.nhlbi.nih.gov/#workspaces/fc-product-demo/BioDataCatalyst-Gen3-data-on-Terra-Tutorial). 
--   [Use this link for instructions on importing BDC-hosted datasets into Terra workspaces](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/analyze-data-1/terra/bringing-data-into-a-workspace/bringing-in-data-from-gen3).
+- [Use this link to get to the platform](https://terra.biodatacatalyst.nhlbi.nih.gov/#workspaces/fc-product-demo/BioDataCatalyst-Gen3-data-on-Terra-Tutorial). 
+- [Use this link for instructions on importing BDC-hosted datasets into Terra workspaces](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/analyze-data-1/terra/bringing-data-into-a-workspace/bringing-in-data-from-gen3).
 
 <NextStepsCard>
   **[Explore Data in BDC](/use-bdc/explore)**

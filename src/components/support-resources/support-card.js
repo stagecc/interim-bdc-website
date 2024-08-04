@@ -1,49 +1,66 @@
 import React from "react";
-import { Card, CardBody } from "../card";
-import { Subheading, Paragraph } from "../typography";
-import { Grid } from '@mui/material/';
 import styled from "styled-components";
+import { Subheading, Paragraph } from "../typography";
 import { Link } from "../link"
 
-export const Badge = styled.span`
-  background-color: #fff;
+const CardBadge = styled.div`
+  background-color: transparent;
   color: #666;
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  /* height: 4rem; */
-  width: 4rem;
-  margin: 0;
-  /* border: 1px solid red; */
+  padding: 2rem;
+  background-color: #ddd;
 `;
-export const SupportCard = ({ resource }) => {
-  const { title, icon, description, link } = resource
+
+const CardBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-self: center;
+  padding: 1rem;
+`
+
+const Card = styled(Link)
+  .attrs(props => ({
+    to: props.link,
+    noIcon: true,
+    style: {
+    }
+  }))`
+    text-decoration: none;
+    background-color: #f9f6f3;
+    flex: 1 0 400px;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    height: 175px;
+    filter: 
+      drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1))
+      drop-shadow(4px -4px 4px rgba(0, 0, 0, 0.1))
+      drop-shadow(-4px 8px 4px rgba(0, 0, 0, 0.1));
+    &:hover, &:focus {
+      filter: 
+        drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.15))
+        drop-shadow(6px -6px 6px rgba(0, 0, 0, 0.2))
+        drop-shadow(-6px 8px 6px rgba(0, 0, 0, 0.15))
+        brightness(1.05);
+    };
+    transition: filter 250ms ease-in;
+  `
+
+export const SupportCard = ({ title, icon, description, link }) => {
   return (
-    <Grid item xs={12} sm={12} md={6} lg={4} sx={{
-      '& a': {
-        textDecoration: "none",
-        color: '#444'
-      }
-    }}>
-      <Link noIcon to={link}>
-        <Card style={{ margin: 0, height: "100%" }}>
-          <CardBody style={{
-            padding: "0.75rem 0.5rem",
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "flex-start",
-            gap: '1rem'
-          }}>
-              <Badge>{icon}</Badge>
-              <div>
-                <Subheading noMargin left style={{color: "var(--color-crimson)"}}>
-                  {title}
-                </Subheading> 
-                <Paragraph noMargin left>{description}</Paragraph>
-              </div>
-          </CardBody>
-        </Card>
-      </Link>
-    </Grid>
-  );
-};
+    <Card link={ link }>
+      <CardBadge>
+        {React.createElement(icon, { size: 50, fill: 'var(--color-blueberry)' })}
+      </CardBadge>
+      <CardBody>
+        <Subheading noMargin left style={{ color: "var(--color-crimson)" }}>
+          {title}
+        </Subheading> 
+        <Paragraph noMargin left>{description}</Paragraph>
+      </CardBody>
+    </Card>
+  )
+}
