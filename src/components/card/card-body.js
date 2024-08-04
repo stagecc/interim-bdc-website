@@ -20,7 +20,7 @@ const CardBodyGraphic = styled.div`
 
 const CardBodyContents = styled.div.attrs({
   className: "card-body__contents"
-})(({ fgColor = "inherit", bgColor = "#fff" }) => (`
+})(({ fgColor = "inherit", bgColor = "#f9f6f3" }) => (`
   flex: 1;
   padding: 1rem 2rem 2rem;
   background-color: ${bgColor};
