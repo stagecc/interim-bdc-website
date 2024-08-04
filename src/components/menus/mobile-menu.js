@@ -167,9 +167,9 @@ export const MobileMenu = ({ items }) => {
     <Wrapper>
       <Toggler onClick={handleToggleMenu}>
         {visible ? (
-          <CloseIcon size="36" fill="var(--color-crimson)" />
+          <CloseIcon size="28" fill="var(--color-crimson)" />
         ) : (
-          <HamburgerIcon size="36" fill="var(--color-crimson)" />
+          <HamburgerIcon size="28" fill="var(--color-crimson)" />
         )}
       </Toggler>
       <MobileNavDrawer active={visible}>
