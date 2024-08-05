@@ -1,29 +1,34 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import { useWindowWidth } from "../../hooks";
-import { panelType } from './types'
-import { CarouselPanel } from './panels'
+import { panelType } from './types';
+import { CarouselPanel } from './panels';
 import { PauseIcon, PlayIcon } from "../icons";
-import { Overlay, Border, Wrapper, StyledPanelWrapper } from './panels/subcomponents/PanelContainer'
+import {
+  Border,
+  Overlay,
+  StyledPanelWrapper,
+  Wrapper,
+} from './panels/subcomponents/PanelContainer';
 import { useTransition } from "react-spring";
-import { StateNote } from './panels/subcomponents/StateNote'
+import { StateNote } from './panels/subcomponents/StateNote';
 
-const INTERVAL = 10000 // ms
+const INTERVAL = 10_000; // ms
 
-// chatgpt wrote this function :)
 const shuffleArray = array => {
   for (let i = array.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1)); // Generate a random index from 0 to i
-    // Swap elements at index i and j using destructuring assignment
+    // Generate a random index from 0 to i
+    const j = Math.floor(Math.random() * (i + 1));
+    // Swap elements at index i and j
     [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
 };
 
 export const Carousel = ({ panels }) => {
-  const shuffledPanels = useMemo(() => shuffleArray(panels), [panels])
+  const shuffledPanels = useMemo(() => shuffleArray(panels), [panels]);
   const { isCompact } = useWindowWidth();
-  const [carouselIndex, setCarouselIndex] = useState(0)
+  const [carouselIndex, setCarouselIndex] = useState(0);
   const indexRef = useRef(carouselIndex);
   indexRef.current = carouselIndex;
 
@@ -41,10 +46,10 @@ export const Carousel = ({ panels }) => {
       timer = setInterval(
         () => setCarouselIndex((carouselIndex + 1) % panels.length),
         INTERVAL,
-      )
-      return () => clearInterval(timer)
+      );
+      return () => clearInterval(timer);
     }
-  }, [carouselIndex, panels, playingAnimations])
+  }, [carouselIndex, panels, playingAnimations]);
 
   const handleKeyDown = event => {
     if (event.keyCode === 32) {
@@ -68,14 +73,22 @@ export const Carousel = ({ panels }) => {
       from: { opacity: 0, transform: 'translate3d(0,100%,0)' },
       enter: { opacity: 1, transform: 'translate3d(0,0%,0)' },
       leave: { opacity: 0, transform: 'translate3d(0,-50%,0)' },
-    }
+    };
     const horizontalTransform = { 
       /* horiz transform stuff */ 
       from: { opacity: 0, transform: 'translate3d(100%,0,0)' },
       enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
       leave: { opacity: 0, transform: 'translate3d(-50%,0,0)' },
+    };
+    const config = {
+      mass: 1,
+      friction: 35,
+      tension: 350,
+    };
+    return {
+      ...(isCompact ? verticalTransform : horizontalTransform),
+      config,
     }
-    return isCompact ? verticalTransform  : horizontalTransform
   }, [isCompact])
 
   const panelTransitions = useTransition(
@@ -117,11 +130,11 @@ export const Carousel = ({ panels }) => {
         </Overlay>
       </Wrapper>
     </Border>
-  )
-}
+  );
+};
 
 //
 
 Carousel.propTypes = {
   panels: PropTypes.arrayOf(panelType)
-}
+};
