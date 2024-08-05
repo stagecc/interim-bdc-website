@@ -10,6 +10,7 @@ import { Link } from "../../components/link"
 //make newscard warpper a styled Link?
 
 const NewsCardContainer = styled(Card)`
+  text-decoration: none;
   overflow: hidden;
   height: 100%;
   background: linear-gradient(180deg, var(--color-blueberry) 0%, #314f6e 100%);
