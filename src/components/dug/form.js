@@ -120,21 +120,20 @@ export const DugForm = ({ focusOnMount = false, slashFocus = false }) => {
           '&::after': {
             position: 'absolute',
             left: 0, right: 0,
-            top: 0, bottom: 0,
+            top: 0, bottom: 2,
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             content: '"/"',
             color: '#6669',
-            pt: 0.5,
           },
         },
       }}
     >
       <InputBase
         sx={{ ml: 1, flex: 1, p: 1 }}
-        placeholder="Search for BDC studies related to your research (e.g., disease names, diagnoses, etc.)"
-        inputProps={{ 'aria-label': 'search google maps' }}
+        placeholder="Search BDC Data"
+        inputProps={{ 'aria-label': 'Search BDC Data' }}
         value={ formQuery }
         onChange={ handleChangeFormQuery }
         inputRef={ inputRef }

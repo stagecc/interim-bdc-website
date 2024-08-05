@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import { Card, CardContent, CardHeader, Divider, Typography } from '@mui/material'
 import { useSearch } from './context'
+import { Subsubheading } from '../typography'
 import { ConceptCollectionButton } from './collection'
 import { snipText } from '../../utils'
 
@@ -62,7 +63,8 @@ export const ResultCard = ({ index, result }) => {
       }}
     >
       <CardHeader
-        title={ result.name }
+        disableTypography
+        title={ <Subsubheading noMargin>{result.name}</Subsubheading> }
         subheader={ result.id }
         action={ 
           <ConceptCollectionButton
