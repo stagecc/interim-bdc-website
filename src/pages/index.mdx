@@ -5,6 +5,7 @@ import { Carousel } from "../components/carousel";
 import carouselData from "../data/data-carousel.json"
 
 import { HexMenu } from "../components/menus"
+import { Paragraph } from "../components/typography"
 
 import { Card, CardHeader, CardBody } from "../components/card";
 import { VideoPlayer } from "../components/video-player"
@@ -30,7 +31,9 @@ import { DugForm } from "../components/dug";
 
     <DugForm />
     
-    _Learn more about <Link to="https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/data-access/submitting-a-dbgap-data-access-request">BDC Semantic Search</Link>_.
+    <Paragraph center style={{ fontSize: '80%' }}>
+      _Semantic search provided by Dug. <Link to="https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/data-access/submitting-a-dbgap-data-access-request">Learn more about Dug here</Link>_.
+    </Paragraph>
 
     <Card>
       <CardHeader size="large">What is NHLBI BioData Catalyst<sup>®</sup>&nbsp;(BDC)?</CardHeader>
