@@ -206,7 +206,7 @@ export const SearchForm = ({ focusOnMount = false, compact, style }) => {
       <InputGroup>
         <TextInput
           type="text"
-          placeholder="Search for concepts, studies, and variables"
+          placeholder="Search BDC Data"
           value={formQuery}
           onChange={handleChangeFormQuery}
         />
