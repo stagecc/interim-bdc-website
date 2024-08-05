@@ -2,7 +2,6 @@ import { PageContent, Container } from "../components/layout";
 import { Hidden } from "react-grid-system";
 
 import { Carousel } from "../components/carousel";
-import carouselData from "../data/data-carousel.json"
 
 import { HexMenu } from "../components/menus"
 import { Paragraph } from "../components/typography"
@@ -12,18 +11,17 @@ import { VideoPlayer } from "../components/video-player"
 import { Link } from "../components/link"
 
 import BlurChartCheckUpCurve from "../images/blur-chart-check-up-curve.jpg";
-import { NewsFeedModule } from "../components/modules";
+import { NewsFeed } from "../components/news-feed";
 
 import { DugForm } from "../components/dug";
 
 <PageContent title="Home" hideTitle>
-  <Carousel panels={ carouselData } />
+  <Carousel />
 
   <Container
     width="90%"
     maxWidth="1200px"
     center
-    style={{ marginTop: "0" }}
   >
     <Hidden xs sm md>
       <HexMenu />      
@@ -41,11 +39,11 @@ import { DugForm } from "../components/dug";
 
     <Card>
       <CardHeader size="large">
-          What is NHLBI BioData Catalyst<sup>®</sup>&nbsp;(BDC)?
+        What is NHLBI BioData Catalyst<sup>®</sup>&nbsp;(BDC)?
       </CardHeader>
       <CardBody>
-        NHLBI BioData Catalyst<sup>®</sup> (BDC) is a cloud-based ecosystem that
-        offers researchers data, analytic tools, applications, and
+        NHLBI BioData Catalyst<sup>®</sup> (BDC) is a cloud-based ecosystem
+        that offers researchers data, analytic tools, applications, and
         workflows in secure workspaces. It is a community where
         researchers can find, access, share, store, and analyze heart,
         lung, blood, and sleep data resources. And it is one of NHLBI’s
@@ -62,9 +60,9 @@ import { DugForm } from "../components/dug";
       </CardBody>
     </Card>
     <Card>
-      <CardHeader size="large">Latest Updates</CardHeader>
+      <CardHeader>Latest Updates</CardHeader>
       <CardBody image={{ placement: "left", path: BlurChartCheckUpCurve }}>
-        <NewsFeedModule />
+        <NewsFeed />
       </CardBody>
     </Card>
 

@@ -13,7 +13,7 @@ const ArticleDate = styled.div`
   color: var(--color-grey);
 `;
 
-export const NewsFeedModule = () => {
+export const NewsFeed = () => {
   const news = useNews();
 
   return (

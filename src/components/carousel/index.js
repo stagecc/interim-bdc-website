@@ -12,6 +12,7 @@ import {
 } from './panels/subcomponents/PanelContainer';
 import { useTransition } from "react-spring";
 import { StateNote } from './panels/subcomponents/StateNote';
+import carouselData from "../../data/data-carousel.json"
 
 const INTERVAL = 10_000; // ms
 
@@ -25,8 +26,8 @@ const shuffleArray = array => {
   return array;
 };
 
-export const Carousel = ({ panels }) => {
-  const shuffledPanels = useMemo(() => shuffleArray(panels), [panels]);
+export const Carousel = () => {
+  const shuffledPanels = useMemo(() => shuffleArray(carouselData), []);
   const { isCompact } = useWindowWidth();
   const [carouselIndex, setCarouselIndex] = useState(0);
   const indexRef = useRef(carouselIndex);
@@ -44,12 +45,12 @@ export const Carousel = ({ panels }) => {
     if (playingAnimations) {
       let timer;
       timer = setInterval(
-        () => setCarouselIndex((carouselIndex + 1) % panels.length),
+        () => setCarouselIndex((carouselIndex + 1) % shuffledPanels.length),
         INTERVAL,
       );
       return () => clearInterval(timer);
     }
-  }, [carouselIndex, panels, playingAnimations]);
+  }, [carouselIndex, shuffledPanels, playingAnimations]);
 
   const handleKeyDown = event => {
     if (event.keyCode === 32) {
