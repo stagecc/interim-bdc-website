@@ -15,6 +15,7 @@ import { useSearch } from '../context'
 import { DebugTab, ExplanationTab, StudiesTab } from './tabs'
 import { LoadingDots } from '../../loading'
 import { ConceptCollectionButton } from '../collection'
+import { Subheading, Subsubheading } from '../../typography'
 
 //
 
@@ -158,10 +159,10 @@ export const ResultDialog = () => {
       }}
     >
       <Box id="title-bar">
-        <Typography variant="h4" className="concept-name">
+        <Subheading noMargin className="concept-name">
           { selectedResult.name }&nbsp;&nbsp;
           <ConceptCollectionButton concept={ selectedResult } tooltipPlacement="right" />
-        </Typography>
+        </Subheading>
         <Tabs value={ tabIndex } onChange={ handleClickTab } className="tabs">
           <Tab
             label={ `Studies (${ loadingStudies ? '...' : studies.length })`}
@@ -176,7 +177,7 @@ export const ResultDialog = () => {
         <Stack direction="row">
 
           <Box className="dialog-description">
-            <Typography variant="h5">Description</Typography>
+            <Subsubheading noMargin>Description</Subsubheading>
             <Typography paragraph>{ selectedResult.description }</Typography>
 
             <br />
