@@ -1,8 +1,4 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react'
-import styled from 'styled-components'
-import { Form, InputGroup, TextInput } from '../forms'
-import { Button } from '../buttons'
-import { MagnifyingGlassIcon } from '../icons'
 import { useSearch } from './context'
 
 import {
@@ -91,12 +87,12 @@ export const DugForm = ({ focusOnMount = false, slashFocus = false }) => {
         p: '4px 8px',
         display: 'flex',
         alignItems: 'center',
-        border: '1px solid transparent',
+        border: '2px solid transparent',
         backgroundColor: '#eceef3',
-        transition: 'background-color 250ms',
+        transition: 'background-color 250ms, border-color 250ms',
         '&:focus-within': {
           backgroundColor: '#eef3f9',
-          border: '1px solid #dee3e9',
+          border: '2px solid var(--color-blueberry)',
         },
         borderRadius: '8px',
         '.MuiIconButton-root': { p: 1 },
@@ -163,56 +159,5 @@ export const DugForm = ({ focusOnMount = false, slashFocus = false }) => {
         <SearchIcon />
       </IconButton>
     </Paper>
-  )
-}
-
-const SearchButton = styled(Button)`
-  background-color: var(--color-blueberry);
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-`
-
-export const SearchForm = ({ focusOnMount = false, compact, style }) => {
-  const { doSearch, query } = useSearch()
-  const [formQuery, setFormQuery] = useState(query)
-  const inputField = useRef()
-
-  // unless specified otherwise, focus the search form input
-  useEffect(() => {
-    if (focusOnMount && inputField.current) {
-      inputField.current.focus()
-    }
-  }, [focusOnMount])
-
-  // this catches programmatic navigation to the search page,
-  // sticking the query in the search form field.
-  useEffect(() => {
-    setFormQuery(query)
-  }, [query])
-
-  // update form field query
-  const handleChangeFormQuery = event => {
-    setFormQuery(event.target.value)
-  }
-
-  const handleSubmit = event => {
-    event.preventDefault()
-    doSearch(formQuery)
-  }
-
-  return (
-    <Form onSubmit={ handleSubmit } style={ style }>
-      <InputGroup>
-        <TextInput
-          type="text"
-          placeholder="Search BDC Data"
-          value={formQuery}
-          onChange={handleChangeFormQuery}
-        />
-          <SearchButton small={ compact }>
-            <MagnifyingGlassIcon size={ 20 } fill="var(--color-white)"/>
-          </SearchButton>
-      </InputGroup>
-    </Form>
   )
 }

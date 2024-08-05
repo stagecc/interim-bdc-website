@@ -29,14 +29,21 @@ import { DugForm } from "../components/dug";
       <HexMenu />      
     </Hidden>
 
-    <DugForm />
-    
-    <Paragraph center style={{ fontSize: '80%' }}>
-      _Semantic search provided by Dug. <Link to="https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/explore-available-data/dug-semantic-search">Learn more about Dug here</Link>_.
-    </Paragraph>
+    <Card style={{
+      padding: '3rem 2rem 1rem 2rem',
+      margin: '1rem 0 4rem 0',
+    }}>
+      <DugForm />
+      
+      <Paragraph center style={{ fontSize: '85%' }}>
+        _Semantic search provided by Dug. <Link to="https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/explore-available-data/dug-semantic-search">Learn more about Dug here</Link>_.
+      </Paragraph>
+    </Card>
 
     <Card>
-      <CardHeader size="large">What is NHLBI BioData Catalyst<sup>®</sup>&nbsp;(BDC)?</CardHeader>
+      <CardHeader size="large">
+          What is NHLBI BioData Catalyst<sup>®</sup>&nbsp;(BDC)?
+      </CardHeader>
       <CardBody>
         NHLBI BioData Catalyst<sup>®</sup> (BDC) is a cloud-based ecosystem that
         offers researchers data, analytic tools, applications, and
