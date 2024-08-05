@@ -1,4 +1,5 @@
 import { PageContent } from "../../components/layout";
+import { Card, CardHeader, CardBody } from "../../components/card";
 import { Link } from "../../components/link";
 
 <PageContent 
@@ -9,15 +10,21 @@ Use the form below to contact BDC, and a BDC representative will reply as soon a
 
 Do not include personally identifiable information or personal health information in the form. If access to such information is needed to resolve your request, send that information securely through external means such as U.S. mail.
 
-<iframe
-  title="Feedback Form"
-  className="freshwidget-embedded-form"
-  id="freshwidget-embedded-form"
-  src="https://bdcatalyst.freshdesk.com/widgets/feedback_widget/new?&widgetType=embedded&screenshot=No&captcha=yes"
-  scrolling="no"
-  style={{ height: "2175px", overflow: 'auto' }}
-  width="100%"
-  frameBorder="0"
-></iframe>
+<Card>
+  <CardHeader size="large">Contact BDC</CardHeader>
+  <CardBody>
+    <iframe
+      title="Feedback Form"
+      className="freshwidget-embedded-form"
+      id="freshwidget-embedded-form"
+      src="https://bdcatalyst.freshdesk.com/widgets/feedback_widget/new?&widgetType=embedded&screenshot=No&captcha=yes"
+      scrolling="no"
+      style={{ height: "2175px", overflow: 'auto' }}
+      width="100%"
+      frameBorder="0"
+    ></iframe>
+  </CardBody>
+</Card>
+
 
 </PageContent>
