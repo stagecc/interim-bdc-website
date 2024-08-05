@@ -71,7 +71,7 @@ export const ExternalLink = ({
       {!noIcon && (
         <ExternalLinkIcon
           fill={lightIcon ? "#eee" : "var(--color-blueberry)"}
-          size={14}
+          size={10}
           {...props}
           style={{ marginLeft: "0.25rem" }}
         />

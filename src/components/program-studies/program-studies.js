@@ -7,12 +7,15 @@ import { Programs } from "./programs-panel";
 import { Studies } from "./studies-panel";
 import { kebabCase } from "../../utils/casing";
 import { useQueryParams } from "../../hooks/use-query-params";
+import { Seo } from "../seo";
 
 export const ProgramStudiesTable = () => {
   const [program, setProgram] = useQueryParams(null, "program");
 
   return (
     <PageContent width="95%" maxWidth="1600px" center gutters>
+      <Seo title={`${program ? `${program} | ` : ''}Research Community Data`} />
+
       <QueryCacheProvider>
         <Card>
           <CardSection title={<div id="programs-title">Programs</div>}>
