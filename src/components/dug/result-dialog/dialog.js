@@ -9,13 +9,12 @@ import {
   Stack,
   Tab,
   Tabs,
-  Typography,
 } from '@mui/material'
 import { useSearch } from '../context'
 import { DebugTab, ExplanationTab, StudiesTab } from './tabs'
 import { LoadingDots } from '../../loading'
 import { ConceptCollectionButton } from '../collection'
-import { Subheading, Subsubheading } from '../../typography'
+import { Paragraph, Subheading, Subsubheading } from '../../typography'
 
 //
 
@@ -177,8 +176,8 @@ export const ResultDialog = () => {
         <Stack direction="row">
 
           <Box className="dialog-description">
-            <Subsubheading noMargin>Description</Subsubheading>
-            <Typography paragraph>{ selectedResult.description }</Typography>
+            <Subsubheading>Description</Subsubheading>
+            <Paragraph>{ selectedResult.description }</Paragraph>
 
             <br />
 
@@ -189,8 +188,8 @@ export const ResultDialog = () => {
             {
               !loadingStudies && (
                 <ul>
-                  <li><Typography>studies: { studies.length }</Typography></li>
-                  <li><Typography>variables: { studies.reduce((sum, study) => sum + study.elements.length, 0) }</Typography></li>
+                  <li>studies: { studies.length }</li>
+                  <li>variables: { studies.reduce((sum, study) => sum + study.elements.length, 0) }</li>
                 </ul>
               )
             }
@@ -210,9 +209,9 @@ export const ResultDialog = () => {
             <ExplanationTab />
           </TabPanel>
 
-          {/* this debug tab can stay. the tab is rendered in development mode */}
+          {/* this debug tab can stay. its tab is only rendered in development mode */}
           <TabPanel value={ tabIndex } index={ 2 } sx={{ p: 0 }}>
-            <DebugTab concept={ selectedResult } studies={ studies } />
+            <DebugTab>{ JSON.stringify({ concept: selectedResult, studies }, null, 2) }</DebugTab>
           </TabPanel>
 
         </Stack>

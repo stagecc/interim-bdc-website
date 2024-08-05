@@ -1,16 +1,10 @@
-import React from 'react'
-import { Box } from '@mui/material'
+import styled from 'styled-components';
 
-export const DebugTab = props => {
-  return (
-    <Box component="pre" sx={{
-      fontSize: '75%',
-      backgroundColor: '#333',
-      color: '#ddd',
-      whiteSpace: 'pre-wrap',
-      p: 1, m: 0,
-    }}>
-      { JSON.stringify(props, null, 2) }
-    </Box>
-  )
-}
+export const DebugTab = styled.pre`
+  font-size: 75%;
+  background-color: #333;
+  color: #ddd;
+  white-space: pre-wrap;
+  p: 1;
+  m: 0;
+`;
