@@ -35,7 +35,7 @@ export const Wrapper = styled.div(({ compact }) => `
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: #005489;
+    background-color: #0f2d47;
     background-image: url(${backgroundImage});
     background-position: center;
     background-size: cover;
