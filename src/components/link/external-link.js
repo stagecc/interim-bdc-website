@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { useDialog } from "../../hooks";
+import { Paragraph } from "../typography";
 import { ExternalLinkIcon } from "../icons";
 
 export const ExternalLink = ({
@@ -31,28 +32,30 @@ export const ExternalLink = ({
     event.preventDefault();
     dialog.setTitle("Leaving BDC");
     dialog.setContents(
-      <div>
-        <p>
+      <Fragment>
+        <Paragraph>
           This graphic notice ({" "}
           <ExternalLinkIcon size={14} fill="var(--color-blueberry)" /> ) next 
           to a link within the BDC ecosystem indicates that the link leads to 
           another site that is not a federal government website.
-        </p>
-        <p>
+        </Paragraph>
+        <Paragraph>
           NHLBI cannot attest to the accuracy of information provided on
           external websites.
-        </p>
-        <p>
+        </Paragraph>
+        <Paragraph>
           Linking to a non-federal website does not constitute an endorsement by
           NHLBI of the sponsors or of the information and products presented on
           the website.
-        </p>
-        <p>
+        </Paragraph>
+        <Paragraph>
           You will be subject to the destination's privacy policy when you
           follow the link.
-        </p>
-        <p>Are you sure you want to navigate to this site?</p>
-      </div>
+        </Paragraph>
+        <Paragraph style={{ textAlign: 'center', marginTop: '2rem' }}>
+          Are you sure you want to navigate to this site?
+        </Paragraph>
+      </Fragment>
     );
     dialog.setContinueHandler(() => () => window.open(to, "_blank"));
     dialog.open();
