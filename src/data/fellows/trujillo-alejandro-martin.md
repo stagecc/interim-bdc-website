@@ -2,7 +2,7 @@
 name: Alejandro Martin Trujillo, PhD
 university: Icahn school of medicine at mount sinai hospital
 photo: trujillo-alejandro-martin.jpg
-cohort: 3
+cohort: III
 project:
   title: Development of robust and efficient pipelines for identifying tandem repeat expansions in whole genome sequencing data, and its application to congenital heart defects
   abstract: >

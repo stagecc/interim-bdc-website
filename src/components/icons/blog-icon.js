@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const BlogIcon = ({ size, fill, ...rest }) => {
+export const BlogIcon = ({ size = 24, fill = "#000", ...rest }) => {
   return (
     <svg
       {...rest}
@@ -25,9 +25,4 @@ export const BlogIcon = ({ size, fill, ...rest }) => {
 BlogIcon.propTypes = {
   size: PropTypes.number.isRequired,
   fill: PropTypes.string.isRequired
-};
-
-BlogIcon.defaultProps = {
-  size: 24,
-  fill: "#000"
 };

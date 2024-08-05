@@ -2,7 +2,7 @@
 name: Laura Raffield, PhD
 university: University of North Carolina at Chapel Hill
 photo: raffield-laura.jpg
-cohort: 1
+cohort: I
 project:
   title: Genetic Assessment of Sixteen Inflammation Traits in TOPMed Whole Genome Sequencing Data
   abstract: >

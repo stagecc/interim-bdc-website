@@ -5,32 +5,20 @@ import { Link } from "../link";
 import { ChevronDownIcon } from "../icons";
 import { ButtonLink } from "../buttons"
 
-export const MenuContainer = styled.nav`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: stretch;
-  background-color: transparent;
-`;
-
 export const MenuLink = styled(Link)`
   display: flex;
-
+  white-space: nowrap;
   align-items: center;
-  text-transform: uppercase;
   color: #444;
   text-decoration: none;
-  padding: 1.5rem 1rem;
+  padding: 1rem 1rem;
   margin: 0;
   background-color: transparent;
-  letter-spacing: 2px;
   position: relative;
   height: 100%;
-  font-weight: 400;
-  transition: color 500ms, background-color 150ms;
   &:hover,
   &:focus {
-    background-color: #ccc;
+    background-color: #eee;
   }
   &.active {
     color: #fff;
@@ -45,34 +33,48 @@ export const MenuItem = styled.span`
   justify-content: center;
   align-items: center;
   height: 100%;
-  
 `;
 
 export const SubmenuHeader = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  text-transform: uppercase;
-  padding: 0.5rem 1.25rem;
+  padding: 0.5rem 0.75rem;
   margin: 0;
-  background-color: ${(props) =>
-    props.active ? "var(--color-crimson)" : "transparent"};
-  color: ${(props) => (props.active ? "#fff" : "#333")};
-  letter-spacing: 2px;
+  color: #333;
+  background: ${(props) =>
+    props.active
+      ? "linear-gradient(to top, var(--color-crimson) 4px, #f9f6f3 4px, #f9f6f3 100%)"
+      : props.open
+        ? "linear-gradient(to top, #aaa 4px, #eee 4px, #eee 100%)"
+        : 'white'
+    };
+  letter-spacing: 0;
   position: relative;
   font-size: 90%;
   font-weight: 400;
   cursor: pointer;
-  transition: color 500ms, background-color 250ms;
   height: 100%;
+  white-space: nowrap;
   & svg {
-    transition: transform 50ms;
+    transition: transform 100ms;
     transform: ${(props) =>
-      props.open ? "translateY(0.15rem)" : "translateY(0)"};
-    fill: ${(props) => (props.active ? "#fff" : "#333")};
+      props.open ? "translateY(2px)" : "translateY(0)"};
+    fill: ${(props) => (props.active ? "#222" : "#666")};
   }
   &:hover svg {
     transition: transform 250ms;
+  }
+`;
+
+export const MenuContainer = styled.nav`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: stretch;
+  background-color: transparent;
+  ${SubmenuHeader}[class~="open"]:hover {
+    background: linear-gradient(to top, #aaa 4px, #eee 4px, #eee 100%);
   }
 `;
 
@@ -97,9 +99,10 @@ const Submenu = styled.nav.attrs({ className: "submenu" })`
 `;
 
 const JoinBDCButton = styled(ButtonLink)`
-  margin-right: 1rem;
-  margin-left: 1rem;
-  padding: 1rem 2rem;
+  margin: 0 1rem;
+  padding: 1rem;
+  background-color: var(--color-blueberry);
+  font-weight: bold;
 `
 
 export const Menu = ({ items, showBrand }) => {

@@ -15,7 +15,7 @@ import {
 import { Paragraph } from "../typography";
 import { Link } from "../link";
 import { Menu, MobileMenu } from '../menus';
-import { Markdown } from '../mdxComponents';
+import { Markdown } from '../markdown';
 import { menuItems } from "../../data/menu";
 import { List, ListItem } from "../list";
 import { useWindowWidth } from "../../hooks";
@@ -78,11 +78,11 @@ export function Layout({ children }) {
 
   return (
     typeof isCompact === "boolean" && (
-      <LayoutWrapper compact={isCompact}>
+      <LayoutWrapper compact={isCompact ? true : undefined}>
         <SkipLink href="#main-content">Skip to main content</SkipLink>
         <StickyWrapper stuck={true}>
           <Header>
-            <Brand width="380px" compact={isCompact} />
+            <Brand width="350px" compact={isCompact ? true : undefined} />
             <Visible xs sm md lg>
               <MobileMenu items={menuItems} />
             </Visible>
@@ -146,7 +146,7 @@ export function Layout({ children }) {
                   </List>
                 </Col>
                 <Col xs={12} md={7} pull={{ md: 5 }}>
-                  <Paragraph center={isCompact} left={!isCompact}>
+                  <Paragraph center={isCompact} left={!isCompact ? true : undefined}>
                     BDC is a product of the National Heart, Lung,
                     and Blood Institute of the National Institutes of Health.
                     <LineBreak count={2} />
@@ -172,7 +172,7 @@ export function Layout({ children }) {
             </Grid>
           </Container>
         </Footer>
-        <Subfooter compact={isCompact}>
+        <Subfooter compact={isCompact ? true : undefined}>
           <Link to="https://www.hhs.gov/">
             U.S. Department of Health & Human Services
           </Link>

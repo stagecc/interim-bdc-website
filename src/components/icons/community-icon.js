@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const CommunityIcon = ({ size, fill, ...rest }) => {
+export const CommunityIcon = ({ size = 24, fill = "#000", ...rest }) => {
   return (
     <svg
       {...rest}
@@ -23,9 +23,4 @@ export const CommunityIcon = ({ size, fill, ...rest }) => {
 CommunityIcon.propTypes = {
   size: PropTypes.number.isRequired,
   fill: PropTypes.string.isRequired
-};
-
-CommunityIcon.defaultProps = {
-  size: 24,
-  fill: "#000"
 };

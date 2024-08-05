@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 //
 
 export const Title = styled.h1`
-  /* border: 1px solid #f09; */
+  font-family: Montserrat, sans-serif;
   margin: 2rem 0 2rem 0;
   padding: 0 0 1rem;
   line-height: 2.5rem;

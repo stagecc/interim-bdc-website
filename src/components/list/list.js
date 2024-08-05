@@ -5,7 +5,12 @@ import { OrderedList, UnorderedList } from './'
 //
 
 
-export const List = ({ children, ordered, ...props }) => {
+export const List = ({
+  children,
+  ordered = false,
+  dense = false,
+  ...props
+}) => {
   const ListComponent = ordered ? OrderedList : UnorderedList;
   return <ListComponent {...props}>{children}</ListComponent>;
 };
@@ -16,8 +21,3 @@ List.propTypes = {
   ordered: PropTypes.bool.isRequired,
 };
 
-List.defaultProps = {
-  dense: false,
-  children: PropTypes.node.isRequired,
-  ordered: false,
-};

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const ChevronIcon = ({ size, fill, children, ...rest }) => (
+const ChevronIcon = ({ size = 24, fill = "#000", children, ...rest }) => (
   <svg
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
@@ -46,10 +46,4 @@ const requiredProps = {
   size: PropTypes.number.isRequired
 };
 
-const defaultProps = {
-  fill: "#fff",
-  size: 24
-};
-
 ChevronIcon.propTypes = requiredProps;
-ChevronIcon.defaultProps = defaultProps;

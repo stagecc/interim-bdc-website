@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const EducationIcon = ({ size, fill, ...rest }) => {
+export const EducationIcon = ({ size = 24, fill = "#000", ...rest }) => {
   return (
     <svg
       {...rest}
@@ -36,9 +36,4 @@ export const EducationIcon = ({ size, fill, ...rest }) => {
 EducationIcon.propTypes = {
   size: PropTypes.number.isRequired,
   fill: PropTypes.string.isRequired
-};
-
-EducationIcon.defaultProps = {
-  size: 24,
-  fill: "#000"
 };

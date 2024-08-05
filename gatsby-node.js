@@ -117,15 +117,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   // get date to sort events into upcoming and past event lists
   const todaysDate = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD'
 
-  // Create upcoming event list page
-  createPage({
-    path: "/about/events",
-    component: upcomingEventsTemplate,
-    context: {
-      todaysDate: todaysDate,
-    },
-  });
-
   // Create archived event list page
   createPage({
     path: "/news-and-events/events/archive",

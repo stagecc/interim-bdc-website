@@ -19,12 +19,17 @@ const Dialog = ({ onContinue }) => {
   const animation = useSpring({
     from: {
       transform: "translate(-50%, -100%)",
-      opacity: 0
+      filter: "opacity(0)",
     },
     to: {
-      opacity: 1,
-      transform: "translate(-50%, -50%)"
-    }
+      transform: "translate(-50%, -50%)",
+      filter: "opacity(1)", 
+    },
+    config: {
+      mass: 1,
+      friction: 20,
+      tension: 300,
+    },
   });
 
   useEffect(() => {

@@ -2,7 +2,7 @@
 name: Joshua Weinstock, PhD Candidate
 university: University of Michigan
 photo: weinstock-joshua.jpg
-cohort: 3
+cohort: III
 project:
   title: Recurrent Somatic Variation in TOPMed Whole Genomes
   abstract: >

@@ -8,13 +8,13 @@ const BrandContainer = styled(Link).attrs({
   className: "brand"
 })(
   ({ compact }) => `
-  height: 100%;
-  margin: auto 0;
-  padding: 0 1rem;
-  transition: transform 250ms, max-width 250ms;
-  transform: translateX(${compact ? "-34%" : "0"});
-  transformOrigin: 0% 50%;
-`
+    height: 100%;
+    margin: auto 0;
+    padding: 0 1rem;
+    transition: transform 250ms, max-width 250ms;
+    transform: translateX(${compact ? "-34%" : "0"});
+    transformOrigin: 0% 50%;
+  `
 );
 
 export const Brand = ({

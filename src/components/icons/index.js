@@ -5,6 +5,7 @@ export * from "./close-icon";
 export * from "./community-icon";
 export * from "./data-bolt-icon";
 export * from "./documents-icon";
+export * from "./download-icon";
 export * from "./education-icon";
 export * from "./estimate-icon";
 export * from "./external-link-icon";

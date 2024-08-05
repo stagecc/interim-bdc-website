@@ -1,14 +1,64 @@
 import { PageContent } from "../../components/layout";
 import { Heading } from "../../components/typography";
-import { SupportGrid } from "../../components/support-resources"
+import {
+  SupportCard,
+  SupportGrid,
+} from "../../components/support-resources"
+import {
+  BlogIcon,
+  CommunityIcon,
+  DocumentsIcon,
+  HelpDeskIcon,
+  UserIcon,
+  VideosIcon
+} from "../../components/icons";
 
 <PageContent 
   title="Support"
   width="95%" maxWidth="1200px" center gutters
 >
-<Heading center>Find More Answers</Heading>
-<SupportGrid />
 
-If you have resources you would like to share with the BDC community, refer to our Contributing User Resources to BDC documentation.
+  <Heading center>Find More Answers</Heading>
 
+  <SupportGrid>
+    <SupportCard
+      title="User FAQs"
+      icon={ UserIcon }
+      description="Read answers to common questions."
+      link="/user-resources/user-faqs"
+    />
+    <SupportCard
+      title="Knowledge Base"
+      icon={ BlogIcon }
+      description= "Search informational articles."
+      link="https://bdcatalyst.freshdesk.com/support/solutions"
+    />
+    <SupportCard
+      title="Documentation"
+      icon={ DocumentsIcon }
+      description= "Read the release notes and get more instructions."
+      link="https://bdcatalyst.gitbook.io/biodata-catalyst-documentation"
+    />
+    <SupportCard
+      title="Forum"
+      icon={ CommunityIcon }
+      description="Interact with the community or find answers."
+      link="https://bdcatalyst.freshdesk.com/support/discussions"
+    />
+    <SupportCard
+      title="Help Desk"
+      icon={ HelpDeskIcon }
+      description= "Contact us."
+      link="/help-and-support/contact-us"
+    />
+    <SupportCard
+      title="YouTube"
+      icon={ VideosIcon }
+      description= "Watch demos, webinars, and more."
+      link="https://www.youtube.com/channel/UCGkmY5oNK8uFZzT8vV_9KgQ"
+    />
+  </SupportGrid>
+
+  If you have resources you would like to share with the BDC community,
+  refer to our Contributing User Resources to BDC documentation.
 </PageContent>

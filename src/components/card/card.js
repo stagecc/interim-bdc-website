@@ -1,23 +1,19 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-export const Card = styled.div`
-  // & * { border: 1px solid #f99; }
+export const Card = styled.div(({
+  elevate = true,
+}) => (`
   overflow: hidden;
-  ${props =>
-    props.metaAlert ? `box-shadow: 4px 4px 12px rgba(186, 194, 204, 0.5);` : `box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.25);`}
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.25));
+  border: 1px solid rgba(0, 0, 0, 0.25);
   margin-bottom: 3rem;
-  height: ${props => (props.metaAlert ? null : "100%")};
   display: flex;
   flex-direction: column;
-  background-color: #fff;
-`;
+  background-color: #fffd;
+`));
 
 Card.propTypes = {
   children: PropTypes.node.isRequired,
-  elevate: PropTypes.bool.isRequired
-};
-
-Card.defaultProps = {
-  elevate: true
+  elevate: PropTypes.bool,
 };

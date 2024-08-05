@@ -2,7 +2,7 @@
 name: Jean Monlong, PhD
 university: University of California, Santa Cruz
 photo: monlong-jean.jpg
-cohort: 1
+cohort: I
 project:
   title: Genotyping Structural Variants in TOPMed Using Pangenome Graphs
   abstract: >

@@ -5,9 +5,10 @@
 }
 
 html {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Inter", sans-serif;
   color: #444;
-  font-size: 13pt;
+  font-size: 12pt;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -18,6 +19,7 @@ a {
 }
 a:hover,
 a:active {
+  text-decoration-thickness: 2px;
   text-decoration-color: var(--color-blueberry);
 }
 
@@ -35,7 +37,7 @@ strong {
   --color-eggplant: #323268;
   --color-eggplant-dark: #202050;
   --color-blueberry: #21568a;
-  --color-blueberry-light: #21568a66;
+  --color-blueberry-light: #a6bbd0;
   --color-blueberry-dark: #01366a;
   --color-sky: #e3f2fd;
   --color-peach: #f2b5a7;

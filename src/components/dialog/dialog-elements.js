@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { animated } from "react-spring";
-import { Heading } from "../typography";
+import { Subheading } from "../typography";
 
 export const Wrapper = styled(animated.div).attrs({ role: "dialog" })`
   width: 95%;
@@ -13,7 +13,6 @@ export const Wrapper = styled(animated.div).attrs({ role: "dialog" })`
   border-radius: 4px;
   background-color: #eee;
   color: var(--color-eggplant);
-  padding: 0.5rem 1rem;
   filter: drop-shadow(0 0 0.25rem rgba(0, 0, 0, 0.5));
   overflow-y: auto;
   max-height: calc(100vh - 2rem);
@@ -23,6 +22,7 @@ export const Header = styled.div`
   padding: 1rem;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid #ddd;
 `;
 
 export const FellowsHeader = styled.div`
@@ -30,21 +30,25 @@ export const FellowsHeader = styled.div`
   justify-content: end;
 `
 
-export const Title = styled(Heading)`
+export const Title = styled(Subheading)`
   flex: 1;
   padding: 0;
   margin: 0;
 `;
 
 export const Body = styled.div`
-  padding: 0 1rem;
+  padding: 1rem 2rem;
   text-align: left;
 `;
 
 export const Actions = styled.div`
   padding: 1rem;
   text-align: right;
+  border-top: 1px solid #ddd;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
   & button {
-    margin: 0.25rem 0.5rem;
+    padding: 0.5rem 1rem;
   }
 `;

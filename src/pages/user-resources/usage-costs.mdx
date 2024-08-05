@@ -9,8 +9,10 @@ menu:
 ---
 
 import { PageContent } from "../../components/layout";
-import { MenuListItem, StickyLeftMenu, StickyLeftMenuContainer } from "../../components/layout/sticky-menu"
+import { StickyLeftMenu } from "../../components/layout/sticky-menu"
 import { ButtonContainer, ButtonLink } from "../../components/buttons"
+import { NextStepsCard } from "../../components/card";
+import { CloudCreditsForm } from "../../components/forms";
 
 <PageContent 
   title="Usage Costs"
@@ -19,7 +21,9 @@ import { ButtonContainer, ButtonLink } from "../../components/buttons"
 >
 ## Usage Costs
 
-There are no costs to BDC users for creating accounts or [exploring the data](/use-bdc/explore-data) BDC hosts. Users do incur costs for computation, storage of uploaded or imported data ([BYOD](/use-bdc/analyze-data)), storage of derived results (including egress costs for downloads of derived data), and file transfers (see [Cloud Infrastructure Pricing](https://sb-biodatacatalyst.readme.io/docs/about-pricing)). Computation costs depend on the compute instance size, the duration of the instance use, and the cloud providers' pricing of the compute instance at the time of execution. Storage costs depend on the file size, the duration the file is stored, and the cloud providers' pricing of the storage classes.
+There are no costs to BDC users for creating accounts or [exploring the data](/use-bdc/explore-data) BDC hosts.
+
+Users do incur costs for computation, storage of uploaded or imported data ([BYOD](/use-bdc/analyze-data)), storage of derived results (including egress costs for downloads of derived data), and file transfers (see [Cloud Infrastructure Pricing](https://sb-biodatacatalyst.readme.io/docs/about-pricing)). Computation costs depend on the compute instance size, the duration of the instance use, and the cloud providers' pricing of the compute instance at the time of execution. Storage costs depend on the file size, the duration the file is stored, and the cloud providers' pricing of the storage classes.
 
 If BDC users choose to use SAS within their workspaces, they also incur a SAS usage license fee (approximately $3 per hour; subject to change), which is NOT covered by BDC's cloud credit programs.
 
@@ -28,7 +32,7 @@ If BDC users choose to use SAS within their workspaces, they also incur a SAS us
 
 BDC is committed to helping users estimate and minimize costs.
 
-***To help minimize file transfer costs**, BDC allows users to compute on Amazon Web Services (AWS), Google Cloud Platform (GCP), or Microsoft Azure. The result files are stored where the compute was orchestrated, which helps minimize costs because BDC users can use the data where it already "lives."
+**To help minimize file transfer costs**, BDC allows users to compute on Amazon Web Services (AWS), Google Cloud Platform (GCP), or Microsoft Azure. The result files are stored where the compute was orchestrated, which helps minimize costs because BDC users can use the data where it already "lives."
 
 **To help reduce file storage costs**, BDC collaborates with [NIH STRIDES](https://cloud.nih.gov/), which affords BDC users discounts on both compute and storage costs. These savings are automatically passed on to BDC users.
 
@@ -46,7 +50,7 @@ BDC also offers **cost management recommendations**, like deleting result files 
 
 To use the cloud cost estimators, you will need the following:
 -   [eRA Commons account](https://www.era.nih.gov/register-accounts/create-and-edit-an-account.htm)
--   To use open-access data similar to the data you will analyze or an approved data access request for each controlled-access dataset you plan to use. Researchers who do not have approved DARs for the controlled data should [read the dbGaP section of the Understanding Access page](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/data-access/understanding-access-requirements-for-biodata-catalyst#dbgap) and [Submitting a dbGaP Data Access Request](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/data-access/submitting-a-dbgap-data-access-request) in BDC's documentation.
+-   Access to data that you plan to analyze: Either open-access data similar to the data you will analyze or an approved data access request (DAR) for each controlled-access dataset you plan to use. Researchers who do not have approved DARs for the controlled data should [read the dbGaP section of the Understanding Access page](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/data-access/understanding-access-requirements-for-biodata-catalyst\#dbgap) and [Submitting a dbGaP Data Access Request](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/data-access/submitting-a-dbgap-data-access-request) in BDC’s documentation.
 -   An [account and a project](/use-bdc/analyze-data) in a BDC workspace
 -   Download of the selected app(s) to your BDC workspace
 
@@ -94,7 +98,7 @@ Applicants for the NHLBI BDC Cloud Credit Support Program must specify the BDC p
 
 ### Cloud Credit Requests for Academic Classes and Group Educational Sessions
 
-To encourage the use of BDC among early career researchers, [BDC offers a guide to support integration into academic classes and group educational settings](https://sb-biodatacatalyst.readme.io/docs/using-nhlbi-biodata-catalyst-for-workshops-and-courses) and may provide cloud credits to support limited participant use during the sessions. In many instances, BDC/NHLBI will provide $300 per participant (up to $7,500 per session) in cloud credits.
+To encourage the use of BDC among early career researchers, [BDC offers a guide to support integration into academic classes and group educational settings](https://sb-biodatacatalyst.readme.io/docs/using-nhlbi-biodata-catalyst-for-workshops-and-courses) and may provide cloud credits to support limited participant use during the sessions. In many instances, BDC/NHLBI will up to $7,500 per session in cloud credits.
 
 Criteria for Cloud Credits for Academic Classes and Group Educational Sessions include the following:
 
@@ -108,29 +112,31 @@ Criteria for Cloud Credits for Academic Classes and Group Educational Sessions i
 
 Before completing this form, you must [create an account for a BDC workspace](/use-bdc/analyze-data).
 
-Applications will be reviewed, and notifications will be sent as soon as possible. If granted, the cloud credits will remain available as long as there is activity in the billing group. If there are six months of inactivity, users will be asked whether the credits are still needed.
+Applications will be reviewed, and notifications will be sent as soon as possible.
+If granted, the cloud credits will remain available as long as there is activity in the billing group.
+If there are six months of inactivity, users will be asked whether the credits are still needed.
 
+<CloudCreditsForm />
 
-Frequent Next Steps
--------------------
+<NextStepsCard>
+  [Explore Data in BDC](/use-bdc/explore-data)
+  -   Search Hosted Data
+  -   Research Community Data
+  -   Assess Feasibility
+  -   Data Access Requirements
 
-[Explore Data in BDC](/use-bdc/explore-data)
--   Search Hosted Data
--   Research Community Data
--   Assess Feasibility
--   Data Access Requirements
+  [Analyze Data](/use-bdc/analyze-data)
+  -   Prepare to Analyze Data
+  -   Build a Cohort for Analysis
+  -   Import Data to a Workspace
+  -   Utilize Analysis Tools
+  -   Bring Your Own Data
 
-[Analyze Data](/use-bdc/analyze-data)
--   Prepare to Analyze Data
--   Build a Cohort for Analysis
--   Import Data to a Workspace
--   Utilize Analysis Tools
--   Bring Your Own Data
+  Know the [Terms of Use & Policies](/user-resources/usage-terms)
 
-Know the [Terms of Use & Policies](/user-resources/usage-terms)
+  [Join the BDC Community](/join-bdc)
 
-[Join the BDC Community](/join-bdc)
-
-Access [User Support](/help-support/support)
+  Access [User Support](/help-support/support)
+</NextStepsCard>
 
 </PageContent>

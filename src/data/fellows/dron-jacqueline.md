@@ -2,7 +2,7 @@
 name: Jacqueline Dron, PhD
 university: Massachusetts General Hospital
 photo: dron-jacqueline.jpg
-cohort: 3
+cohort: III
 project:
   title: Modeling lifetime coronary artery disease trajectories of naturally occurring DNA variation linked to low circulating triglycerides
   abstract: >

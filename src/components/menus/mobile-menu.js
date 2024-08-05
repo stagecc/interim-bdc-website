@@ -18,15 +18,13 @@ const Overlay = styled.div`
   pointer-events: ${props => (props.shaded ? "auto" : "none")};
 `;
 
-const Wrapper = styled.div``;
-
 const Toggler = styled.button`
   cursor: pointer;
   background-color: transparent;
   border: 0;
   z-index: 3;
   margin-right: 1rem;
-  height: 100%;
+  height: 5rem;
 `;
 
 const MobileNavDrawer = styled.div`
@@ -164,14 +162,8 @@ export const MobileMenu = ({ items }) => {
   }, [visible]);
 
   return (
-    <Wrapper>
-      <Toggler onClick={handleToggleMenu}>
-        {visible ? (
-          <CloseIcon size="36" fill="var(--color-crimson)" />
-        ) : (
-          <HamburgerIcon size="36" fill="var(--color-crimson)" />
-        )}
-      </Toggler>
+    <Fragment>
+      <Overlay shaded={visible} onClick={handleCloseMenu} />
       <MobileNavDrawer active={visible}>
         <div style={{ width: "220px" }}>
           <Brand white />
@@ -223,7 +215,13 @@ export const MobileMenu = ({ items }) => {
           <MenuLink to="/join-bdc">Join BDC</MenuLink>
         </MobileNav>
       </MobileNavDrawer>
-      <Overlay shaded={visible} onClick={handleCloseMenu} />
-    </Wrapper>
+      <Toggler onClick={handleToggleMenu}>
+        {visible ? (
+          <CloseIcon size="28" fill="#eee" />
+        ) : (
+          <HamburgerIcon size="28" fill="var(--color-crimson)" />
+        )}
+      </Toggler>
+    </Fragment>
   );
 };
