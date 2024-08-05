@@ -1,36 +1,63 @@
 import React from "react";
 import { Container as Grid, Row, Col, Visible } from "react-grid-system";
-import { List, ListItem } from "../../components/list"
-import { navigate } from "gatsby";
+import { keyframes, styled } from 'styled-components';
+import { useScrollPosition } from "../../hooks";
+import { List, ListItem } from "../../components/list";
+import { BackToTopButton } from "./back-to-top-button";
+
+const BACK_TO_TOP_SCROLL_THRESHOLD = 400;
 
 export const MenuListItem = ({ href, heading }) => (
   <ListItem
     primary={
-      <a href={`#${href}`} onClick={() => navigate(`#${href}`)}>
+      <a href={`#${href}`}>
         {heading}
       </a>
     }
   />
-)
+);
 
-export const StickyLeftMenu = ({ menuItems }) => (
-  <Visible lg xl xxl>
-    <Col lg={3}>
-      <List
-        style={{
-          position: "sticky",
-          top: "16rem",
-          paddingRight: "2rem",
-        }}
-        right
-      >
-        {menuItems.map(({ heading, href }) => (
-          <MenuListItem heading={heading} href={href}/>
-        ))}
-      </List>
-    </Col>
-  </Visible>
-)
+const fadeIn = keyframes`
+  0% { filter: opacity(0); }
+  100% { filter: opacity(1); }
+`;
+
+const FadingListItem = styled(ListItem)`
+  animation: ${fadeIn} 250ms linear ;
+`;
+
+
+export const StickyLeftMenu = ({ menuItems }) => {
+  const scrollPosition = useScrollPosition();
+  const showBackToTopButton = scrollPosition > BACK_TO_TOP_SCROLL_THRESHOLD;
+
+  return (
+    <Visible lg xl xxl>
+      <Col lg={3}>
+        <List
+          style={{
+            position: "sticky",
+            top: "16rem",
+            paddingRight: "2rem",
+          }}
+          right
+        >
+          {menuItems.map(({ heading, href }) => (
+            <MenuListItem heading={heading} href={href} />
+          ))}
+          { showBackToTopButton && (
+            <FadingListItem
+              primary={ <BackToTopButton /> }
+              style={{
+               marginTop: '3rem',
+              }}
+            />
+          ) }
+        </List>
+      </Col>
+    </Visible>
+  );
+};
 
 export const StickyLeftMenuContainer = ({ menuItems, children }) => (
   <Grid fluid>
@@ -41,4 +68,4 @@ export const StickyLeftMenuContainer = ({ menuItems, children }) => (
       </Col>
     </Row>
   </Grid>
-)
+);
