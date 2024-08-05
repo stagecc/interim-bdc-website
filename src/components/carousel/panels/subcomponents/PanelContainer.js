@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { animated } from "react-spring";
-import backgroundImage from "../../../../images/hexagons-hero.png";
+import backgroundImage from "../../../../images/carousel-background.png";
 import { StateNote } from '../subcomponents/StateNote'
 
 export const Overlay = styled.div(({ compact }) => `
