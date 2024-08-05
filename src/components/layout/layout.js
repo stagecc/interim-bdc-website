@@ -83,10 +83,10 @@ export function Layout({ children }) {
         <StickyWrapper stuck={true}>
           <Header>
             <Brand width="350px" compact={isCompact ? true : undefined} />
-            <Visible xs sm md lg>
+            <Visible xs sm md>
               <MobileMenu items={menuItems} />
             </Visible>
-            <Visible xl xxl>
+            <Visible lg xl xxl>
               <Menu items={menuItems} />
             </Visible>
           </Header>
