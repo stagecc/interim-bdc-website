@@ -3,13 +3,14 @@ import styled from "styled-components";
 export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
+  background-color: #f9f6f3;
   & th {
     border: 1px solid #ccd;
     padding: 0.5rem 1rem;
-    background-color: #ccc;
+    background-color: #ddd;
   }
   & td {
-    padding: 0.5rem;
+    padding: 1rem;
     margin: 0;
     vertical-align: top;
     border: 1px solid #ddd;
