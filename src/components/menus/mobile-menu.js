@@ -24,7 +24,7 @@ const Toggler = styled.button`
   border: 0;
   z-index: 3;
   margin-right: 1rem;
-  height: 5rem;
+  height: 6rem;
 `;
 
 const MobileNavDrawer = styled.div`
