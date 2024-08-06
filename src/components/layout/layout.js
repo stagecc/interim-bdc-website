@@ -21,8 +21,14 @@ import { List, ListItem } from "../list";
 import { useWindowWidth } from "../../hooks";
 import hexBackgroundLeftSvg from "../../images/hex-background-left.svg";
 import hexBackgroundRightSvg from "../../images/hex-background-right.svg";
+
 import "../../styles/normalize.css";
 import "../../styles/customize.css";
+
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 const LayoutWrapper = styled.div(
   ({ compact }) => `
