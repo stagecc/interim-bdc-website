@@ -122,11 +122,6 @@ export function Layout({ children }) {
                     />
                     <ListItem
                       primary={
-                        <Link to="/data-protection">Data Protection</Link>
-                      }
-                    />
-                    <ListItem
-                      primary={
                         <Link
                           lightIcon
                           to="https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/"
