@@ -159,7 +159,7 @@ export function Layout({ children }) {
                     BDC is a product of the National Heart, Lung,
                     and Blood Institute of the National Institutes of Health.
                     <LineBreak count={2} />
-                    For general inquiries, <Link to="/contact">contact us</Link>
+                    For general inquiries, <Link to="/help-and-support/contact-us/">contact us</Link>
                     .
                     <LineBreak count={2} />
                     &copy; {new Date().getFullYear()}
