@@ -1,8 +1,9 @@
 import React from 'react'
-import { Accordion, AccordionDetails, AccordionSummary, Box, Stack, Typography } from '@mui/material'
+import { Accordion, AccordionDetails, AccordionSummary, Box, Stack } from '@mui/material'
 import { ChevronDownIcon as ExpandIcon } from '../../../icons'
 import { Link } from '../../../link'
 import { StudyCollectionButton, VariableCollectionButton } from '../../collection'
+import { Paragraph } from '../../../typography';
 import { snipText } from '../../../../utils'
 
 
@@ -25,12 +26,12 @@ const Variable = ({ variable }) => {
       px: 2, my: 1,
       '.var-description': { m: 0 },
     }}>
-      <Typography>
+      <div>
         { name } :: <Link to={ e_link }>{ id }</Link>
         &nbsp;&nbsp;
         <VariableCollectionButton variable={ variable } tooltipPlacement="top" size="small" />
-      </Typography>
-      <Typography paragraph className="var-description">{ snippet }</Typography>
+      </div>
+      <div className="var-description">{ snippet }</div>
     </Box>
   )
 }
@@ -49,6 +50,7 @@ export const StudiesTab = ({ studies }) => {
           width: '100%',
           display: 'flex',
           justifyContent: 'space-between',
+          alignItems: 'center',
           pr: 2,
         },
       },
@@ -73,7 +75,7 @@ export const StudiesTab = ({ studies }) => {
               className="accordion-summary"
             >
               <Box className="flex">
-                <Typography>
+                <span>
                   { study.c_name }
                   {' :: '}
                   <Link
@@ -82,8 +84,8 @@ export const StudiesTab = ({ studies }) => {
                   >{ study.c_id }</Link>
                   &nbsp;&nbsp;
                   <StudyCollectionButton study={ study } tooltipPlacement="top" size="small" />
-                </Typography>
-                <Typography>{ study.elements.length } variable{ study.elements.length === 1 ? '' : 's' }</Typography>
+                </span>
+                <span>{ study.elements.length } variable{ study.elements.length === 1 ? '' : 's' }</span>
               </Box>
             </AccordionSummary>
             <AccordionDetails className="accordion-details">
@@ -100,7 +102,7 @@ export const StudiesTab = ({ studies }) => {
           </Accordion>
         )) : (
           <Stack justifyContent="center" alignItems="center">
-            <Typography>No associated studies were found!</Typography>
+            <Paragraph>No associated studies were found!</Paragraph>
           </Stack>
         )
       }

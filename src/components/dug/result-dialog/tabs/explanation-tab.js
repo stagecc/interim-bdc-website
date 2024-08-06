@@ -1,8 +1,9 @@
-import React, { Fragment, useMemo } from 'react'
+import React, { Fragment, useMemo } from 'react';
 import {
-  Box, CircularProgress, List, ListItem, ListItemAvatar, ListItemText, Typography,
-} from '@mui/material'
-import { useSearch } from '../../context'
+  Box, CircularProgress, List, ListItem, ListItemAvatar, ListItemText,
+} from '@mui/material';
+import { useSearch } from '../../context';
+import { Paragraph, Subsubheading } from '../../../typography';
 
 //
 
@@ -26,11 +27,14 @@ const LabeledProgress = ({ value }) => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          '.MuiCircularProgress-root': {
+            color: 'var(--color-blueberry)',
+          },
         }}
       >
-        <Typography variant="caption" component="div" color="secondary">
+        <span className="value">
           {`${ Math.round(value) }%`}
-        </Typography>
+        </span>
       </Box>
     </Box>
   );
@@ -154,17 +158,26 @@ export const ExplanationTab = () => {
 
   return (
     <Fragment>
-      <Typography variant="h5" className="tab-title">Why am I seeing this result?</Typography>
+      <Subsubheading className="tab-title">Why am I seeing this result?</Subsubheading>
       
-      <Typography paragraph className="tab-description">
-        Several factors are considered when identifying results and how to rank them: 
-        the <strong>name</strong> and <strong>description</strong> of this
-        concept; <strong>search terms</strong>, or synonymous concept names,
-        and <strong>related terms</strong>, or related concepts' search terms.
-      </Typography>
-      <Typography paragraph className="tab-description">
+      <Paragraph className="tab-description">
+        Several factors are considered when identifying results and how to rank them:
+        <ul>
+        <li>
+          the <strong>name</strong> and <strong>description</strong> of this concept,
+        </li>
+        <li>
+          <strong>search terms</strong>, or synonymous concept names, and
+        </li>
+        <li>
+          <strong>related terms</strong>, or related concepts' search terms.
+        </li>
+          
+        </ul>
+      </Paragraph>
+      <Paragraph className="tab-description">
         Here is how the above factors contributed to this concept being among your results.
-      </Typography>
+      </Paragraph>
 
       <ScoreBreakdownGraphic data={ scoreData } />
     </Fragment>
