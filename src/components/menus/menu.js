@@ -1,6 +1,7 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useMemo, useState } from "react";
 import { Match } from "@reach/router";
 import styled from "styled-components";
+import { useWindowWidth } from "../../hooks";
 import { Link } from "../link";
 import { ChevronDownIcon } from "../icons";
 import { ButtonLink } from "../buttons"
@@ -98,15 +99,19 @@ const Submenu = styled.nav.attrs({ className: "submenu" })`
   opacity: ${(props) => (props.open ? 1.0 : 0.1)};
 `;
 
-const JoinBDCButton = styled(ButtonLink)`
-  margin: 0 1rem;
-  padding: 1rem;
-  background-color: var(--color-blueberry);
-  font-weight: bold;
-`
+const JoinBDCButton = styled(ButtonLink)
+  .attrs(({ compact }) => ({
+    children: compact ? "JOIN" : "JOIN BDC"
+  }))`
+    margin: 1rem;
+    padding: 1rem;
+    background-color: var(--color-blueberry);
+  `;
 
 export const Menu = ({ items, showBrand }) => {
+  const { width } = useWindowWidth();
   const [openSubmenu, setOpenSubmenu] = useState(-1);
+  const compact = useMemo(() => width < 800, [width]);
 
   const handleOpenSubmenu = (index) => (event) => setOpenSubmenu(index);
   const handleCloseAllSubmenus = () => setOpenSubmenu(-1);
@@ -176,7 +181,10 @@ export const Menu = ({ items, showBrand }) => {
         );
       })}
       <MenuItem>
-        <JoinBDCButton to="/join-bdc">Join BDC</JoinBDCButton>
+        <JoinBDCButton
+          to="/join-bdc"
+          compact={ compact }
+        />
       </MenuItem>
     </MenuContainer>
   );

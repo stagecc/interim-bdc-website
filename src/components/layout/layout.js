@@ -21,14 +21,8 @@ import { List, ListItem } from "../list";
 import { useWindowWidth } from "../../hooks";
 import hexBackgroundLeftSvg from "../../images/hex-background-left.svg";
 import hexBackgroundRightSvg from "../../images/hex-background-right.svg";
-
 import "../../styles/normalize.css";
 import "../../styles/customize.css";
-
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
 
 const LayoutWrapper = styled.div(
   ({ compact }) => `
@@ -86,14 +80,23 @@ export function Layout({ children }) {
     typeof isCompact === "boolean" && (
       <LayoutWrapper compact={isCompact ? true : undefined}>
         <SkipLink href="#main-content">Skip to main content</SkipLink>
+        <Visible md lg>
+          <Header style={{ backgroundColor: '#f9f6f3' }}>
+            <Brand width="380px" />
+          </Header>
+        </Visible>
         <StickyWrapper stuck={true}>
           <Header>
-            <Brand width="350px" compact={isCompact ? true : undefined} />
-            <Visible xs sm md>
-              <MobileMenu items={menuItems} />
+            <Visible xs sm xl xxl>
+              <Brand width="380px" />
             </Visible>
-            <Visible lg xl xxl>
+            <Visible md lg xl xxl>
+              <span />
               <Menu items={menuItems} />
+            </Visible>
+            <Visible xs sm>
+              <span />
+              <MobileMenu items={menuItems} />
             </Visible>
           </Header>
         </StickyWrapper>
