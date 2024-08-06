@@ -113,7 +113,7 @@ export function Layout({ children }) {
               <Row>
                 <Col xs={12} md={5} push={{ md: 7 }}>
                   <List center={isCompact} right={!isCompact}>
-                    <ListItem primary={<Link to="/faqs">FAQs</Link>} />
+                    <ListItem primary={<Link to="/user-resources/user-faqs/">FAQs</Link>} />
                     <ListItem
                       primary={<Link to="/accessibility">Accessibility</Link>}
                     />
