@@ -6,7 +6,7 @@ import { Authed } from './authed';
 import { Unauthed } from './unauthed';
 
 export const DataAccessChecker = () => {
-  const { user, projects, isLoading } = useFence();
+  const { user, isLoading } = useFence();
 
   if (isLoading) {
     return <LoadingDots />
