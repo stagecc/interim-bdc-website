@@ -1,5 +1,5 @@
 import { PageContent, Container } from "../components/layout";
-import { Hidden } from "react-grid-system";
+import { Container as Grid, Hidden, Row, Col } from "react-grid-system";
 
 import { Carousel } from "../components/carousel";
 
@@ -42,21 +42,27 @@ import { DugForm } from "../components/dug";
         What is NHLBI BioData Catalyst<sup>®</sup>&nbsp;(BDC)?
       </CardHeader>
       <CardBody>
-        NHLBI BioData Catalyst<sup>®</sup> (BDC) is a cloud-based ecosystem
-        that offers researchers data, analytic tools, applications, and
-        workflows in secure workspaces. It is a community where
-        researchers can find, access, share, store, and analyze heart,
-        lung, blood, and sleep data resources. And it is one of NHLBI’s
-        data repositories, where researchers share scientific data from
-        NHLBI-funded research so they and others can reproduce findings
-        and reuse data to advance science. By increasing access to NHLBI
-        data and innovative analytic capabilities, BDC accelerates
-        reproducible biomedical research to drive scientific advances
-        that can help prevent, diagnose, and treat heart, lung, blood,
-        and sleep disorders.
-      </CardBody>
-      <CardBody>
-        <VideoPlayer url="https://youtu.be/enWIpA0aJb4" controls={ true } />
+        <Grid fluid gutterWidth={ 0 }>
+          <Row>
+            <Col lg={ 12 } xl={ 6 }>
+              NHLBI BioData Catalyst<sup>®</sup> (BDC) is a cloud-based ecosystem
+              that offers researchers data, analytic tools, applications, and
+              workflows in secure workspaces. It is a community where
+              researchers can find, access, share, store, and analyze heart,
+              lung, blood, and sleep data resources. And it is one of NHLBI’s
+              data repositories, where researchers share scientific data from
+              NHLBI-funded research so they and others can reproduce findings
+              and reuse data to advance science. By increasing access to NHLBI
+              data and innovative analytic capabilities, BDC accelerates
+              reproducible biomedical research to drive scientific advances
+              that can help prevent, diagnose, and treat heart, lung, blood,
+              and sleep disorders.
+            </Col>
+            <Col lg={ 12 } xl={ 6 }>
+              <VideoPlayer url="https://youtu.be/enWIpA0aJb4" controls={ true } />
+            </Col>
+          </Row>
+        </Grid>
       </CardBody>
     </Card>
     <Card>
