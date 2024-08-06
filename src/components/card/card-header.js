@@ -10,7 +10,6 @@ export const CardHeader = styled.div(({
   align-items: center;
   color: ${fgColor || "inherit"};
   background-color: ${bgColor || "inherit"};
-  // font-weight: bold;
   text-align: center;
   padding: 0.5rem 2rem;
   position: relative;
