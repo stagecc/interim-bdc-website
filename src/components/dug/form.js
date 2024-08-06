@@ -39,10 +39,12 @@ export const DugForm = ({ focusOnMount = false, slashFocus = false }) => {
   }
 
   useEffect(() => {
-    if (focusOnMount && inputRef.current) {
-      inputRef.current.focus()
+    if (!focusOnMount || !inputRef.current) {
+      return;
     }
-  }, [focusOnMount])
+    const focusTimer = setTimeout(() => inputRef.current.focus(), 250);
+    return () => clearTimeout(focusTimer);
+  }, [focusOnMount, inputRef])
 
   // this catches in-app user-conducted query changes,
   // like clicking a related concept,
