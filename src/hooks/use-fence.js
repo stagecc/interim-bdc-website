@@ -37,10 +37,10 @@ export const FenceProvider = ({ children }) => {
     + `/user/oauth2/authorize`
     + `?idp=ras`
     + `&client_id=${ process.env.GATSBY_FENCE_CLIENT_ID }`
-    + `&redirect_uri=${ location.origin + location.pathname }`
     + `&response_type=id_token+token`
     + `&scope=openid+user`
-    + `&nonce=2bfe151af238d21f48d8a8bf8bbec408838c8dc0ace6b4c5621ac9dfa157798b`;
+    + `&nonce=2bfe151af238d21f48d8a8bf8bbec408838c8dc0ace6b4c5621ac9dfa157798b`
+    + `&redirect_uri=${ location.origin + location.pathname }`;
 
   useEffect(() => {
     const hashParams = parseHash(location.hash.substr(1));
