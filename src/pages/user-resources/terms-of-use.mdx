@@ -1,9 +1,26 @@
+---
+menu:
+  - heading: Data Use Policy Statement
+    href: data-use-policy-statement
+  - heading: Hosted Data Access Controls
+    href: hosted-data-access-controls
+  - heading: Authorization of Use
+    href: authorization-of-use
+  - heading: Access to Individual Level Data and Download Functionality
+    href: access-to-individual-level-data-and-download-functionality
+  - heading: Data Download Restrictions
+    href: data-download-restrictions
+  - heading: Citing and Acknowledging BDC
+    href: citing-and-acknowledging-bdc
+---
+
 import { PageContent } from "../../components/layout";
 import { NextStepsCard } from "../../components/card";
 
 <PageContent 
   title="Terms of Use & Policies"
   width="95%" maxWidth="1200px" center gutters
+  menuItems={props.pageContext.frontmatter.menu}
 >
 
 In addition to tools, applications, and workflows, BDC provides access to NHLBI datasets, allows researchers to bring their own data, and offers secure collaboration workspaces. 
