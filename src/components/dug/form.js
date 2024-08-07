@@ -68,11 +68,6 @@ export const DugForm = ({ focusOnMount = false, slashFocus = false }) => {
             inputRef.current.focus()
             inputRef.current.select()
             window.scrollTo({ top: 0, behavior: 'smooth' })
-          } else {
-            // Keypress with no associated function has been fired on the page.
-            // message.open({
-            //   content: `use "/" to focus the search box.`
-            // })
           }
         }
       }

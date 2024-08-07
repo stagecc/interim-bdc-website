@@ -20,3 +20,16 @@ export const wrapPageElement = ({ element, props }) => {
     </FenceProvider>
   )
 }
+
+export const shouldUpdateScroll = ({
+  routerProps,
+  getSavedScrollPosition,
+}) => {
+  const currentPosition = getSavedScrollPosition(routerProps.location);
+
+  setTimeout(() => {
+    window.scrollTo(...(currentPosition || [0, 0]));
+  }, 0);
+
+  return false;
+};
