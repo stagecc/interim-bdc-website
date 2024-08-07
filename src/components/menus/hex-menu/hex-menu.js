@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import {
-  BrokenDnaIcon,
-  ByodIcon,
-  DataBoltIcon,
-  MagnifyingGlassIcon,
+  BrokenDnaIcon as ImputeGenomesIcon,
+  ByodIcon as ShareIcon,
+  DataBoltIcon as AnalyzeIcon,
+  MagnifyingGlassIcon as ExploreIcon,
   JoinIcon,
-  QuestionIcon,
+  QuestionIcon as SupportIcon,
 } from "../../icons";
 import { useWindowWidth } from "../../../hooks";
 import { Hexagon } from "./hexagon";
@@ -16,27 +16,27 @@ const hexagonItems = [
   {
     text: "Explore Data",
     description: "Explore the data in BDC (no login required)",
-    icon: MagnifyingGlassIcon,
+    icon: ExploreIcon,
     path: "/use-bdc/explore-data",
   },
   {
     text: "Analyze Data",
     description: "Set up private, secure workspaces for running analyses at scale",
-    icon: DataBoltIcon,
+    icon: AnalyzeIcon,
     path: "/use-bdc/analyze-data",
   },
   {
     text: "Share Data",
     description:
       "Learn about using BDC as a data repository",
-    icon: ByodIcon,
+    icon: ShareIcon,
     path: "/use-bdc/share-data",
   },
   {
     text: "Impute Genomes",
     description:
       "Upload phased or unphased GWAS genotypes and get phased and imputed genomes",
-    icon: BrokenDnaIcon,
+    icon: ImputeGenomesIcon,
     path: "https://imputation.biodatacatalyst.nhlbi.nih.gov/#!",
   },
   {
@@ -49,7 +49,7 @@ const hexagonItems = [
     text: "Support",
     description:
       "Get support to advance your research in BDC",
-    icon: QuestionIcon,
+    icon: SupportIcon,
     path: "/help-and-support/support",
   },
 ];
