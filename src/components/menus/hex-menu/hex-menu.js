@@ -39,7 +39,7 @@ const hexagonItems = [
     path: "https://imputation.biodatacatalyst.nhlbi.nih.gov/#!",
   },
   {
-    text: "Join",
+    text: "Join BDC",
     description: "Join the BDC community to stay up to date about BDC",
     icon: JoinIcon,
     path: "/join-bdc",
