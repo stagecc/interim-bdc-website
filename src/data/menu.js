@@ -4,7 +4,7 @@ export const menuItems = [
     path: "/use-bdc",
     submenu: [
       {
-        text: "Explore BDC Data",
+        text: "Explore Data in BDC",
         path: "/use-bdc/explore-data",
       },
       {
