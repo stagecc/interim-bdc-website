@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import {
+  BrokenDnaIcon,
   DataBoltIcon,
   EducationIcon,
   ToolsIcon,
@@ -35,7 +36,7 @@ const hexagonItems = [
     text: "Impute Genomes",
     description:
       "Upload phased or unphased GWAS genotypes and get phased and imputed genomes",
-    icon: ByodIcon,
+    icon: BrokenDnaIcon,
     path: "https://imputation.biodatacatalyst.nhlbi.nih.gov/#!",
   },
   {
