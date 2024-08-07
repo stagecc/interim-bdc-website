@@ -1,9 +1,10 @@
 import React from 'react'
 import { MDXProvider } from "@mdx-js/react"
 import {
-  Title,
   Heading,
-  Paragraph
+  Paragraph,
+  Subheading,
+  Title,
 } from './typography'
 import { Link } from "./link"
 
@@ -27,6 +28,13 @@ export const componentMap = () => ({
       <Heading {...props}>
         {children}
       </Heading>
+    );
+  },
+  h3: function h3({ node, children, ...props }) {
+    return (
+      <Subheading {...props} style={{ marginTop: '2rem' }}>
+        {children}
+      </Subheading>
     );
   },
   a: function anchor({ node, href, children, ...props }) {

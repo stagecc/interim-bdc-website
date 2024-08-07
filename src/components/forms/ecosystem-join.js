@@ -62,6 +62,8 @@ export const EcosystemForm = (props) => {
   const otherInterestSelected = useMemo(() => interest === "Other", [interest]);
   const [otherInterest, setOtherInterest] = useState("");
   
+  const [grapevine, setGrapevine] = useState("");
+
   const [wasSubmitted, setWasSubmitted] = useState(false);
   const [error, setError] = useState();
 
@@ -120,6 +122,8 @@ export const EcosystemForm = (props) => {
   const handleChangeOtherField = (event) => setOtherFieldOfStudy(event.target.value);
   const handleChangeInterest = (event) => setInterest(event.target.value);
   const handleChangeOtherInterest = (event) => setOtherInterest(event.target.value);
+
+  const handleChangeGrapevine = (event) => setGrapevine(event.target.value);
 
   return (
     <Card {...props}>
@@ -288,6 +292,16 @@ export const EcosystemForm = (props) => {
                 />
               </FormControl>
             )}
+          <FormControl>
+            <label required htmlFor="grapevine">How did you learn about BDC?</label>
+            <TextArea
+              id="grapevine"
+              name="grapevine"
+              value={grapevine}
+              onChange={handleChangeGrapevine}
+              maxLength="3000"
+            />
+          </FormControl>
 
             <SubmitButton>Submit</SubmitButton>
           </Form>

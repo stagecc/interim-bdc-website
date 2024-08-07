@@ -5,13 +5,16 @@ import { NextSteps } from "../../../../components/dug/next-steps";
   title="Next Steps"
   width="95%" maxWidth="1200px" center gutters
 >
-  You can download a list of your selections by clicking the “Download List" button below, return to semantic search to change your choices, or click on one of the three options on the right. 
+  Select an option on the right of the graphic below to see the instructions
+  (on the right) and get relevant information (on the left) about that selection.
+  Proceeding with any of the three options on the right
+  requires [eRA Commons account credentials](https://www.era.nih.gov/register-accounts/understanding-era-commons-accounts.htm). 
 
-  All three options on the right require [*eRA Commons account credentials*](https://www.era.nih.gov/register-accounts/understanding-era-commons-accounts.htm). 
+  Users must also have approved data access requests for each dataset to Build a
+  Cohort Across Datasets for Analysis or Begin Analyzing the Data. Researchers who do not have approved DARs for the controlled data they want to use
+  should [read the dbGaP section of the Understanding Access page](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/data-access/understanding-access-requirements-for-biodata-catalyst\#dbgap) and [Submitting a dbGaP Data Access Request](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/data-access/submitting-a-dbgap-data-access-request) in BDC’s documentation.
 
-  Building a cohort and analyzing data require data access approvals. Researchers who do not have approved DARs for the controlled data they want to use should [read the dbGaP section of the Understanding Access page](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/data-access/understanding-access-requirements-for-biodata-catalyst\#dbgap) and [Submitting a dbGaP Data Access Request](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/data-access/submitting-a-dbgap-data-access-request) in BDC’s documentation.
-
-  When you select an option on the right, relevant information about your selections will appear on the left, and further instructions will appear on the right.
+  Users can also download their selections by clicking the "Download List" button or return to search to change their choices by selecting "Return to Search."
 
   <NextSteps steps={[
     {
@@ -20,7 +23,7 @@ import { NextSteps } from "../../../../components/dug/next-steps";
       relevantCollectionTypes: ['studies'],
       details: `
 1. Click "Download List" or "Copy to clipboard" to capture the Study Accession IDs of your selections. 
-2. Go to the Explore Data in BDC webpage and click the "Check Data Access" button. 
+2. Go to the [Explore Data in BDC](/use-bdc/explore-data/#requirements-for-accessing-bdc-hosted-data) webpage and click the "Check My Access" button. 
 3. Login using your eRA Commons account credentials. 
 4. Click "Yes, I authorize" and check your access approvals.
 5. If you need to request access, follow the instructions in the BDC documentation.
@@ -31,11 +34,11 @@ import { NextSteps } from "../../../../components/dug/next-steps";
       color: '#ece3ef',
       relevantCollectionTypes: ['concepts', 'studies', 'variables'],
       details: `
-1. Click “Download List” to capture your selections' Study Accession IDs, concepts, and variables, or click “Copy to clipboard” to capture just the accession IDs.   
+1. Click "Download List" to capture your selections' Study Accession IDs, concepts, and variables, or click "Copy to clipboard" to capture just the accession IDs.   
 2. Go to [the BDC platform where you can build cohorts across datasets for analysis](https://picsure.biodatacatalyst.nhlbi.nih.gov/psamaui/login).   
 3. Login using your eRA Commons account credentials.  
 4. Use the study accession IDs, concepts, and variables to build a cohort.  
-5. Follow the instructions in the [“Select and Package Data” section in the BDC documentation](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/explore-available-data/pic-sure-for-biodata-catalyst-user-guide/pic-sure-open-access-vs.-pic-sure-authorized-access/search-authorized-access#select-and-package-data+) to bring the data into a BDC workspace.
+5. Follow the instructions in the ["Select and Package Data" section in the BDC documentation](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/explore-available-data/pic-sure-for-biodata-catalyst-user-guide/pic-sure-open-access-vs.-pic-sure-authorized-access/search-authorized-access#select-and-package-data+) to bring the data into a BDC workspace.
       `
     },
     {
@@ -43,7 +46,7 @@ import { NextSteps } from "../../../../components/dug/next-steps";
       color: '#e3ecef',
       relevantCollectionTypes: ['studies'],
       details: `
-1. Click “Download List” or “Copy to clipboard” to capture the Study Accession IDs of your selections.  
+1. Click "Download List" or "Copy to clipboard" to capture the Study Accession IDs of your selections.  
 2. If you don’t already have them, [create a BDC workspace account and project](/use-bdc/analyze-data).  
 3. Go to the BDC platform where you can use [a secure, collaborative workspace](https://accounts.sb.biodatacatalyst.nhlbi.nih.gov/auth/login?next=https%3A%2F%2Faccounts.sb.biodatacatalyst.nhlbi.nih.gov%2Foauth2%2Fauthorization%3Fresponse_type%3Dcode%26client_id%3D74735b722c33498cb981b6b6e24f659f%26redirect_uri%3Dhttps%253A%252F%252Fplatform.sb.biodatacatalyst.nhlbi.nih.gov%252Foauth2%252Fredirect%26state%3DV6tMqHD29FVRoG3HJy8iYhXLTtTB6v%26client_next%3Dhttps%253A%252F%252Fplatform.sb.biodatacatalyst.nhlbi.nih.gov%252F%26scope%3Dopenid%26nonce%3D49456324535888103221696441001) to analyze data at scale.  
 4. Login using your eRA Commons account credentials.  

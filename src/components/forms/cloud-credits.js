@@ -585,10 +585,14 @@ export const CloudCreditsForm = (props) => {
               <div style={{ flex: 1 }}>
                 <label htmlFor="consent">
                   <Paragraph>
-                    By submitting the following form, you agree to the requirements noted above, the BDC Terms of Use and Policies, and to receive emails from BDC. You can opt out of receiving emails at any time. 
+                    By submitting this form, I agree to the requirements noted above,
+                    the BDC Terms of Use and Policies, and to receive emails from BDC.
+                    I can opt out of receiving emails at any time. 
                   </Paragraph>
                   <Paragraph>
-                    Those approved for NHLBI BDC Cloud Credit Support Program cloud credits also agree to request and receive one-on-one assistance from BDC to manage usage costs. 
+                    If I request and receive NHLBI BDC Cloud Credit Support Program
+                    cloud credits, I also agree to request and receive one-on-one
+                    assistance from BDC to manage usage costs.
                   </Paragraph>
                 </label>
               </div>

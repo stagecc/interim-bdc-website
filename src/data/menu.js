@@ -4,7 +4,7 @@ export const menuItems = [
     path: "/use-bdc",
     submenu: [
       {
-        text: "Explore BDC Data",
+        text: "Explore Data in BDC",
         path: "/use-bdc/explore-data",
       },
       {
@@ -35,7 +35,7 @@ export const menuItems = [
       },
       {
         text: "Documentation",
-        path: "/user-resources/documentation",
+        path: "https://bdcatalyst.gitbook.io/biodata-catalyst-documentation",
       },
       {
         text: "Terms of Use",
