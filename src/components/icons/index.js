@@ -18,6 +18,7 @@ export * from "./magnifying-glass-icon";
 export * from "./microscope-icon";
 export * from "./play-icon";
 export * from "./pause-icon";
+export * from "./question-icon";
 export * from "./tools-icon";
 export * from "./user-icon";
 export * from "./videos-icon";

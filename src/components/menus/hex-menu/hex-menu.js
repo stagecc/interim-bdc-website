@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import {
   BrokenDnaIcon,
+  ByodIcon,
   DataBoltIcon,
   EducationIcon,
-  ToolsIcon,
-  ByodIcon,
   JoinIcon,
+  QuestionIcon,
 } from "../../icons";
 import { useWindowWidth } from "../../../hooks";
 import { Hexagon } from "./hexagon";
@@ -49,7 +49,7 @@ const hexagonItems = [
     text: "Support",
     description:
       "Get support to advance your research in BDC",
-    icon: ToolsIcon,
+    icon: QuestionIcon,
     path: "/help-and-support/support",
   },
 ];
