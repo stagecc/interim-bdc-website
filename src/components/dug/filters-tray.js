@@ -29,6 +29,7 @@ export const FiltersTray = () => {
       <Stack
         direction="column"
         sx={{
+          zIndex: 9,
           backgroundColor: open ? '#21568a22' : 'transparent',
           '&:hover': { backgroundColor: open ? '#21568a22' : '#21568a11' },
           m: 1,
