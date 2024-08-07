@@ -4,7 +4,7 @@ import {
   BrokenDnaIcon,
   ByodIcon,
   DataBoltIcon,
-  EducationIcon,
+  MagnifyingGlassIcon,
   JoinIcon,
   QuestionIcon,
 } from "../../icons";
@@ -16,7 +16,7 @@ const hexagonItems = [
   {
     text: "Explore Data",
     description: "Explore the data in BDC (no login required)",
-    icon: EducationIcon,
+    icon: MagnifyingGlassIcon,
     path: "/use-bdc/explore-data",
   },
   {
