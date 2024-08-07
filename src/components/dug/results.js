@@ -15,7 +15,7 @@ const LoadingIndicator = () => (
     alignItems="center"
     sx={{ height: '300px', mt: 8 }}
     gap={ 3 }
-  ><LoadingDots textPlacement="top" text="Searching..." /></Stack>
+  ><LoadingDots color="var(--color-crimson)" textPlacement="top" text="Searching..." /></Stack>
 )
 
 //
