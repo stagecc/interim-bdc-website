@@ -121,6 +121,25 @@ module.exports = {
       },
     },
     `gatsby-transformer-yaml`,
-    `gatsby-transformer-json`
-  ],
+    `gatsby-transformer-json`,
+    {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "GTM-T5R9BX5J",
+  
+        // Include GTM in development.
+        //
+        // Defaults to false meaning GTM will only be loaded in production.
+        includeInDevelopment: true,
+        defaultDataLayer: { platform: "gatsby" },
+  
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: ["G-2M4JYYSBD3"],
+      },
+    },
+  ]
 };
