@@ -180,8 +180,8 @@ export const SearchProvider = ({ children }) => {
     // so let's ensure they're brought to the top of the page,
     // and get that started before we even send the request.
     // i can't seem to get a complete scroll to the top;
-    //   i think it's the suddent change in document height.
-    //   waiting a moment seems to do the trick.
+    // i think it's the sudden change in document height.
+    // waiting a moment seems to do the trick.
     const scrollerTimeout = setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }, 100)
