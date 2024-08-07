@@ -125,7 +125,7 @@ export const DugForm = ({ focusOnMount = false, slashFocus = false }) => {
     >
       <InputBase
         sx={{ ml: 1, flex: 1, p: 1 }}
-        placeholder="Search BDC Data"
+        placeholder="Search data in BDC"
         inputProps={{ 'aria-label': 'Search BDC Data' }}
         value={ formQuery }
         onChange={ handleChangeFormQuery }
