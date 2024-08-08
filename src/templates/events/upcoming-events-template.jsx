@@ -17,7 +17,6 @@ const UpcomingEventsList = ({ data }) => {
     return event.node.frontmatter.date >= todaysDate
   })
 
-  console.log(upcomingEvents)
   return (
     <PageContent width="95%" maxWidth="1200px" center gutters>
 
