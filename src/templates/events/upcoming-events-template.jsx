@@ -69,6 +69,7 @@ export const allEventsQuery = graphql`
             location
             externalEvent
           }
+          excerpt(pruneLength: 280)
         }
       }
     }
