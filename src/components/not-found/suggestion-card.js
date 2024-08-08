@@ -10,7 +10,10 @@ import { Link } from '../link';
 export const SuggestionCard = ({ title = "", links = [] }) => {
   return (
     <Card style={{ margin: 0 }}>
-      <CardHeader>{ title }</CardHeader>
+      <CardHeader
+        fgColor="var(--color-crimson)"
+        bgColor="#fff"
+      >{ title }</CardHeader>
       <CardBody>
         <ul>{
           links.map(link => (
