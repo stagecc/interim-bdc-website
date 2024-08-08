@@ -43,17 +43,18 @@ const PastEventsTemplate = ({data, pageContext}) => {
 export default PastEventsTemplate
 
 export const allEventsQuery = graphql`
-  query{
+  query($todaysDate: Date!)  {
     events: allMdx(
       sort: {frontmatter: {date: DESC}}
       filter: {
         internal: {contentFilePath: {regex: "/data/events/"}}
+        frontmatter: { date: { gt: $todaysDate } }
       }
     ) {
       edges {
         node {
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
+            date(formatString: "YYYY-MM-DD")
             display_date
             path
             title
