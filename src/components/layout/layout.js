@@ -95,7 +95,7 @@ export function Layout({ children }) {
             <Grid fluid>
               <Row>
                 <Col xs={12} md={5} push={{ md: 7 }}>
-                  <List center={isCompact} right={!isCompact}>
+                  <List center={isCompact} right={+!isCompact}>
                     <ListItem primary={<Link to="/user-resources/user-faqs/">FAQs</Link>} />
                     <ListItem
                       primary={<Link to="/accessibility">Accessibility</Link>}
@@ -133,7 +133,7 @@ export function Layout({ children }) {
                   </List>
                 </Col>
                 <Col xs={12} md={7} pull={{ md: 5 }}>
-                  <Paragraph center={isCompact} left={!isCompact ? true : undefined}>
+                  <Paragraph center={isCompact} left={!isCompact ? "true" : undefined}>
                     BDC is a product of the National Heart, Lung,
                     and Blood Institute of the National Institutes of Health.
                     <LineBreak count={2} />
