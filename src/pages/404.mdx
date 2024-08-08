@@ -2,6 +2,38 @@ import { PageContent } from "../components/layout";
 import { Heading } from "../components/typography";
 import { NotFoundMessage, SuggestionsGrid } from "../components/not-found";
 
+export const notFoundSuggestions = [
+  {
+    title: 'Test',
+    links: [
+      { label: 'Overview', path: '/about/overview' },
+      { label: 'Analyze', path: '/use-bdc/analyze-data' },
+    ]
+  },
+  {
+    title: 'Testing Two',
+    links: [
+      { label: 'Overview', path: '/about/overview' },
+      { label: 'Explore', path: '/use-bdc/explore-data' },
+      { label: 'Cloud credits', path: '/user-resources/usage-costs' },
+    ]
+  },
+  {
+    title: 'Support',
+    links: [
+      { label: 'Overview', path: '/about/overview' },
+      { label: 'Explore', path: '/use-bdc/explore-data' },
+    ]
+  },
+  {
+    title: 'Other',
+    links: [
+      { label: 'FAQs', path: '/user-resources/user-faqs' },
+      { label: 'Cloud credits', path: '/user-resources/usage-costs' },
+    ]
+  },
+];
+
 <PageContent
   title="404 &mdash; Page not found"
   width="95%" maxWidth="900px"
@@ -14,35 +46,5 @@ import { NotFoundMessage, SuggestionsGrid } from "../components/not-found";
 
   <br /><br />
 
-  <SuggestionsGrid suggestions={ [
-    {
-      title: 'Test',
-      links: [
-        { label: 'Overview', path: '/about/overview' },
-        { label: 'Analyze', path: '/use-bdc/analyze-data' },
-      ]
-    },
-    {
-      title: 'Testing Two',
-      links: [
-        { label: 'Overview', path: '/about/overview' },
-        { label: 'Explore', path: '/use-bdc/explore-data' },
-        { label: 'Cloud credits', path: '/user-resources/usage-costs' },
-      ]
-    },
-    {
-      title: 'Support',
-      links: [
-        { label: 'Overview', path: '/about/overview' },
-        { label: 'Explore', path: '/use-bdc/explore-data' },
-      ]
-    },
-    {
-      title: 'Other',
-      links: [
-        { label: 'FAQs', path: '/user-resources/user-faqs' },
-        { label: 'Cloud credits', path: '/user-resources/usage-costs' },
-      ]
-    },
-  ] } />
+  <SuggestionsGrid />
 </PageContent>

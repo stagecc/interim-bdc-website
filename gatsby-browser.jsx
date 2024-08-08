@@ -22,13 +22,17 @@ export const wrapPageElement = ({ element, props }) => {
 }
 
 export const shouldUpdateScroll = ({
+  prevRouterProps,
   routerProps,
   getSavedScrollPosition,
 }) => {
-  const currentPosition = getSavedScrollPosition(routerProps.location);
+  const previous = prevRouterProps?.location.pathname || -1;
+  const next = routerProps.location.pathname;
 
   setTimeout(() => {
-    window.scrollTo(...(currentPosition || [0, 0]));
+    if (previous !== next) {
+      window.scrollTo(0, 0);
+    }
   }, 0);
 
   return false;

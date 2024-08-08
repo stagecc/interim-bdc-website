@@ -5,6 +5,7 @@ import {
   SuggestionCard,
   SuggestionCardPropTypes,
 } from './suggestion-card';
+import { notFoundSuggestions } from '../../pages/404.mdx';
 
 const Grid = styled.div`
   display: grid;
@@ -12,10 +13,10 @@ const Grid = styled.div`
   gap: 2rem;
 `;
 
-export const SuggestionsGrid = ({ suggestions = [] }) => {
+export const SuggestionsGrid = () => {
   return (
     <Grid>{
-      suggestions.map(suggestion => (
+      notFoundSuggestions.map(suggestion => (
         <SuggestionCard
           key={ suggestion.title }
           { ...suggestion }
