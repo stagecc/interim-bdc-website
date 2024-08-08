@@ -21,57 +21,40 @@ import { List, ListItem } from "../list";
 import { useWindowWidth } from "../../hooks";
 import hexBackgroundLeftSvg from "../../images/hex-background-left.svg";
 import hexBackgroundRightSvg from "../../images/hex-background-right.svg";
+import { SkipLink } from './skip-link';
 import "../../styles/normalize.css";
 import "../../styles/customize.css";
 
 const LayoutWrapper = styled.div(
   ({ compact }) => `
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  &::after {
-    content: "";
-    left: 0;
-    top: 0;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    z-index: -2;
-    ${
-      compact
-        ? `
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    &::after {
+      content: "";
+      left: 0;
+      top: 0;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      z-index: -2;
+      ${ compact ? `
         background-image: url(${hexBackgroundLeftSvg});
         background-position: -4rem 0;
         background-size: 400px;
         background-repeat: repeat-y;
         background-attachment: fixed;
-      `
-        : `
+      ` : `
         background-image: url(${hexBackgroundLeftSvg}), url(${hexBackgroundRightSvg});
         background-position: -4rem 0, calc(100% + 4rem) 0;
         background-size: 400px;
         background-repeat: repeat-y, repeat-y;
         background-attachment: fixed;
-      `
+      ` }
     }
-  }
   `
 );
-
-const SkipLink = styled.a`
-  display: block;
-  position: absolute;
-  background-color: var(--color-crimson);
-  color: #eee;
-  padding: 0.5rem;
-  z-index: 999;
-  transition: transform 250ms;
-  transform: translateY(-100%);
-  &:focus {
-    transform: translateY(0%);
-  }
-`;
 
 export function Layout({ children }) {
   const { isCompact } = useWindowWidth();
@@ -154,8 +137,7 @@ export function Layout({ children }) {
                     BDC is a product of the National Heart, Lung,
                     and Blood Institute of the National Institutes of Health.
                     <LineBreak count={2} />
-                    For general inquiries, <Link to="/help-and-support/contact-us/">contact us</Link>
-                    .
+                    For general inquiries, <Link to="/help-and-support/contact-us/">contact us</Link>.
                     <LineBreak count={2} />
                     &copy; {new Date().getFullYear()}
                   </Paragraph>
