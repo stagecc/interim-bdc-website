@@ -24,7 +24,6 @@ export const wrapPageElement = ({ element, props }) => {
 export const shouldUpdateScroll = ({
   prevRouterProps,
   routerProps,
-  getSavedScrollPosition,
 }) => {
   const previous = prevRouterProps?.location.pathname || -1;
   const next = routerProps.location.pathname;
