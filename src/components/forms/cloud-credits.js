@@ -85,7 +85,7 @@ export const CloudCreditsForm = (props) => {
   const [creditsProjectAbstract, setCreditsProjectAbstract] = useState("");
   const [creditsPreviouslyReceived, setCreditsPreviouslyReceived] = useState(false);
   const [creditsReceivedDescription, setCreditsReceivedDescription] = useState("");
-  const [creditsEstimate, setCreditsEstimate] = useState(0);
+  const [creditsEstimatedNeed, setCreditsEstimatedNeed] = useState(0);
   const [creditsRequested, setCreditsRequested] = useState(0);
   const [creditsAnticipatedTimeline, setCreditsAnticipatedTimeline] = useState("");
   const [creditsJustification, setCreditsJustification] = useState("");
@@ -134,8 +134,6 @@ export const CloudCreditsForm = (props) => {
 
     if (honeypotFieldRef.current?.value !== "") return;
 
-    const prefix = testSubmission ? "[TEST] " : "";
-
     const description = ``
       + `Requestor's name: ${name} <br />`
       + `Requestor's email: ${email} <br />`
@@ -146,49 +144,54 @@ export const CloudCreditsForm = (props) => {
       + `Team members: ${teamMembers} <br />`
       + `How is your research related to HLBS?: ${hlbsRelation} <br />`
       + `How did the requestor learn about BDC?: ${grapevine} <br />`
-      + `BDC users may request one of the following: ${oneRequest} <br />`
+      + `Request: ${oneRequest} <br />`
 
-    const cloudCreditsPayload = (oneRequest) => {
-      if (oneRequest === "NHLBI BDC Pilot Funding Program") {
-        return {
-          preferred_analysis_platform: preferredPlatform,
-        }
+    const customFieldsPayload = option => {
+      let payload = {};
+      if (option === "NHLBI BDC Pilot Funding Program") {
+        payload = {
+          cf_what_bdcatalyst_service_will_you_use: preferredPlatform,
+        };
       }
-      if (oneRequest === "NHLBI BDC Cloud Credit Support Program") {
-        return {
-          credits_project_abstract: creditsProjectAbstract,
-          credits_previously_received: creditsPreviouslyReceived,
-          credits_received_description: creditsReceivedDescription,
-          credits_estimate: creditsEstimate,
-          credits_requested: creditsRequested,
-          credits_anticipated_timeline: creditsAnticipatedTimeline,
-          credits_justification: creditsJustification,
-          credits_certify: creditsCertify,
-          credits_research_links: creditsResearchLinks,
-        }
+      if (option === "NHLBI BDC Cloud Credit Support Program") {
+        payload = {
+          cf_cloud_credits_project_namedescription: creditsProjectAbstract,
+          cf_cloud_credits_previous_request196891: creditsPreviouslyReceived,
+          cf_cloud_credits_previous_use_of_cloud_credits: creditsReceivedDescription,
+          cf_cloud_credits_estimated_need: +creditsEstimatedNeed,
+          cf_estimated_cloud_credits_requested: +creditsRequested,
+          cf_cloud_credits_anticipated_timeline_for_the_work: creditsAnticipatedTimeline,
+          cf_justification_for_credits: creditsJustification,
+          cf_cloud_credits_certify_insufficient_funding: creditsCertify,
+          cf_cloud_credits_research_results_link: creditsResearchLinks,
+        };
       }
-      if (oneRequest === "Cloud Credits for Academic Classes and Group Educational Sessions") {
-        return {
-          course_title: courseTitle,
-          course_instructors_name: courseInstructorsName,
-          course_student_count: courseStudentCount,
-          course_level: courseLevel,
-          course_date: courseDate,
-          course_support_requested: courseSupportRequested,
-          course_support_description: courseSupportDescription,
-        }
+      if (option === "Cloud Credits for Academic Classes and Group Educational Sessions") {
+        payload = {
+          cf_cloud_credits_course_title: courseTitle,
+          cf_cloud_credits_course_instructors_name: courseInstructorsName,
+          cf_cloud_credits_anticipated_number_of_students: +courseStudentCount,
+          cf_cloud_credits_course_level: courseLevel,
+          cf_cloud_credits_anticipated_coursepresentation_date: courseDate,
+          cf_cloud_credits_support_during_course_from_bdc: courseSupportRequested,
+          cf_cloud_credits_course_support_needed: courseSupportDescription,
+        };
       }
+      return {
+        ...payload,
+        cf_by_submitting_this_form_i_agree_to_the_terms_and_conditions_of_this_offering: consent,
+      };
     };
 
     const payload = {
-      type: "Cloud Credits",
-      subject: prefix + "Cloud Credits Request",
-      description: prefix + description,
+      type: "Usage Costs/Cloud Credits",
+      subject: (testSubmission ? `[TEST] ` : ``) + "Cloud Credits Request",
+      description,
       priority: 1,
       status: 2,
       name: name,
       email: email,
-      custom_fields: cloudCreditsPayload(oneRequest),
+      custom_fields: { ...customFieldsPayload(oneRequest) },
     };
 
     const submitTicket = async () => {
@@ -228,7 +231,7 @@ export const CloudCreditsForm = (props) => {
   const handleChangeCreditsProjectAbstract = (event) => setCreditsProjectAbstract(event.target.value);
   const handleChangeCreditsPreviouslyReceived = (event) => setCreditsPreviouslyReceived(event.target.checked);
   const handleChangeCreditsReceivedDescription = (event) => setCreditsReceivedDescription(event.target.value);
-  const handleChangeCreditsEstimate = (event) => setCreditsEstimate(event.target.value);
+  const handleChangeCreditsEstimatedNeed = (event) => setCreditsEstimatedNeed(event.target.value);
   const handleChangeCreditsRequested = (event) => setCreditsRequested(event.target.value);
   const handleChangeCreditsAnticipatedTimeline = (event) => setCreditsAnticipatedTimeline(event.target.value);
   const handleChangeCreditsJustification = (event) => setCreditsJustification(event.target.value);
@@ -463,8 +466,8 @@ export const CloudCreditsForm = (props) => {
                     min="0"
                     id="credits-estimate"
                     name="credits-estimate"
-                    value={creditsEstimate}
-                    onChange={handleChangeCreditsEstimate}
+                    value={creditsEstimatedNeed}
+                    onChange={handleChangeCreditsEstimatedNeed}
                     adornment="$"
                   />
                 </FormControl>
@@ -528,7 +531,7 @@ export const CloudCreditsForm = (props) => {
                 {/* If available, include a link to a list of your publications/research results [short answer] */}
                 <FormControl>
                   <label htmlFor="credits-research-links">If available, include a link to a list of your publications/research results</label>
-                  <TextInput type="number" id="credits-research-links" name="credits-research-links" value={creditsResearchLinks} onChange={handleChangeCreditsResearchLinks} />
+                  <TextInput id="credits-research-links" name="credits-research-links" value={creditsResearchLinks} onChange={handleChangeCreditsResearchLinks} />
                 </FormControl>
               </FormSubsection>
             )
