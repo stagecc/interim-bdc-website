@@ -1,6 +1,6 @@
 import React, { Fragment, useCallback, useMemo } from 'react'
 import { Box, Button, Grid, Stack } from '@mui/material'
-import { LoadingDots } from '../loading'
+import { LoadingSpinner } from '../loading'
 import { Link } from '../link'
 import { useSearch } from './context'
 import { ResultCard } from './result-card'
@@ -10,12 +10,7 @@ import { ControlledFetcher } from './controlled-fetcher'
 //
 
 const LoadingIndicator = () => (
-  <Stack
-    justifyContent="center"
-    alignItems="center"
-    sx={{ height: '300px', mt: 8 }}
-    gap={ 3 }
-  ><LoadingDots color="var(--color-crimson)" textPlacement="top" text="Searching..." /></Stack>
+  <LoadingSpinner height="400px" />
 )
 
 //

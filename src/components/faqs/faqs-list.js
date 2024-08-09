@@ -11,16 +11,16 @@ import {
 } from "../typography";
 import { Card, CardHeader, CardBody } from "../card";
 import { Link } from "../link";
-import { LoadingDots } from "../loading";
+import { LoadingSpinner } from "../loading";
 import { useFaqs } from '../../hooks';
 
 export const FaqsCardList = () => {
-  const faqs = useFaqs('GENERAL');
+  const { errorMessage, folders, loading } = useFaqs('GENERAL');
 
-  if (faqs.errorMessage) {
+  if (errorMessage) {
     return (
       <Card>
-        <ErrorMessage center>{faqs.errorMessage}</ErrorMessage>
+        <ErrorMessage center>{errorMessage}</ErrorMessage>
         <Paragraph center>
           View our FAQs directly at{" "}
           <Link to="https://bdcatalyst.freshdesk.com/">
@@ -32,15 +32,11 @@ export const FaqsCardList = () => {
     );
   }
 
-  if (faqs.loading) {
-    return <LoadingDots
-      color="var(--color-crimson)"
-      text="Loading..."
-      textPlacement="top"
-    />
+  if (loading || !folders) {
+    return <LoadingSpinner height="400px" />
   }
 
-  return faqs.folders.map(folder => {
+  return folders.map(folder => {
     return (
       <Card key={folder.id}>
         <CardHeader>{folder.name}</CardHeader>
