@@ -1,7 +1,8 @@
 import React, { useCallback } from "react";
 import { Button } from "../../components/buttons";
+import { ArrowDropUp as ToTopIcon } from '@mui/icons-material'
 
-export const BackToTopButton = ({ href, heading }) => {
+export const BackToTopButton = () => {
   const scrollToTop = useCallback(() => {
     window.scrollTo({
       top: 0,
@@ -11,13 +12,19 @@ export const BackToTopButton = ({ href, heading }) => {
 
   return (
     <Button
-      fullWidth
+      className="back-to-top-button"
       small
       onClick={ scrollToTop }
       style={{
-        backgroundColor: 'var(--color-blueberry-light)',
+        display: 'flex',
+        justifyContent:'center',
         color: 'var(--color-blueberry-dark)',
+        backgroundColor: 'var(--color-blueberry-light)',
       }}
-    >Back to Top</Button>
+    >
+      <span>Back to Top</span>
+      &nbsp;&nbsp;&nbsp;
+      <ToTopIcon />
+    </Button>
   );
 };

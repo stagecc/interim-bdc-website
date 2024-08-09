@@ -6,7 +6,6 @@ const ResponsiveWrapper = styled.div(({ theme }) => `
   position: relative;
   padding: 0;
   padding-top: 56.25%;
-  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.25));
   & .player {
     position: absolute;
     top: 0;

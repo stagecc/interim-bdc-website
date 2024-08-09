@@ -1,11 +1,15 @@
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import { Card } from "../../components/card";
 
-export const FloatingContentWrapper = styled(Card)(({ placement, type, noPadding = false })=>`
+export const FloatingContentWrapper = styled(Card)(({
+  placement,
+  type = "text",
+  noPadding = false,
+}) => `
   width: 45%;
-  float: ${ placement === "left" ? "left" : "right" };
+  float: ${ placement };
   background-color: ${ type === "text" && "rgba(237, 240, 244, 0.8)" };
-  box-shadow: ${ type === "text" && "4px 4px 12px rgba(186, 194, 204, 0.5)" };
   padding: ${ noPadding ? 0 : '0 1.5rem' };
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -17,4 +21,10 @@ export const FloatingContentWrapper = styled(Card)(({ placement, type, noPadding
     float: none;
     padding: 0.5rem 1.5rem;
   }
-`)
+`);
+
+FloatingContentWrapper.propTypes = {
+  noPadding: PropTypes.bool,
+  placement: PropTypes.oneOf(["left", "right"]),
+  type: PropTypes.string,
+};
