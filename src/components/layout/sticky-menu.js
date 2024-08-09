@@ -3,7 +3,7 @@ import { Container as Grid, Row, Col, Visible } from "react-grid-system";
 import { keyframes, styled } from 'styled-components';
 import { useScrollPosition } from "../../hooks";
 import { List, ListItem } from "../../components/list";
-import { BackToTopButton } from "./back-to-top-button";
+import { BackToTopButton } from "../buttons";
 
 const BACK_TO_TOP_SCROLL_THRESHOLD = 400;
 
@@ -50,6 +50,8 @@ export const StickyLeftMenu = ({ menuItems }) => {
               primary={ <BackToTopButton /> }
               style={{
                marginTop: '3rem',
+               display: 'flex',
+               justifyContent: 'flex-end',
               }}
             />
           ) }
