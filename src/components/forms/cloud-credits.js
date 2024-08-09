@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { Paragraph } from "../typography";
@@ -32,26 +32,32 @@ const SubmitButton = styled(Button).attrs({
 
 const ThankYouMessage = () => {
   return (
-    <Paragraph center>
-      Thanks &mdash; your cloud credits request has been submitted!
-    </Paragraph>
+    <Card>
+      <CardBody>
+        <Paragraph center>
+          Thanks &mdash; your cloud credits request has been submitted!
+        </Paragraph>
+      </CardBody>
+    </Card>
   );
 };
 
 const ErrorMessage = () => {
   return (
-    <Fragment>
-      <Paragraph center>
-        Sorry &mdash; an error occurred while submitting your request!
-      </Paragraph>
-      <Paragraph center>
-        Please submit your request on{" "}
-        <Link to="https://bdcatalyst.freshdesk.com">
-          our help desk
-        </Link>{" "}
-        while we resolve this issue. Thanks!
-      </Paragraph>
-    </Fragment>
+    <Card>
+      <CardBody>
+        <Paragraph center>
+          Apologies &mdash; an error occurred while submitting your Cloud Credits request!
+        </Paragraph>
+        <Paragraph center>
+          Please submit your request on{" "}
+          <Link to="https://bdcatalyst.freshdesk.com">
+            our help desk
+          </Link>{" "}
+          while we resolve this issue.
+        </Paragraph>
+      </CardBody>
+    </Card>
   );
 };
 
@@ -186,7 +192,6 @@ export const CloudCreditsForm = (props) => {
     };
 
     const submitTicket = async () => {
-      setWasSubmitted(true);
       await axios
         .post(FRESHDESK_API_CREATE_TICKET_URL, payload, requestOptions)
         .then((response) => {
@@ -197,7 +202,11 @@ export const CloudCreditsForm = (props) => {
           setSubmitButtonLocked(true);
         })
         .catch((error) => {
+          console.error(error.message);
           setError(error);
+        })
+        .finally(() => {
+          setWasSubmitted(true);
         });
     };
     submitTicket();
@@ -235,6 +244,14 @@ export const CloudCreditsForm = (props) => {
   const handleChangeCourseSupportDescription = (event) => setCourseSupportDescription(event.target.value);
 
   const handleChangeConsent = (event) => setConsent(event.target.checked);
+
+  if (wasSubmitted && !error) {
+    return <ThankYouMessage />;
+  }
+
+  if (wasSubmitted && error) {
+    return <ErrorMessage />;
+  }
 
   return (
     <Card {...props}>
@@ -603,10 +620,6 @@ export const CloudCreditsForm = (props) => {
 
           <SubmitButton disabled={submitButtonLocked || !consent}>Submit</SubmitButton>
         </Form>
-
-        {wasSubmitted && !error && <ThankYouMessage />}
-
-        {wasSubmitted && error && <ErrorMessage />}
       </CardBody>
     </Card>
   );

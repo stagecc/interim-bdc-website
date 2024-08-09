@@ -12,7 +12,7 @@ import {
 } from '@mui/material'
 import { useSearch } from '../context'
 import { DebugTab, ExplanationTab, StudiesTab } from './tabs'
-import { LoadingDots } from '../../loading'
+import { LoadingSpinner } from '../../loading'
 import { ConceptCollectionButton } from '../collection'
 import { Paragraph, Subheading, Subsubheading } from '../../typography'
 
@@ -41,12 +41,6 @@ const TabPanel = ({ children, value, index, ...other }) => {
     </Box>
   )
 }
-
-const StudiesLoadingIndicator = () => (
-  <Stack justifyContent="center" alignItems="center">
-    <LoadingDots textPlacement="top" text="Locating studies..." />
-  </Stack>
-)
 
 export const ResultDialog = () => {
   const { fetchStudies, query, selectedResult, setSelectedResult } = useSearch()
@@ -200,7 +194,7 @@ export const ResultDialog = () => {
           <TabPanel value={ tabIndex } index={ 0 } sx={{ p: 0 }}>
             {
               loadingStudies
-                ? <StudiesLoadingIndicator />
+                ? <LoadingSpinner />
                 : <StudiesTab studies={ studies } />
             }
           </TabPanel>

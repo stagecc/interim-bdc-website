@@ -3,8 +3,8 @@ import { Box, Grid, Stack } from '@mui/material'
 import { PageContent } from '../../../../components/layout'
 import { Title } from '../../../../components/typography'
 import {
-  BackToTopButton, CheckoutCta, CollectionPreview, DugForm,
-  FiltersTray, Results, Sidebar, SidebarToggler,
+  CheckoutCta, CollectionPreview, DugForm, FiltersTray,
+  Results, Sidebar, SidebarToggler, ToTopButton
 } from '../../../../components/dug'
 
 const DugSearchPage = () => {
@@ -47,7 +47,7 @@ const DugSearchPage = () => {
             <DugForm focusOnMount slashFocus />
             <FiltersTray />
             <Results />
-            <BackToTopButton />
+            <ToTopButton />
           </Stack>
         </Grid>
 
