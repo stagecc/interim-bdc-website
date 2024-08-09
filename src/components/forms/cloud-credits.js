@@ -75,6 +75,7 @@ export const CloudCreditsForm = (props) => {
   const [projectPi, setProjectPi] = useState("");
   const [role, setRole] = useState("");
   const [organization, setOrganization] = useState("");
+  const [projectName, setProjectName] = useState("");
   const [teamMembers, setTeamMembers] = useState("");
   const [hlbsRelation, setHlbsRelation] = useState("");
   const [grapevine, setGrapevine] = useState("");
@@ -84,6 +85,7 @@ export const CloudCreditsForm = (props) => {
   // NHLBI BDC Cloud Credit Support Program
   const [creditsProjectAbstract, setCreditsProjectAbstract] = useState("");
   const [creditsPreviouslyReceived, setCreditsPreviouslyReceived] = useState(false);
+  const [creditsComputationalScope, setCreditsComputationalScope] = useState("");
   const [creditsReceivedDescription, setCreditsReceivedDescription] = useState("");
   const [creditsEstimatedNeed, setCreditsEstimatedNeed] = useState(0);
   const [creditsRequested, setCreditsRequested] = useState(0);
@@ -100,28 +102,7 @@ export const CloudCreditsForm = (props) => {
   const [courseSupportRequested, setCourseSupportRequested] = useState(false);
   const [courseSupportDescription, setCourseSupportDescription] = useState("");
 
-  // const [username, setUserName] = useState("");
-  // const [terraUsername, setTerraUserName] = useState("");
-  // const [how, setHow] = useState("");
-  // const [cloudCreditsRequest, setCloudCreditsRequest] = useState("");
-
   const [consent, setConsent] = useState(false);
-
-  // const [collaborators, setCollaborators] = useState("");
-  // const [relatedResearch, setRelatedResearch] = useState("");
-  // const [project, setProject] = useState("");
-  // const [justification, setJustification] = useState("");
-  // const [previousFundingDetails, setPreviousFundingDetails] = useState("");
-  // const [estimate, setEstimate] = useState();
-  // const [platform, setPlatform] = useState("Select One");
-  // const [preferedAnalysisPlatform, setPreferedAnalysisPlatform] = useState("Not Applicable");
-  // const [requestedTerraAmount, setRequestedTerraAmount] = useState(0);
-  // const [requestedSevenBridgesAmount, setRequestedSevenBridgesAmount] = useState(0);
-
-  // const [justificationLength, setJustificationLength] = useState();
-  // const [previousFundingDetailsLength, setPreviousFundingDetailsLength] = useState();
-
-  // const [projectLength, setProjectLength] = useState(0);
 
   const [wasSubmitted, setWasSubmitted] = useState(false);
   const [error, setError] = useState();
@@ -137,10 +118,10 @@ export const CloudCreditsForm = (props) => {
     const description = ``
       + `Requestor's name: ${name} <br />`
       + `Requestor's email: ${email} <br />`
-      // + `Username (Seven Bridges Only)): ${username} <br />`
       + `Project PI: ${projectPi} <br />`
       + `Requestor's role: ${role} <br />`
       + `Requestor's organization: ${organization} <br />`
+      + `Project Name: ${projectName}<br />`
       + `Team members: ${teamMembers} <br />`
       + `How is your research related to HLBS?: ${hlbsRelation} <br />`
       + `How did the requestor learn about BDC?: ${grapevine} <br />`
@@ -157,6 +138,7 @@ export const CloudCreditsForm = (props) => {
         payload = {
           cf_cloud_credits_project_namedescription: creditsProjectAbstract,
           cf_cloud_credits_previous_request196891: creditsPreviouslyReceived,
+          cf_cloud_credits_computational_scope: creditsComputationalScope,
           cf_cloud_credits_previous_use_of_cloud_credits: creditsReceivedDescription,
           cf_cloud_credits_estimated_need: +creditsEstimatedNeed,
           cf_estimated_cloud_credits_requested: +creditsRequested,
@@ -179,6 +161,7 @@ export const CloudCreditsForm = (props) => {
       }
       return {
         ...payload,
+        cf_cloud_credits_project_name: projectName,
         cf_by_submitting_this_form_i_agree_to_the_terms_and_conditions_of_this_offering: consent,
       };
     };
@@ -220,6 +203,7 @@ export const CloudCreditsForm = (props) => {
   const handleChangeEmail = (event) => setEmail(event.target.value);
   const handleChangeRole = (event) => setRole(event.target.value);
   const handleChangeOrganization = (event) => setOrganization(event.target.value);
+  const handleChangeProjectName = (event) => setProjectName(event.target.value);
   const handleChangeTeamMembers = (event) => setTeamMembers(event.target.value);
   const handleChangeHlbsRelation = (event) => setHlbsRelation(event.target.value);
   const handleChangeGrapevine = (event) => setGrapevine(event.target.value);
@@ -228,6 +212,7 @@ export const CloudCreditsForm = (props) => {
   // NHLBI BDC Pilot Funding Program
   const handleChangePreferredPlatform = (event) => setPreferredPlatform(event.target.value);
   // NHLBI BDC Cloud Credit Support Program
+  const handleChangeCreditsComputationalScope = (event) => setCreditsComputationalScope(event.target.value);
   const handleChangeCreditsProjectAbstract = (event) => setCreditsProjectAbstract(event.target.value);
   const handleChangeCreditsPreviouslyReceived = (event) => setCreditsPreviouslyReceived(event.target.checked);
   const handleChangeCreditsReceivedDescription = (event) => setCreditsReceivedDescription(event.target.value);
@@ -331,6 +316,17 @@ export const CloudCreditsForm = (props) => {
             />
           </FormControl>
           <FormControl>
+            <label htmlFor="project-name">Project Name *</label>
+            <TextInput
+              type="text"
+              required
+              id="project-name"
+              name="project-name"
+              value={projectName}
+              onChange={handleChangeProjectName}
+            />
+          </FormControl>
+          <FormControl>
             <label required htmlFor="team-members">Team members *</label>
             <TextArea
               id="team-members"
@@ -409,7 +405,7 @@ export const CloudCreditsForm = (props) => {
             oneRequest === "NHLBI BDC Cloud Credit Support Program" && (
               <FormSubsection>
                 <FormControl>
-                  <label required htmlFor="credits-project-abstract">Project abstract with a description of the project’s scientific significance and aims</label>
+                  <label required htmlFor="credits-project-abstract">Provide a project abstract with a description of the project’s scientific significance and aims</label>
                   <TextArea
                     id="credits-project-abstract"
                     required
@@ -430,12 +426,12 @@ export const CloudCreditsForm = (props) => {
                       onChange={ handleChangeCreditsPreviouslyReceived }
                     />
                   </div>
-                  {/* Previous receipt of cloud credits from BDC (including Pilot Funding and other Cloud Credit Support Program approvals) [yes/no] */}
+                  {/* Check this box if you previously received cloud credits from BDC (including Pilot Funding and other Cloud Credit Support Program approvals). */}
                   <div style={{ flex: 1 }}>
                     <label htmlFor="credits-previously-received">
                       <Paragraph>
-                        Previous receipt of cloud credits from BDC (including Pilot
-                        Funding and other Cloud Credit Support Program approvals)
+                        Check this box if you previously received cloud credits from BDC
+                        (including Pilot Funding and other Cloud Credit Support Program approvals).
                       </Paragraph>
                     </label>
                     {/* If yes, briefly outline your use of previous cloud credit funding */}
@@ -455,11 +451,21 @@ export const CloudCreditsForm = (props) => {
                     {/* If no, apply for pilot funding first [no response required] */}
                   </div>
                 </div>
-                {/* Computational Scope (i.e., computational tasks)  */}
-                <div>Computational Scope</div>
-                {/* Estimated amount of cloud credits needed [dollar amount] */}
+                {/* Computational Scope */}
                 <FormControl>
-                  <label htmlFor="redits-estimate">Estimated amount of cloud credits needed</label>
+                  <label required htmlFor="computational-scope">Computational Scope</label>
+                  <TextArea
+                    id="computational-scope"
+                    required
+                    name="computational-scope"
+                    value={creditsComputationalScope}
+                    onChange={handleChangeCreditsComputationalScope}
+                    maxLength="3000"
+                  />
+                </FormControl>
+                {/* What is the estimated amount of cloud credits needed? [dollar amount] */}
+                <FormControl>
+                  <label htmlFor="redits-estimate">What is the estimated amount of cloud credits needed?</label>
                   <AdornedInput
                     type="number"
                     required
@@ -471,9 +477,9 @@ export const CloudCreditsForm = (props) => {
                     adornment="$"
                   />
                 </FormControl>
-                {/* Amount of cloud credits being requested [dollar amount] */}
+                {/* What is the amount of cloud credits being requested? [dollar amount] */}
                 <FormControl>
-                  <label htmlFor="credits-requested">Amount of cloud credits being requested</label>
+                  <label htmlFor="credits-requested">What is the amount of cloud credits being requested?</label>
                   <AdornedInput
                     type="number"
                     required
@@ -485,9 +491,9 @@ export const CloudCreditsForm = (props) => {
                     adornment="$"
                   />
                 </FormControl>
-                {/* Anticipated timeline for the work [short answer] */}
+                {/* What is the anticipated timeline for the work? [short answer] */}
                 <FormControl>
-                  <label htmlFor="credits-antipated-timeline">Anticipated timeline for the work</label>
+                  <label htmlFor="credits-antipated-timeline">What is the anticipated timeline for the work?</label>
                   <TextInput
                     type="text"
                     required
@@ -509,7 +515,7 @@ export const CloudCreditsForm = (props) => {
                     maxLength="3000"
                   />
                 </FormControl>
-                {/* I certify that the federal or private funding secured for this project is insufficient to support the computational cloud costs I am requesting [checkbox] */}
+                {/* By checking this box, I certify that the federal or private funding secured for this project is insufficient to support the computational cloud costs I am requesting [checkbox] */}
                 <div style={{ display: 'flex' }}>
                   <div style={{ width: '80px', padding: '1rem 2rem' }}>
                     <TextInput
@@ -522,8 +528,7 @@ export const CloudCreditsForm = (props) => {
                   <div style={{ flex: 1 }}>
                     <label htmlFor="credits-certify">
                       <Paragraph>
-                        I certify that the federal or private funding secured for this project is
-                        insufficient to support the computational cloud costs I am requesting
+                        By checking this box, I certify that the federal or private funding secured for this project is insufficient to support the computational cloud costs I am requesting
                       </Paragraph>
                     </label>
                   </div>
