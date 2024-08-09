@@ -66,34 +66,39 @@ return (
             <CalendarTodayIcon sx={{fontSize:"1.2rem", margin: 0, color:"#21568a"}}/> 
           </Grid>
           <Grid item>
-            <EventMeta> {display_date}</EventMeta>
+            <EventMeta>{display_date}</EventMeta>
             <EventMeta>{time}</EventMeta>
           </Grid>
         </Grid>
       </Stack>
-      <Stack direction="column" sx={{flex: 1}} gap={1}>
-        <Subheading noMargin left>Location</Subheading>
-        <Grid container spacing={2}>
-          <Grid item>
-            <LocationOnOutlinedIcon sx={{fontSize:"1.2rem", margin: 0, color:"#21568a"}}/> 
+      {
+        location && (
+          <Stack direction="column" sx={{flex: 1}} gap={1}>
+          <Subheading noMargin left>Location</Subheading>
+          <Grid container spacing={2}>
+            <Grid item>
+              <LocationOnOutlinedIcon sx={{fontSize:"1.2rem", margin: 0, color:"#21568a"}}/> 
+            </Grid>
+            <Grid item>
+              <Box>
+                {
+                  (!past && url) ? (
+                    <EventMeta>
+                      {location}: <Link to={url}>Register Here</Link>
+                    </EventMeta>
+                  ) : (
+                    <EventMeta>
+                      {location}
+                    </EventMeta>
+                  )
+                }
+              </Box>
+            </Grid>
           </Grid>
-          <Grid item>
-            <Box>
-              {
-                (!past && url) ? (
-                  <EventMeta>
-                    {location}: <Link to={url}>Register Here</Link>
-                  </EventMeta>
-                ) : (
-                  <EventMeta>
-                    {location}
-                  </EventMeta>
-                )
-              }
-            </Box>
-          </Grid>
-        </Grid>
-      </Stack>
+        </Stack>
+  
+        )
+      }
     </Stack>
 
     { tags && <LinkedTagsList tags={tags}/>}
