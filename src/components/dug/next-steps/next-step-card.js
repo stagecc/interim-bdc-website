@@ -4,7 +4,6 @@ import {
 } from '@mui/material'
 import { ExpandMore as ExpandIcon } from '@mui/icons-material'
 import { DataDisplay } from './data-display';
-import Markdown from 'react-markdown';
 import { Heading } from '../../typography'
 
 export const NextStepCard = ({
@@ -55,7 +54,7 @@ export const NextStepCard = ({
       </CardActionArea>
       <Collapse in={ expanded }>
         <CardContent>
-          <Markdown>{ details }</Markdown>
+          { details }
         </CardContent>
         <CardContent sx={{ flex: 1 }}>
           <DataDisplay data={ data } />
