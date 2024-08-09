@@ -114,17 +114,17 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     });
   });
 
-  // get date to sort events into upcoming and past event lists
-  const todaysDate = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD'
-
   // Create archived event list page
   createPage({
     path: "/news-and-events/events/archive",
     component: eventsArchiveTemplate,
-    context: {
-      todaysDate: todaysDate,
-    },
   });
+
+    // Create archived event list page
+    createPage({
+      path: "/news-and-events/events",
+      component: upcomingEventsTemplate,
+    });
 
   // Create tag pages
   const allTags = new Set();

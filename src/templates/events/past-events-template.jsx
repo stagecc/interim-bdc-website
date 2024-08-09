@@ -7,7 +7,12 @@ import { PastEventsList } from "../../components/events/past-event-list-grid"
 import Avatar from '@mui/material/Avatar';
 import BDCLogo from '../../images/favicon.png'
 
-const PastEventsTemplate = ({data, pageContext}) => {
+const PastEventsTemplate = ({data}) => {
+  
+  const pastEvents = data.events.edges.filter(event => {
+    const todaysDate = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD'
+    return event.node.frontmatter.date < todaysDate
+  })
 
   return (
     <PageContent width="95%" maxWidth="1200px" center gutters>
@@ -28,7 +33,7 @@ const PastEventsTemplate = ({data, pageContext}) => {
             }}/> {" "}indicate events hosted by BDC.
         </Paragraph>
       </Module>
-      <PastEventsList events={data.events.edges} />
+      <PastEventsList events={pastEvents} />
 
 
       <Paragraph center>
@@ -43,7 +48,7 @@ const PastEventsTemplate = ({data, pageContext}) => {
 export default PastEventsTemplate
 
 export const allEventsQuery = graphql`
-  query{
+  query {
     events: allMdx(
       sort: {frontmatter: {date: DESC}}
       filter: {
@@ -53,7 +58,7 @@ export const allEventsQuery = graphql`
       edges {
         node {
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
+            date(formatString: "YYYY-MM-DD")
             display_date
             path
             title
