@@ -1,15 +1,21 @@
 import React from "react";
+import { graphql } from "gatsby";
 import {
   Title,
   Paragraph,
 } from "../../components/typography";
 import { ButtonLink } from "../../components/buttons";
 import {  PageContent } from "../../components/layout";
+import { EventsList } from '../../components/events'
 import { Avatar } from '@mui/material/';
 import BDCLogo from '../../images/favicon.png'
 
 
 const UpcomingEventsList = ({ data }) => {
+  const upcomingEvents = data.events.edges.filter(event => {
+    const todaysDate = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD'
+    return event.node.frontmatter.date >= todaysDate
+  })
 
   return (
     <PageContent width="95%" maxWidth="1200px" center gutters>
@@ -29,9 +35,10 @@ const UpcomingEventsList = ({ data }) => {
             }}/> {" "}indicate events hosted by BDC.
         </Paragraph>
 
+        <EventsList events={upcomingEvents} />
 
       <Paragraph center>
-        <ButtonLink primary={true} to="/about/events/archive">
+        <ButtonLink primary={true} to="/news-and-events/events/archive">
           View our past events
         </ButtonLink>
       </Paragraph>
@@ -40,3 +47,30 @@ const UpcomingEventsList = ({ data }) => {
 };
 
 export default UpcomingEventsList
+
+export const allEventsQuery = graphql`
+  query {
+    events: allMdx(
+      sort: {frontmatter: {date: ASC}}
+      filter: {
+        internal: {contentFilePath: {regex: "/data/events/"}}
+      }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            date(formatString: "YYYY-MM-DD")
+            display_date
+            path
+            title
+            url
+            time
+            location
+            externalEvent
+          }
+          excerpt(pruneLength: 280)
+        }
+      }
+    }
+  }
+`;
