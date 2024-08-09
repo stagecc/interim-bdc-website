@@ -1,4 +1,262 @@
 [
-  { "from": "/fellows/",                "to": "/about/bdc-fellows" },
-  { "from": "/fellows/program/",        "to": "/about/bdc-fellows" }
+  {
+    "from": "/fellows",
+    "to": "/about/bdc-fellows"
+  },
+  {
+    "from": "/fellows/program",
+    "to": "/about/bdc-fellows"
+  },
+  {
+    "from": "/fellows/cohort1",
+    "to": "/about/bdc-fellows"
+  },
+  {
+    "from": "/fellows/cohort2",
+    "to": "/about/bdc-fellows"
+  },
+  {
+    "from": "/fellows/cohort3",
+    "to": "/about/bdc-fellows"
+  },
+  {
+    "from": "/fellows/faqs",
+    "to": "/about/bdc-fellows"
+  },
+  {
+    "from": "/events",
+    "to": "/news-and-events/events"
+  },
+  {
+    "from": "/events/archive",
+    "to": "/news-and-events/events/archive"
+  },
+  {
+    "from": "/about/latest-updates",
+    "to": "/news-and-events/latest-updates"
+  },
+  {
+    "from": "/about/news",
+    "to": "/news-and-events/news-coverage"
+  },
+  {
+    "from": "/about/research",
+    "to": "/news-and-events/published-research"
+  },
+  {
+    "from": "/resources/data",
+    "to": "/use-bdc/explore-data/"
+  },
+  {
+    "from": "/resources/byod",
+    "to": "/use-bdc/analyze-data/"
+  },
+  {
+    "from": "/resources/cloud-credits",
+    "to": "/user-resources/usage-costs/"
+  },
+  {
+    "from": "/resources/learn",
+    "to": "/about/overview/"
+  },
+  {
+    "from": "/resources/services",
+    "to": "/about/overview"
+  },
+  {
+    "from": "/platforms/gen3",
+    "to": "/about/overview"
+  },
+  {
+    "from": "/platforms/pic-sure",
+    "to": "/about/overview"
+  },
+  {
+    "from": "/platforms/seven-bridges",
+    "to": "/about/overview"
+  },
+  {
+    "from": "/platforms/terra",
+    "to": "/about/overview"
+  },
+  {
+    "from": "/contact/ecosystem",
+    "to": "/join-bdc"
+  },
+  {
+    "from": "/contact/ecosuccess",
+    "to": "/join-bdc/success"
+  },
+  {
+    "from": "/data-protection",
+    "to": "/user-resources/terms-of-use"
+  },
+  {
+    "from": "/recover",
+    "to": "/about/research-communities/#recover"
+  },
+  {
+    "from": "/events/2024-07-17/community_hours",
+    "to": "/news-and-events/events/2024-07-17/community_hours"
+  },
+  {
+    "from": "/events/2024-06-12/community_hours",
+    "to": "/news-and-events/events/2024-06-12/community_hours"
+  },
+  {
+    "from": "/events/2024-05-22/community_hours",
+    "to": "/news-and-events/events/2024-05-22/community_hours"
+  },
+  {
+    "from": "/events/2024-04-17/community_hours",
+    "to": "/news-and-events/events/2024-04-17/community_hours"
+  },
+  {
+    "from": "/events/2024-03-13/community_hours",
+    "to": "/news-and-events/events/2024-03-13/community_hours"
+  },
+  {
+    "from": "/events/2024-02-28/community_hours",
+    "to": "/news-and-events/events/2024-02-28/community_hours"
+  },
+  {
+    "from": "/events/2024-01-17/community_hours",
+    "to": "/news-and-events/events/2024-01-17/community_hours"
+  },
+  {
+    "from": "/events/2023-12-13/community_hours",
+    "to": "/news-and-events/events/2023-12-13/community_hours"
+  },
+  {
+    "from": "/events/2023-11-15/community_hours",
+    "to": "/news-and-events/events/2023-11-15/community_hours"
+  },
+  {
+    "from": "/events/2023-09-13/community_hours",
+    "to": "/news-and-events/events/2023-09-13/community_hours"
+  },
+  {
+    "from": "/events/2023-08-23/community_hours",
+    "to": "/news-and-events/events/2023-08-23/community_hours"
+  },
+  {
+    "from": "/events/2023-07-19/community_hours",
+    "to": "/news-and-events/events/2023-07-19/community_hours"
+  },
+  {
+    "from": "/events/2023-06-21/community_hours",
+    "to": "/news-and-events/events/2023-06-21/community_hours"
+  },
+  {
+    "from": "/events/2023-05-17/community_hours",
+    "to": "/news-and-events/events/2023-05-17/community_hours"
+  },
+  {
+    "from": "/events/2023-04-26/community_hours",
+    "to": "/news-and-events/events/2023-04-26/community_hours"
+  },
+  {
+    "from": "/events/2023-03-15/community_hours",
+    "to": "/news-and-events/events/2023-03-15/community_hours"
+  },
+  {
+    "from": "/events/2023-02-22/community_hours",
+    "to": "/news-and-events/events/2023-02-22/community_hours"
+  },
+  {
+    "from": "/events/2023-01-25/community_hours",
+    "to": "/news-and-events/events/2023-01-25/community_hours"
+  },
+  {
+    "from": "/events/2022-09-28/community_hours",
+    "to": "/news-and-events/events/2022-09-28/community_hours"
+  },
+  {
+    "from": "/events/2022-08-29/interest-groups/workflow-and-development",
+    "to": "/news-and-events/events/2022-08-29/interest-groups/workflow-and-development"
+  },
+  {
+    "from": "/events/2022-08-24/community_hours",
+    "to": "/news-and-events/events/2022-08-24/community_hours"
+  },
+  {
+    "from": "/events/2022-08-16/interest-groups/cross-data-harmonization",
+    "to": "/news-and-events/events/2022-08-16/interest-groups/cross-data-harmonization"
+  },
+  {
+    "from": "/events/2022-08-10/community_hours",
+    "to": "/news-and-events/events/2022-08-10/community_hours"
+  },
+  {
+    "from": "/events/2022-07-27/interest-groups/GWAS-TOPMed",
+    "to": "/news-and-events/events/2022-07-27/interest-groups/GWAS-TOPMed"
+  },
+  {
+    "from": "/events/2022-07-20/community_hours",
+    "to": "/news-and-events/events/2022-07-20/community_hours"
+  },
+  {
+    "from": "/events/2022-07-19/interest-groups/cross-data-harmonization",
+    "to": "/news-and-events/events/2022-07-19/interest-groups/cross-data-harmonization"
+  },
+  {
+    "from": "/events/2022-06-22/interest-groups/GWAS-TOPMed",
+    "to": "/news-and-events/events/2022-06-22/interest-groups/GWAS-TOPMed"
+  },
+  {
+    "from": "/events/2022-06-22/community_hours",
+    "to": "/news-and-events/events/2022-06-22/community_hours"
+  },
+  {
+    "from": "/events/2022-06-21/interest-groups/cross-data-harmonization",
+    "to": "/news-and-events/events/2022-06-21/interest-groups/cross-data-harmonization"
+  },
+  {
+    "from": "/events/2022-06-20/interest-groups/workflow-and-development",
+    "to": "/news-and-events/events/2022-06-20/interest-groups/workflow-and-development"
+  },
+  {
+    "from": "/events/2022-05-25/interest-groups/GWAS-TOPMed",
+    "to": "/news-and-events/events/2022-05-25/interest-groups/GWAS-TOPMed"
+  },
+  {
+    "from": "/events/2022-05-17/interest-groups/cross-data-harmonization",
+    "to": "/news-and-events/events/2022-05-17/interest-groups/cross-data-harmonization"
+  },
+  {
+    "from": "/events/2022-05-16/interest-groups/workflow-and-development",
+    "to": "/news-and-events/events/2022-05-16/interest-groups/workflow-and-development"
+  },
+  {
+    "from": "/events/2022-02-16/community_hours",
+    "to": "/news-and-events/events/2022-02-16/community_hours"
+  },
+  {
+    "from": "/events/2022-01-19/community_hours",
+    "to": "/news-and-events/events/2022-01-19/community_hours"
+  },
+  {
+    "from": "/events/2021-12-08/community_hours",
+    "to": "/news-and-events/events/2021-12-08/community_hours"
+  },
+  {
+    "from": "/events/2021-11-10/community_hours",
+    "to": "/news-and-events/events/2021-11-10/community_hours"
+  },
+  {
+    "from": "/events/2021-10-27/community_hours",
+    "to": "/news-and-events/events/2021-10-27/community_hours"
+  },
+  {
+    "from": "/events/2021-09-15/community_hours",
+    "to": "/news-and-events/events/2021-09-15/community_hours"
+  },
+  {
+    "from": "/events/2022-08-25/community_hours",
+    "to": "/news-and-events/events/2022-08-25/community_hours"
+  },
+  {
+    "from": "/events/2022-08-11/community_hours",
+    "to": "/news-and-events/events/2022-08-11/community_hours"
+  }
 ]
