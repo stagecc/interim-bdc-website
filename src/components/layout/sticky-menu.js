@@ -1,5 +1,4 @@
 import React from "react";
-import { Container as Grid, Row, Col, Visible } from "react-grid-system";
 import { keyframes, styled } from 'styled-components';
 import { useScrollPosition } from "../../hooks";
 import { List, ListItem } from "../../components/list";
@@ -56,18 +55,3 @@ export const StickyLeftMenu = ({ menuItems }) => {
     </List>
   );
 };
-
-export const StickyLeftMenuContainer = ({ menuItems, children }) => (
-  <Grid fluid>
-    <Row>
-      <Visible lg xl xxl>
-        <Col lg={3}>
-          <StickyLeftMenu menuItems={menuItems}/>
-        </Col>
-      </Visible>
-      <Col xs={12} lg={9} style={{marginBottom: '8rem'}}>
-        {children}
-      </Col>
-    </Row>
-  </Grid>
-);
