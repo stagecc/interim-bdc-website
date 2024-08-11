@@ -141,7 +141,7 @@ const SingleEventTemplate = ({ data, pageContext, children }) => {
   const past = dateString > eventDate
 
   return (
-    <PageContent width="95%" maxWidth="1200px" center gutters>
+    <PageContent width="95%" maxWidth="1000px">
       <Title>{title}</Title>
 
       {

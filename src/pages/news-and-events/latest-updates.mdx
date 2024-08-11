@@ -41,7 +41,7 @@ export const query = graphql`
   }
 `;
 
-<PageContent title="Latest Updates">
+<PageContent title="Latest Updates" maxWidth="800px">
   {props.data.allMdx.edges.map(({ node }) => (
     <NewsListItem
       key={node.frontmatter.path}

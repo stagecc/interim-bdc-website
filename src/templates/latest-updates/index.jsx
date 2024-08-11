@@ -18,7 +18,7 @@ const LatestUpdatesPost = ({ data: { mdx }, pageContext, children }) => {
   const { prev, next } = pageContext;
 
   return (
-    <PageContent width="95%" maxWidth="1200px" center gutters>
+    <PageContent width="95%" maxWidth="1000px">
       <Title>{title}</Title>
 
       {
