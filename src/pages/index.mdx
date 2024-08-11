@@ -16,13 +16,20 @@ import BlurChartCheckUpCurve from "../images/blur-chart-check-up-curve.jpg";
 import { NewsFeed } from "../components/latest-updates";
 
 
-<PageContent title="Home" hideTitle>
+<PageContent
+  title="Home"
+  hideTitle
+  width="100%"
+  maxWidth="100%"
+  gutters={ 0 }
+>
   <Carousel />
 
   <Container
     width="90%"
     maxWidth="1200px"
-    center
+    center="true"
+    gutters="true"
   >
     <Hidden xs sm md>
       <HexMenu />      

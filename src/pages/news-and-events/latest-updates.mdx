@@ -41,20 +41,16 @@ export const query = graphql`
   }
 `;
 
-<PageContent width="95%" maxWidth="1200px" center gutters>
-
-# Latest Updates
-
-{props.data.allMdx.edges.map(({ node }) => (
-  <NewsListItem
-    key={node.frontmatter.path}
-    title={node.frontmatter.title}
-    path={node.frontmatter.path}
-    date={node.frontmatter.date}
-    timeToRead={Math.ceil(node.fields.timeToRead.minutes)}
-    tags={node.frontmatter.tags}
-    content={node.excerpt}
-  />
-))}
-
+<PageContent title="Latest Updates">
+  {props.data.allMdx.edges.map(({ node }) => (
+    <NewsListItem
+      key={node.frontmatter.path}
+      title={node.frontmatter.title}
+      path={node.frontmatter.path}
+      date={node.frontmatter.date}
+      timeToRead={Math.ceil(node.fields.timeToRead.minutes)}
+      tags={node.frontmatter.tags}
+      content={node.excerpt}
+    />
+  ))}
 </PageContent>

@@ -6,6 +6,7 @@ import { Container } from "./container";
 import { Seo } from "../seo";
 import { Title } from "../typography";
 import { PageNavMenu, PageNavMenuPropTypes } from "./page-nav-menu";
+
 const TOP_GUTTER = "3rem";
 const BOTTOM_GUTTER = "3rem";
 
@@ -24,7 +25,7 @@ export const PageContent = ({
   ...props
 }) => {
   return (
-    <PageContentContainer {...props}>
+    <PageContentContainer width="95%" maxWidth="1200px" center gutters {...props}>
       { title && <Seo
         title={title}
         description={description}
