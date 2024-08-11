@@ -63,14 +63,14 @@ export function Layout({ children }) {
     typeof isCompact === "boolean" && (
       <LayoutWrapper compact={isCompact ? true : undefined}>
         <SkipLink href="#main-content">Skip to main content</SkipLink>
-        <Visible md lg>
+        <Visible md>
           <Header style={{ backgroundColor: '#f9f6f3' }}>
             <Brand width="380px" />
           </Header>
         </Visible>
         <StickyWrapper stuck={true}>
           <Header>
-            <Visible xs sm xl xxl>
+            <Visible xs sm lg xl xxl>
               <Brand width="380px" />
             </Visible>
             <Visible md lg xl xxl>
