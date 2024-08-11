@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Container as Grid, Row, Col, Visible } from "react-grid-system";
 import { Seo } from "../seo";
 import { Title } from "../typography";
-import { StickyLeftMenu } from "./"
+import { PageNavMenu } from "./page-nav-menu";
 
 export const Container = styled.div`
   // & * { border: 1px solid #f99; }
@@ -66,7 +66,7 @@ export const PageContent = ({title, hideTitle, menuItems, children, ...props}) =
           <Row>
             <Visible lg xl xxl>
               <Col lg={3}>
-                <StickyLeftMenu menuItems={menuItems}/>
+                <PageNavMenu menuItems={menuItems}/>
               </Col>
             </Visible>
             <Col xs={12} lg={9} style={{marginBottom: '8rem'}}>

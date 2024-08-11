@@ -26,7 +26,7 @@ const FadingListItem = styled(ListItem)`
 `;
 
 
-export const StickyLeftMenu = ({ menuItems }) => {
+export const PageNavMenu = ({ menuItems }) => {
   const scrollPosition = useScrollPosition();
   const showBackToTopButton = scrollPosition > BACK_TO_TOP_SCROLL_THRESHOLD;
 
