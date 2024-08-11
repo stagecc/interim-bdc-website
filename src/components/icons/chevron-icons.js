@@ -42,8 +42,8 @@ export const ChevronRightIcon = props => (
 );
 
 const requiredProps = {
-  fill: PropTypes.string.isRequired,
-  size: PropTypes.number.isRequired
+  fill: PropTypes.string,
+  size: PropTypes.number,
 };
 
 ChevronIcon.propTypes = requiredProps;

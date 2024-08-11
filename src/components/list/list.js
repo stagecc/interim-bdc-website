@@ -16,8 +16,8 @@ export const List = ({
 };
 
 List.propTypes = {
-  dense: PropTypes.bool.isRequired,
+  dense: PropTypes.bool,
   children: PropTypes.node.isRequired,
-  ordered: PropTypes.bool.isRequired,
+  ordered: PropTypes.bool,
 };
 
