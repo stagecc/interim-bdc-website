@@ -32,39 +32,39 @@ export const StickyLeftMenu = ({ menuItems }) => {
   const showBackToTopButton = scrollPosition > BACK_TO_TOP_SCROLL_THRESHOLD;
 
   return (
-    <Visible lg xl xxl>
-      <Col lg={3}>
-        <List
+    <List
+      style={{
+        position: "sticky",
+        top: "16rem",
+        paddingRight: "2rem",
+      }}
+      right
+    >
+      {menuItems.map(({ heading, href }) => (
+        <MenuListItem heading={heading} href={href} />
+      ))}
+      { showBackToTopButton && (
+        <FadingListItem
+          primary={ <BackToTopButton /> }
           style={{
-            position: "sticky",
-            top: "16rem",
-            paddingRight: "2rem",
+           marginTop: '3rem',
+           display: 'flex',
+           justifyContent: 'flex-end',
           }}
-          right
-        >
-          {menuItems.map(({ heading, href }) => (
-            <MenuListItem heading={heading} href={href} />
-          ))}
-          { showBackToTopButton && (
-            <FadingListItem
-              primary={ <BackToTopButton /> }
-              style={{
-               marginTop: '3rem',
-               display: 'flex',
-               justifyContent: 'flex-end',
-              }}
-            />
-          ) }
-        </List>
-      </Col>
-    </Visible>
+        />
+      ) }
+    </List>
   );
 };
 
 export const StickyLeftMenuContainer = ({ menuItems, children }) => (
   <Grid fluid>
     <Row>
-      <StickyLeftMenu menuItems={menuItems}/>
+      <Visible lg xl xxl>
+        <Col lg={3}>
+          <StickyLeftMenu menuItems={menuItems}/>
+        </Col>
+      </Visible>
       <Col xs={12} lg={9} style={{marginBottom: '8rem'}}>
         {children}
       </Col>
