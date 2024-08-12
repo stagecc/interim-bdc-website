@@ -4,7 +4,7 @@ import {
   Title,
   Paragraph,
 } from "../../components/typography";
-import { ButtonLink } from "../../components/buttons";
+import { ButtonLink, ButtonContainer } from "../../components/buttons";
 import {  PageContent } from "../../components/layout";
 import { EventsList } from '../../components/events'
 import { Avatar } from '@mui/material/';
@@ -38,11 +38,11 @@ const UpcomingEventsList = ({ data }) => {
 
         <EventsList events={upcomingEvents} />
 
-      <Paragraph center>
+      <ButtonContainer>
         <ButtonLink primary={true} to="/news-and-events/events/archive">
           View our past events
         </ButtonLink>
-      </Paragraph>
+      </ButtonContainer>
     </PageContent>
   );
 };
