@@ -8,7 +8,7 @@ import {
 } from '../../../../components/dug'
 
 const DugSearchPage = () => {
-  const [sidebarVisibility, setSidebarVisibility] = useState(true)
+  const [sidebarVisibility, ] = useState(true)
 
   const mainContentSizes = useMemo(() => {
     if (sidebarVisibility) {
@@ -23,8 +23,6 @@ const DugSearchPage = () => {
     }
     return { xs: 0, md: 0, lg: 0 }
   }, [sidebarVisibility])
-
-  const handleClickToggleSidebar = () => setSidebarVisibility(!sidebarVisibility)
 
   return (
     <PageContent>
