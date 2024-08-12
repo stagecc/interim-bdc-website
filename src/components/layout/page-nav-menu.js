@@ -48,7 +48,11 @@ export const PageNavMenu = ({ menuItems }) => {
       right
     >
       {menuItems.map(({ heading, href }) => (
-        <MenuListItem heading={heading} href={href} />
+        <MenuListItem
+          key={ `nav-${href}` }
+          heading={heading}
+          href={href}
+        />
       ))}
       { showBackToTopButton && (
         <FadingListItem

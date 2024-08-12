@@ -247,7 +247,7 @@ export const JoinForm = (props) => {
               )}
               <FormControl>
                 <label required htmlFor="interest">
-                  Why are you joining BDC?
+                  Why are you joining BDC? *
                 </label>
                 <Select
                   required
