@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { Title, Paragraph } from "../../components/typography";
-import { ButtonLink } from "../../components/buttons";
+import { ButtonLink, ButtonContainer } from "../../components/buttons";
 import { Module, PageContent } from "../../components/layout";
 import { PastEventsList } from "../../components/events/past-event-list-grid"
 import Avatar from '@mui/material/Avatar';
@@ -36,11 +36,11 @@ const PastEventsTemplate = ({data}) => {
       <PastEventsList events={pastEvents} />
 
 
-      <Paragraph center>
+      <ButtonContainer>
         <ButtonLink primary={true} to="/news-and-events/events">
           View our upcoming events
         </ButtonLink>
-      </Paragraph>
+      </ButtonContainer>
     </PageContent>
   );
 };

@@ -8,7 +8,7 @@ import { Title, Meta, Subheading } from "../../components/typography";
 import { TagsList } from "../../components/tags"
 import { Module, PageContent } from "../../components/layout";
 import { HorizontalRule } from "../../components/horizontal-rule";
-import { ButtonCta } from "../../components/buttons";
+import { ButtonCta, ButtonContainer } from "../../components/buttons";
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import { Grid, Stack, Box } from '@mui/material'
@@ -162,11 +162,11 @@ const SingleEventTemplate = ({ data, pageContext, children }) => {
       </EventMetadataWrapper>
 
       {( registration_required && !past && url) && (
-        <div style={{ textAlign: "center", paddingTop: '2rem'}}>
+        <ButtonContainer>
           <ButtonCta href={url} target="_blank">
             Register Now!
           </ButtonCta>
-        </div>
+        </ButtonContainer>
       )}
 
       <Module title="Event Details">
