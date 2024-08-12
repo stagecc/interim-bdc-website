@@ -4,7 +4,7 @@ import { PageContent } from '../../components/layout'
 import { Title, Subtitle, Heading, Paragraph } from "../../components/typography";
 import { HorizontalRule } from "../../components/horizontal-rule";
 import { PublishDateByLine, ArticleNavigation, ResearcherCard, ContributorCard } from '../../components/latest-updates';
-import { LinkedTagsList } from "../../components/list"
+import { TagsList } from "../../components/tags"
 import './module.css'
 
 const LatestUpdatesPost = ({ data: { mdx }, pageContext, children }) => {
@@ -18,7 +18,7 @@ const LatestUpdatesPost = ({ data: { mdx }, pageContext, children }) => {
   const { prev, next } = pageContext;
 
   return (
-    <PageContent width="95%" maxWidth="1200px" center gutters>
+    <PageContent width="95%" maxWidth="1000px">
       <Title>{title}</Title>
 
       {
@@ -31,7 +31,7 @@ const LatestUpdatesPost = ({ data: { mdx }, pageContext, children }) => {
 
       <PublishDateByLine date={date} author={author} timeToRead={Math.ceil(timeToRead.minutes)}/>
       
-      { tags && <LinkedTagsList tags={tags}/>}
+      { tags && <TagsList tags={tags}/>}
 
       {/* todo: consider moving this researcher card inside the mdx file */}
 

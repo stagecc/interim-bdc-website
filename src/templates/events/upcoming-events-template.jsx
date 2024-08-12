@@ -12,13 +12,14 @@ import BDCLogo from '../../images/favicon.png'
 
 
 const UpcomingEventsList = ({ data }) => {
-  const upcomingEvents = data.events.edges.filter(event => {
+  console.log(data)
+  const upcomingEvents = data.events.nodes.filter(event => {
     const todaysDate = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD'
-    return event.node.frontmatter.date >= todaysDate
+    return event.frontmatter.date >= todaysDate;
   })
 
   return (
-    <PageContent width="95%" maxWidth="1200px" center gutters>
+    <PageContent width="95%" maxWidth="800px">
 
       <Title>Upcoming Events</Title>
 
@@ -56,20 +57,19 @@ export const allEventsQuery = graphql`
         internal: {contentFilePath: {regex: "/data/events/"}}
       }
     ) {
-      edges {
-        node {
-          frontmatter {
-            date(formatString: "YYYY-MM-DD")
-            display_date
-            path
-            title
-            url
-            time
-            location
-            externalEvent
-          }
-          excerpt(pruneLength: 280)
+      nodes {
+        frontmatter {
+          date(formatString: "YYYY-MM-DD")
+          display_date
+          path
+          title
+          url
+          tags
+          time
+          location
+          externalEvent
         }
+        excerpt(pruneLength: 280)
       }
     }
   }

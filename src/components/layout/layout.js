@@ -63,14 +63,14 @@ export function Layout({ children }) {
     typeof isCompact === "boolean" && (
       <LayoutWrapper compact={isCompact ? true : undefined}>
         <SkipLink href="#main-content">Skip to main content</SkipLink>
-        <Visible md lg>
+        <Visible md>
           <Header style={{ backgroundColor: '#f9f6f3' }}>
             <Brand width="380px" />
           </Header>
         </Visible>
         <StickyWrapper stuck={true}>
           <Header>
-            <Visible xs sm xl xxl>
+            <Visible xs sm lg xl xxl>
               <Brand width="380px" />
             </Visible>
             <Visible md lg xl xxl>
@@ -95,7 +95,7 @@ export function Layout({ children }) {
             <Grid fluid>
               <Row>
                 <Col xs={12} md={5} push={{ md: 7 }}>
-                  <List center={isCompact} right={+!isCompact}>
+                  <List center={isCompact} right={!isCompact}>
                     <ListItem primary={<Link to="/user-resources/user-faqs/">FAQs</Link>} />
                     <ListItem
                       primary={<Link to="/accessibility">Accessibility</Link>}
@@ -134,8 +134,9 @@ export function Layout({ children }) {
                 </Col>
                 <Col xs={12} md={7} pull={{ md: 5 }}>
                   <Paragraph center={isCompact} left={!isCompact ? "true" : undefined}>
-                    BDC is a product of the National Heart, Lung,
-                    and Blood Institute of the National Institutes of Health.
+                    BDC is a product of the <Link to="https://www.nhlbi.nih.gov/">National
+                    Heart, Lung, and Blood Institute</Link> of the <Link to="https://www.nih.gov/">
+                    National Institutes of Health.</Link>
                     <LineBreak count={2} />
                     For general inquiries, <Link to="/help-and-support/contact-us/">contact us</Link>.
                     <LineBreak count={2} />

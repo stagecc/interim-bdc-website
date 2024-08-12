@@ -5,7 +5,7 @@ import { graphql} from "gatsby";
 import { PastEventAlert, EventNavigation } from "../../components/events"
 import { Link } from "../../components/link";
 import { Title, Meta, Subheading } from "../../components/typography";
-import { LinkedTagsList } from "../../components/list"
+import { TagsList } from "../../components/tags"
 import { Module, PageContent } from "../../components/layout";
 import { HorizontalRule } from "../../components/horizontal-rule";
 import { ButtonCta } from "../../components/buttons";
@@ -101,7 +101,7 @@ return (
       }
     </Stack>
 
-    { tags && <LinkedTagsList tags={tags}/>}
+    { tags && <TagsList tags={tags}/>}
 
   </Fragment>
 )
@@ -141,7 +141,7 @@ const SingleEventTemplate = ({ data, pageContext, children }) => {
   const past = dateString > eventDate
 
   return (
-    <PageContent width="95%" maxWidth="1200px" center gutters>
+    <PageContent width="95%" maxWidth="1000px">
       <Title>{title}</Title>
 
       {

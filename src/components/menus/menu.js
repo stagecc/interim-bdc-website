@@ -111,7 +111,7 @@ const JoinBDCButton = styled(ButtonLink)
 export const Menu = ({ items, showBrand }) => {
   const { width } = useWindowWidth();
   const [openSubmenu, setOpenSubmenu] = useState(-1);
-  const compact = useMemo(() => width < 800, [width]);
+  const compact = useMemo(() => width < 1140, [width]);
 
   const handleOpenSubmenu = (index) => (event) => setOpenSubmenu(index);
   const handleCloseAllSubmenus = () => setOpenSubmenu(-1);

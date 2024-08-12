@@ -11,13 +11,8 @@ import { Container as Grid, Row, Col } from "react-grid-system";
 import { NewsCard } from "../../components/card";
 import newsCoverage from '../../data/newsCoverage.json'
 
-
-<PageContent 
-  title="News Coverage"
-  width="95%" maxWidth="1200px" center gutters
->
-
-View recent news and media coverage for BDC.
+<PageContent title="News Coverage" maxWidth="1000px">
+  View recent news and media coverage for BDC.
 
   <Grid style={{maxWidth: '1200px'}}>
     <Row gutterWidth={ 32 } justify="start" style={{ marginLeft: '-32px', marginRight: '-32px'}}>
@@ -32,6 +27,4 @@ View recent news and media coverage for BDC.
       }
     </Row>
   </Grid>
-
-
 </PageContent>

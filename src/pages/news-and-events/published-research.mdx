@@ -18,12 +18,11 @@ export const query = graphql`
   }
 `;
 
-<PageContent 
-  title="Published Research"
-  width="95%" maxWidth="1200px" center gutters
->
+<PageContent title="Published Research" maxWidth="800px">
 
-{
-  props.data.publications.nodes.map((node)=> <Publication node={node}/>)
-}
+  {
+    props.data.publications.nodes.map((node, i) => (
+      <Publication key={ `publication-${ i }` } node={node} />
+    ))
+  }
 </PageContent>

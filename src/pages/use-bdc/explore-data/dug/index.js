@@ -27,7 +27,7 @@ const DugSearchPage = () => {
   const handleClickToggleSidebar = () => setSidebarVisibility(!sidebarVisibility)
 
   return (
-    <PageContent width="95%" maxWidth="1400px" center gutters>
+    <PageContent>
       <Box sx={{ position: 'relative' }}>
         <Title>Disease, Phenotype, Biological Process, or Anatomical Entity Search</Title>
         <SidebarToggler

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { keyframes, styled } from 'styled-components';
 import { useScrollPosition } from "../../hooks";
 import { List, ListItem } from "../../components/list";
@@ -15,6 +16,13 @@ export const MenuListItem = ({ href, heading }) => (
     }
   />
 );
+
+export const MenuListItemPropTypes = PropTypes.shape({
+  href: PropTypes.string.isRequired,
+  heading: PropTypes.string.isRequired,
+});
+
+MenuListItem.propTypes = MenuListItemPropTypes;
 
 const fadeIn = keyframes`
   0% { filter: opacity(0); }
@@ -55,3 +63,11 @@ export const PageNavMenu = ({ menuItems }) => {
     </List>
   );
 };
+
+export const PageNavMenuPropTypes = {
+  menuItems: PropTypes.arrayOf(
+    MenuListItemPropTypes
+  ).isRequired,
+};
+
+PageNavMenu.propTypes = PageNavMenuPropTypes;
