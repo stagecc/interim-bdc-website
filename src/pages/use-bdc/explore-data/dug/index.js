@@ -4,7 +4,7 @@ import { PageContent } from '../../../../components/layout'
 import { Title } from '../../../../components/typography'
 import {
   CheckoutCta, CollectionPreview, DugForm, FiltersTray,
-  Results, Sidebar, SidebarToggler, ToTopButton
+  Results, Sidebar, ToTopButton
 } from '../../../../components/dug'
 
 const DugSearchPage = () => {
@@ -30,15 +30,6 @@ const DugSearchPage = () => {
     <PageContent>
       <Box sx={{ position: 'relative' }}>
         <Title>Disease, Phenotype, Biological Process, or Anatomical Entity Search</Title>
-        <SidebarToggler
-          visible={ sidebarVisibility }
-          onClick={ handleClickToggleSidebar }
-          sx={{
-            position: 'absolute',
-            right: '0px',
-            bottom: '8px',
-          }}
-        />
       </Box>
 
       <Grid container spacing={ 4 }>
