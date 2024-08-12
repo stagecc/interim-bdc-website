@@ -81,7 +81,7 @@ export const Hexagon = ({
         onMouseOver={hoverHandler}
         onFocus={hoverHandler}
       >
-        <Icon size={Math.ceil(size / 4)} fill="#fff" />
+        <Icon size={Math.ceil(size / 3)} fill="#fff" />
         {showtext && <HexagonText>{text}</HexagonText>}
       </HexagonInterior>
     </HexagonWrapper>
