@@ -4,13 +4,11 @@ import { Module } from "../layout";
 import { EventListPreview } from './upcoming-event-list-preview'
 
 
-export const EventsList = ({ title, events }) => {
-
+export const EventsList = ({ events = [] }) => {
   return (
-    <Module title={title}>
-      <br />
+    <Module>
       {events.length ? (
-        events.map((event) => (<EventListPreview event={event} key={event.node.frontmatter.title}/>)
+        events.map((event) => <EventListPreview {...event} key={event.frontmatter.path}/>
         )
       ) : (
         <Paragraph center>

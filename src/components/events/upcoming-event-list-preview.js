@@ -170,17 +170,19 @@ const DescriptionSection = ({excerpt, path, xs, sm, md}) => {
   )
 }
 
-export const EventListPreview = ({event}) => {
-  const { excerpt } = event.node;
+export const EventListPreview = ({
+  excerpt,
+  frontmatter,
+ }) => {
   const {
-    title,
     path,
     display_date,
+    title,
     time,
-    location,
     url,
-    externalEvent
-  } = event.node.frontmatter
+    externalEvent,
+    location,
+  } = frontmatter;
 
   const theme = useTheme();
 
