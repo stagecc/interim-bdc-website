@@ -10,7 +10,7 @@ export const TagsList = ({
   noItemsIndicator = " ∅",
 }) => {
   return (
-    <Fragment>
+    <Meta>
       {title && <strong>{title}: </strong>}
       {items.length > 0
         ? items.map((item, i) => (
@@ -20,7 +20,7 @@ export const TagsList = ({
             </Fragment>
           ))
         : noItemsIndicator}
-    </Fragment>
+    </Meta>
   );
 };
 
