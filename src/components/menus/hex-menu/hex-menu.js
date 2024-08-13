@@ -18,12 +18,14 @@ const hexagonItems = [
     description: "Explore the data in BDC (no login required)",
     icon: ExploreIcon,
     path: "/use-bdc/explore-data",
+    id: "explore-data"
   },
   {
     text: "Analyze Data",
     description: "Set up private, secure workspaces for running analyses at scale",
     icon: AnalyzeIcon,
     path: "/use-bdc/analyze-data",
+    id: "analyze-data"
   },
   {
     text: "Share Data",
@@ -31,6 +33,7 @@ const hexagonItems = [
       "Learn about using BDC as a data repository",
     icon: ShareIcon,
     path: "/use-bdc/share-data",
+    id: "share-data"
   },
   {
     text: "Impute Genomes",
@@ -38,12 +41,14 @@ const hexagonItems = [
       "Upload phased or unphased GWAS genotypes and get phased and imputed genomes",
     icon: ImputeGenomesIcon,
     path: "https://imputation.biodatacatalyst.nhlbi.nih.gov/#!",
+    id: "impute-genomes"
   },
   {
     text: "Join BDC",
     description: "Join the BDC community to stay up to date about BDC",
     icon: JoinIcon,
     path: "/join-bdc",
+    id: "join-bdc"
   },
   {
     text: "Support",
@@ -51,6 +56,7 @@ const hexagonItems = [
       "Get support to advance your research in BDC",
     icon: SupportIcon,
     path: "/help-and-support/support",
+    id: "support"
   },
 ];
 
@@ -99,6 +105,7 @@ export const HexMenu = () => {
         {hexagonItems.map((tab, i) => (
           <Hexagon
             key={i}
+            id={tab.id}
             path={tab.path}
             active={index === i}
             size={160}
