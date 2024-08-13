@@ -58,6 +58,7 @@ const HexagonText = styled.span`
 `;
 
 export const Hexagon = ({
+  id,
   size,
   color,
   active,
@@ -71,7 +72,7 @@ export const Hexagon = ({
   const Icon = icon;
 
   return (
-    <HexagonWrapper to={path} className="GTM-hexMenu">
+    <HexagonWrapper to={path} className="GTM-hexMenu" id={id}>
       <HexagonInterior
         active={active}
         growOnActive={growOnActive}
