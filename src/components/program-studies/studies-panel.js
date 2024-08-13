@@ -22,13 +22,15 @@ export const Studies = ({ programKey }) => {
       </DescriptorPanel>
     );
 
-  if (isLoading || !data) return <LoadingPanel />;
-  if (error)
+  if (isLoading) return <LoadingPanel />;
+  if (error) {
+    console.error(`Error fetching studies for program ${programKey}. Original error message: ${error}`)
     return (
       <DescriptorPanel>
         Something went wrong! Please reload the page.
       </DescriptorPanel>
     );
+  }
 
   return (
     <Table
@@ -51,7 +53,10 @@ export const Studies = ({ programKey }) => {
 
 // API
 const getStudiesList = async (programName) => {
-  const url = new URL("/search-api/search_program", process.env.GATSBY_DUG_SEARCH_API);
+  const url = new URL(
+    "/search-api/search_program",
+    process.env.GATSBY_DUG_SEARCH_API ?? "https://search-dev.biodatacatalyst.renci.org"
+  );
   url.searchParams.append("program_name", programName);
 
   const res = await fetch(url.href, {

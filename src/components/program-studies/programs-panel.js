@@ -3,6 +3,7 @@ import { compactNum } from "../../utils/compact-num";
 import { LoadingPanel } from "./loading-panel";
 import { Tabs } from "./vertical-tabs";
 import { useQuery } from "../../hooks/use-query";
+import { DescriptorPanel } from "./descriptor-panel";
 
 export const Programs = ({
   selectedProgram,
@@ -17,8 +18,11 @@ export const Programs = ({
     queryKey: "programs",
   });
 
-  if (isLoading || !data) return <LoadingPanel />;
-  if (error) return "Something went wrong!";
+  if (isLoading) return <LoadingPanel />;
+  if (error) {
+    console.error(`Error fetching program list. Original error message: ${error}`)
+    return <DescriptorPanel>Something went wrong!</DescriptorPanel>;
+  }
 
   const tabData = data.map(({ name, numberOfStudies, description }) => ({
     key: name,
@@ -41,7 +45,7 @@ export const Programs = ({
 const getProgramList = async () => {
   const { href } = new URL(
     "/search-api/program_list",
-    process.env.GATSBY_DUG_SEARCH_API
+    process.env.GATSBY_DUG_SEARCH_API ?? "https://search-dev.biodatacatalyst.renci.org"
   );
 
   const res = await fetch(href, {
