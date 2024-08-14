@@ -20,6 +20,8 @@ const FRESHDESK_API_KEY = process.env.GATSBY_FRESHDESK_API_KEY;
 const FRESHDESK_API_ROOT_URL = process.env.GATSBY_FRESHDESK_API_ROOT_URL;
 const FRESHDESK_API_CREATE_TICKET_URL = `${FRESHDESK_API_ROOT_URL}/tickets`;
 
+const SUBMIT_TEST_MODE = false;
+
 const requestOptions = {
   "Content-Type": "application/json",
   auth: { username: FRESHDESK_API_KEY, password: "X" },
@@ -141,7 +143,7 @@ export const CloudCreditsForm = (props) => {
           + `- Requested amount: ${ creditsRequested } <br />`
           + `- Anticipated timeline: ${ creditsAnticipatedTimeline } <br />`
           + `- Request justification: ${ creditsJustification } <br />`
-          + `- Insufficient credits certification: ${ creditsCertify } <br />`
+          + `- Insufficient credits certification: ${ creditsCertify ? 'YES' : 'NO' } <br />`
           + `- Research links: ${ creditsResearchLinks } <br />`;
       }
       if (option === "Cloud Credits for Academic Classes and Group Educational Sessions") {
@@ -207,24 +209,26 @@ export const CloudCreditsForm = (props) => {
     };
 
     const submitTicket = async () => {
-      console.log(payload);
-      console.log(JSON.stringify(payload, null, 2));
-      // await axios
-      //   .post(FRESHDESK_API_CREATE_TICKET_URL, payload, requestOptions)
-      //   .then((response) => {
-      //     if (![200, 201].includes(response.status)) {
-      //       setSubmitButtonLocked(false);
-      //       throw new Error(`Unsuccessful HTTP response, ${response.status}`);
-      //     }
-      //     setSubmitButtonLocked(true);
-      //   })
-      //   .catch((error) => {
-      //     console.error(error.message);
-      //     setError(error);
-      //   })
-      //   .finally(() => {
-      //     setWasSubmitted(true);
-      //   });
+      if (SUBMIT_TEST_MODE) {
+        console.log(payload);
+        return;
+      }
+      await axios
+        .post(FRESHDESK_API_CREATE_TICKET_URL, payload, requestOptions)
+        .then((response) => {
+          if (![200, 201].includes(response.status)) {
+            setSubmitButtonLocked(false);
+            throw new Error(`Unsuccessful HTTP response, ${response.status}`);
+          }
+          setSubmitButtonLocked(true);
+        })
+        .catch((error) => {
+          console.error(error.message);
+          setError(error);
+        })
+        .finally(() => {
+          setWasSubmitted(true);
+        });
     };
     submitTicket();
   };
