@@ -119,13 +119,43 @@ export const CloudCreditsForm = (props) => {
       + `Requestor's name: ${name} <br />`
       + `Requestor's email: ${email} <br />`
       + `Project PI: ${projectPi} <br />`
+      + `Project Name: ${projectName}<br />`
       + `Requestor's role: ${role} <br />`
       + `Requestor's organization: ${organization} <br />`
-      + `Project Name: ${projectName}<br />`
       + `Team members: ${teamMembers} <br />`
       + `How is your research related to HLBS?: ${hlbsRelation} <br />`
       + `How did the requestor learn about BDC?: ${grapevine} <br />`
-      + `Request: ${oneRequest} <br />`
+      + `Request: ${oneRequest} <br /><br />`
+
+    const customFieldsDescription = option => {
+      if (option === "NHLBI BDC Pilot Funding Program") {
+        return `- Preferred analysis platform: ${ preferredPlatform } <br />`;
+      }
+      if (option === "NHLBI BDC Cloud Credit Support Program") {
+        return ``
+          + `- Project abstract: ${ creditsProjectAbstract } <br />`
+          + `- Previously received credits: ${ creditsPreviouslyReceived ? 'YES' : 'NO' } <br />`
+          + `- Computational scope: ${ creditsComputationalScope } <br />`
+          + `- Received credits description: ${ creditsReceivedDescription } <br />`
+          + `- Estimated need: ${ creditsEstimatedNeed } <br />`
+          + `- Requested amount: ${ creditsRequested } <br />`
+          + `- Anticipated timeline: ${ creditsAnticipatedTimeline } <br />`
+          + `- Request justification: ${ creditsJustification } <br />`
+          + `- Insufficient credits certification: ${ creditsCertify } <br />`
+          + `- Research links: ${ creditsResearchLinks } <br />`;
+      }
+      if (option === "Cloud Credits for Academic Classes and Group Educational Sessions") {
+        return ``
+          + `- Course title: ${ courseTitle } <br />`
+          + `- Course instructors name: ${ courseInstructorsName } <br />`
+          + `- Anticipated number of students: ${ courseStudentCount } <br />`
+          + `- Course level: ${ courseLevel } <br />`
+          + `- Anticipated course/presentation_date: ${ courseDate } <br />`
+          + `- Support requested: ${ courseSupportRequested ? 'YES' : 'NO' } <br />`
+          + `- Support request description: ${ courseSupportDescription } <br />`;
+      }
+      return ``;
+    };
 
     const customFieldsPayload = option => {
       let payload = {};
@@ -161,7 +191,6 @@ export const CloudCreditsForm = (props) => {
       }
       return {
         ...payload,
-        cf_cloud_credits_project_name: projectName,
         cf_by_submitting_this_form_i_agree_to_the_terms_and_conditions_of_this_offering: consent,
       };
     };
@@ -169,7 +198,7 @@ export const CloudCreditsForm = (props) => {
     const payload = {
       type: "Usage Costs/Cloud Credits",
       subject: (testSubmission ? `[TEST] ` : ``) + "Cloud Credits Request",
-      description,
+      description: description + customFieldsDescription(oneRequest),
       priority: 1,
       status: 2,
       name: name,
@@ -178,22 +207,24 @@ export const CloudCreditsForm = (props) => {
     };
 
     const submitTicket = async () => {
-      await axios
-        .post(FRESHDESK_API_CREATE_TICKET_URL, payload, requestOptions)
-        .then((response) => {
-          if (![200, 201].includes(response.status)) {
-            setSubmitButtonLocked(false);
-            throw new Error(`Unsuccessful HTTP response, ${response.status}`);
-          }
-          setSubmitButtonLocked(true);
-        })
-        .catch((error) => {
-          console.error(error.message);
-          setError(error);
-        })
-        .finally(() => {
-          setWasSubmitted(true);
-        });
+      console.log(payload);
+      console.log(JSON.stringify(payload, null, 2));
+      // await axios
+      //   .post(FRESHDESK_API_CREATE_TICKET_URL, payload, requestOptions)
+      //   .then((response) => {
+      //     if (![200, 201].includes(response.status)) {
+      //       setSubmitButtonLocked(false);
+      //       throw new Error(`Unsuccessful HTTP response, ${response.status}`);
+      //     }
+      //     setSubmitButtonLocked(true);
+      //   })
+      //   .catch((error) => {
+      //     console.error(error.message);
+      //     setError(error);
+      //   })
+      //   .finally(() => {
+      //     setWasSubmitted(true);
+      //   });
     };
     submitTicket();
   };
