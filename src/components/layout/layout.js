@@ -1,6 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
+import { useLocation } from "@reach/router";
+import styled from "styled-components";
 import { Container as Grid, Row, Col, Visible } from "react-grid-system";
 import {
   Header,
@@ -56,12 +57,25 @@ const LayoutWrapper = styled.div(
   `
 );
 
+// styles/customize.css defines smooth scroll behavior site-wide.
+// however, we want to snap to the top of page on a route change.
+const RouteChangeScroller = () => {
+  const { pathname } = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [pathname]);
+
+  return null;
+};
+
 export function Layout({ children }) {
   const { isCompact } = useWindowWidth();
 
   return (
     typeof isCompact === "boolean" && (
       <LayoutWrapper compact={isCompact ? true : undefined}>
+        <RouteChangeScroller />
         <SkipLink href="#main-content">Skip to main content</SkipLink>
         <Visible md>
           <Header style={{ backgroundColor: '#f9f6f3' }}>
