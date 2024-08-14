@@ -24,7 +24,8 @@ export const CheckoutCta = () => {
       </Typography>
       <ButtonLink
         to={ '/use-bdc/explore-data/dug/next-steps' }
-        className="next-button"
+        className="next-button GTM-button"
+        id="dug-next"
       >
         Next&nbsp;&nbsp;&nbsp;<NextIcon />
       </ButtonLink>
