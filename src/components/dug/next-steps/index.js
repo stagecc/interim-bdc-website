@@ -137,7 +137,7 @@ export const NextSteps = ({ steps }) => {
                 sx={{ gap: 2, maxWidth: '100%', '.button-text': { display: 'inline-block' } }}
               >
                 <DownloadIcon size="large" />
-                <span className="button-text">Download List</span>
+                <span className="button-text GTM-download-click" id="dug-download">Download List</span>
               </Button>
             </Stack>
 
