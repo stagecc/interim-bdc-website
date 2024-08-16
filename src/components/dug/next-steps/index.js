@@ -48,6 +48,8 @@ export const NextSteps = ({ steps }) => {
 
   const handleClickDownloadAsJson = event => {
     event.preventDefault()
+    event.target = event.currentTarget;
+
     const timestamp = new Date().toISOString()
     downloadFile({
       data: JSON.stringify(collection.contents, null, 2),
@@ -135,9 +137,11 @@ export const NextSteps = ({ steps }) => {
                 color="secondary"
                 onClick={ handleClickDownloadAsJson }
                 sx={{ gap: 2, maxWidth: '100%', '.button-text': { display: 'inline-block' } }}
+                className="GTM-download-click"
+                id="dug-download"
               >
                 <DownloadIcon size="large" />
-                <span className="button-text GTM-download-click" id="dug-download">Download List</span>
+                <span className="button-text">Download List</span>
               </Button>
             </Stack>
 
