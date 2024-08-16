@@ -28,7 +28,15 @@
     "to": "/news-and-events/events"
   },
   {
+    "from": "/events",
+    "to": "/news-and-events/events"
+  },  
+  {
     "from": "/about/events/archive",
+    "to": "/news-and-events/events/archive"
+  },
+  {
+    "from": "/events/archive",
     "to": "/news-and-events/events/archive"
   },
   {
