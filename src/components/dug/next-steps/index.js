@@ -135,9 +135,11 @@ export const NextSteps = ({ steps }) => {
                 color="secondary"
                 onClick={ handleClickDownloadAsJson }
                 sx={{ gap: 2, maxWidth: '100%', '.button-text': { display: 'inline-block' } }}
+                className="GTM-download-click"
+                id="dug-download"
               >
                 <DownloadIcon size="large" />
-                <span className="button-text GTM-download-click" id="dug-download">Download List</span>
+                <span className="button-text">Download List</span>
               </Button>
             </Stack>
 
