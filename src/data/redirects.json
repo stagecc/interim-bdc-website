@@ -24,11 +24,11 @@
     "to": "/about/bdc-fellows"
   },
   {
-    "from": "/events",
+    "from": "/about/events",
     "to": "/news-and-events/events"
   },
   {
-    "from": "/events/archive",
+    "from": "/about/events/archive",
     "to": "/news-and-events/events/archive"
   },
   {
