@@ -48,6 +48,8 @@ export const NextSteps = ({ steps }) => {
 
   const handleClickDownloadAsJson = event => {
     event.preventDefault()
+    event.target = event.currentTarget;
+
     const timestamp = new Date().toISOString()
     downloadFile({
       data: JSON.stringify(collection.contents, null, 2),
