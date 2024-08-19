@@ -105,7 +105,7 @@ export const Results = () => {
         alignItems="center"
         style={{ height: '300px' }}
       >
-        Search concepts, stuies, and variables
+        Search concepts, studies, and variables
         in the BioData Catalyst ecosystem!
       </Stack>
     )
