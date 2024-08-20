@@ -21,7 +21,7 @@ const StyledButton = styled(Button)`
 
 export const ButtonLink = props => {
   return (
-    <StyledButton as={ Link } { ...props } />
+    <StyledButton as={ Link } lightIcon { ...props } />
   )
 };
 
