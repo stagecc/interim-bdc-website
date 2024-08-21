@@ -104,6 +104,10 @@
     "to": "/about/research-communities/#recover"
   },
   {
+    "from": "/faqs",
+    "to": "/user-resources/user-faqs/"
+  },
+  {
     "from": "/events/2024-07-17/community_hours",
     "to": "/news-and-events/events/2024-07-17/community_hours"
   },
