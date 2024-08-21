@@ -1,6 +1,6 @@
+import React from 'react';
 import styled from "styled-components";
-import { Link } from "gatsby";
-// import { Link } from "../link";
+import { Link } from "../link";
 import { Button } from "./button";
 
 const transitionBrightness = `
@@ -11,13 +11,19 @@ const transitionBrightness = `
     }
 `;
 
-export const ButtonLink = styled(Button).attrs({ as: Link })`
+const StyledButton = styled(Button)`
   ${transitionBrightness};
   text-align: center;
   max-width: 100%;
   text-wrap: wrap;
   line-height: 1.5;
-`; 
+`
+
+export const ButtonLink = props => {
+  return (
+    <StyledButton as={ Link } lightIcon { ...props } />
+  )
+};
 
 export const ButtonExternalLink = styled(ButtonLink)
   .attrs({ rel: 'noopener noreferrer', target: '_blank' })`
