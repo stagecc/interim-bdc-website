@@ -42,7 +42,7 @@ export const FenceProvider = ({ children }) => {
     + `&nonce=2bfe151af238d21f48d8a8bf8bbec408838c8dc0ace6b4c5621ac9dfa157798b`
     + `&redirect_uri=${ process.env.NODE_ENV !== 'production'
       ? location.origin + location.pathname
-      : `https://biodatacatalyst.nhlbi.nih.gov/resources/data/`
+      : `https://biodatacatalyst.nhlbi.nih.gov/use-bdc/explore-data/`
     }`;
 
   useEffect(() => {
