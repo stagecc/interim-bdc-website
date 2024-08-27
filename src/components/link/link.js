@@ -1,20 +1,18 @@
-import React from 'react'
-import { Link as GatsbyLink } from 'gatsby'
-import { ExternalLink } from './external-link'
-
-const hashPattern = new RegExp(/^#(.+)$/);
-const externalUrlPattern = new RegExp(/^https?:\/\//);
+import React from 'react';
+import { Link as GatsbyLink } from 'gatsby';
+import { ExternalLink } from './external-link';
+import { getLinkType } from '../../utils';
 
 export const Link = ({ to, children, ...props }) => {
-  const isExternalLink = externalUrlPattern.exec(to)
-  if (isExternalLink) {
-    return <ExternalLink to={ to } { ...props }>{ children }</ExternalLink>
+  const linkType = getLinkType(to);
+
+  if (linkType === "isExternalLink") {
+    return <ExternalLink to={to} {...props}>{children}</ExternalLink>;
   }
 
-  const hashLink = hashPattern.exec(to);
-  if (hashLink) {
-    return <a href={ to } { ...props }>{ children }</a>;
+  if (linkType === "hashLink") {
+    return <a href={to} {...props}>{children}</a>;
   }
 
-  return <GatsbyLink to={ to } { ...props }>{ children }</GatsbyLink>;
-}
+  return <GatsbyLink to={to} {...props}>{children}</GatsbyLink>;
+};
