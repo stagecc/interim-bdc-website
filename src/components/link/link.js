@@ -6,7 +6,7 @@ import { getLinkType } from '../../utils';
 export const Link = ({ to, children, ...props }) => {
   const linkType = getLinkType(to);
 
-  if (linkType === "isExternalLink") {
+  if (linkType === "isNonGovExternalLink" || linkType === "isGovLink") {
     return <ExternalLink to={to} {...props}>{children}</ExternalLink>;
   }
 
