@@ -82,7 +82,7 @@ export function Layout({ children }) {
             <Brand width="380px" />
           </Header>
         </Visible>
-        <StickyWrapper stuck={true}>
+        <StickyWrapper $stuck={true}>
           <Header>
             <Visible xs sm lg xl xxl>
               <Brand width="380px" />
