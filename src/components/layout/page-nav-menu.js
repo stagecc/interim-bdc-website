@@ -45,7 +45,7 @@ export const PageNavMenu = ({ menuItems }) => {
         top: "16rem",
         paddingRight: "2rem",
       }}
-      right
+      $right
     >
       {menuItems.map(({ heading, href }) => (
         <MenuListItem
