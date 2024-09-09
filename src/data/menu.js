@@ -35,7 +35,7 @@ export const menuItems = [
       },
       {
         text: "Documentation",
-        path: "https://bdcatalyst.gitbook.io/biodata-catalyst-documentation",
+        path: "/user-resources/documentation",
       },
       {
         text: "Terms of Use",
