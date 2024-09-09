@@ -1,4 +1,5 @@
 export * from "./use-dialog";
+export * from "./use-documentation";
 export * from "./use-faqs";
 export * from "./use-fellows";
 export * from "./use-fence";
