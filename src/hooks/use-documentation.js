@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const GITBOOK_SPACE_ID = `-LwOmaDlbanAQ-7fhd89`;
-const GITBOOK_API_TOKEN = process.env.GITBOOK_API_TOKEN;
+const GITBOOK_SPACE_ID = process.env.GATSBY_GITBOOK_SPACE_ID;
+const GITBOOK_API_TOKEN = process.env.GATSBY_GITBOOK_API_TOKEN;
 
 const requestOptions = {
   headers: {
