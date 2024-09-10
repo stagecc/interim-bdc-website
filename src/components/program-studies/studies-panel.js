@@ -3,7 +3,7 @@ import { Table } from "./base-table";
 import { Link } from "../link/link";
 import { LoadingPanel } from "./loading-panel";
 import { DescriptorPanel } from "./descriptor-panel";
-import { useQuery } from "../../hooks/use-query";
+import { useQuery } from "../../hooks";
 
 export const Studies = ({ programKey }) => {
   const {

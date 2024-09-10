@@ -2,7 +2,7 @@ import React from "react";
 import { compactNum } from "../../utils/compact-num";
 import { LoadingPanel } from "./loading-panel";
 import { Tabs } from "./vertical-tabs";
-import { useQuery } from "../../hooks/use-query";
+import { useQuery } from "../../hooks";
 import { DescriptorPanel } from "./descriptor-panel";
 
 export const Programs = ({

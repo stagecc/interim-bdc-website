@@ -6,7 +6,7 @@ import { CardSection } from "./card-section";
 import { Programs } from "./programs-panel";
 import { Studies } from "./studies-panel";
 import { kebabCase } from "../../utils/casing";
-import { useQueryParams } from "../../hooks/use-query-params";
+import { useQueryParams } from "../../hooks";
 import { Seo } from "../seo";
 
 export const ProgramStudiesTable = () => {

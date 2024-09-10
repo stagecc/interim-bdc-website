@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-export const DocumentationMenu = ({ pageTree = {}, level = 0 }) => {
+export const DocumentationMenu = ({ pageTree = [], level = 0 }) => {
   return (
     <div>
       {
