@@ -6,6 +6,7 @@ import React, {
   useState,
 } from 'react';
 import axios from 'axios';
+import { QueryCacheProvider } from '../../hooks';
 import { DocumentationMenu } from './menu';
 import { DocumentationPageContent } from './content';
 import { Box, Stack } from '@mui/material';
@@ -19,6 +20,8 @@ const requestOptions = {
   },
 };
 
+// this array of fields will be extracted from the page
+// objects returned from GitBook.
 const pageFields = [
   'title',
   'path',
@@ -29,7 +32,6 @@ const pageFields = [
 ];
 
 const DocumentationContext = createContext({ });
-
 export const useDocumentation = () => useContext(DocumentationContext);
 
 export const Documentation = () => {
@@ -67,15 +69,17 @@ export const Documentation = () => {
   }, []);
 
   return (
-    <DocumentationContext.Provider value={{ fetchPageByPath, loading, pages }}>
-      <Stack direction={{ sm: 'column', md: 'row' }} gap={ 2 }>
-        <Box sx={{ flex: '1 0', pt: 8 }}>
-          <DocumentationMenu pageTree={ pages } />
-        </Box>
-        <Box sx={{ flex: '2 1' }}>
-          <DocumentationPageContent />
-        </Box>
-      </Stack>
-    </DocumentationContext.Provider>
+    <QueryCacheProvider>
+      <DocumentationContext.Provider value={{ fetchPageByPath, loading, pages }}>
+        <Stack direction={{ sm: 'column', md: 'row' }} gap={ 2 }>
+          <Box sx={{ flex: '1 0', pt: 8 }}>
+            <DocumentationMenu pageTree={ pages } />
+          </Box>
+          <Box sx={{ flex: '2 1' }}>
+            <DocumentationPageContent />
+          </Box>
+        </Stack>
+      </DocumentationContext.Provider>
+    </QueryCacheProvider>
   )
 };

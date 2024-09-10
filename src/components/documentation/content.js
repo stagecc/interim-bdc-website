@@ -4,8 +4,10 @@ import { useDocumentation } from './';
 import { LoadingSpinner } from '../loading';
 import { useLocation } from '@reach/router';
 import { Heading } from "../typography";
+import { useQueryCache } from '../../hooks';
 
 export const DocumentationPageContent = () => {
+  const docsCache = useQueryCache();
   const location = useLocation();
   const { fetchPageByPath, loading } = useDocumentation();
   const [pageContent, setPageContent] = useState(null);
@@ -15,12 +17,18 @@ export const DocumentationPageContent = () => {
   // page in GitBook, so we use that as our default.
   useEffect(() => {
     const updateContent = async () => {
-      const path = location.hash ? location.hash.replace(/^#/, '') : 'master';
+      const path = location.hash ? location.hash.replace(/^#/, '') : '/master';
+      const cachedContent = docsCache.get(path);
+      if (cachedContent) {
+        setPageContent(cachedContent);
+        return;
+      }
       const newContent = await fetchPageByPath(path);
       setPageContent(newContent);
+      docsCache.set(path, newContent);
     }
     updateContent();
-  }, [fetchPageByPath, location.hash]);
+  }, [docsCache, fetchPageByPath, location.hash]);
 
   if (loading) {
     return <LoadingSpinner />

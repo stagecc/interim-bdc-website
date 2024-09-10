@@ -1,6 +1,7 @@
 import React, { createContext, useCallback, useContext, useEffect, useState } from "react";
 
 const QueryCacheContext = createContext({});
+export const useQueryCache = () => useContext(QueryCacheContext);
 
 export const QueryCacheProvider = ({ children }) => {
   const [cache, setCache] = useState(new Map());
