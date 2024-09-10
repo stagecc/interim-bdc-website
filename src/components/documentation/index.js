@@ -78,16 +78,18 @@ export const Documentation = () => {
     return flattenPageTree(pages)
   }, [pages]);
 
-  console.log(pageMap)
-
-  const fetchPageById = useCallback(async pageId => {
+  const fetchPageById = useCallback(async (
+    pageId,
+    format = 'markdown',
+    metadata = true,
+  ) => {
     if (!pageId) {
       return;
     }
     setLoading(true);
     const response = await axios.get(
       `https://api.gitbook.com/v1/spaces/${ GITBOOK_SPACE_ID }/content/page/${ pageId }`,
-      requestOptions
+      { params: { format, metadata }, ...requestOptions }
     );
     const { data } = await response;
     if (!data) {
