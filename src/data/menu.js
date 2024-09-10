@@ -35,7 +35,7 @@ export const menuItems = [
       },
       {
         text: "Documentation",
-        path: "/user-resources/documentation",
+        path: "/user-resources/documentation/#/master",
       },
       {
         text: "Terms of Use",

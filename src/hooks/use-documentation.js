@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 
 const GITBOOK_SPACE_ID = process.env.GATSBY_GITBOOK_SPACE_ID;
@@ -10,25 +10,54 @@ const requestOptions = {
   },
 };
 
+const pageFields = [
+  'title',
+  'path',
+  'id',
+  'documentId',
+  'pages',
+  'updatedAt',
+  'urls',
+  'app',
+];
+
 export const useDocumentation = () => {
-  const [content, setContent] = useState();
+  const [pages, setPages] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchContent = async () => {
-      const response = await axios.get(`https://api.gitbook.com/v1/spaces/${ GITBOOK_SPACE_ID }/content`, requestOptions);
-      const { data } = await response;
-      if (!data) {
-        return
+    const fetchPages = async () => {
+      const { data } = await axios.get(`https://api.gitbook.com/v1/spaces/${ GITBOOK_SPACE_ID }/content`, requestOptions);
+      if (!data?.pages) {
+        console.error('An error occurred while fetching documentation pages.');
+        return [];
       }
-      setContent(data);
+      const pageTree = JSON.parse(JSON.stringify(data.pages, pageFields));
+      setPages(pageTree);
     };
 
-    fetchContent();
+    fetchPages();
   }, []);
 
-  console.log(content);
+  const fetchPageByPath = useCallback(async url => {
+    setLoading(true);
+    const _url = `https://app.gitbook.com/s/-LwOmaDlbanAQ-7fhd89${ url }`;
+    const response = await axios.get(
+      `https://api.gitbook.com/v1/urls/content`,
+      { params: { url: _url }, ...requestOptions }
+    );
+    const { data } = await response;
+    if (!data?.page) {
+      console.error('An error occurred while fetching a documentation page.');
+      return {};
+    }
+    setLoading(false);
+    return data.page;
+  }, []);
 
   return {
-    content,
+    fetchPageByPath,
+    loading,
+    pages,
   };
 };
