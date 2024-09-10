@@ -3,6 +3,7 @@ import React, {
   useCallback,
   useContext,
   useEffect,
+  useMemo,
   useState,
 } from 'react';
 import axios from 'axios';
@@ -26,13 +27,28 @@ const pageFields = [
   'title',
   'path',
   'id',
-  'documentId',
   'pages',
-  'updatedAt',
 ];
 
 const DocumentationContext = createContext({ });
 export const useDocumentation = () => useContext(DocumentationContext);
+
+const flattenPageTree = pages => {
+  let result = {};
+  function recurse(tree) {
+    for (const page of tree) {
+      // Add the current page's ID and path to the result
+      result[page.path] = page.id;
+
+      // If the page has nested pages, recurse into them
+      if (page.pages && page.pages.length > 0) {
+        recurse(page.pages);
+      }
+    }
+  }
+  recurse(pages);
+  return result;
+}
 
 export const Documentation = () => {
   const [pages, setPages] = useState([]);
@@ -40,7 +56,10 @@ export const Documentation = () => {
 
   useEffect(() => {
     const fetchPages = async () => {
-      const { data } = await axios.get(`https://api.gitbook.com/v1/spaces/${ GITBOOK_SPACE_ID }/content`, requestOptions);
+      const { data } = await axios.get(
+        `https://api.gitbook.com/v1/spaces/${ GITBOOK_SPACE_ID }/content`,
+        requestOptions
+      );
       if (!data?.pages) {
         console.error('An error occurred while fetching documentation pages.');
         return [];
@@ -52,25 +71,36 @@ export const Documentation = () => {
     fetchPages();
   }, []);
 
-  const fetchPageByPath = useCallback(async url => {
+  const pageMap = useMemo(() => {
+    if (!pages) {
+      return;
+    }
+    return flattenPageTree(pages)
+  }, [pages]);
+
+  console.log(pageMap)
+
+  const fetchPageById = useCallback(async pageId => {
+    if (!pageId) {
+      return;
+    }
     setLoading(true);
-    const _url = `https://app.gitbook.com/s/-LwOmaDlbanAQ-7fhd89${ url }`;
     const response = await axios.get(
-      `https://api.gitbook.com/v1/urls/content`,
-      { params: { url: _url }, ...requestOptions }
+      `https://api.gitbook.com/v1/spaces/${ GITBOOK_SPACE_ID }/content/page/${ pageId }`,
+      requestOptions
     );
     const { data } = await response;
-    if (!data?.page) {
+    if (!data) {
       console.error('An error occurred while fetching a documentation page.');
       return {};
     }
     setLoading(false);
-    return data.page;
+    return data;
   }, []);
 
   return (
     <QueryCacheProvider>
-      <DocumentationContext.Provider value={{ fetchPageByPath, loading, pages }}>
+      <DocumentationContext.Provider value={{ fetchPageById, loading, pageMap, pages }}>
         <Stack direction={{ sm: 'column', md: 'row' }} gap={ 2 }>
           <Box sx={{ flex: '1 0', pt: 8 }}>
             <DocumentationMenu pageTree={ pages } />

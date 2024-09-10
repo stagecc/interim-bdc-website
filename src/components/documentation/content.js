@@ -3,13 +3,13 @@ import { Box } from '@mui/material';
 import { useDocumentation } from './';
 import { LoadingSpinner } from '../loading';
 import { useLocation } from '@reach/router';
-import { Heading } from "../typography";
+import { Heading, Meta } from "../typography";
 import { useQueryCache } from '../../hooks';
 
 export const DocumentationPageContent = () => {
   const docsCache = useQueryCache();
   const location = useLocation();
-  const { fetchPageByPath, loading } = useDocumentation();
+  const { fetchPageById, loading, pageMap } = useDocumentation();
   const [pageContent, setPageContent] = useState(null);
 
   // update content based on current hash string in URL.
@@ -17,18 +17,19 @@ export const DocumentationPageContent = () => {
   // page in GitBook, so we use that as our default.
   useEffect(() => {
     const updateContent = async () => {
-      const path = location.hash ? location.hash.replace(/^#/, '') : '/master';
-      const cachedContent = docsCache.get(path);
+      const path = location.hash ? location.hash.replace(/^#\//, '') : 'master';
+      const pageId = pageMap[path];
+      const cachedContent = docsCache.get(pageId);
       if (cachedContent) {
         setPageContent(cachedContent);
         return;
       }
-      const newContent = await fetchPageByPath(path);
+      const newContent = await fetchPageById(pageId);
       setPageContent(newContent);
-      docsCache.set(path, newContent);
+      docsCache.set(pageId, newContent);
     }
     updateContent();
-  }, [docsCache, fetchPageByPath, location.hash]);
+  }, [docsCache, fetchPageById, location.hash, pageMap]);
 
   if (loading) {
     return <LoadingSpinner />
@@ -38,7 +39,7 @@ export const DocumentationPageContent = () => {
     <Fragment>
       <Heading noMargin>{ pageContent?.title ?? 'Documentation Page' }</Heading>
       
-      <br />
+      <Meta>Updated: { pageContent.updatedAt }</Meta>
 
       <Box component="pre" sx={{
         backgroundColor: 'papayawhip',
