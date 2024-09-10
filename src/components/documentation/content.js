@@ -1,10 +1,13 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { Box } from '@mui/material';
-import { useDocumentation } from './';
-import { LoadingSpinner } from '../loading';
 import { useLocation } from '@reach/router';
-import { Heading, Meta } from "../typography";
+import Markdown from "react-markdown";
+import { useDocumentation } from './';
 import { useQueryCache } from '../../hooks';
+import { Link } from '../link';
+import { LoadingSpinner } from '../loading';
+import { Meta } from "../typography";
+import remarkFrontmatter from 'remark-frontmatter';
+import remarkGfm from 'remark-gfm';
 
 export const DocumentationPageContent = () => {
   const docsCache = useQueryCache();
@@ -37,18 +40,15 @@ export const DocumentationPageContent = () => {
 
   return (
     <Fragment>
-      <Heading noMargin>{ pageContent?.title ?? 'Documentation Page' }</Heading>
-      
-      <Meta>Updated: { pageContent.updatedAt }</Meta>
+      <Meta style={{ textAlign: 'right' }}>
+        <Link to={ `https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/${location.hash.replace(/^#\//, '')}` }>View in GitBook</Link>
+        <br />
+        Updated: { pageContent.updatedAt }
+      </Meta>
 
-      <Box component="pre" sx={{
-        backgroundColor: 'papayawhip',
-        padding: '1rem',
-        fontSize: '75%',
-        whiteSpace: 'pre-wrap'
-      }}>
-        { JSON.stringify(pageContent, null, 2) }
-      </Box>
+      <Markdown remarkPlugins={[ remarkFrontmatter, remarkGfm ]}>
+        { pageContent.markdown }
+      </Markdown>
     </Fragment>
   );
 };
