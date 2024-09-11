@@ -41,9 +41,9 @@ export const DocumentationPageContent = () => {
   return (
     <Fragment>
       <Meta style={{ textAlign: 'right' }}>
-        <Link to={ `https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/${location.hash.replace(/^#\//, '')}` }>View in GitBook</Link>
+        <Link to={ `https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/${location.hash.replace(/^#\//, '')}` }>View this in GitBook</Link>
         <br />
-        Updated: { pageContent.updatedAt }
+        Updated: { new Date(pageContent.updatedAt).toUTCString() }
       </Meta>
 
       <Markdown remarkPlugins={[ remarkFrontmatter, remarkGfm ]}>

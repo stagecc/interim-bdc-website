@@ -7,6 +7,8 @@ import React, {
   useState,
 } from 'react';
 import axios from 'axios';
+import { IconButton } from '@mui/material';
+import { Menu as MenuIcon } from '@mui/icons-material';
 import { QueryCacheProvider } from '../../hooks';
 import { DocumentationMenu } from './menu';
 import { DocumentationPageContent } from './content';
@@ -100,13 +102,44 @@ export const Documentation = () => {
     return data;
   }, []);
 
+  const [visibleMenu, setVisibleMenu] = useState(false);
+
+  const ToggleButton = useCallback(() => (
+    <IconButton
+      color="primary"
+      onClick={ () => setVisibleMenu(!visibleMenu) }
+    >
+      <MenuIcon />
+    </IconButton>
+  ), [visibleMenu]);
+
+
   return (
     <QueryCacheProvider>
       <DocumentationContext.Provider value={{ fetchPageById, loading, pageMap, pages }}>
-        <Stack direction={{ sm: 'column', md: 'row' }} gap={ 2 }>
-          <Box sx={{ flex: '1 0', pt: 8 }}>
-            <DocumentationMenu pageTree={ pages } />
-          </Box>
+        <Stack
+          direction="row"
+          gap={ 2 }
+          sx={{ position: 'relative' }}
+        >
+          <Stack 
+            direction="row"
+            gap={ 1 }
+            justifyContent="flex-start"
+            alignItems="flex-start"
+            sx={{
+              py: '4.75rem',
+              position: 'sticky',
+              top: '5rem',
+              alignSelf: 'flex-start',
+              flex: visibleMenu ? '1 0' : 'unset',
+              minWidth: visibleMenu ? '400px' : '40px',
+              transition: 'min-width 250ms',
+            }}
+          >
+            <ToggleButton />
+            { visibleMenu && <DocumentationMenu pageTree={ pages } /> }
+          </Stack>
           <Box sx={{ flex: '2 1' }}>
             <DocumentationPageContent />
           </Box>
