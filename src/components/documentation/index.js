@@ -127,7 +127,7 @@ export const Documentation = () => {
   }, []);
 
   // tracks the visibility of the side menu: `true` if visible, `false` if hidden.
-  const [visibleMenu, setVisibleMenu] = useState(false);
+  const [visibleMenu, setVisibleMenu] = useState(true);
 
   /**
    * ToggleButton component that toggles the visibility of the navigation menu.
