@@ -6,7 +6,9 @@ import {
   Subheading,
   Title,
 } from "../typography";
+import { List, ListItem } from "../list";
 import { Link } from "../link";
+import { Table } from "../table";
 
 export const componentMap = () => ({
   p: function paragraph({ node, children, ...props }) {
@@ -43,14 +45,18 @@ export const componentMap = () => ({
         {children}
       </Link>
     );
-  }, 
+  },
+  ul: List,
   li: function listItem({ node, children, ...props }) {
+    return <ListItem {...props} primary={children} />;
+  },
+  img: function image({ node, ...props }) {
     return (
-      <li style={{ lineHeight: '1.5', letterSpacing: '0.2px' }}>
-        {children}
-      </li>
-    );
-  },  
+      // eslint-disable-next-line jsx-a11y/alt-text
+      <img {...props} width="100%" />
+    )
+  },
+  table: Table,
 });
 
 export const Markdown = ({ children }) => {

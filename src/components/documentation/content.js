@@ -8,6 +8,7 @@ import { LoadingSpinner } from '../loading';
 import { Meta } from "../typography";
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkGfm from 'remark-gfm';
+import { componentMap } from '../markdown';
 
 export const DocumentationPageContent = () => {
   const docsCache = useQueryCache();
@@ -46,7 +47,7 @@ export const DocumentationPageContent = () => {
         Updated: { new Date(pageContent.updatedAt).toUTCString() }
       </Meta>
 
-      <Markdown remarkPlugins={[ remarkFrontmatter, remarkGfm ]}>
+      <Markdown remarkPlugins={[ remarkFrontmatter, remarkGfm ]} components={ componentMap() }>
         { pageContent.markdown }
       </Markdown>
     </Fragment>

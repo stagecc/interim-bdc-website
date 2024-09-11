@@ -161,7 +161,7 @@ export const Documentation = () => {
             justifyContent="flex-start"
             alignItems="flex-start"
             sx={{
-              py: '4.75rem',
+              py: '5.75rem',
               position: 'sticky',
               top: '5rem',
               alignSelf: 'flex-start',
