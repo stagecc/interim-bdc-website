@@ -270,5 +270,9 @@
   {
     "from": "/events/2022-08-11/community_hours",
     "to": "/news-and-events/events/2022-08-11/community_hours"
+  },
+  {
+    "from": "/contact",
+    "to": "/help-and-support/contact-us"
   }
 ]
