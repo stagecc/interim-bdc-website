@@ -4,6 +4,7 @@ import { useFence } from "../../hooks";
 import { DownloadIcon } from "../icons";
 import { Button } from "../buttons";
 import { Subheading, Paragraph } from "../typography";
+import { LoadingSpinner } from "../loading";
 
 const ProjectList = styled.select`
   width: 100%;
@@ -24,6 +25,11 @@ const DownloadButton = styled(Button)`
 
 export const Authed = () => {
   const { user, projects } = useFence();
+
+  console.log({user});
+  if (!user) {
+    return <LoadingSpinner />
+  }
 
   const handleDownload = () => {
     const csvData = `Project\n${projects.join(`\n`)}`;
