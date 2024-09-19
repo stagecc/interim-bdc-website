@@ -125,7 +125,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-google-tagmanager",
       options: {
-        id: "GTM-T5R9BX5J",
+        id: "GTM-5MRFNPPM",
   
         // Include GTM in development.
         //
@@ -138,7 +138,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingIds: ["G-2M4JYYSBD3"],
+        trackingIds: ["G-WZMWM868V3"],
       },
     },
   ]
