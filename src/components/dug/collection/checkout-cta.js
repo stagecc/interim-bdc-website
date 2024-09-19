@@ -6,8 +6,46 @@ import { ButtonLink } from '../../buttons';
 import {
   ArrowForward as NextIcon,
 } from '@mui/icons-material'
+import { useSearch } from '../context'
+
+const DugButtonLink = ({to, children, items, ...props}) => {
+  function filterFields(obj) {
+    return {
+      concepts: obj.concepts.map(item => ({
+        id: item.id,
+        name: item.name,
+        type: item.type
+      })),
+      studies: obj.studies.map(item => ({
+        id: item.id,
+        name: item.name,
+        source: item.source
+      })),
+      variables: obj.variables.map(item => ({
+        id: item.id,
+        name: item.name,
+      }))
+    };
+  }
+  
+  const collectionItems = filterFields(items);
+  
+  const handleClick = (e) => {
+    // Push the selected items to the GTM data layer
+    dataLayer.push({
+      event: 'userSelectedItems',
+      items: collectionItems
+    });
+  
+  };
+  return (
+    <ButtonLink to={to} onClick={handleClick} {...props}>{children}</ButtonLink>
+  )
+}
 
 export const CheckoutCta = () => {
+  const { collection } = useSearch()
+
   return (
     <Stack
       justifyContent="center"
@@ -22,13 +60,14 @@ export const CheckoutCta = () => {
       <Typography paragraph align="center" color="secondary" sx={{ fontStyle: 'italic' }}>
         <strong>Finished Selecting Items?</strong><br />
       </Typography>
-      <ButtonLink
+      <DugButtonLink
         to={ '/use-bdc/explore-data/dug/next-steps' }
         className="next-button GTM-button"
         id="dug-next"
+        items={collection.contents}
       >
         Next&nbsp;&nbsp;&nbsp;<NextIcon />
-      </ButtonLink>
+      </DugButtonLink>
     </Stack>
   )
 }
