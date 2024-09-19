@@ -33,8 +33,10 @@ const DugButtonLink = ({to, children, items, ...props}) => {
   const handleClick = (e) => {
     // Push the selected items to the GTM data layer
     dataLayer.push({
-      event: 'userSelectedItems',
-      items: collectionItems
+      event: 'dug-checkout-collection',
+      concepts: collectionItems.concepts,
+      studies: collectionItems.studies,
+      variables: collectionItems.variables  
     });
   
   };
