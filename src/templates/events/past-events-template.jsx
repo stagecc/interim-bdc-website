@@ -15,7 +15,7 @@ const PastEventsTemplate = ({data}) => {
   })
 
   return (
-    <PageContent width="95%" maxWidth="800px" title="Event Archive">
+    <PageContent maxWidth="800px" title="Event Archive">
 
       <Module>
         <Paragraph>

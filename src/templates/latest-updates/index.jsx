@@ -18,7 +18,7 @@ const LatestUpdatesPost = ({ data: { mdx }, pageContext, children }) => {
   const { prev, next } = pageContext;
 
   return (
-    <PageContent width="95%" maxWidth="1000px" title={title}>
+    <PageContent maxWidth="1000px" title={title}>
 
       {
         subtitle && (

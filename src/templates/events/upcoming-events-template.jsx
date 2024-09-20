@@ -16,7 +16,7 @@ const UpcomingEventsList = ({ data }) => {
   })
 
   return (
-    <PageContent width="95%" maxWidth="800px" title="Upcoming Events">
+    <PageContent maxWidth="800px" title="Upcoming Events">
 
         <Paragraph>
           The following is a list of upcoming events supported by the BDC ecosystem. Items denoted with a <Avatar 

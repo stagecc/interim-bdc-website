@@ -141,7 +141,7 @@ const SingleEventTemplate = ({ data, pageContext, children }) => {
   const past = dateString > eventDate
 
   return (
-    <PageContent width="95%" maxWidth="1000px" title={title}>
+    <PageContent maxWidth="1000px" title={title}>
 
       {
         past && <PastEventAlert forum_post={forum_post}/>

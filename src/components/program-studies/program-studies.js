@@ -13,7 +13,7 @@ export const ProgramStudiesTable = () => {
   const [program, setProgram] = useQueryParams(null, "program");
 
   return (
-    <PageContent width="95%" maxWidth="1600px" center gutters>
+    <PageContent maxWidth="1600px" center gutters>
       <Seo title={`${program ? `${program} | ` : ''}Research Community Data`} />
 
       <QueryCacheProvider>
