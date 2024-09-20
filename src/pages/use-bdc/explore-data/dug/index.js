@@ -25,7 +25,7 @@ const DugSearchPage = () => {
   }, [sidebarVisibility])
 
   return (
-    <PageContent>
+    <PageContent hideTitle title="Disease, Phenotype, Biological Process, or Anatomical Entity Search">
       <Box sx={{ position: 'relative' }}>
         <Title>Disease, Phenotype, Biological Process, or Anatomical Entity Search</Title>
       </Box>
