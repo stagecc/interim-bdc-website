@@ -11,20 +11,9 @@ import { useSearch } from '../context'
 const DugButtonLink = ({to, children, items, ...props}) => {
   function filterFields(obj) {
     return {
-      concepts: obj.concepts.map(item => ({
-        id: item.id,
-        name: item.name,
-        type: item.type
-      })),
-      studies: obj.studies.map(item => ({
-        id: item.id,
-        name: item.name,
-        source: item.source
-      })),
-      variables: obj.variables.map(item => ({
-        id: item.id,
-        name: item.name,
-      }))
+      concepts: obj.concepts.map(item => `id: ${item.id} - name: ${item.name} - type: ${item.type}`),
+      studies: obj.studies.map(item => `id: ${item.id} - name: ${item.name} - source: ${item.source}`),
+      variables: obj.variables.map(item => `id: ${item.id} - name: ${item.name}`)
     };
   }
   
