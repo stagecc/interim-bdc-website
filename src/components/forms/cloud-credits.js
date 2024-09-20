@@ -173,6 +173,8 @@ export const CloudCreditsForm = (props) => {
       if (option === "NHLBI BDC Pilot Funding Program") {
         payload = {
           cf_what_bdcatalyst_service_will_you_use: preferredPlatform,
+          cf_cloud_credits_bdcseven_bridges_username: bdcSevenBridgesUsername,
+          cf_cloud_credits_bdcterra_username: bdcTerraUsername,
         };
       }
       if (option === "NHLBI BDC Cloud Credit Support Program") {
