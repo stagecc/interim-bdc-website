@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-export const DataPanel = styled.div(({ compact, dataset }) => `
+export const DataPanel = styled.div(({ compact, $dataset }) => `
   height: 100%;
   width: 100%;
   display: block;
-  flex: ${ dataset & compact ? "1 0 50%" : dataset ? "3" : "1" };
+  flex: ${ $dataset & compact ? "1 0 50%" : $dataset ? "3" : "1" };
   max-width: ${ compact ? "none" : "800px" };
   background-color: #00000066;
   text-align: center;
