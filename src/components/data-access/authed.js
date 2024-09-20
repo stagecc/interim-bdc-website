@@ -24,10 +24,11 @@ const DownloadButton = styled(Button)`
 `;
 
 export const Authed = () => {
-  const { user, projects } = useFence();
+  const { isLoading, user, projects } = useFence();
 
-  console.log({user});
-  if (!user) {
+  console.info({ user, projects});
+
+  if (isLoading) {
     return <LoadingSpinner />
   }
 
@@ -46,7 +47,7 @@ export const Authed = () => {
   return (
     <div>
       <Subheading>You are logged in as {user.name}</Subheading>
-      {projects.length ? (
+      {projects?.length ? (
         <Fragment>
           <Paragraph>
             You have access to {projects.length} projects.
