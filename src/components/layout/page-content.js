@@ -11,8 +11,8 @@ const TOP_GUTTER = "3rem";
 const BOTTOM_GUTTER = "3rem";
 
 export const PageContentContainer = styled(Container)`
-  margin-top: ${props => (props.gutters ? TOP_GUTTER : 0)};
-  margin-bottom: ${props => (props.gutters ? BOTTOM_GUTTER : 0)};
+  margin-top: ${props => (props.$gutters ? TOP_GUTTER : 0)};
+  margin-bottom: ${props => (props.$gutters ? BOTTOM_GUTTER : 0)};
 `;
 
 export const PageContent = ({
@@ -25,7 +25,7 @@ export const PageContent = ({
   ...props
 }) => {
   return (
-    <PageContentContainer width="95%" maxWidth="1200px" center gutters {...props}>
+    <PageContentContainer width="95%" maxWidth="1200px" center $gutters {...props}>
       { title && <Seo
         title={title}
         description={description}
