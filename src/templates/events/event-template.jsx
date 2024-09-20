@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { graphql} from "gatsby";
 import { PastEventAlert, EventNavigation } from "../../components/events"
 import { Link } from "../../components/link";
-import { Title, Meta, Subheading } from "../../components/typography";
+import { Meta, Subheading } from "../../components/typography";
 import { TagsList } from "../../components/tags"
 import { Module, PageContent } from "../../components/layout";
 import { HorizontalRule } from "../../components/horizontal-rule";
@@ -141,8 +141,7 @@ const SingleEventTemplate = ({ data, pageContext, children }) => {
   const past = dateString > eventDate
 
   return (
-    <PageContent width="95%" maxWidth="1000px">
-      <Title>{title}</Title>
+    <PageContent width="95%" maxWidth="1000px" title={title}>
 
       {
         past && <PastEventAlert forum_post={forum_post}/>
