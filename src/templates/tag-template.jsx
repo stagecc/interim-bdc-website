@@ -12,7 +12,7 @@ const TagTemplate = ({ data, pageContext }) => {
   const events = data.events.nodes;
 
   return (
-    <PageContent maxWidth="1000px">
+    <PageContent maxWidth="1000px" title={`${tag} - Tagged`} hideTitle>
 
       <div className="items-by-tag-container">
         <Title>Tagged: "{tag}"</Title>
