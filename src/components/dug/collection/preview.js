@@ -215,7 +215,7 @@ export const CollectionPreview = () => {
         ) : (
           <Tooltip title={ `${ expanded ? 'Hide' : 'Show' } Collection Details` } placement="bottom">
               <Button
-                $fullWidth
+                fullWidth
                 onClick={ clickToggleExpand }
                 color="secondary"
                 ref={ buttonRef }

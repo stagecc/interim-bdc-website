@@ -2,7 +2,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 export const Button = styled.button(
-  ({ $small = false, $light = false, $fullWidth = false, ...props }) => `
+  ({ $small = false, $light = false, fullWidth = false, ...props }) => `
     background-color: ${$light ? "#fff" : "var(--color-crimson)"};
     border-radius: 4px;
     display: inline-block;
@@ -20,7 +20,7 @@ export const Button = styled.button(
     display: flex;
     justify-content: center;
     align-items: center;
-    width: ${$fullWidth ? `100%` : `unset`};
+    width: ${fullWidth ? `100%` : `unset`};
     position: relative;
     transition: filter 250ms;
     &:hover, &:focus {
