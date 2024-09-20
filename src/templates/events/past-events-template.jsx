@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { Title, Paragraph } from "../../components/typography";
+import { Paragraph } from "../../components/typography";
 import { ButtonLink, ButtonContainer } from "../../components/buttons";
 import { Module, PageContent } from "../../components/layout";
 import { PastEventsList } from "../../components/events/past-event-list-grid"
@@ -15,9 +15,7 @@ const PastEventsTemplate = ({data}) => {
   })
 
   return (
-    <PageContent width="95%" maxWidth="800px">
-
-      <Title>Event Archive</Title>
+    <PageContent width="95%" maxWidth="800px" title="Event Archive">
 
       <Module>
         <Paragraph>
