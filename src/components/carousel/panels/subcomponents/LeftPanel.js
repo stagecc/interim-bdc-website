@@ -9,7 +9,7 @@ export const DetailsPanel = styled.div(({ compact }) => `
   justify-content: center;
 `);
 
-export const DetailWrapper = styled.div(({ dataset, compact }) => `
+export const DetailWrapper = styled.div(({ compact }) => `
   position: absolute;
   height: 100%;
   width: 100%;
