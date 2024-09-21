@@ -1,7 +1,7 @@
 import React, { Fragment } from "react"
 import { graphql } from "gatsby"
 import { PageContent } from '../../components/layout'
-import { Title, Subtitle, Heading, Paragraph } from "../../components/typography";
+import { Subtitle, Heading, Paragraph } from "../../components/typography";
 import { HorizontalRule } from "../../components/horizontal-rule";
 import { PublishDateByLine, ArticleNavigation, ResearcherCard, ContributorCard } from '../../components/latest-updates';
 import { TagsList } from "../../components/tags"
@@ -18,8 +18,7 @@ const LatestUpdatesPost = ({ data: { mdx }, pageContext, children }) => {
   const { prev, next } = pageContext;
 
   return (
-    <PageContent width="95%" maxWidth="1000px">
-      <Title>{title}</Title>
+    <PageContent maxWidth="1000px" title={title}>
 
       {
         subtitle && (

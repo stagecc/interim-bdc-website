@@ -1,9 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import {
-  Title,
-  Paragraph,
-} from "../../components/typography";
+import { Paragraph } from "../../components/typography";
 import { ButtonLink, ButtonContainer } from "../../components/buttons";
 import {  PageContent } from "../../components/layout";
 import { EventsList } from '../../components/events'
@@ -19,9 +16,7 @@ const UpcomingEventsList = ({ data }) => {
   })
 
   return (
-    <PageContent width="95%" maxWidth="800px">
-
-      <Title>Upcoming Events</Title>
+    <PageContent maxWidth="800px" title="Upcoming Events">
 
         <Paragraph>
           The following is a list of upcoming events supported by the BDC ecosystem. Items denoted with a <Avatar 
