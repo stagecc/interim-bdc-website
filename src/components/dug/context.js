@@ -32,6 +32,7 @@ const requestConcepts = async ({ query, page }) => {
       concept_types: response.data.result.concept_types,
     }
   }
+  console.log({response})
   return null
 }
 
@@ -55,6 +56,7 @@ const requestStudies = async ({ conceptId, query }) => {
       ...data.result[source].map(study => ({ ...study, source }))
     ]
   }, []).sort((s, t) => s.c_name.toLowerCase() < t.c_name.toLowerCase() ? -1 : 1)
+  console.log({data})
   return flattenedStudies
 }
 
@@ -66,6 +68,7 @@ export const SearchProvider = ({ children }) => {
   const location = useLocation()
   const [query, setQuery] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(null);
   const [results, setResults] = useState([])
   const [pageCount, setPageCount] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
@@ -142,6 +145,7 @@ export const SearchProvider = ({ children }) => {
         setPageCount(0)
       }
     } catch (error) {
+      setError(error)
       console.error(error.message)
       setPageCount(0)
       setCurrentPage(1)
@@ -159,6 +163,7 @@ export const SearchProvider = ({ children }) => {
       }
       return studies
     } catch(error) {
+      setError(error)
       console.error(error.message)
     } finally {
       setIsLoading(false)
@@ -208,7 +213,7 @@ export const SearchProvider = ({ children }) => {
 
   return (
     <DugSearchContext.Provider value={{
-      query, doSearch, isLoading,
+      query, doSearch, isLoading, error,
       fetchConcepts, fetchStudies, typeFilters,
       results, filteredResults,
       pageCount, currentPage,
