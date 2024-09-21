@@ -1,11 +1,12 @@
 import React, { Fragment, useCallback, useMemo } from 'react'
-import { Box, Button, Grid, Stack } from '@mui/material'
+import { Box, Button, Grid, Stack, Typography } from '@mui/material'
 import { LoadingSpinner } from '../loading'
 import { Link } from '../link'
 import { useSearch } from './context'
 import { ResultCard } from './result-card'
 import { ResultDialog } from './result-dialog'
 import { ControlledFetcher } from './controlled-fetcher'
+import { ErrorCard } from '../card'
 
 //
 
@@ -41,7 +42,7 @@ const Suggestions = ({ concepts = [] }) => {
 
 export const Results = () => {
   const {
-    currentPage, fetchConcepts, filteredResults, isLoading,
+    currentPage, error, fetchConcepts, filteredResults, isLoading,
     pageCount, query, relatedConcepts,
   } = useSearch()
 
@@ -108,6 +109,22 @@ export const Results = () => {
         Search concepts, studies, and variables
         in the BioData Catalyst ecosystem!
       </Stack>
+    )
+  }
+
+  if (error) {
+    return (
+      <ErrorCard>
+        <Typography align="center">
+          It appears we are currently experiencing technical difficulties
+          with our search service, Dug. As a result, search functionality
+          from this site is temporarily unavailable. Our team is actively
+          working to resolve the issue, and we will communicate updates
+          on appropriate channels as soon as the service is restored.
+          <br /><br />
+          We apologize for any inconvenience and appreciate your patience.
+        </Typography>
+      </ErrorCard>
     )
   }
 
