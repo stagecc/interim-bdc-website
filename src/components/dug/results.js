@@ -117,10 +117,10 @@ export const Results = () => {
       <ErrorCard>
         <Typography align="center">
           It appears we are currently experiencing technical difficulties
-          with our search service, Dug. As a result, search functionality
-          from this site is temporarily unavailable. Our team is actively
-          working to resolve the issue, and we will communicate updates
-          on appropriate channels as soon as the service is restored.
+          with our semantic search service, Dug. As a result, semantic
+          search functionality is temporarily unavailable. Our team is
+          actively working to resolve the issue, and we will communicate
+          updates on appropriate channels as soon as the service is restored.
           <br /><br />
           We apologize for any inconvenience and appreciate your patience.
         </Typography>
