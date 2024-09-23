@@ -27,13 +27,16 @@ const requestConcepts = async ({ query, page }) => {
   const response = await axios.post(`${ SEARCH_BASE_URL }/search`, params)
   if (response.status === 200 && response.data.status === 'success' && response.data.result) {
     return {
-      hits: response.data.result.hits.hits,
+      hits: response.data.result?.hits?.hits ?? [],
       total_items: response.data.result.total_items,
       concept_types: response.data.result.concept_types,
     }
   }
-  console.log({response})
-  return null
+  return {
+      hits: [],
+      total_items: 0,
+      concept_types: [],
+    }
 }
 
 const requestStudies = async ({ conceptId, query }) => {
@@ -56,7 +59,6 @@ const requestStudies = async ({ conceptId, query }) => {
       ...data.result[source].map(study => ({ ...study, source }))
     ]
   }, []).sort((s, t) => s.c_name.toLowerCase() < t.c_name.toLowerCase() ? -1 : 1)
-  console.log({data})
   return flattenedStudies
 }
 
