@@ -45,7 +45,7 @@ export const Programs = ({
 const getProgramList = async () => {
   const { href } = new URL(
     "/search-api/program_list",
-    process.env.GATSBY_DUG_SEARCH_API ?? "https://search-dev.biodatacatalyst.renci.org"
+    process.env.GATSBY_DUG_SEARCH_API ?? "https://search.biodatacatalyst.renci.org"
   );
 
   const res = await fetch(href, {
