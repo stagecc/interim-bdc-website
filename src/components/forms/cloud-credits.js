@@ -84,6 +84,8 @@ export const CloudCreditsForm = (props) => {
   const [oneRequest, setOneRequest] = useState("");
   // NHLBI BDC Pilot Funding Program
   const [preferredPlatform, setPreferredPlatform] = useState("");
+  const [bdcSevenBridgesUsername, setBdcSevenBridgesUsername] = useState("");
+  const [bdcTerraUsername, setBdcTerraUsername] = useState("");
   // NHLBI BDC Cloud Credit Support Program
   const [creditsProjectAbstract, setCreditsProjectAbstract] = useState("");
   const [creditsPreviouslyReceived, setCreditsPreviouslyReceived] = useState(false);
@@ -131,7 +133,14 @@ export const CloudCreditsForm = (props) => {
 
     const customFieldsDescription = option => {
       if (option === "NHLBI BDC Pilot Funding Program") {
-        return `- Preferred analysis platform: ${ preferredPlatform } <br />`;
+        let response = `Preferred analysis platform: ${ preferredPlatform } <br />`
+        if (preferredPlatform.includes("BDC-Seven Bridges")) {
+          response += `- BDC-Seven Bridges username: ${ bdcSevenBridgesUsername }<br />`;
+        }
+        if (preferredPlatform.includes("BDC-Terra")) {
+          response += `- BDC-Terra username: ${ bdcTerraUsername }<br />`;
+        }
+        return response;
       }
       if (option === "NHLBI BDC Cloud Credit Support Program") {
         return ``
@@ -164,6 +173,8 @@ export const CloudCreditsForm = (props) => {
       if (option === "NHLBI BDC Pilot Funding Program") {
         payload = {
           cf_what_bdcatalyst_service_will_you_use: preferredPlatform,
+          cf_cloud_credits_bdcseven_bridges_username: bdcSevenBridgesUsername,
+          cf_cloud_credits_bdcterra_username: bdcTerraUsername,
         };
       }
       if (option === "NHLBI BDC Cloud Credit Support Program") {
@@ -246,6 +257,8 @@ export const CloudCreditsForm = (props) => {
   const handleChangeOneRequest = (event) => setOneRequest(event.target.value);
   // NHLBI BDC Pilot Funding Program
   const handleChangePreferredPlatform = (event) => setPreferredPlatform(event.target.value);
+  const handleChangeBdcSevenBridgesUsername = (event) => setBdcSevenBridgesUsername(event.target.value);
+  const handleChangeBdcTerraUsername = (event) => setBdcTerraUsername(event.target.value);
   // NHLBI BDC Cloud Credit Support Program
   const handleChangeCreditsComputationalScope = (event) => setCreditsComputationalScope(event.target.value);
   const handleChangeCreditsProjectAbstract = (event) => setCreditsProjectAbstract(event.target.value);
@@ -428,12 +441,42 @@ export const CloudCreditsForm = (props) => {
                     onChange={handleChangePreferredPlatform}
                   >
                     <Option value="">Select One</Option>
-                    <Option value="BDC Seven Bridges">BDC Seven Bridges</Option>
+                    <Option value="BDC-Seven Bridges">BDC-Seven Bridges</Option>
                     <Option value="BDC-Terra">BDC-Terra</Option>
-                    <Option value="Both BDC Seven Bridges and BDC-Terra">Both BDC Seven Bridges and BDC-Terra</Option>
+                    <Option value="Both BDC-Seven Bridges and BDC-Terra">Both BDC-Seven Bridges and BDC-Terra</Option>
                   </Select>
                 </FormControl>
               </FormSubsection>
+            )
+          }
+          {
+            preferredPlatform.includes("BDC-Seven Bridges") && (
+              <FormControl>
+                <label htmlFor="bdc-seven-bridges-username">BDC-Seven Bridges username*</label>
+                <TextInput
+                  type="text"
+                  required
+                  id="bdc-seven-bridges-username"
+                  name="bdc-seven-bridges-username"
+                  value={bdcSevenBridgesUsername}
+                  onChange={handleChangeBdcSevenBridgesUsername}
+                />
+              </FormControl>
+            )
+          }
+          {
+            preferredPlatform.includes("BDC-Terra") && (
+              <FormControl>
+                <label htmlFor="bdc-terra-username">BDC-Terra username*</label>
+                <TextInput
+                  type="text"
+                  required
+                  id="bdc-terra-username"
+                  name="bdc-terra-username"
+                  value={bdcTerraUsername}
+                  onChange={handleChangeBdcTerraUsername}
+                />
+              </FormControl>
             )
           }
           {
