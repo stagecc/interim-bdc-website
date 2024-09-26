@@ -15,98 +15,95 @@ import { PageContent } from "../../../components/layout";
 import { ButtonContainer, ButtonLink } from "../../../components/buttons"
 import { DataAccessChecker } from "../../../components/data-access"
 import { NextStepsCard } from "../../../components/card"
-import { FenceProvider } from "../../../hooks";
 
-<FenceProvider>
-  <PageContent 
-    title="Explore BDC Data"
-    menuItems={props.pageContext.frontmatter.menu}
-  >
-  
-  ## About Data in BDC
-  
-  Anyone can explore the data that BDC hosts without logging in or requesting permission,
-  and there is no cost for exploring data in BDC.
-  
-To see details about the hosted data in BDC, refer to the [Release Notes](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/release-notes) and [NIH RECOVER Release Notes](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/nih-recover-release-notes)   sections of the BDC documentation.
-  
-  ## Search Hosted Data
-  
-The following buttons link to search capabilities to discover the data available in   BDC. **Select your search based on the information you have:**
-  
-  <ButtonContainer>
-  <ButtonLink to="https://gen3.biodatacatalyst.nhlbi.nih.gov/discovery" className=" GTM-button" id="search-gen3">Keywords in Study Names or Descriptions</ButtonLink>
-  <ButtonLink to="/use-bdc/explore-data/dug" className="GTM-button" id="search-dug">  Disease, Phenotype, Biological Process, or Anatomical Entity</ButtonLink>
-  <ButtonLink to="https://openpicsure.biodatacatalyst.nhlbi.nih.gov/picsureui/"   className="GTM-button" id="search-open">Phenotypes</ButtonLink>
-  </ButtonContainer>
-  
-> All three of the above searches provide Study Accession IDs - unique, stable, and   versioned identifiers. 
-  
-> The search capabilities of “Keywords in Study Names or Descriptions” and “Disease, Phenotype, Biological Process, or Anatomical Entity” search across the data  dictionaries to explore variables in the studies. 
-  
-> The “Disease, Phenotype, Biological Process, or Anatomical Entity” search also  returns biomedical concepts and study variables that are related to the search term. 
-  
-> The “Phenotypes” search includes participant-level data (aggregate counts returned),  variable distributions, data dictionary, and Study Accession IDs.
-  
-Refer to the [Explore Available Data](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/explore-available-data) section  of the BDC documentation to learn more about each of these searches.
-  
-  ## Data from Research Community Collaborators
-  
-BDC builds collaborations with research communities by importing data from their projects and empowering investigators from those communities with innovative analysis tools. Learn more about these activities on the [Research Communities Using BDC webpage  ](/about/research-communities).
-  
-To see a list of the datasets hosted in BDC from each of these communities, click on  the name of the project below:
-  
-  * [TOPMed](/about/studies/?program=TOPMed)
-  * [RECOVER](/about/studies/?program=RECOVER)
-  * [Bench to Bassinet](/about/studies/?program=Bench+to+Bassinet)
-  * [BioLINCC](/about/studies/?program=BioLINCC)
-  * [C4R](/about/studies/?program=C4R)
-  * [CONNECTS](/about/studies/?program=CONNECTS)
-  * [Cure Sickle Cell Initiative](/about/studies/?program=Cure+Sickle+Cell+Initiative)
-  * [HeartShare](/about/studies/?program=HeartShare)
-  * [LungMAP](/about/studies/?program=LungMAP)
-* [National Sleep Research Resource (NSRR)](/about/studies/?  program=National+Sleep+Research+Resource+%28NSRR%29)
-  * [Pediatric Heart Network](/about/studies/?program=Pediatric+Heart+Network+%28PHN%29)
-  * [PETAL Network](/about/studies/?program=PETAL+Network)
-  * Regenerative Medicine Innovation Project (RMIP) *(data are not yet available in BDC)*
-  
-  ## Assess Feasibility (Optional)
-  
-To determine which BDC-hosted dataset(s) meet their research criteria (i.e., conduct a feasibility assessment), researchers can search by various terms, including study names, variables, phenotypes, and even Study Accession IDs (if known). After selecting “Conduct a Feasibility Assessment” below, users can enter their search criteria and   then apply filters to retrieve aggregated participant counts.
-  
-  <ButtonContainer>
-  <ButtonLink to="https://openpicsure.biodatacatalyst.nhlbi.nih.gov/picsureui/" className="GTM-button" id="feasibility-open">Conduct Feasibility Assessment</ ButtonLink>
-  </ButtonContainer>
-  
-  ## Requirements for Accessing BDC Hosted Data
-  
-Researchers using open-access and/or controlled-access data must have eRA Commons accounts (visit the [eRA Commons website for more information](https://www.era.nih.gov/register-accounts/create-and-edit-an-account.htm)) because BDC users log into  ecosystem platforms using their eRA Commons credentials.
-  
-Researchers who wish to use controlled-access datasets must also have approved data access requests (DARs) for each dataset from the [NIH Database of Genotypes and Phenotypes (dbGaP)](https://www.ncbi.nlm.nih.gov/gap/). Researchers can click the "Check Data Access" button below, use their eRA Commons account credentials to log in,  click "Yes, I authorize," and check their data access approvals:
-  
-  <ButtonContainer>
-    <DataAccessChecker />
-  </ButtonContainer>
-  
-Researchers who do not have approved DARs for the controlled data they want to use should [read the dbGaP section of the Understanding Access page](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/data-access/understanding-access-requirements-for-biodata-catalyst#dbgap) and [Submitting a dbGaP Data Access Request](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/data-access/submitting-a-dbgap-data-access-request) in BDC's   documentation.
-  
-  <NextStepsCard>
-    **[Analyze Data](/use-bdc/analyze-data)**
-    - Prepare to Analyze Data
-    - Build a Cohort for Analysis
-    - Import Data to a Workspace
-    - Utilize Analysis Tools
-    - Bring Your Own Data
-  
-    **[Understand BDC Usage Costs](/user-resources/usage-costs)**
-    - Usage Costs
-    - Estimate & Manage Costs
-    - Pay for Cloud Credits (includes information about cloud credit support programs)
-  
-    **Know the [Terms of Use & Policies](/user-resources/terms-of-use)**
-  
-    **[Join the BDC Community](/join-bdc)**
-  </NextStepsCard>
-  
-  </PageContent>
-</FenceProvider>
+<PageContent 
+  title="Explore BDC Data"
+  menuItems={props.pageContext.frontmatter.menu}
+>
+
+## About Data in BDC
+
+Anyone can explore the data that BDC hosts without logging in or requesting permission,
+and there is no cost for exploring data in BDC.
+
+To see details about the hosted data in BDC, refer to the [Release Notes](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/release-notes) and [NIH RECOVER Release Notes](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/nih-recover-release-notes) sections of the BDC documentation.
+
+## Search Hosted Data
+
+The following buttons link to search capabilities to discover the data available in BDC. **Select your search based on the information you have:**
+
+<ButtonContainer>
+  <ButtonLink to="https://gen3.biodatacatalyst.nhlbi.nih.gov/discovery" className="GTM-button" id="search-gen3">Keywords in Study Names or Descriptions</ButtonLink>
+  <ButtonLink to="/use-bdc/explore-data/dug" className="GTM-button" id="search-dug">Disease, Phenotype, Biological Process, or Anatomical Entity</ButtonLink>
+  <ButtonLink to="https://openpicsure.biodatacatalyst.nhlbi.nih.gov/picsureui/" className="GTM-button" id="search-open">Phenotypes</ButtonLink>
+</ButtonContainer>
+
+> All three of the above searches provide Study Accession IDs - unique, stable, and versioned identifiers. 
+
+> The search capabilities of “Keywords in Study Names or Descriptions” and “Disease, Phenotype, Biological Process, or Anatomical Entity” search across the data dictionaries to explore variables in the studies. 
+
+> The “Disease, Phenotype, Biological Process, or Anatomical Entity” search also returns biomedical concepts and study variables that are related to the search term. 
+
+> The “Phenotypes” search includes participant-level data (aggregate counts returned), variable distributions, data dictionary, and Study Accession IDs.
+
+Refer to the [Explore Available Data](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/explore-available-data) section of the BDC documentation to learn more about each of these searches.
+
+## Data from Research Community Collaborators
+
+BDC builds collaborations with research communities by importing data from their projects and empowering investigators from those communities with innovative analysis tools. Learn more about these activities on the [Research Communities Using BDC webpage](/about/research-communities).
+
+To see a list of the datasets hosted in BDC from each of these communities, click on the name of the project below:
+
+* [TOPMed](/about/studies/?program=TOPMed)
+* [RECOVER](/about/studies/?program=RECOVER)
+* [Bench to Bassinet](/about/studies/?program=Bench+to+Bassinet)
+* [BioLINCC](/about/studies/?program=BioLINCC)
+* [C4R](/about/studies/?program=C4R)
+* [CONNECTS](/about/studies/?program=CONNECTS)
+* [Cure Sickle Cell Initiative](/about/studies/?program=Cure+Sickle+Cell+Initiative)
+* [HeartShare](/about/studies/?program=HeartShare)
+* [LungMAP](/about/studies/?program=LungMAP)
+* [National Sleep Research Resource (NSRR)](/about/studies/?program=National+Sleep+Research+Resource+%28NSRR%29)
+* [Pediatric Heart Network](/about/studies/?program=Pediatric+Heart+Network+%28PHN%29)
+* [PETAL Network](/about/studies/?program=PETAL+Network)
+* Regenerative Medicine Innovation Project (RMIP) *(data are not yet available in BDC)*
+
+## Assess Feasibility (Optional)
+
+To determine which BDC-hosted dataset(s) meet their research criteria (i.e., conduct a feasibility assessment), researchers can search by various terms, including study names, variables, phenotypes, and even Study Accession IDs (if known). After selecting “Conduct a Feasibility Assessment” below, users can enter their search criteria and then apply filters to retrieve aggregated participant counts.
+
+<ButtonContainer>
+  <ButtonLink to="https://openpicsure.biodatacatalyst.nhlbi.nih.gov/picsureui/" className="GTM-button" id="feasibility-open">Conduct Feasibility Assessment</ButtonLink>
+</ButtonContainer>
+
+## Requirements for Accessing BDC Hosted Data
+
+Researchers using open-access and/or controlled-access data must have eRA Commons accounts (visit the [eRA Commons website for more information](https://www.era.nih.gov/register-accounts/create-and-edit-an-account.htm)) because BDC users log into ecosystem platforms using their eRA Commons credentials.
+
+Researchers who wish to use controlled-access datasets must also have approved data access requests (DARs) for each dataset from the [NIH Database of Genotypes and Phenotypes (dbGaP)](https://www.ncbi.nlm.nih.gov/gap/). Researchers can click the "Check Data Access" button below, use their eRA Commons account credentials to log in, click "Yes, I authorize," and check their data access approvals:
+
+<ButtonContainer>
+  <DataAccessChecker />
+</ButtonContainer>
+
+Researchers who do not have approved DARs for the controlled data they want to use should [read the dbGaP section of the Understanding Access page](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/data-access/understanding-access-requirements-for-biodata-catalyst#dbgap) and [Submitting a dbGaP Data Access Request](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/written-documentation/data-access/submitting-a-dbgap-data-access-request) in BDC's documentation.
+
+<NextStepsCard>
+  **[Analyze Data](/use-bdc/analyze-data)**
+  - Prepare to Analyze Data
+  - Build a Cohort for Analysis
+  - Import Data to a Workspace
+  - Utilize Analysis Tools
+  - Bring Your Own Data
+
+  **[Understand BDC Usage Costs](/user-resources/usage-costs)**
+  - Usage Costs
+  - Estimate & Manage Costs
+  - Pay for Cloud Credits (includes information about cloud credit support programs)
+
+  **Know the [Terms of Use & Policies](/user-resources/terms-of-use)**
+
+  **[Join the BDC Community](/join-bdc)**
+</NextStepsCard>
+
+</PageContent>
