@@ -4,6 +4,7 @@ import { useFence } from "../../hooks";
 import { DownloadIcon } from "../icons";
 import { Button } from "../buttons";
 import { Subheading, Paragraph } from "../typography";
+import { LoadingSpinner } from "../loading";
 
 const ProjectList = styled.select`
   width: 100%;
@@ -23,7 +24,13 @@ const DownloadButton = styled(Button)`
 `;
 
 export const Authed = () => {
-  const { user, projects } = useFence();
+  const { isLoading, user, projects } = useFence();
+
+  console.info({ user, projects});
+
+  if (isLoading) {
+    return <LoadingSpinner />
+  }
 
   const handleDownload = () => {
     const csvData = `Project\n${projects.join(`\n`)}`;
@@ -40,7 +47,7 @@ export const Authed = () => {
   return (
     <div>
       <Subheading>You are logged in as {user.name}</Subheading>
-      {projects.length ? (
+      {projects?.length ? (
         <Fragment>
           <Paragraph>
             You have access to {projects.length} projects.
