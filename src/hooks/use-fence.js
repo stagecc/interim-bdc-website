@@ -52,6 +52,7 @@ export const FenceProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchProjects = async accessToken => {
+      setIsLoading(true);
       await axios
         .get(fenceUserInfoUrl, {
           headers: { Authorization: `Bearer ${accessToken}` }
@@ -62,7 +63,8 @@ export const FenceProvider = ({ children }) => {
         })
         .catch(error => {
           setError(error);
-        });
+        })
+        .finally(() => setIsLoading(false));
     };
     // if fence user found in local storage
     if (fenceUser && !authed) {
