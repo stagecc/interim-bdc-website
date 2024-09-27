@@ -55,7 +55,7 @@ export const Studies = ({ programKey }) => {
 const getStudiesList = async (programName) => {
   const url = new URL(
     "/search-api/search_program",
-    process.env.GATSBY_DUG_SEARCH_API ?? "https://search-dev.biodatacatalyst.renci.org"
+    process.env.GATSBY_DUG_SEARCH_API ?? "https://search.biodatacatalyst.renci.org"
   );
   url.searchParams.append("program_name", programName);
 
