@@ -11,9 +11,12 @@ import { useSearch } from '../context'
 const DugButtonLink = ({to, children, items, ...props}) => {
   function filterFields(obj) {
     return {
-      concepts: obj.concepts.map(item => `id: ${item.id} - name: ${item.name} - type: ${item.type}`),
-      studies: obj.studies.map(item => `id: ${item.id} - name: ${item.name} - source: ${item.source}`),
-      variables: obj.variables.map(item => `id: ${item.id} - name: ${item.name}`)
+      conceptIds: obj.concepts.map(item => item.id),
+      conceptNames: obj.concepts.map(item => item.name),
+      studyIds: obj.studies.map(item => item.id),
+      studyNames: obj.studies.map(item => item.name),
+      variableIds: obj.variables.map(item => item.id),
+      variableNames: obj.variables.map(item => item.name)
     };
   }
   
@@ -23,9 +26,12 @@ const DugButtonLink = ({to, children, items, ...props}) => {
     // Push the selected items to the GTM data layer
     dataLayer.push({
       event: 'dug-checkout-collection',
-      concepts: collectionItems.concepts,
-      studies: collectionItems.studies,
-      variables: collectionItems.variables  
+      conceptIds: collectionItems.conceptIds,
+      conceptNames: collectionItems.conceptNames,
+      studyIds: collectionItems.studyIds,
+      studyNames: collectionItems.studyNames,
+      variableIds: collectionItems.variableIds,
+      variableNames: collectionItems.variableNames  
     });
   
   };
