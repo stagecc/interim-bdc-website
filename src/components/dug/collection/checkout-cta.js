@@ -24,7 +24,7 @@ const DugButtonLink = ({to, children, items, ...props}) => {
   
   const handleClick = (e) => {
     // Push the selected items to the GTM data layer
-    dataLayer.push({
+    window.dataLayer.push({
       event: 'dug-checkout-collection',
       dugCheckoutConceptIds: collectionItems.conceptIds,
       dugCheckoutConceptNames: collectionItems.conceptNames,

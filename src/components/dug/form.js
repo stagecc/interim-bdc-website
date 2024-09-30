@@ -48,7 +48,7 @@ export const DugForm = ({ focusOnMount = false, slashFocus = false }) => {
     }
 
     // this pushes the search term and location to Google Analytics
-    dataLayer.push({
+    window.dataLayer.push({
       event: 'dug-search-items',
       dugSearchTerm: formQuery,
       dugSearchLocation: searchLocation
