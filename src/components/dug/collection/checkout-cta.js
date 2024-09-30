@@ -26,12 +26,12 @@ const DugButtonLink = ({to, children, items, ...props}) => {
     // Push the selected items to the GTM data layer
     dataLayer.push({
       event: 'dug-checkout-collection',
-      conceptIds: collectionItems.conceptIds,
-      conceptNames: collectionItems.conceptNames,
-      studyIds: collectionItems.studyIds,
-      studyNames: collectionItems.studyNames,
-      variableIds: collectionItems.variableIds,
-      variableNames: collectionItems.variableNames  
+      dugCheckoutConceptIds: collectionItems.conceptIds,
+      dugCheckoutConceptNames: collectionItems.conceptNames,
+      dugCheckoutStudyIds: collectionItems.studyIds,
+      dugCheckoutStudyNames: collectionItems.studyNames,
+      dugCheckoutVariableIds: collectionItems.variableIds,
+      dugCheckoutVariableNames: collectionItems.variableNames  
     });
   
   };
