@@ -13,6 +13,7 @@ import {
   StickyWrapper,
   LineBreak
 } from "../layout";
+import { Banner } from "../banner";
 import { Paragraph } from "../typography";
 import { Link } from "../link";
 import { Menu, MobileMenu } from '../menus';
@@ -77,6 +78,9 @@ export function Layout({ children }) {
       <LayoutWrapper compact={isCompact ? true : undefined}>
         <RouteChangeScroller />
         <SkipLink href="#main-content">Skip to main content</SkipLink>
+        <Banner>
+          Test banner content
+        </Banner>
         <Visible md>
           <Header style={{ backgroundColor: '#f9f6f3' }}>
             <Brand width="380px" />
