@@ -1,30 +1,48 @@
+import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { Card } from "../../components/card";
 
-export const FloatingContentWrapper = styled(Card)(({
+export const FloatingContentCard = styled(Card)(({
   placement,
-  type = "text",
+  type,
   noPadding = false,
 }) => `
-  width: 45%;
-  float: ${ placement };
   background-color: ${ type === "text" && "rgba(237, 240, 244, 0.8)" };
   padding: ${ noPadding ? 0 : '0 1.5rem' };
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    float: none;
+  };
+`);
+
+const Wrapper = styled.div(({ placement, noPadding = false }) => `
+  width: 45%;
+  float: ${placement};
+  padding: ${noPadding ? 0 : "0 1.5rem"};
   margin-top: 1rem;
   margin-bottom: 1rem;
-  margin-left: ${ placement === "right" ? "1.5rem" : 0 };
-  margin-right: ${ placement === "left" ? "1.5rem" : 0 };
-  max-width: ${ placement ? `calc(100% - 3rem)` : '100%' };
+  margin-left: ${placement === "right" ? "1.5rem" : 0};
+  margin-right: ${placement === "left" ? "1.5rem" : 0};
+  max-width: ${placement ? `calc(100% - 3rem)` : "100%"};
   @media screen and (max-width: 768px) {
     width: 100%;
     float: none;
     padding: 0.5rem 1.5rem;
   }
 `);
+export const FloatingTextWrapper = ({ placement, noPadding, children }) => (
+  <Wrapper placement={placement} noPadding={noPadding}>
+    <FloatingContentCard>{children}</FloatingContentCard>
+  </Wrapper>
+);
 
-FloatingContentWrapper.propTypes = {
-  noPadding: PropTypes.bool,
-  placement: PropTypes.oneOf(["left", "right"]),
-  type: PropTypes.string,
-};
+export const FloatingVideoWrapper = ({ placement, children }) => (
+  <Wrapper placement={placement}>
+    {React.Children.map(children, (item) => (
+      <FloatingContentCard noPadding>
+        {item}
+      </FloatingContentCard>
+    ))}
+  </Wrapper>
+);
