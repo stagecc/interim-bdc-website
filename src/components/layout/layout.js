@@ -79,7 +79,7 @@ export function Layout({ children }) {
         <RouteChangeScroller />
         <SkipLink href="#main-content">Skip to main content</SkipLink>
         <Banner>
-          Test banner content
+          RECOVER (Long COVID) Pediatric Observational Cohort study data is now availabe in BDC. <a href="/about/research-communities/#recover">Learn More</a>
         </Banner>
         <Visible md>
           <Header style={{ backgroundColor: '#f9f6f3' }}>
