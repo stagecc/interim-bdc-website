@@ -452,7 +452,7 @@ export const CloudCreditsForm = (props) => {
           {
             preferredPlatform.includes("BDC-Seven Bridges") && (
               <FormControl>
-                <label htmlFor="bdc-seven-bridges-username">BDC-Seven Bridges username*</label>
+                <label htmlFor="bdc-seven-bridges-username"><em>BDC-Seven Bridges</em> username*</label>
                 <TextInput
                   type="text"
                   required
@@ -467,7 +467,7 @@ export const CloudCreditsForm = (props) => {
           {
             preferredPlatform.includes("BDC-Terra") && (
               <FormControl>
-                <label htmlFor="bdc-terra-username">BDC-Terra username*</label>
+                <label htmlFor="bdc-terra-username"><em>BDC-Terra</em> username*</label>
                 <TextInput
                   type="text"
                   required
