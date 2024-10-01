@@ -35,6 +35,24 @@ export const DugForm = ({ focusOnMount = false, slashFocus = false }) => {
 
   const handleClickSubmit = event => {
     event.preventDefault()
+
+    // determine the search location based on the current URL
+    let searchLocation;
+
+    if (window.location.pathname === '/') {
+      searchLocation = 'BDC Home';
+    } else if (window.location.pathname.includes('/use-bdc/explore-data/dug')) {
+      searchLocation = 'Dug Search Page';
+    } else {
+      searchLocation = window.location.pathname
+    }
+
+    // this pushes the search term and location to Google Analytics
+    window.dataLayer.push({
+      event: 'dug-search-items',
+      dugSearchTerm: formQuery,
+      dugSearchLocation: searchLocation
+    });
     doSearch(formQuery)
   }
 
