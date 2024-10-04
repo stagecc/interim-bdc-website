@@ -4,9 +4,8 @@ import PropTypes from "prop-types";
 import { Card } from "../../components/card";
 
 export const FloatingContentCard = styled(Card)(({
-  placement,
   type,
-  noPadding = false,
+  noPadding,
 }) => `
   background-color: ${ type === "text" && "rgba(237, 240, 244, 0.8)" };
   padding: ${ noPadding ? 0 : '0 1.5rem' };
@@ -16,12 +15,11 @@ export const FloatingContentCard = styled(Card)(({
   };
 `);
 
-const Wrapper = styled.div(({ placement, noPadding = false }) => `
+const Wrapper = styled.div(({ placement, noPadding }) => `
   width: 45%;
   float: ${placement};
   padding: ${noPadding ? 0 : "0 1.5rem"};
   margin-top: 1rem;
-  margin-bottom: 1rem;
   margin-left: ${placement === "right" ? "1.5rem" : 0};
   margin-right: ${placement === "left" ? "1.5rem" : 0};
   max-width: ${placement ? `calc(100% - 3rem)` : "100%"};
@@ -38,7 +36,7 @@ export const FloatingTextWrapper = ({ placement, noPadding, children }) => (
 );
 
 export const FloatingVideoWrapper = ({ placement, children }) => (
-  <Wrapper placement={placement}>
+  <Wrapper placement={placement} noPadding>
     {React.Children.map(children, (item) => (
       <FloatingContentCard noPadding>
         {item}
