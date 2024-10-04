@@ -10,7 +10,7 @@ const Wrapper = styled.div(({ active }) => `
   alignItems: center;
   position: relative;
   border: solid var(--color-crimson);
-  background: linear-gradient(90deg, var(--color-peach), var(--color-gold));
+  background: linear-gradient(90deg, var(--color-peach), #f2b5a799);
   color: var(--color-crimson);
   border-width: 0 0 6px 0;
   padding: 0.5rem;
