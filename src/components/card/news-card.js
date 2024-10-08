@@ -4,10 +4,7 @@ import { Paragraph } from "../../components/typography";
 import styled from "styled-components";
 import { ExternalLinkIcon } from "../icons";
 import { Link } from "../../components/link"
-//add animation to make card grow slightly on hover
-//include onFocus state too
-
-//make newscard warpper a styled Link?
+import { getLinkType } from "../../utils/get-link-type";
 
 const NewsCardContainer = styled(Card)`
   text-decoration: none;
@@ -47,17 +44,21 @@ const NewsCardHeading = styled.h2`
 `;
 
 export const NewsCard = ({ newsItem }) => {
-  const {
-    newsTitle, 
-    newsLink, 
-    newsDate, 
-    newsSource, 
-    external, 
-    loginRequired,
-  } = newsItem;
+  const { newsTitle, newsLink, newsDate, newsSource, loginRequired } = newsItem;
+
+  // NewsCardContainer becomes a Link component, so the only reason 
+  // we need url filtering here is to determine if the NewsCard gets 
+  // an external link icon, which only applies to external links outside
+  // of the .gov environment
+  const linkType = getLinkType(newsLink);
+  const isNonGovExternalLink = linkType === "isNonGovExternalLink";
 
   return (
-    <NewsCardContainer as={ Link } to={newsLink} noIcon>
+    <NewsCardContainer
+      as={Link}
+      to={newsLink}
+      noIcon={true}
+    >
       <div>
         <NewsCardHeading>
           {newsTitle}
@@ -85,7 +86,7 @@ export const NewsCard = ({ newsItem }) => {
             </Paragraph>
             )
           }
-          { external &&
+          { isNonGovExternalLink &&
             (
               <div style={{textAlign: "right"}}>
                 <ExternalLinkIcon
