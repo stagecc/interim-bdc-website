@@ -61,15 +61,23 @@ const LayoutWrapper = styled.div(
 // styles/customize.css defines smooth scroll behavior site-wide.
 // however, we want to snap to the top of page on a route change.
 const RouteChangeScroller = () => {
-  const { pathname } = useLocation();
-  
+  const { pathname, hash } = useLocation();
+
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }, [pathname]);
+    if (hash) {
+      const element = document.getElementById(hash.substring(1));
+      if (element) {
+        requestAnimationFrame(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }, [pathname, hash]);
 
   return null;
 };
-
 export function Layout({ children }) {
   const { isCompact } = useWindowWidth();
 
