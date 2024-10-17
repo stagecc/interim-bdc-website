@@ -13,6 +13,7 @@ import {
   StickyWrapper,
   LineBreak
 } from "../layout";
+import { Banner } from "../banner";
 import { Paragraph } from "../typography";
 import { Link } from "../link";
 import { Menu, MobileMenu } from '../menus';
@@ -60,15 +61,23 @@ const LayoutWrapper = styled.div(
 // styles/customize.css defines smooth scroll behavior site-wide.
 // however, we want to snap to the top of page on a route change.
 const RouteChangeScroller = () => {
-  const { pathname } = useLocation();
-  
+  const { pathname, hash } = useLocation();
+
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }, [pathname]);
+    if (hash) {
+      const element = document.getElementById(hash.substring(1));
+      if (element) {
+        requestAnimationFrame(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }, [pathname, hash]);
 
   return null;
 };
-
 export function Layout({ children }) {
   const { isCompact } = useWindowWidth();
 
@@ -77,6 +86,9 @@ export function Layout({ children }) {
       <LayoutWrapper compact={isCompact ? true : undefined}>
         <RouteChangeScroller />
         <SkipLink href="#main-content">Skip to main content</SkipLink>
+        <Banner>
+          RECOVER (Long COVID) Pediatric Observational Cohort study data is now availabe in BDC.&nbsp;<a href="/about/research-communities/#recover">Learn More</a>
+        </Banner>
         <Visible md>
           <Header style={{ backgroundColor: '#f9f6f3' }}>
             <Brand width="380px" />
