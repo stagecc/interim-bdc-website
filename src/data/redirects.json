@@ -1,5 +1,9 @@
 [
   {
+    "from": "/covid-19",
+    "to": "/"
+  },
+  {
     "from": "/fellows",
     "to": "/about/bdc-fellows"
   },
