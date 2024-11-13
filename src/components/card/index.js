@@ -6,3 +6,4 @@ export * from "./card-footer";
 export * from "./error-card";
 export * from "./news-card";
 export * from "./next-steps-card";
+export * from './info-card'
