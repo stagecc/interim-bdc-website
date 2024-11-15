@@ -3,7 +3,7 @@ import { PageContent } from "../../components/layout";
 import { graphql } from "gatsby";
 import { Link } from "../../components/link";
 import { Publication } from "../../components/publications"
-import { InfoCard } from "../../components/card"
+import { IconCard } from "../../components/card"
 import { MicroscopeIcon } from "../../components/icons"
 export const query = graphql`
   query {
@@ -21,10 +21,10 @@ export const query = graphql`
 
 <PageContent title="Published Research" maxWidth="800px">
 
-  <InfoCard title="Tell us about your research using BDC" icon={MicroscopeIcon}>
+  <IconCard title="Tell us about your research using BDC" icon={MicroscopeIcon}>
 
   Working on a publication citing BDC? Let us know by submitting our [Contact Us](/help-and-support/contact-us/) form with issue type "Published Research." You can refer to our citation and acknowledgement guidelines [here](https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/community/citation-and-acknowledgement).
-  </InfoCard>
+  </IconCard>
   {
     props.data.publications.nodes.map((node, i) => (
       <Publication key={ `publication-${ i }` } node={node} />
