@@ -1,5 +1,5 @@
 import React from "react";
-import { Heading, Meta } from "../typography";
+import { Subheading } from "../typography";
 import { Card, CardBody } from ".";
 import styled from "styled-components";
 
@@ -24,10 +24,8 @@ export const IconCard = ({children, title, icon}) => {
         </IconWrapper>
       )}
       <div>
-        <Heading>{title}</Heading>
-        <Meta style={{padding: 0}}>
-          {children}
-        </Meta>
+        <Subheading left style={{marginTop: '1rem'}}>{title}</Subheading>
+        {children}
       </div>
     </CardBody>
   </Card>
