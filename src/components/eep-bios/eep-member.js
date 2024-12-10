@@ -7,6 +7,9 @@ import { EepHeadshot } from './';
 const FlexWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  h3 {
+    margin-bottom: 0;
+  }
 `
 
 export const EepMember = ({imageName, children}) => {
