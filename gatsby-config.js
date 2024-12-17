@@ -120,6 +120,13 @@ module.exports = {
         name: "publications",
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `eep-headshots`,
+        path: `./src/data/eep-headshots`,
+      },
+    },
     `gatsby-transformer-yaml`,
     `gatsby-transformer-json`,
     {
