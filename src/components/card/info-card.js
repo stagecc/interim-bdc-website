@@ -7,7 +7,7 @@ export const InfoCard = ({children, fullWidth}) => (
     margin:  fullWidth ? "2rem 0": "2rem auto",
     maxWidth: fullWidth ? null : '85%',
   }}>
-    <CardBody>
+    <CardBody style={{backgroundColor: 'var(--color-sky)', padding: '0.5rem 1rem'}}>
       {children}
     </CardBody>
   </Card>
