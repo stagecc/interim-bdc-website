@@ -86,8 +86,8 @@ export function Layout({ children }) {
       <LayoutWrapper compact={isCompact ? true : undefined}>
         <RouteChangeScroller />
         <SkipLink href="#main-content">Skip to main content</SkipLink>
-        <Banner>
-          RECOVER (Long COVID) Pediatric Observational Cohort study data is now available in BDC.&nbsp;<a href="/about/research-communities/#recover">Learn More</a>
+        <Banner variant="info">
+          NHLBI BioData Catalyst® (BDC) supports data and analysis in a secure, FISMA-moderate environment.<br/>BDC security controls adhere to <Link to="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-24-157.html">NIH's Implementation Update for Data Management and Access Practices Under the Genomic Data Sharing Policy (NOT-OD-24-157)</Link>.
         </Banner>
         <Visible md>
           <Header style={{ backgroundColor: '#f9f6f3' }}>
