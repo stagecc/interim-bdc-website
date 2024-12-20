@@ -86,6 +86,11 @@ export function Layout({ children }) {
       <LayoutWrapper compact={isCompact ? true : undefined}>
         <RouteChangeScroller />
         <SkipLink href="#main-content">Skip to main content</SkipLink>
+        <Banner variant="alert">
+          Because of a lapse in government funding, the information on this website may not be up to date, transactions submitted via the website may not be processed, and the agency may not be able to respond to inquiries until appropriations are enacted.<br/> 
+          The NIH Clinical Center (the research hospital of NIH) is open. For more details about its operating status, please visit <Link to="http://cc.nih.gov/">cc.nih.gov</Link>.<br/>
+          Updates regarding government operating status and resumption of normal operations can be found at <Link to="http://opm.gov/">opm.gov</Link>.
+        </Banner>
         <Banner variant="info">
           NHLBI BioData Catalyst® (BDC) supports data and analysis in a secure, FISMA-moderate environment.<br/>BDC security controls adhere to <Link to="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-24-157.html">NIH's Implementation Update for Data Management and Access Practices Under the Genomic Data Sharing Policy (NOT-OD-24-157)</Link>.
         </Banner>
