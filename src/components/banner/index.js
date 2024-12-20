@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { IconButton } from "../buttons";
 import { CloseIcon } from "../icons";
+import { Paragraph } from "../typography";
 
 const Wrapper = styled.div(({ active }) => `
   display: flex;
@@ -30,7 +31,9 @@ export const Banner = ({ children, openedIcon, closedIcon }) => {
     return (
       <Wrapper active={ open }>
         <Content>
-          { children }
+          <Paragraph noMargin>
+            { children }
+          </Paragraph>
         </Content>
         <IconButton onClick={ () => setOpen(!open) } className="toggler">
           <CloseIcon size={ 16 } fill="var(--color-crimson-dark)" />
