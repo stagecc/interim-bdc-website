@@ -6,8 +6,8 @@ import { CloseIcon } from "../icons";
 const Wrapper = styled.div(({ active }) => `
   display: flex;
   flex-direction: row;
-  justifyContent: center;
-  alignItems: center;
+  justify-content: center;
+  align-items: center;
   position: relative;
   border: solid var(--color-crimson);
   background: linear-gradient(90deg, var(--color-peach), #f2b5a799);
