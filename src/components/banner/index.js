@@ -8,11 +8,12 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   border: solid;
   border-width: 0 0 6px 0;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1rem 0.5rem 2rem;
+  gap: 1rem;
   a {
     font-weight: 800;
     text-decoration-color: var(--color-blueberry);
@@ -41,6 +42,7 @@ const Content = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 `;
 
 export const Banner = ({ children, variant, openedIcon, closedIcon }) => {

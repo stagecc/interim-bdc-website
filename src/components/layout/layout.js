@@ -87,7 +87,7 @@ export function Layout({ children }) {
         <RouteChangeScroller />
         <SkipLink href="#main-content">Skip to main content</SkipLink>
         <Banner variant="info">
-          NHLBI BioData Catalyst® (BDC) supports data and analysis in a secure, FISMA-moderate environment. BDC security controls adhere to <Link to="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-24-157.html">NIH's Implementation Update for Data Management and Access Practices Under the Genomic Data Sharing Policy (NOT-OD-24-157)</Link>.
+          NHLBI BioData Catalyst® (BDC) supports data and analysis in a secure, FISMA-moderate environment.<br/>BDC security controls adhere to <Link to="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-24-157.html">NIH's Implementation Update for Data Management and Access Practices Under the Genomic Data Sharing Policy (NOT-OD-24-157)</Link>.
         </Banner>
         <Visible md>
           <Header style={{ backgroundColor: '#f9f6f3' }}>
