@@ -15,6 +15,10 @@ const Wrapper = styled.div(({ active }) => `
   color: var(--color-crimson);
   border-width: 0 0 6px 0;
   padding: 0.5rem;
+  a {
+    font-weight: 800;
+    text-decoration-color: var(--color-blueberry);
+  }
 `);
 
 const Content = styled.div`
