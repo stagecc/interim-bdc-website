@@ -8,8 +8,6 @@ const IconWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  @media screen and (min-width: 767px) {
-  };
 `;
 
 export const IconCard = ({children, title, icon}) => {
