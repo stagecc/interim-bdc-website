@@ -20,7 +20,7 @@ export const IconCard = ({children, title, icon}) => {
     <CardBody style={{ display: 'flex', flexDirection: 'row'}}>
       {icon && (
         <IconWrapper>
-          <Icon  sx={{ fontSize: 80, color: '#01366a' }} />
+          <Icon size={100} fill="#01366a" />
         </IconWrapper>
       )}
       <div>

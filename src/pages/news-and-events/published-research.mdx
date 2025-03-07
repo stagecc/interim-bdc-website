@@ -1,11 +1,10 @@
-import { Fragment } from "react"
+import { Fragment } from "react";
 import { PageContent } from "../../components/layout";
 import { graphql } from "gatsby";
 import { Link } from "../../components/link";
-import { Publication } from "../../components/publications"
-import { IconCard } from "../../components/card"
-import { MicroscopeIcon } from "../../components/icons"
-import BiotechOutlinedIcon from '@mui/icons-material/BiotechOutlined';
+import { Publication } from "../../components/publications";
+import { IconCard } from "../../components/card";
+import { PaperIcon } from "../../components/icons";
 
 export const query = graphql`
   query {
@@ -23,7 +22,7 @@ export const query = graphql`
 
 <PageContent title="Published Research" maxWidth="800px">
 
-  <IconCard title="Tell us about your research using BDC" icon={BiotechOutlinedIcon}>
+  <IconCard icon={PaperIcon}>
 
   Submit a [Contact Us](/help-and-support/contact-us/) form (select "Publishing Research" as the type) when your manuscript for research conducted using BDC has been accepted for publication. It could be added to this webpage, highlighted among the BDC community, and shared on social media when it gets published.
 
