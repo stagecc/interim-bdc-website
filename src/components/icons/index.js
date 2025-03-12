@@ -17,6 +17,7 @@ export * from "./info-icon";
 export * from "./join-icon";
 export * from "./magnifying-glass-icon";
 export * from "./microscope-icon";
+export * from "./paper-icon";
 export * from "./play-icon";
 export * from "./pause-icon";
 export * from "./question-icon";
