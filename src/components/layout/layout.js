@@ -13,7 +13,6 @@ import {
   StickyWrapper,
   LineBreak
 } from "../layout";
-import { Banner } from "../banner";
 import { Paragraph } from "../typography";
 import { Link } from "../link";
 import { Menu, MobileMenu } from '../menus';
@@ -26,6 +25,7 @@ import hexBackgroundRightSvg from "../../images/hex-background-right.svg";
 import { SkipLink } from './skip-link';
 import "../../styles/normalize.css";
 import "../../styles/customize.css";
+import InfoBanner from "../../data/banners/info-banner.mdx"
 
 const LayoutWrapper = styled.div(
   ({ compact }) => `
@@ -86,9 +86,7 @@ export function Layout({ children }) {
       <LayoutWrapper compact={isCompact ? true : undefined}>
         <RouteChangeScroller />
         <SkipLink href="#main-content">Skip to main content</SkipLink>
-        <Banner variant="info">
-          NHLBI BioData Catalyst® (BDC) supports data and analysis in a secure, FISMA-moderate environment.<br/>BDC security controls adhere to <Link to="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-24-157.html">NIH's Implementation Update for Data Management and Access Practices Under the Genomic Data Sharing Policy (NOT-OD-24-157)</Link>.
-        </Banner>
+        <InfoBanner />
         <Visible md>
           <Header style={{ backgroundColor: '#f9f6f3' }}>
             <Brand width="380px" />
