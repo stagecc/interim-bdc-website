@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { graphql, useStaticQuery } from "gatsby";
 import PropTypes from "prop-types";
 import { useLocation } from "@reach/router";
 import styled from "styled-components";
@@ -25,6 +26,7 @@ import hexBackgroundRightSvg from "../../images/hex-background-right.svg";
 import { SkipLink } from './skip-link';
 import "../../styles/normalize.css";
 import "../../styles/customize.css";
+import { Banner } from "../../components/banner";
 import InfoBanner from "../../data/banners/info-banner.mdx"
 
 const LayoutWrapper = styled.div(
@@ -79,6 +81,32 @@ const RouteChangeScroller = () => {
   return null;
 };
 export function Layout({ children }) {
+
+  const data = useStaticQuery(graphql`
+    query {
+      allMdx(
+        sort: {frontmatter: {importance: ASC}}
+        filter: {
+          internal: {contentFilePath: {regex: "/src/data/banners/"}}, 
+          frontmatter: {active: {eq: true}}
+        }
+      ) {
+        nodes {
+          frontmatter {
+            variant
+            active
+          }
+          internal {
+            contentFilePath
+          }
+          body
+        }
+      }
+    }
+  `);
+  
+
+
   const { isCompact } = useWindowWidth();
 
   return (
@@ -86,7 +114,17 @@ export function Layout({ children }) {
       <LayoutWrapper compact={isCompact ? true : undefined}>
         <RouteChangeScroller />
         <SkipLink href="#main-content">Skip to main content</SkipLink>
-        <InfoBanner />
+        {
+          data.allMdx.nodes[0]?.frontmatter.active === true && (
+            data.allMdx.nodes.map((banner) => (
+              <Banner variant={banner.frontmatter.variant}>
+              {/* <InfoBanner/> */}
+              {banner.body}
+          </Banner>
+
+            ))
+          )
+        }
         <Visible md>
           <Header style={{ backgroundColor: '#f9f6f3' }}>
             <Brand width="380px" />

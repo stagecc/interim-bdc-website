@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { IconButton } from "../buttons";
 import { CloseIcon } from "../icons";
+import { Markdown } from '../markdown';
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,6 +14,7 @@ const Wrapper = styled.div`
   border-width: 0 0 6px 0;
   padding: 0.5rem 1rem 0.5rem 2rem;
   gap: 1rem;
+  color: #000;
   p {
     margin-top: 0; 
     margin-bottom: 0;
@@ -26,14 +28,12 @@ const Wrapper = styled.div`
     variant === "alert" && `
       background: linear-gradient(90deg, var(--color-peach), #f2b5a799);
       border-color: var(--color-crimson);
-      color: var(--color-crimson);
     `
   }
   ${({ variant }) => 
     variant === "info" && `
       background: linear-gradient(90deg, var(--color-blueberry-light), var(--color-sky));
       border-color: var(--color-blueberry);
-      color: #000;
       a {
         color: var(--color-blueberry-dark);
       }
@@ -57,7 +57,9 @@ export const Banner = ({ children, variant, openedIcon, closedIcon }) => {
     return (
       <Wrapper active={ open } variant={variant}>
         <Content>
-          { children }
+          <Markdown>
+            { children }
+          </Markdown>
         </Content>
         <IconButton onClick={ () => setOpen(!open) } className="toggler">
           <CloseIcon size={ 16 } fill="var(--color-crimson-dark)" />
