@@ -27,7 +27,6 @@ import { SkipLink } from './skip-link';
 import "../../styles/normalize.css";
 import "../../styles/customize.css";
 import { Banner } from "../../components/banner";
-import InfoBanner from "../../data/banners/info-banner.mdx"
 
 const LayoutWrapper = styled.div(
   ({ compact }) => `
@@ -82,9 +81,10 @@ const RouteChangeScroller = () => {
 };
 export function Layout({ children }) {
 
+  // query for banner frontmatter and body text
   const data = useStaticQuery(graphql`
     query {
-      allMdx(
+      activeBanners: allMdx(
         sort: {frontmatter: {importance: ASC}}
         filter: {
           internal: {contentFilePath: {regex: "/src/data/banners/"}}, 
@@ -104,8 +104,12 @@ export function Layout({ children }) {
       }
     }
   `);
-  
 
+  // transform incoming banner data into shape { variant, content }
+  const banners = data.activeBanners.nodes.map(n => ({
+    variant: n.frontmatter.variant,
+    content: n.body
+  }))
 
   const { isCompact } = useWindowWidth();
 
@@ -115,13 +119,13 @@ export function Layout({ children }) {
         <RouteChangeScroller />
         <SkipLink href="#main-content">Skip to main content</SkipLink>
         {
-          data.allMdx.nodes[0]?.frontmatter.active === true && (
-            data.allMdx.nodes.map((banner) => (
-              <Banner variant={banner.frontmatter.variant}>
-              {/* <InfoBanner/> */}
-              {banner.body}
-          </Banner>
-
+          // check if there are any active banners; only render if active banners exist
+          (banners.length > 0) && (
+            banners.map((banner) => (
+              <Banner 
+                variant={banner.variant} 
+                children={banner.content}
+              />
             ))
           )
         }
