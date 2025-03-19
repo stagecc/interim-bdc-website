@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { IconButton } from "../buttons";
 import { CloseIcon } from "../icons";
-import { Markdown } from '../markdown';
+import { ReactMarkdown } from "../markdown";
 
 const Wrapper = styled.div`
   display: flex;
@@ -57,9 +57,7 @@ export const Banner = ({ children, variant, openedIcon, closedIcon }) => {
     return (
       <Wrapper active={ open } variant={variant}>
         <Content>
-          <Markdown>
-            { children }
-          </Markdown>
+          <ReactMarkdown children={children} />
         </Content>
         <IconButton onClick={ () => setOpen(!open) } className="toggler">
           <CloseIcon size={ 16 } fill="var(--color-crimson-dark)" />
