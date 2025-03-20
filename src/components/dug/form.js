@@ -1,6 +1,4 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react'
-import { useSearch } from './context'
-
 import {
   Fade,
   IconButton,
@@ -13,6 +11,8 @@ import {
   Search as SearchIcon,
   Backspace as ClearQueryIcon,
 } from '@mui/icons-material'
+import { useSearch } from './context'
+import { trackCustomEvent } from '../../utils/track-custom-event'
 
 //
 
@@ -48,8 +48,7 @@ export const DugForm = ({ focusOnMount = false, slashFocus = false }) => {
     }
 
     // this pushes the search term and location to Google Analytics
-    window.dataLayer.push({
-      event: 'dug-search-items',
+    trackCustomEvent('dug-search-items', {
       dugSearchTerm: formQuery,
       dugSearchLocation: searchLocation
     });

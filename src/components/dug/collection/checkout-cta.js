@@ -7,25 +7,23 @@ import {
   ArrowForward as NextIcon,
 } from '@mui/icons-material'
 import { useSearch } from '../context'
+import { trackCustomEvent } from '../../../utils/track-custom-event'
 
-const DugButtonLink = ({to, children, items, ...props}) => {
-  function filterFields(obj) {
-    return {
-      conceptIds: obj.concepts.map(item => item.id),
-      conceptNames: obj.concepts.map(item => item.name),
-      studyIds: obj.studies.map(item => item.id),
-      studyNames: obj.studies.map(item => item.name),
-      variableIds: obj.variables.map(item => item.id),
-      variableNames: obj.variables.map(item => item.name)
-    };
-  }
-  
+function filterFields(obj) {
+  return {
+    conceptIds: obj.concepts.map(item => item.id),
+    conceptNames: obj.concepts.map(item => item.name),
+    studyIds: obj.studies.map(item => item.id),
+    studyNames: obj.studies.map(item => item.name),
+    variableIds: obj.variables.map(item => item.id),
+    variableNames: obj.variables.map(item => item.name)
+  };
+}
+
+const DugButtonLink = ({to, children, items, ...props}) => {  
   const collectionItems = filterFields(items);
-  
   const handleClick = (e) => {
-    // Push the selected items to the GTM data layer
-    window.dataLayer.push({
-      event: 'dug-checkout-collection',
+    trackCustomEvent('dug-checkout-collection', {
       dugCheckoutConceptIds: collectionItems.conceptIds,
       dugCheckoutConceptNames: collectionItems.conceptNames,
       dugCheckoutStudyIds: collectionItems.studyIds,
@@ -33,7 +31,6 @@ const DugButtonLink = ({to, children, items, ...props}) => {
       dugCheckoutVariableIds: collectionItems.variableIds,
       dugCheckoutVariableNames: collectionItems.variableNames  
     });
-  
   };
   return (
     <ButtonLink to={to} onClick={handleClick} {...props}>{children}</ButtonLink>
