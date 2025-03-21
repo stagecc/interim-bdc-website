@@ -121,10 +121,11 @@ export function Layout({ children }) {
         {
           // check if there are any active banners; only render if active banners exist
           (banners.length > 0) && (
-            banners.map((banner) => (
+            banners.map((banner, i) => (
               <Banner 
                 variant={banner.variant} 
                 children={banner.content}
+                key={`${banner.variant}-banner-${i}`}
               />
             ))
           )
