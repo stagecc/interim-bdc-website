@@ -7,8 +7,9 @@ import {
   Title,
 } from "../typography";
 import { Link } from "../link";
+import RawReactMarkdown from 'react-markdown'
 
-export const componentMap = () => ({
+export const componentMap = {
   p: function paragraph({ node, children, ...props }) {
     return (
       <Paragraph {...props}>
@@ -51,12 +52,21 @@ export const componentMap = () => ({
       </li>
     );
   },  
-});
+};
 
 export const Markdown = ({ children }) => {
   return (
     <MDXProvider components={ componentMap }>
       { children }
     </MDXProvider>
+  );
+};
+
+export const ReactMarkdown = ({ children }) => {
+  return (
+    <RawReactMarkdown 
+      components={ componentMap }
+      children={ children }
+    />
   );
 };

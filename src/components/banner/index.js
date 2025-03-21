@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { IconButton } from "../buttons";
 import { CloseIcon } from "../icons";
-import { Paragraph } from "../typography";
+import { ReactMarkdown } from "../markdown";
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,22 +14,26 @@ const Wrapper = styled.div`
   border-width: 0 0 6px 0;
   padding: 0.5rem 1rem 0.5rem 2rem;
   gap: 1rem;
+  color: #000;
+  p {
+    margin-top: 0; 
+    margin-bottom: 0;
+    line-height: 1.5;
+  };
   a {
     font-weight: 800;
     text-decoration-color: var(--color-blueberry);
-  }
+  };
   ${({ variant }) => 
     variant === "alert" && `
       background: linear-gradient(90deg, var(--color-peach), #f2b5a799);
       border-color: var(--color-crimson);
-      color: var(--color-crimson);
     `
   }
   ${({ variant }) => 
     variant === "info" && `
       background: linear-gradient(90deg, var(--color-blueberry-light), var(--color-sky));
       border-color: var(--color-blueberry);
-      color: #000;
       a {
         color: var(--color-blueberry-dark);
       }
@@ -40,6 +44,7 @@ const Wrapper = styled.div`
 const Content = styled.div`
   flex: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -52,9 +57,7 @@ export const Banner = ({ children, variant, openedIcon, closedIcon }) => {
     return (
       <Wrapper active={ open } variant={variant}>
         <Content>
-          <Paragraph noMargin>
-            { children }
-          </Paragraph>
+          <ReactMarkdown children={children} />
         </Content>
         <IconButton onClick={ () => setOpen(!open) } className="toggler">
           <CloseIcon size={ 16 } fill="var(--color-crimson-dark)" />
