@@ -119,16 +119,14 @@ export function Layout({ children }) {
         <RouteChangeScroller />
         <SkipLink href="#main-content">Skip to main content</SkipLink>
         {
-          // check if there are any active banners; only render if active banners exist
-          (banners.length > 0) && (
-            banners.map((banner, i) => (
-              <Banner 
-                variant={banner.variant} 
-                children={banner.content}
-                key={`${banner.variant}-banner-${i}`}
-              />
-            ))
-          )
+          // render active banner(s)
+          banners.map((banner, i) => (
+            <Banner 
+              variant={banner.variant} 
+              children={banner.content}
+              key={`${banner.variant}-banner-${i}`}
+            />
+          ))
         }
         <Visible md>
           <Header style={{ backgroundColor: '#f9f6f3' }}>
