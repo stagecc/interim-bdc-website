@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { graphql, useStaticQuery } from "gatsby";
 import PropTypes from "prop-types";
 import { useLocation } from "@reach/router";
 import styled from "styled-components";
@@ -13,7 +14,6 @@ import {
   StickyWrapper,
   LineBreak
 } from "../layout";
-import { Banner } from "../banner";
 import { Paragraph } from "../typography";
 import { Link } from "../link";
 import { Menu, MobileMenu } from '../menus';
@@ -26,6 +26,7 @@ import hexBackgroundRightSvg from "../../images/hex-background-right.svg";
 import { SkipLink } from './skip-link';
 import "../../styles/normalize.css";
 import "../../styles/customize.css";
+import { Banner } from "../../components/banner";
 
 const LayoutWrapper = styled.div(
   ({ compact }) => `
@@ -79,6 +80,40 @@ const RouteChangeScroller = () => {
   return null;
 };
 export function Layout({ children }) {
+  const { pathname } = useLocation();
+
+  // query for banner frontmatter and body text
+  const data = useStaticQuery(graphql`
+    query {
+      activeBanners: allMdx(
+        sort: {frontmatter: {importance: ASC}}
+        filter: {
+          internal: {contentFilePath: {regex: "/src/data/banners/"}}, 
+          frontmatter: {active: {eq: true}}
+        }
+      ) {
+        nodes {
+          frontmatter {
+            variant
+            active
+            homeOnly
+          }
+          internal {
+            contentFilePath
+          }
+          body
+        }
+      }
+    }
+  `);
+
+  // transform incoming banner data into shape { variant, content }
+  const banners = data.activeBanners.nodes.map(n => ({
+    variant: n.frontmatter.variant,
+    homeOnly: n.frontmatter.homeOnly,
+    content: n.body
+  }))
+
   const { isCompact } = useWindowWidth();
 
   return (
@@ -86,9 +121,34 @@ export function Layout({ children }) {
       <LayoutWrapper compact={isCompact ? true : undefined}>
         <RouteChangeScroller />
         <SkipLink href="#main-content">Skip to main content</SkipLink>
-        <Banner variant="info">
-          NHLBI BioData Catalyst® (BDC) supports data and analysis in a secure, FISMA-moderate environment.<br/>BDC security controls adhere to <Link to="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-24-157.html">NIH's Implementation Update for Data Management and Access Practices Under the Genomic Data Sharing Policy (NOT-OD-24-157)</Link>.
-        </Banner>
+        {/* to-do: this logic may be a bit backwards. it may make sense to 
+        reverse the order or true/false on the homeOnly boolean */}
+        {
+          // if on the home page, render all active banners
+          (pathname === "/") ? (
+            banners.map((banner, i) => (
+              <Banner 
+                key={`${banner.variant}-banner-${i}`} 
+                variant={banner.variant}
+              >
+                {banner.content}
+              </Banner>
+            ))
+          ) : (
+            // if anywhere other than the home page, render only non-homeOnly banners
+            banners
+            .filter(banner => !banner.homeOnly)
+            .map((banner, i) => (
+              <Banner 
+                key={`${banner.variant}-banner-${i}`} 
+                variant={banner.variant}
+              >
+                {banner.content}
+              </Banner>
+            ))
+
+          )
+        }
         <Visible md>
           <Header style={{ backgroundColor: '#f9f6f3' }}>
             <Brand width="380px" />
