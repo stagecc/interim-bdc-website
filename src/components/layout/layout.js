@@ -80,6 +80,7 @@ const RouteChangeScroller = () => {
   return null;
 };
 export function Layout({ children }) {
+  const { pathname } = useLocation();
 
   // query for banner frontmatter and body text
   const data = useStaticQuery(graphql`
@@ -95,6 +96,7 @@ export function Layout({ children }) {
           frontmatter {
             variant
             active
+            homeOnly
           }
           internal {
             contentFilePath
@@ -108,6 +110,7 @@ export function Layout({ children }) {
   // transform incoming banner data into shape { variant, content }
   const banners = data.activeBanners.nodes.map(n => ({
     variant: n.frontmatter.variant,
+    homeOnly: n.frontmatter.homeOnly,
     content: n.body
   }))
 
@@ -118,15 +121,33 @@ export function Layout({ children }) {
       <LayoutWrapper compact={isCompact ? true : undefined}>
         <RouteChangeScroller />
         <SkipLink href="#main-content">Skip to main content</SkipLink>
+        {/* to-do: this logic may be a bit backwards. it may make sense to 
+        reverse the order or true/false on the homeOnly boolean */}
         {
-          // render active banner(s)
-          banners.map((banner, i) => (
-            <Banner 
-              variant={banner.variant} 
-              children={banner.content}
-              key={`${banner.variant}-banner-${i}`}
-            />
-          ))
+          // if on the home page, render all active banners
+          (pathname === "/") ? (
+            banners.map((banner, i) => (
+              <Banner 
+                key={`${banner.variant}-banner-${i}`} 
+                variant={banner.variant}
+              >
+                {banner.content}
+              </Banner>
+            ))
+          ) : (
+            // if anywhere other than the home page, render only non-homeOnly banners
+            banners
+            .filter(banner => !banner.homeOnly)
+            .map((banner, i) => (
+              <Banner 
+                key={`${banner.variant}-banner-${i}`} 
+                variant={banner.variant}
+              >
+                {banner.content}
+              </Banner>
+            ))
+
+          )
         }
         <Visible md>
           <Header style={{ backgroundColor: '#f9f6f3' }}>
