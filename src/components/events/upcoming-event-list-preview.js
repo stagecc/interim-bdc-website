@@ -5,7 +5,8 @@ import {
   Meta
 } from "../typography";
 import { Link } from "../link";
-import { Grid, Divider, useMediaQuery } from '@mui/material'
+import { ReactMarkdown } from '../markdown'
+import { Grid, Divider, Box, useMediaQuery } from '@mui/material'
 import BDCLogo from '../../images/favicon.png'
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
@@ -14,10 +15,10 @@ import { styled } from '@mui/system';
 import { useTheme } from '@mui/material/styles';
 
 const EventMeta = styled(Paragraph)`
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
-  line-height: 1;
+  margin-bottom: 0;
   margin-top: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
 `
 
 const IconTitleSection = ({externalEvent, title, path}) => {
@@ -98,14 +99,14 @@ const DateTimeLocationSection = ({display_date, time, location, url, xs, sm, md}
       {/*Date/time and location section */}
       <Grid container columns={24}>
         <Grid item xs={2} sm={1} sx={{display: 'flex', justifyContent: 'center'}}>
-          <CalendarTodayIcon sx={{fontSize:"0.9rem", margin: 0, color: '#21568a'}}/> 
+          <CalendarTodayIcon sx={{fontSize:"0.9rem", margin: 0, marginTop: '2px', color: '#21568a'}}/> 
         </Grid>
         <Grid item xs={22} sm={11}>
           <EventMeta> {display_date}</EventMeta>
           <EventMeta>{time}</EventMeta>
         </Grid>
         <Grid item xs={2} sm={1} sx={{display: 'flex', justifyContent: 'center'}}>
-          <LocationOnOutlinedIcon  sx={{fontSize:"0.9rem", margin: 0, color: '#21568a'}}/> 
+          <LocationOnOutlinedIcon  sx={{fontSize:"0.9rem", margin: 0, marginTop: '2px',color: '#21568a'}}/> 
         </Grid>
         <Grid item xs={22} sm={11}>
           {
@@ -114,9 +115,19 @@ const DateTimeLocationSection = ({display_date, time, location, url, xs, sm, md}
                 {location}: <Link to={url}>Register Here</Link>
               </EventMeta>
             ) : (
-              <EventMeta>
-                {location}
-              </EventMeta>
+              <Box sx={{
+                "& p": {
+                  marginBottom: "0rem",
+                  fontSize: "0.9rem",
+                  lineHeight: "1.5",
+                  marginTop: "0",
+                  whiteSpace: "normal",
+                  overflowWrap: "break-word",
+                  wordBreak: "break-word",  
+                }
+              }}>
+                <ReactMarkdown>{location}</ReactMarkdown>
+              </Box>
             )
           }
         </Grid>
