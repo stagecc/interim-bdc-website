@@ -158,9 +158,19 @@ const MobileDateTimeLocationSection = ({display_date, time, location, url, xs, s
                 {location}: <Link to={url}>Register Here</Link>
               </EventMeta>
             ) : (
-              <EventMeta>
-                {location}
-              </EventMeta>
+              <Box sx={{
+                "& p": {
+                  marginBottom: "0rem",
+                  fontSize: "0.9rem",
+                  lineHeight: "1.5",
+                  marginTop: "0",
+                  whiteSpace: "normal",
+                  overflowWrap: "break-word",
+                  wordBreak: "break-word",  
+                }
+              }}>
+                <ReactMarkdown>{location}</ReactMarkdown>
+              </Box>
             )
           }
         </Grid>
