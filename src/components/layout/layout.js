@@ -26,7 +26,8 @@ import hexBackgroundRightSvg from "../../images/hex-background-right.svg";
 import { SkipLink } from './skip-link';
 import "../../styles/normalize.css";
 import "../../styles/customize.css";
-import { Banner } from "../../components/banner";
+import { Banner } from "../banner";
+import FeedbackWidget from "../feedback";
 
 const LayoutWrapper = styled.div(
   ({ compact }) => `
@@ -173,7 +174,8 @@ export function Layout({ children }) {
         <Main id="main-content">
           <Markdown>
             {children}
-          </Markdown>          
+          </Markdown>
+          <FeedbackWidget pagePath={pathname}/>
         </Main>
 
         <Footer>
