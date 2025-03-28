@@ -12,12 +12,16 @@ import { ButtonCta, ButtonContainer } from "../../components/buttons";
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import { Grid, Stack, Box } from '@mui/material'
+import { ReactMarkdown } from '../../components/markdown'
 
 const EventMeta = styled.p`
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-  line-height: 1;
+  margin-bottom: 0;
   margin-top: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word; 
 `
 
 const EventMetadataWrapper = styled.div`
@@ -73,30 +77,41 @@ return (
       </Stack>
       {
         location && (
-          <Stack direction="column" sx={{flex: 1}} gap={1}>
-          <Subheading noMargin left>Location</Subheading>
-          <Grid container spacing={2}>
+          <Stack direction="column" sx={{ flex: 1 }} gap={1}>
+          <Subheading noMargin left>
+            Location
+          </Subheading>
+          <Grid container spacing={2} sx={{ alignItems: 'start' }}>
             <Grid item>
               <LocationOnOutlinedIcon sx={{fontSize:"1.2rem", margin: 0, color:"#21568a"}}/> 
             </Grid>
-            <Grid item>
-              <Box>
+            <Grid item xs>
+              <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
                 {
                   (!past && url) ? (
                     <EventMeta>
                       {location}: <Link to={url}>Register Here</Link>
                     </EventMeta>
                   ) : (
-                    <EventMeta>
-                      {location}
-                    </EventMeta>
+                    <Box sx={{
+                      "& p": {
+                        marginBottom: "0rem",
+                        fontSize: "1rem",
+                        lineHeight: "1.5",
+                        marginTop: "0",
+                        whiteSpace: "normal",
+                        overflowWrap: "break-word",
+                        wordBreak: "break-word",  
+                      }
+                    }}>
+                      <ReactMarkdown>{location}</ReactMarkdown>
+                    </Box>
                   )
                 }
               </Box>
             </Grid>
           </Grid>
-        </Stack>
-  
+        </Stack>  
         )
       }
     </Stack>
