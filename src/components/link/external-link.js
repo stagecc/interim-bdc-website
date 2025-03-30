@@ -4,6 +4,7 @@ import { useDialog } from "../../hooks";
 import { Paragraph } from "../typography";
 import { ExternalLinkIcon } from "../icons";
 import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { getLinkType } from "../../utils/get-link-type"; 
 
 export const ExternalLink = ({
   to,
@@ -21,12 +22,8 @@ export const ExternalLink = ({
   const buttonClasses = `${ asButton && 'button-link' } ${ asOutlinedButton && 'outlined' } ${ asFilledButton && 'filled' }`
 
   useEffect(() => {
-    const hostRegexPattern = new RegExp(/^https?:\/\/.+\.([a-z]{2,3})\//);
-    const match = hostRegexPattern.exec(to);
-    if (match) {
-      const tld = match[1];
-      setRequiresConfirmation(tld !== "gov");
-    }
+    const linkType = getLinkType(to);
+    setRequiresConfirmation(linkType === "isNonGovExternalLink");
   }, [to]);
 
   const triggerDialog = event => {
