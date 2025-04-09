@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Typography, Box } from '@mui/material';
-import { v4 as uuidv4 } from 'uuid';
 import { Button } from '../buttons';
 import { Card } from '../card';
 
@@ -19,11 +18,11 @@ const FeedbackWidget = ({ pagePath }) => {
   };
 
   const sendFeedback = async (pagePath, helpful) => {
-    const url = `https://${process.env.GATSBY_FRESHDESK_DOMAIN}/api/v2/custom_objects/schemas/${process.env.GATSBY_FRESHDESK_SCHEMA_ID}/records`;
+    const url = `http://localhost:8080/feedback`;
 
     const data = {
       data: {
-        name: uuidv4(),
+        name: crypto.randomUUID(),
         page_path: pagePath,
         timestamp: new Date().toISOString().split('T')[0],
         helpful: helpful
@@ -72,10 +71,10 @@ const FeedbackWidget = ({ pagePath }) => {
             <Typography variant="body1" gutterBottom>
               Was this page useful?
             </Typography>
-            <Button onClick={() => handleFeedback("1")} style={{ backgroundColor: 'var(--color-blueberry-dark)' }}>
+            <Button onClick={() => handleFeedback(1)} style={{ backgroundColor: 'var(--color-blueberry-dark)' }}>
               Yes
             </Button>
-            <Button onClick={() => handleFeedback("0")} style={{ backgroundColor: 'var(--color-blueberry-dark)' }}>
+            <Button onClick={() => handleFeedback(0)} style={{ backgroundColor: 'var(--color-blueberry-dark)' }}>
               No
             </Button>
           </Box>

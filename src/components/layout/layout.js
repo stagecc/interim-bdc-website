@@ -175,7 +175,7 @@ export function Layout({ children }) {
           <Markdown>
             {children}
           </Markdown>
-          <FeedbackWidget pagePath={pathname}/>
+          <FeedbackWidget pagePath={pathname} key={pathname}/>
         </Main>
 
         <Footer>
