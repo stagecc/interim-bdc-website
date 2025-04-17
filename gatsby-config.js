@@ -40,7 +40,43 @@ module.exports = {
     },
     'gatsby-plugin-styled-components',
     'gatsby-plugin-image',
-    'gatsby-plugin-sitemap',
+    {
+      resolve: "gatsby-plugin-sitemap",
+      options: {
+        query: `{
+          site { siteMetadata { siteUrl } }
+          allSitePage {
+            nodes {
+              path
+            }
+          }
+        }`,
+        resolveSiteUrl: ({
+          site: { siteMetadata: { siteUrl: siteUrl } }
+        }) => {
+          return siteUrl;
+        },
+        resolvePages: ({
+          allSitePage: { nodes: allPages },
+        }) => {
+          return allPages;
+        },
+        serialize: ({ path, modifiedGmt }) => {
+          return {
+            url: path,
+            lastmod: modifiedGmt,
+          }
+        },
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://biodatacatalyst.nhlbi.nih.gov',
+        sitemap: 'https://biodatacatalyst.nhlbi.nih.gov/sitemap-index.xml',
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
