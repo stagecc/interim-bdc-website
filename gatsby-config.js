@@ -183,6 +183,12 @@ module.exports = {
       options: {
         trackingIds: ["G-2M4JYYSBD3"],
       },
+      gtagConfig: {
+        cookie_flags: 'SameSite=None;Secure'
+      },
+      pluginConfig: {
+        head: true,
+      },
     },
   ]
 };
