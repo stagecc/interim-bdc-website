@@ -19,7 +19,7 @@ import {
 const FRESHDESK_USER_NAME = process.env.GATSBY_FRESHDESK_API_KEY;
 const FRESHDESK_PASSWORD = process.env.GATSBY_FRESHDESK_PASSWORD;
 const FRESHDESK_API_ROOT_URL = process.env.GATSBY_FRESHDESK_API_ROOT_URL;
-const FRESHDESK_API_CREATE_CONTACT = `${FRESHDESK_API_ROOT_URL}/contacts`;
+const FRESHDESK_API_CREATE_CONTACT = `${FRESHDESK_API_ROOT_URL}/join`;
 
 const requestOptions = {
   "Content-Type": "application/json",

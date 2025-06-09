@@ -15,7 +15,7 @@ import { LoadingSpinner } from "../loading";
 import { useFaqs } from '../../hooks';
 
 export const FaqsCardList = () => {
-  const { errorMessage, folders, loading } = useFaqs('GENERAL');
+  const { errorMessage, articles, loading } = useFaqs('GENERAL');
 
   if (errorMessage) {
     return (
@@ -32,17 +32,16 @@ export const FaqsCardList = () => {
     );
   }
 
-  if (loading || !folders) {
+  if (loading || !articles) {
     return <LoadingSpinner height="400px" />
   }
 
-  return folders.map(folder => {
+  return articles.map(article => {
     return (
-      <Card key={folder.id}>
-        <CardHeader>{folder.name}</CardHeader>
-        {folder.articles && (
+      <Card key={article.id}>
+        <CardHeader>BDC Frequently Asked Questions</CardHeader>
           <CardBody style={{ padding: 0 }}>
-            {folder.articles.map((article, i) => (
+            {articles.map((article, i) => (
               <Accordion key={article.title + i}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
@@ -61,7 +60,6 @@ export const FaqsCardList = () => {
               </Accordion>
             ))}
           </CardBody>
-        )}
       </Card>
     );
   });
