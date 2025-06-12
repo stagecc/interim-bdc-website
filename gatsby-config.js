@@ -184,10 +184,7 @@ module.exports = {
         trackingIds: ["G-2M4JYYSBD3"],
       },
       gtagConfig: {
-        cookie_flags: {
-          httpOnly: true,
-          secure: true,
-        }
+        cookie_flags: 'max-age=7200;secure;samesite=none',
       },
       pluginConfig: {
         head: true,
