@@ -2,30 +2,18 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const FRESHDESK_API_ROOT = process.env.GATSBY_FRESHDESK_API_ROOT_URL;
-const FRESHDESK_API_KEY = process.env.GATSBY_FRESHDESK_API_KEY;
-
-const FRESHDESK_CATEGORY = {
-  GENERAL: "60000157358",
-  FELLOWS: "60000294708",
-};
 
 const requestOptions = {
   "Accept": "application/json",
-  auth: { username: FRESHDESK_API_KEY, password: "X" },
 };
 
 export const useFaqs = (category) => {
-  const categoryId = FRESHDESK_CATEGORY?.[category];
   const [articles, setArticles] = useState([]);
   const [errorMessage, setErrorMessage] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-
-    if (!categoryId) {
-      return;
-    }
 
     const fetchArticles = async () => {
       await axios
@@ -43,7 +31,7 @@ export const useFaqs = (category) => {
     };
     
     fetchArticles();
-  }, [categoryId]);
+  }, []);
 
   return { articles, errorMessage, loading };
 };

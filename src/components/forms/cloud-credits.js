@@ -16,7 +16,6 @@ import {
   TextInput,
 } from "./inputs";
 
-const FRESHDESK_API_KEY = process.env.GATSBY_FRESHDESK_API_KEY;
 const FRESHDESK_API_ROOT_URL = process.env.GATSBY_FRESHDESK_API_ROOT_URL;
 const FRESHDESK_API_CREATE_TICKET_URL = `${FRESHDESK_API_ROOT_URL}/cloud-credits`;
 
@@ -24,7 +23,6 @@ const SUBMIT_TEST_MODE = false;
 
 const requestOptions = {
   "Content-Type": "application/json",
-  auth: { username: FRESHDESK_API_KEY, password: "X" },
 };
 
 const SubmitButton = styled(Button).attrs({
