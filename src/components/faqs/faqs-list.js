@@ -37,25 +37,27 @@ export const FaqsCardList = () => {
     return <LoadingSpinner height="400px" />
   }
 
+
   return (
     <Card>
       <CardHeader>BDC Frequently Asked Questions</CardHeader>
       <CardBody style={{ padding: 0 }}>
-        {articles.map(article => (
-          <Accordion key={`faq-${article.title}`}>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls={kebabCase(article.title) + '-content'}
-              id={kebabCase(article.title) + '-header'}
-            >
-              {article.title}
-            </AccordionSummary>
-            <AccordionDetails
-              component="div"
-              dangerouslySetInnerHTML={{__html: article.description}}
-            />
-          </Accordion>
-        ))}
+        {articles.map(article => {
+          const articleId = kebabCase(article.title)
+          return (
+            <Accordion key={`faq-${article.title}`}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls={articleId + '-content'}
+                id={articleId + '-header'}
+              >{article.title}</AccordionSummary>
+              <AccordionDetails
+                component="div"
+                dangerouslySetInnerHTML={{__html: article.description}}
+              />
+            </Accordion>
+          )
+      })}
       </CardBody>
     </Card>
   );
