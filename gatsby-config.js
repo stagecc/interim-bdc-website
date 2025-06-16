@@ -185,6 +185,7 @@ module.exports = {
       },
       gtagConfig: {
         cookie_flags: 'SameSite=None;Secure',
+        cookieFlags: 'SameSite=None;Secure',
       },
       pluginConfig: {
         head: true,
