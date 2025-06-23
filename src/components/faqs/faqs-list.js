@@ -16,7 +16,7 @@ import { useFaqs } from '../../hooks';
 import { kebabCase } from '../../utils';
 
 export const FaqsCardList = () => {
-  const { errorMessage, articles, loading } = useFaqs('GENERAL');
+  const { errorMessage, articles, loading } = useFaqs();
 
   if (errorMessage) {
     return (
