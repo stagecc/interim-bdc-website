@@ -1,5 +1,5 @@
 import { PageContent } from "../../components/layout";
-import { ButtonLink, ButtonContainer } from "../../components/buttons";
+import { ButtonExternalLink, ButtonContainer } from "../../components/buttons";
 import { NextStepsCard } from "../../components/card";
 
 <PageContent title="Share Data" maxWidth="1000px">
@@ -13,12 +13,15 @@ _Note: This page provides information about using BDC as a data repository, whic
 NHLBI provides instructions and support to researchers preparing and submitting data to BDC:
 
 <ButtonContainer>
-  <ButtonLink href="https://www.nhlbi.nih.gov/grants-and-training/policies-and-guidelines/guidelines-for-preparing-clinical-study-data-sets-for-submission-to-the-nhlbi-data-repository" className="GTM-button" id="data-preparation">
+  <ButtonExternalLink href="https://www.nhlbi.nih.gov/grants-and-training/policies-and-guidelines/guidelines-for-preparing-clinical-study-data-sets-for-submission-to-the-nhlbi-data-repository" className="GTM-button" id="data-preparation">
     Instructions for Preparing Clinical Research Datasets
-  </ButtonLink>
-  <ButtonLink href="https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/data-management/data-submission-instructions" className="GTM-button" id="data-submission">
+  </ButtonExternalLink>
+  <ButtonExternalLink href="https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/data-management/data-submission-instructions" className="GTM-button" id="data-submission">
     Instructions for Data Submission to BDC
-  </ButtonLink>
+  </ButtonExternalLink>
+  <ButtonExternalLink href="https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/data-management/data-submission-instructions/data-submission-faqs" className="GTM-button" id="data-submission-faqs">
+    Data Submission FAQs
+  </ButtonExternalLink>
 </ButtonContainer>
 
 Researchers with BDC data-sharing-related inquiries should go to the [Contact Us webpage](/help-and-support/contact-us) and select the "Data Submission" type (dropdown option).

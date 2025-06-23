@@ -13,9 +13,10 @@ import { Card, CardHeader, CardBody } from "../card";
 import { Link } from "../link";
 import { LoadingSpinner } from "../loading";
 import { useFaqs } from '../../hooks';
+import { kebabCase } from '../../utils';
 
 export const FaqsCardList = () => {
-  const { errorMessage, folders, loading } = useFaqs('GENERAL');
+  const { errorMessage, articles, loading } = useFaqs();
 
   if (errorMessage) {
     return (
@@ -32,37 +33,32 @@ export const FaqsCardList = () => {
     );
   }
 
-  if (loading || !folders) {
+  if (loading || !articles) {
     return <LoadingSpinner height="400px" />
   }
 
-  return folders.map(folder => {
-    return (
-      <Card key={folder.id}>
-        <CardHeader>{folder.name}</CardHeader>
-        {folder.articles && (
-          <CardBody style={{ padding: 0 }}>
-            {folder.articles.map((article, i) => (
-              <Accordion key={article.title + i}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls={article.title + "-content"}
-                  id={article.title}
-                >
-                  {article.title}
-                </AccordionSummary>
-                <AccordionDetails>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: article.description,
-                    }}
-                  />
-                </AccordionDetails>
-              </Accordion>
-            ))}
-          </CardBody>
-        )}
-      </Card>
-    );
-  });
+
+  return (
+    <Card>
+      <CardHeader>BDC Frequently Asked Questions</CardHeader>
+      <CardBody style={{ padding: 0 }}>
+        {articles.map(article => {
+          const articleId = kebabCase(article.title)
+          return (
+            <Accordion key={`faq-${article.title}`}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls={articleId + '-content'}
+                id={articleId + '-header'}
+              >{article.title}</AccordionSummary>
+              <AccordionDetails
+                component="div"
+                dangerouslySetInnerHTML={{__html: article.description}}
+              />
+            </Accordion>
+          )
+      })}
+      </CardBody>
+    </Card>
+  );
 };
