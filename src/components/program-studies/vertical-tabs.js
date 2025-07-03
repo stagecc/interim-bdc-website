@@ -70,8 +70,7 @@ export const Tabs = ({
           </TabHeader>
           <TabDescription>
             <Subtitle>{subtitle}</Subtitle>
-            {/* removing currently incorrect #studies */}
-            <AdditionalData>&nbsp;</AdditionalData>
+            <AdditionalData>{additionalData}</AdditionalData>
           </TabDescription>
         </Tab>
       ))}

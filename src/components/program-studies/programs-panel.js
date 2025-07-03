@@ -28,7 +28,7 @@ export const Programs = ({
     key: name,
     title: name,
     subtitle: description,
-    additionalData: `${compactNum(numberOfStudies)} stud${new Intl.PluralRules("en-US").select(numberOfStudies) === "one" ? "y" : "ies"}`
+    additionalData: `${compactNum(numberOfStudies)} dataset${new Intl.PluralRules("en-US").select(numberOfStudies) === "one" ? "" : "s"}`
   }));
 
   return (
