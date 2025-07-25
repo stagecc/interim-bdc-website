@@ -78,8 +78,8 @@ export const JoinForm = (props) => {
         contacts_field: fieldOfStudy.toString(),
         contacts_other: otherFieldOfStudy,
         contacts_interest: interest,
-        cf_research_community: researchCommunity,
-        cf_other_research_community: otherResearchCommunity,
+        contact_research_community: researchCommunity,
+        contact_other_research_community: otherResearchCommunity,
       },
     };
 
@@ -253,7 +253,7 @@ export const JoinForm = (props) => {
               )}
               <FormControl>
                 <label required htmlFor="researchCommunity">
-                  Select a Research Community
+                  Select a Research Community *
                 </label>
                 <Select
                   id="researchCommunity"
