@@ -178,17 +178,17 @@ module.exports = {
   
       },
     },
-    {
-      resolve: `gatsby-plugin-google-gtag`,
-      options: {
-        trackingIds: ["G-2M4JYYSBD3"],
-      },
-      gtagConfig: {
-        cookieFlags: 'SameSite=None;Secure',
-      },
-      pluginConfig: {
-        head: true,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-google-gtag`,
+    //   options: {
+    //     trackingIds: ["G-2M4JYYSBD3"],
+    //   },
+    //   gtagConfig: {
+    //     cookieFlags: 'SameSite=None;Secure',
+    //   },
+    //   pluginConfig: {
+    //     head: true,
+    //   },
+    // },
   ]
 };
