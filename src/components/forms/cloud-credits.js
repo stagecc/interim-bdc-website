@@ -212,6 +212,7 @@ export const CloudCreditsForm = (props) => {
       }
       return {
         ...payload,
+        cf_research_community: selectedResearchCommunity,
         cf_by_submitting_this_form_i_agree_to_the_terms_and_conditions_of_this_offering: consent,
       };
     };
@@ -224,7 +225,6 @@ export const CloudCreditsForm = (props) => {
       status: 2,
       name: name,
       email: email,
-      cf_research_community: selectedResearchCommunity,
       custom_fields: { ...customFieldsPayload(oneRequest) },
     };
 
