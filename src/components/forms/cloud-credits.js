@@ -212,7 +212,8 @@ export const CloudCreditsForm = (props) => {
       }
       return {
         ...payload,
-        cf_research_community: selectedResearchCommunity,
+        cf_research_community: researchCommunity, 
+        cf_other_research_community: otherResearchCommunity || "", 
         cf_by_submitting_this_form_i_agree_to_the_terms_and_conditions_of_this_offering: consent,
       };
     };
