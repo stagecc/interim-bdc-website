@@ -51,6 +51,11 @@ export const JoinForm = (props) => {
   const [otherFieldOfStudy, setOtherFieldOfStudy] = useState("");
   
   const [interest, setInterest] = useState("");
+  const [researchCommunity, setResearchCommunity] = useState("");
+
+  const otherResearchCommunitySelected = useMemo(() => researchCommunity === "Other", [researchCommunity]);
+  const [otherResearchCommunity, setOtherResearchCommunity] = useState("");
+
   const otherInterestSelected = useMemo(() => interest === "Other", [interest]);
   const [otherInterest, setOtherInterest] = useState("");
   
@@ -73,6 +78,8 @@ export const JoinForm = (props) => {
         contacts_field: fieldOfStudy.toString(),
         contacts_other: otherFieldOfStudy,
         contacts_interest: interest,
+        contact_research_community: researchCommunity,
+        contact_other_research_community: otherResearchCommunity,
       },
     };
 
@@ -113,6 +120,8 @@ export const JoinForm = (props) => {
 
   const handleChangeOtherField = (event) => setOtherFieldOfStudy(event.target.value);
   const handleChangeInterest = (event) => setInterest(event.target.value);
+  const handleChangeResearchCommunity = (event) => setResearchCommunity(event.target.value);
+  const handleChangeOtherResearchCommunity = (event) => setOtherResearchCommunity(event.target.value);
   const handleChangeOtherInterest = (event) => setOtherInterest(event.target.value);
 
   const handleChangeGrapevine = (event) => setGrapevine(event.target.value);
@@ -242,6 +251,76 @@ export const JoinForm = (props) => {
                   />
                 </FormControl>
               )}
+              <FormControl>
+                <label required htmlFor="researchCommunity">
+                  Select a Research Community *
+                </label>
+                <Select
+                  id="researchCommunity"
+                  name="researchCommunity"
+                  value={researchCommunity}
+                  onChange={handleChangeResearchCommunity}
+                >
+                  <Option value="">Select One</Option>
+                  <Option value="Bench to Bassinet">
+                    Bench to Bassinet
+                  </Option>
+                  <Option value="BioLINCC">
+                    BioLINCC
+                  </Option>
+                  <Option value="C4R">
+                    C4R
+                  </Option>
+                  <Option value="CONNECTS">
+                    CONNECTS
+                  </Option>
+                  <Option value="Cure Sickle Cell Initiative">
+                    Cure Sickle Cell Initiative
+                  </Option>
+                  <Option value="HeartShare">
+                    HeartShare
+                  </Option>
+                  <Option value="LungMAP">
+                    LungMAP
+                  </Option>
+                  <Option value="NSRR">
+                    NSRR
+                  </Option>
+                  <Option value="Pediatric Heart Network">
+                    Pediatric Heart Network
+                  </Option>
+                  <Option value="PETAL Network">
+                    PETAL Network
+                  </Option>
+                  <Option value="RECOVER">
+                    RECOVER
+                  </Option>
+                  <Option value="RMIP">
+                    RMIP
+                  </Option>
+                  <Option value="TOPMed">
+                    TOPMed
+                  </Option>
+                  <Option value="Other">
+                    Other
+                  </Option>
+                </Select>
+              </FormControl>
+              {otherResearchCommunitySelected && (
+                <FormControl>
+                  <label required htmlFor="other-research-community">
+                    Name of Research Community
+                  </label>
+                  <TextInput
+                    id="other-research-community"
+                    name="other-research-community"
+                    value={otherResearchCommunity}
+                    onChange={handleChangeOtherResearchCommunity}
+                    maxLength="3000"
+                  />
+                </FormControl>
+              )}
+
               <FormControl>
                 <label required htmlFor="interest">
                   Why are you joining BDC? *
