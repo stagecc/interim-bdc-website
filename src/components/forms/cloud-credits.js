@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { Paragraph } from "../typography";
@@ -80,6 +80,10 @@ export const CloudCreditsForm = (props) => {
   const [hlbsRelation, setHlbsRelation] = useState("");
   const [grapevine, setGrapevine] = useState("");
   const [oneRequest, setOneRequest] = useState("");
+  const [researchCommunity, setResearchCommunity] = useState("");
+  const otherResearchCommunitySelected = useMemo(() => researchCommunity === "Other", [researchCommunity]);
+  const [otherResearchCommunity, setOtherResearchCommunity] = useState("");
+
   // NHLBI BDC Pilot Funding Program
   const [preferredPlatform, setPreferredPlatform] = useState("");
   const [bdcSevenBridgesUsername, setBdcSevenBridgesUsername] = useState("");
@@ -117,6 +121,11 @@ export const CloudCreditsForm = (props) => {
 
     if (honeypotFieldRef.current?.value !== "") return;
 
+    // Use typed value if "Other" is selected, otherwise use the selected option
+    const selectedResearchCommunity = researchCommunity === "Other"
+    ? `Other: ${otherResearchCommunity}`
+    : researchCommunity;
+  
     const description = ``
       + `Requestor's name: ${name} <br />`
       + `Requestor's email: ${email} <br />`
@@ -124,11 +133,12 @@ export const CloudCreditsForm = (props) => {
       + `Project Name: ${projectName}<br />`
       + `Requestor's role: ${role} <br />`
       + `Requestor's organization: ${organization} <br />`
+      + `Requestor's research community: ${selectedResearchCommunity} <br />`
       + `Team members: ${teamMembers} <br />`
       + `How is your research related to HLBS?: ${hlbsRelation} <br />`
       + `How did the requestor learn about BDC?: ${grapevine} <br />`
       + `Request: ${oneRequest} <br /><br />`
-
+ 
     const customFieldsDescription = option => {
       if (option === "NHLBI BDC Pilot Funding Program") {
         let response = `Preferred analysis platform: ${ preferredPlatform } <br />`
@@ -202,6 +212,8 @@ export const CloudCreditsForm = (props) => {
       }
       return {
         ...payload,
+        cf_research_community: researchCommunity, 
+        cf_other_research_community: otherResearchCommunity || "", 
         cf_by_submitting_this_form_i_agree_to_the_terms_and_conditions_of_this_offering: consent,
       };
     };
@@ -247,6 +259,8 @@ export const CloudCreditsForm = (props) => {
   const handleChangeEmail = (event) => setEmail(event.target.value);
   const handleChangeRole = (event) => setRole(event.target.value);
   const handleChangeOrganization = (event) => setOrganization(event.target.value);
+  const handleChangeResearchCommunity = (event) => setResearchCommunity(event.target.value);
+  const handleChangeOtherResearchCommunity = (event) => setOtherResearchCommunity(event.target.value);
   const handleChangeProjectName = (event) => setProjectName(event.target.value);
   const handleChangeTeamMembers = (event) => setTeamMembers(event.target.value);
   const handleChangeHlbsRelation = (event) => setHlbsRelation(event.target.value);
@@ -361,6 +375,75 @@ export const CloudCreditsForm = (props) => {
               onChange={handleChangeOrganization}
             />
           </FormControl>
+          <FormControl>
+            <label required htmlFor="researchCommunity">
+              Select a Research Community *
+            </label>
+            <Select
+              id="researchCommunity"
+              name="researchCommunity"
+              value={researchCommunity}
+              onChange={handleChangeResearchCommunity}
+            >
+              <Option value="">Select One</Option>
+              <Option value="Bench to Bassinet">
+                Bench to Bassinet
+              </Option>
+              <Option value="BioLINCC">
+                BioLINCC
+              </Option>
+              <Option value="C4R">
+                C4R
+              </Option>
+              <Option value="CONNECTS">
+                CONNECTS
+              </Option>
+              <Option value="Cure Sickle Cell Initiative">
+                Cure Sickle Cell Initiative
+              </Option>
+              <Option value="HeartShare">
+                HeartShare
+              </Option>
+              <Option value="LungMAP">
+                LungMAP
+              </Option>
+              <Option value="NSRR">
+                NSRR
+              </Option>
+              <Option value="Pediatric Heart Network">
+                Pediatric Heart Network
+              </Option>
+              <Option value="PETAL Network">
+                PETAL Network
+              </Option>
+              <Option value="RECOVER">
+                RECOVER
+              </Option>
+              <Option value="RMIP">
+                RMIP
+              </Option>
+              <Option value="TOPMed">
+                TOPMed
+              </Option>
+              <Option value="Other">
+                Other
+              </Option>
+            </Select>
+          </FormControl>
+          {otherResearchCommunitySelected && (
+            <FormControl>
+              <label required htmlFor="other-research-community">
+                Name of Research Community
+              </label>
+              <TextInput
+                id="other-research-community"
+                name="other-research-community"
+                value={otherResearchCommunity}
+                onChange={handleChangeOtherResearchCommunity}
+                maxLength="3000"
+              />
+            </FormControl>
+          )}
           <FormControl>
             <label htmlFor="project-name">Project Name *</label>
             <TextInput
