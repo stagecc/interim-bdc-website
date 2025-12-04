@@ -189,11 +189,11 @@ module.exports = {
       options: {
         disableOnDev: true,
         reportOnly: false,
-        mergeScriptHashes: true, // you should always include script hashes
-        mergeStyleHashes: true, // you should always include style hashes
+        mergeScriptHashes: false, // Disabling automatic hashing to allow 'unsafe-inline'
+        mergeStyleHashes: false, // Disabling automatic hashing to allow 'unsafe-inline'
         directives: {
-          "script-src": `'self' https://www.googletagmanager.com https://widget.freshworks.com https://www.youtube.com`,
-          "style-src": `'self' 'unsafe-hashes' https://fonts.googleapis.com https://widget.freshworks.com`,
+          "script-src": `'self' 'unsafe-inline' https://www.googletagmanager.com https://widget.freshworks.com https://www.youtube.com`,
+          "style-src": `'self' 'unsafe-inline' https://fonts.googleapis.com https://widget.freshworks.com`,
           "img-src": `'self' data: https://widget.freshworks.com`,
           "font-src": `'self' https://fonts.gstatic.com https://widget.freshworks.com`,
           "connect-src": `'self' https://www.google-analytics.com https://widget.freshworks.com https://search.biodatacatalyst.renci.org https://epxuifil2cc4sqfqws62zejcwi0cgfds.lambda-url.us-east-1.on.aws`,
