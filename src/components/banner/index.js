@@ -24,6 +24,12 @@ const Wrapper = styled.div`
     font-weight: 800;
     text-decoration-color: var(--color-blueberry);
   };
+  ${({ variant }) =>
+    variant === "caution" && `
+      background: linear-gradient(90deg, #ffe3c2, #ffd2a6);
+      border-color: #e8a25a;
+    `
+  }
   ${({ variant }) => 
     variant === "alert" && `
       background: linear-gradient(90deg, var(--color-peach), #f2b5a799);
