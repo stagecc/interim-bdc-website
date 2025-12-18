@@ -197,7 +197,7 @@ module.exports = {
           "img-src": `'self' data: https://widget.freshworks.com`,
           "font-src": `'self' https://fonts.gstatic.com https://widget.freshworks.com`,
           "connect-src": `'self' https://www.google-analytics.com https://widget.freshworks.com https://search.biodatacatalyst.renci.org https://epxuifil2cc4sqfqws62zejcwi0cgfds.lambda-url.us-east-1.on.aws`,
-          "frame-src": `'self' https://www.youtube.com`,
+          "frame-src": `'self' https://www.youtube.com https://bdcatalyst.freshdesk.com`,
           "object-src": `'none'`,
           "base-uri": `'self'`,
         },
