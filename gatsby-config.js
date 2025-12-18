@@ -184,5 +184,24 @@ module.exports = {
         trackingIds: ["G-2M4JYYSBD3"],
       },
     },
+    {
+      resolve: `gatsby-plugin-csp`,
+      options: {
+        disableOnDev: true,
+        reportOnly: false,
+        mergeScriptHashes: false, // Disabling automatic hashing to allow 'unsafe-inline'
+        mergeStyleHashes: false, // Disabling automatic hashing to allow 'unsafe-inline'
+        directives: {
+          "script-src": `'self' 'unsafe-inline' https://www.googletagmanager.com https://widget.freshworks.com https://www.youtube.com`,
+          "style-src": `'self' 'unsafe-inline' https://fonts.googleapis.com https://widget.freshworks.com`,
+          "img-src": `'self' data: https://widget.freshworks.com`,
+          "font-src": `'self' https://fonts.gstatic.com https://widget.freshworks.com`,
+          "connect-src": `'self' https://www.google-analytics.com https://widget.freshworks.com https://search.biodatacatalyst.renci.org https://epxuifil2cc4sqfqws62zejcwi0cgfds.lambda-url.us-east-1.on.aws`,
+          "frame-src": `'self' https://www.youtube.com`,
+          "object-src": `'none'`,
+          "base-uri": `'self'`,
+        },
+      },
+    },
   ]
 };
