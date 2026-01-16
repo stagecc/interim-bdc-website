@@ -192,7 +192,7 @@ module.exports = {
         mergeScriptHashes: false, // Disabling automatic hashing to allow 'unsafe-inline'
         mergeStyleHashes: false, // Disabling automatic hashing to allow 'unsafe-inline'
         directives: {
-          "script-src": `'self' 'unsafe-inline' https://www.googletagmanager.com https://widget.freshworks.com https://www.youtube.com`,
+          "script-src": `'self' 'unsafe-inline' https://www.googletagmanager.com https://widget.freshworks.com https://www.youtube.com https://www.google.com`,
           "style-src": `'self' 'unsafe-inline' https://fonts.googleapis.com https://widget.freshworks.com`,
           "img-src": `'self' data: https://widget.freshworks.com`,
           "font-src": `'self' https://fonts.gstatic.com https://widget.freshworks.com`,
