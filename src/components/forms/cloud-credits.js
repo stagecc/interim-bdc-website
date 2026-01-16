@@ -20,7 +20,7 @@ import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 const FRESHDESK_API_ROOT_URL = process.env.GATSBY_FRESHDESK_API_ROOT_URL;
 const FRESHDESK_API_CREATE_TICKET_URL = `${FRESHDESK_API_ROOT_URL}/cloud-credits`;
 
-const SUBMIT_TEST_MODE = true;
+const SUBMIT_TEST_MODE = false;
 
 const requestOptions = {
   "Content-Type": "application/json",
@@ -250,8 +250,8 @@ export const CloudCreditsForm = (props) => {
     };
 
     const submitTicket = async () => {
+
       if (SUBMIT_TEST_MODE) {
-        // console.log(payload);
         const response = await axios.post(PROXY_URL, {
           recaptchaToken,
           freshdeskPayload: payload,
