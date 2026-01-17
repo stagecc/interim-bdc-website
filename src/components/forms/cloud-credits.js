@@ -15,6 +15,7 @@ import {
   TextArea,
   TextInput,
 } from "./inputs";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 const FRESHDESK_API_ROOT_URL = process.env.GATSBY_FRESHDESK_API_ROOT_URL;
 const FRESHDESK_API_CREATE_TICKET_URL = `${FRESHDESK_API_ROOT_URL}/cloud-credits`;
@@ -116,10 +117,28 @@ export const CloudCreditsForm = (props) => {
 
   const testSubmission = ["staging", "localhost"].includes(window.location.hostname); // ??
 
-  const handleSubmit = (event) => {
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const PROXY_URL = "http://localhost:9000/verify";
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (honeypotFieldRef.current?.value !== "") return;
+
+    if (!executeRecaptcha) {
+      console.warn("reCAPTCHA not yet available");
+      return;
+    }
+
+    // Generate token
+    const recaptchaToken = await executeRecaptcha("cloud_credits_submit");
+    // console.log(recaptchaToken);
+
+    // OPTIONAL: block submission if token missing
+    if (!recaptchaToken) {
+      setError(new Error("reCAPTCHA validation failed"));
+      return;
+    }
 
     // Use typed value if "Other" is selected, otherwise use the selected option
     const selectedResearchCommunity = researchCommunity === "Other"
@@ -226,14 +245,25 @@ export const CloudCreditsForm = (props) => {
       status: 2,
       name: name,
       email: email,
+      recaptcha_token: recaptchaToken,
       custom_fields: { ...customFieldsPayload(oneRequest) },
     };
 
     const submitTicket = async () => {
+
       if (SUBMIT_TEST_MODE) {
-        console.log(payload);
+        const response = await axios.post(PROXY_URL, {
+          recaptchaToken,
+          freshdeskPayload: payload,
+        });
+
+        if (![200, 201].includes(response.status)) {
+          throw new Error("Submission rejected");
+        }
+        console.log("Submission accepted!",response)
         return;
       }
+
       await axios
         .post(FRESHDESK_API_CREATE_TICKET_URL, payload, requestOptions)
         .then((response) => {
