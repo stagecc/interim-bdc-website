@@ -5,17 +5,17 @@
   url: http://dx.doi.org/10.1016/j.ajhg.2025.08.022
 -
   title: "Associations of Prepandemic Lung Function and Structure with COVID-19 Outcomes: The C4R Study"
-  date: 2024-08-27
-  location: American Journal of Respiratory
+  date: 2025-07-01
+  location: American Journal of Respiratory and Critical Care Medicine
   url: https://doi.org/10.1164/rccm.202408-1656OC
 -
   title: "Predicting heart failure from 12-lead ECGs using AI"
-  date: 2026-03-05
+  date: 2026-03-03
   location: Journal of the American College of Cardiology
   url: https://doi.org/10.1016/j.jacc.2025.10.065
 -
   title: "Metagenomic Study of the MESA: Detection of Gemella Morbillorum and Association With Coronary Heart Disease"
-  date: 2024-10-13
+  date: 2024-10-01
   location: Journal of the American Heart Association
   url: https://doi.org/10.1161/jaha.124.035693
 -
@@ -25,8 +25,8 @@
   url: https://doi.org/10.1186/s12864-023-09757-9
 -
   title: "Towards self-describing and FAIR bulk formats for biomedical data"
-  date: 2023-03-03
-  location: PLoS computational biology
+  date: 2023-03-13
+  location: PLoS Computational Biology
   url: https://doi.org/10.1371/journal.pcbi.1010944
 -
   title: "Leveraging TOPMed Imputation Server and Constructing a Cohort-Specific Imputation Reference Panel to Enhance Genotype Imputation among Cystic Fibrosis Patients"
@@ -35,7 +35,7 @@
   url: https://doi.org/10.1016/j.xhgg.2022.100090
 -
   title: "Secondary Neoplasms After Hematopoietic Cell Transplant for Sickle Cell Disease"
-  date: 2023-04-30
+  date: 2023-04-20
   location: Journal of Clinical Oncology
   url: https://doi.org/10.1200/jco.22.01203
 -
