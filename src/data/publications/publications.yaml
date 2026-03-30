@@ -1,4 +1,69 @@
 -
+  title: "Genetic Architecture and Analysis Practices of Circulating Metabolites in the NHLBI Trans-Omics for Precision Medicine (TOPMed) Program"
+  date: 2025-11-06
+  location: American Journal of Human Genetics
+  url: http://dx.doi.org/10.1016/j.ajhg.2025.08.022
+-
+  title: "Associations of Prepandemic Lung Function and Structure with COVID-19 Outcomes: The C4R Study"
+  date: 2024-08-27
+  location: American Journal of Respiratory
+  url: https://doi.org/10.1164/rccm.202408-1656OC
+-
+  title: "Predicting heart failure from 12-lead ECGs using AI"
+  date: 2026-03-05
+  location: Journal of the American College of Cardiology
+  url: https://doi.org/10.1016/j.jacc.2025.10.065
+-
+  title: "Metagenomic Study of the MESA: Detection of Gemella Morbillorum and Association With Coronary Heart Disease"
+  date: 2024-10-13
+  location: Journal of the American Heart Association
+  url: https://doi.org/10.1161/jaha.124.035693
+-
+  title: "An individualized Bayesian method for estimating genomic variants of hypertension"
+  date: 2023-11-07
+  location: BMC Genomics
+  url: https://doi.org/10.1186/s12864-023-09757-9
+-
+  title: "Towards self-describing and FAIR bulk formats for biomedical data"
+  date: 2023-03-03
+  location: PLoS computational biology
+  url: https://doi.org/10.1371/journal.pcbi.1010944
+-
+  title: "Leveraging TOPMed Imputation Server and Constructing a Cohort-Specific Imputation Reference Panel to Enhance Genotype Imputation among Cystic Fibrosis Patients"
+  date: 2022-01-11
+  location: HGG Advances
+  url: https://doi.org/10.1016/j.xhgg.2022.100090
+-
+  title: "Secondary Neoplasms After Hematopoietic Cell Transplant for Sickle Cell Disease"
+  date: 2023-04-30
+  location: Journal of Clinical Oncology
+  url: https://doi.org/10.1200/jco.22.01203
+-
+  title: "Centralized clinical research operations reporting for a multi-network, multi-study research program: The NHLBI COVID-19 CONNECTS experience"
+  date: 2025-11-11
+  location: Journal of Clinical and Translational Science
+  url: https://doi.org/10.1017/cts.2025.10189
+-
+  title: "Sleep and Big Data: harnessing data, technology, and analytics for monitoring sleep and improving diagnostics, prediction, and interventions—an era for Sleep-Omics?"
+  date: 2021-04-24
+  location: Sleep
+  url: https://doi.org/10.1093/sleep/zsab107
+-
+  title: "Data sharing in the PRIMED consortium: Design, implementation, and recommendations for future policymaking"
+  date: 2025-08-07
+  location: American Journal of Human Genetics
+  url: https://doi.org/10.1016/j.ajhg.2025.06.004
+-
+  title: "Streamlining large-scale genomic data management: Insights from the UK Biobank whole-genome sequencing data"
+  date: 2025-12-10
+  location: Cell Genomics
+  url: https://doi.org/10.1016/j.xgen.2025.101009
+-
+  title: "Integrating whole genome and transcriptome sequencing to characterize the genetic architecture of isoform variation"
+  date: 2025-11-22
+  location: Nature Communications
+  url: https://doi.org/10.1038/s41467-025-64336-8
+-
   title: "Relationships among host genetics, gut microbiota, and asthma in US Hispanic/Latino adults"
   date: 2025-11-20
   location: Nature Communications
