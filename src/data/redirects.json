@@ -278,5 +278,9 @@
   {
     "from": "/contact",
     "to": "/help-and-support/contact-us"
+  },
+  {
+    "from": "/news-and-events/published-research",
+    "to": "/news-and-events/bdc-enabled-research"
   }
 ]

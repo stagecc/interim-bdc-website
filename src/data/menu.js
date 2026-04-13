@@ -48,8 +48,8 @@ export const menuItems = [
     path: "/news-and-events",
     submenu: [
       {
-        text: "Published Research",
-        path: "/news-and-events/published-research",
+        text: "BDC-Enabled Research",
+        path: "/news-and-events/bdc-enabled-research",
       },
       {
         text: "News Coverage",
