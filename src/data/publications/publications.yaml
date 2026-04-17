@@ -4,16 +4,6 @@
   location: medRxiv
   url: https://pubmed.ncbi.nlm.nih.gov/40568677/
 -
-  title: "PIC-SURE: an open-source platform for integrating clinical and genomic data"
-  date: 2025-12-30
-  location: npj Digital Medicine
-  url: https://www.nature.com/articles/s41746-025-02284-9
--
-  title: "Streamlining large-scale genomic data management: Insights from the UK Biobank whole-genome sequencing data"
-  date: 2025-12-10
-  location: Cell Genomics
-  url: https://www.cell.com/cell-genomics/fulltext/S2666-979X(25)00265-4?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS2666979X25002654%3Fshowall%3Dtrue
--
   title: "Preventive effect of vaccination on long COVID in adolescents with SARS-CoV-2 infection"
   date: 2025-12-05
   location: Vaccine
@@ -24,20 +14,10 @@
   location: Current Developments in Nutrition
   url: https://cdn.nutrition.org/article/S2475-2991(25)03073-2/fulltext
 -
-  title: "Integrating whole genome and transcriptome sequencing to characterize the genetic architecture of isoform variation"
-  date: 2025-11-22
-  location: Nature Communications
-  url: https://www.nature.com/articles/s41467-025-64336-8
--
   title: "Long COVID trajectories in the prospectively followed RECOVER-Adult US cohort"
   date: 2025-11-17
   location: Nature Communications
   url: https://www.nature.com/articles/s41467-025-65239-4
--
-  title: "Centralized clinical research operations reporting for a multi-network, multi-study research program: The NHLBI COVID-19 CONNECTS experience"
-  date: 2025-11-11
-  location: Journal of Clinical and Translational Science
-  url: https://www.cambridge.org/core/journals/journal-of-clinical-and-translational-science/article/centralized-clinical-research-operations-reporting-for-a-multinetwork-multistudy-research-program-the-nhlbi-covid19-connects-experience/21DC803753D0C0DDB26B9AC67093896A
 -
   title: "A multi-ethnic polygenic risk score for chronic kidney disease is associated with increased risk of hypertension in African American individuals"
   date: 2025-09-26
