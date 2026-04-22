@@ -84,11 +84,6 @@
   location: "HGG Advances"
   url: https://www.cell.com/hgg-advances/fulltext/S2666-2477(22)00033-1
 -
-  title: "Whole-genome analysis of plasma fibrinogen reveals population-differentiated genetic regulators with putative liver roles"
-  date: 2024-11-21
-  location: "Blood"
-  url: https://ashpublications.org/blood/article/144/21/2248/517658/Whole-genome-analysis-of-plasma-fibrinogen-reveals
--
   title: "Opportunities and challenges for the use of common controls in sequencing studies"
   date: 2022-05-17
   location: "Nature Reviews Genetics"
@@ -234,20 +229,10 @@
   location: BMC Infections Diseases
   url: https://link.springer.com/article/10.1186/s12879-023-08295-9
 -
-  title: "Secondary Neoplasms After Hematopoietic Cell Transplant for Sickle Cell Disease"
-  date: 2023-01-03
-  location: Journal of Clinical Oncology
-  url: https://ascopubs.org/doi/10.1200/JCO.22.01203
--
   title: "Survival After Invasive or Conservative Management of Stable Coronary Disease"
   date: 2022-11-06
   location: Circulation
   url: https://www.ahajournals.org/doi/10.1161/CIRCULATIONAHA.122.062714
--
-  title: "Whole genome DNA and RNA sequencing of whole blood elucidates the genetic architecture of gene expression underlying a wide range of diseases"
-  date: 2022-11-23
-  location: Scientific Reports
-  url: https://www.nature.com/articles/s41598-022-24611-w
 -
   title: "Whole genome sequence association analysis of brain structural volume measures in the NHLBI TOPMed Program highlights novel loci in diverse participants"
   date: 2025-06-13
@@ -330,7 +315,7 @@
   url: https://doi.org/10.1016/j.xhgg.2022.100090
 -
   title: "Secondary Neoplasms After Hematopoietic Cell Transplant for Sickle Cell Disease"
-  date: 2023-04-20
+  date: 2023-01-09
   location: Journal of Clinical Oncology
   url: https://doi.org/10.1200/jco.22.01203
 -
