@@ -1,4 +1,64 @@
 -
+  title: "Genomic analysis of 11,555 probands identifies 60 dominant congenital heart disease genes"
+  date: 2025-03-24
+  location: PNAS
+  url: https://doi.org/10.1073/pnas.2420343122
+-
+  title: "Sparse Bernoulli mixture modeling with negative-unlabeled data: an approach to identify and characterize long COVID"
+  date: 2025-03-12
+  location: Biometrics
+  url: https://academic.oup.com/biometrics/article/81/1/ujaf021/8071659
+-
+  title: "Association of Cardiologist Clinic Visits With Cardiovascular Primary Prevention Outcomes Among People With HIV From Underrepresented Racial and Ethnic Groups in the Southern United States"
+  date: 2025-03-07
+  location: Journal of the American Heart Association
+  url: https://www.ahajournals.org/doi/10.1161/JAHA.124.038462
+-
+  title: "Recessive genetic contribution to congenital heart disease in 5,424 probands"
+  date: 2025-03-03
+  location: PNAS
+  url: https://www.pnas.org/doi/10.1073/pnas.2419992122
+-
+  title: "The circulating renin-angiotensin system and mortality among patients hospitalized for COVID-19: a mechanistic substudy of the ACTIV-4 Host Tissue trials"
+  date: 2025-02-27
+  location: American Journal of Physiology-Lung Cellular and Molecular Physiology
+  url: https://journals.physiology.org/doi/full/10.1152/ajplung.00372.2024
+-
+  title: "Shock prediction with dipeptidyl peptidase-3 and renin (SPiDeR) in hypoxemic patients with COVID-19"
+  date: 2024-11-14
+  location: Journal of Critical Care
+  url: https://www.sciencedirect.com/science/article/abs/pii/S0883944124004374?via%3Dihub
+-
+  title: "Whole-genome analysis of plasma fibrinogen reveals population-differentiated genetic regulators with putative liver roles"
+  date: 2024-11-21
+  location: Blood
+  url: https://ashpublications.org/blood/article/144/21/2248/517658/Whole-genome-analysis-of-plasma-fibrinogen-reveals
+-
+  title: "Pre-pregnancy substance use and first trimester cardiovascular health among nulliparous pregnant people: The nuMoM2b Study"
+  date: 2024-09-03
+  location: Paediatric and Perinatal Epidemiology
+  url: https://onlinelibrary.wiley.com/doi/10.1111/ppe.13119
+-
+  title: "Effect of sodium–glucose co-transporter-2 inhibitors on survival free of organ support in patients hospitalised for COVID-19 (ACTIV-4a): a pragmatic, multicentre, open-label, randomised, controlled, platform trial"
+  date: 2024-09-06
+  location: The Lancet Diabetes & Endocrinology
+  url: https://www.thelancet.com/journals/landia/article/PIIS2213-8587(24)00218-3/fulltext
+-
+  title: "Post–Acute Sequelae of Severe Acute Respiratory Syndrome Coronavirus 2 (SARS-CoV-2) After Infection During Pregnancy"
+  date: 2024-09-01
+  location: Obstetrics & Gynecology
+  url: https://journals.lww.com/greenjournal/abstract/2024/09000/post_acute_sequelae_of_severe_acute_respiratory.15.aspx
+-
+  title: "Proteomics and machine learning in the prediction and explanation of low pectoralis muscle area"
+  date: 2024-08-03
+  location: Scientific Reports
+  url: https://www.nature.com/articles/s41598-024-68447-y
+-
+  title: "RECOVER-NEURO: study protocol for a multi-center, multi-arm, phase 2, randomized, active comparator trial evaluating three interventions for cognitive dysfunction in post-acute sequelae of SARS-CoV-2 infection (PASC)"
+  date: 2024-05-17
+  location: Trials
+  url: https://link.springer.com/article/10.1186/s13063-024-08156-z
+-
   title: "Demographic and Clinical Factors Associated With SARS-CoV-2 Spike 1 Antibody Response Among Vaccinated US Adults: the C4R Study"
   date: 2024-02-19
   location: Nature Communications
@@ -347,3 +407,4 @@
   date: 2020-11-05
   location: "Blood | American Society of Hematology"
   url: https://ashpublications.org/blood/article/136/Supplement%201/52/472221/Genome-Wide-Association-Analysis-of-Iron-Overload
+-
