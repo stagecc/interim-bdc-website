@@ -8,11 +8,7 @@ export function sendCustomEvent(eventName, params = {}) {
     console.log(`[analytics] ${eventName}`, params);
   }
 
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: eventName,
-    ...params,
-  });
+  window.gtag("event", eventName, params);
 }
 
 export const trackFooterLink = (pathname, url, text) => () =>
