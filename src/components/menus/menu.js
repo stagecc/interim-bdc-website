@@ -1,10 +1,12 @@
 import React, { Fragment, useMemo, useState } from "react";
 import { Match } from "@reach/router";
+import { useLocation } from "@reach/router";
 import styled from "styled-components";
 import { useWindowWidth } from "../../hooks";
 import { Link } from "../link";
 import { ChevronDownIcon } from "../icons";
-import { ButtonLink } from "../buttons"
+import { ButtonLink } from "../buttons";
+import { trackNavLink } from "../../utils/analytics";
 
 export const MenuLink = styled(Link)`
   display: flex;
@@ -110,6 +112,7 @@ const JoinBDCButton = styled(ButtonLink)
 
 export const Menu = ({ items, showBrand }) => {
   const { width } = useWindowWidth();
+  const { pathname } = useLocation();
   const [openSubmenu, setOpenSubmenu] = useState(-1);
   const compact = useMemo(() => width < 1140, [width]);
 
@@ -131,15 +134,7 @@ export const Menu = ({ items, showBrand }) => {
               <Fragment>
                 <Match path={item.path}>
                   {(props) => {
-                    // "active" means we're looking at a page whose route contains the submenu's root route
-                    const thisSubmenuIsActive = props.location.pathname.includes(
-                      item.path
-                    );
-                    // Reach Router can style _links_ that are partially active out of the box.
-                    // However, here, we want to style the submenu header (not a Link component)
-                    // according to whether there is a partial location match.
-                    // This substring check is how the value of the "active" prop is determined below.
-                    // console.log(props.location.pathname, 'contains', item.path, ':', props.location.pathname.includes(item.path))
+                    const thisSubmenuIsActive = props.location.pathname.includes(item.path);
                     return (
                       <SubmenuHeader
                         active={thisSubmenuIsActive}
@@ -162,6 +157,7 @@ export const Menu = ({ items, showBrand }) => {
                       to={subitem.path}
                       activeClassName="active"
                       partiallyActive={true}
+                      onClick={trackNavLink(pathname, subitem.path, subitem.text, "desktop")}
                     >
                       {subitem.text}
                     </MenuLink>
@@ -173,6 +169,7 @@ export const Menu = ({ items, showBrand }) => {
                 to={item.path}
                 activeClassName="active"
                 partiallyActive={false}
+                onClick={trackNavLink(pathname, item.path, item.text, "desktop")}
               >
                 {item.text}
               </MenuLink>
@@ -183,7 +180,8 @@ export const Menu = ({ items, showBrand }) => {
       <MenuItem>
         <JoinBDCButton
           to="/join-bdc"
-          compact={ compact }
+          compact={compact}
+          onClick={trackNavLink(pathname, "/join-bdc", "Join BDC", "desktop")}
         />
       </MenuItem>
     </MenuContainer>

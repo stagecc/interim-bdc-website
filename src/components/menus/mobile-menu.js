@@ -1,9 +1,11 @@
 import React, { Fragment, useEffect, useState } from "react";
+import { useLocation } from "@reach/router";
 import { Link } from "../../components/link";
 import styled from "styled-components";
 import { CloseIcon, HamburgerIcon } from "../icons";
 import { Brand } from "../layout";
 import { ChevronDownIcon } from "../icons";
+import { trackNavLink } from "../../utils/analytics";
 
 const Overlay = styled.div`
   position: fixed;
@@ -128,6 +130,7 @@ const Submenu = styled.nav`
 `;
 
 export const MobileMenu = ({ items }) => {
+  const { pathname } = useLocation();
   const [visible, setVisible] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
 
@@ -145,28 +148,31 @@ export const MobileMenu = ({ items }) => {
     }
   };
 
-  useEffect(() => {
-    const escapeHatch = e => {
-      if (e.keyCode === 27) {
-        // escaoe
-        handleCloseMenu();
-      }
-    };
-    if (visible) {
-      document.addEventListener("keydown", escapeHatch);
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
+useEffect(() => {
+  const escapeHatch = e => {
+    if (e.keyCode === 27) {
+      handleCloseMenu();
     }
-    return () => document.removeEventListener("keydown", escapeHatch);
-  }, [visible]);
+  };
+  if (visible) {
+    document.addEventListener("keydown", escapeHatch);
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+  return () => document.removeEventListener("keydown", escapeHatch);
+}, [visible]);
+
+useEffect(() => {
+  handleCloseMenu();
+}, [pathname]);
 
   return (
     <Fragment>
       <Overlay shaded={visible} onClick={handleCloseMenu} />
       <MobileNavDrawer active={visible}>
         <div style={{ width: "220px" }}>
-          <Brand white />
+          <Brand white navType="mobile-drawer" />
         </div>
         <MobileNav>
           {items.map((item, currentIndex) => {
@@ -193,8 +199,11 @@ export const MobileMenu = ({ items }) => {
                       to={subitem.path}
                       key={subitem.text}
                       activeClassName="active"
-                      onClick={handleCloseMenu}
                       role="menuitem"
+                      onClick={() => {
+                        handleCloseMenu();
+                        trackNavLink(pathname, subitem.path, subitem.text, "mobile")();
+                      }}
                     >
                       {subitem.text}
                     </MenuLink>
@@ -206,13 +215,24 @@ export const MobileMenu = ({ items }) => {
                 to={item.path}
                 key={item.text}
                 activeClassName="active"
-                onClick={handleCloseMenu}
+                onClick={() => {
+                  handleCloseMenu();
+                  trackNavLink(pathname, item.path, item.text, "mobile")();
+                }}
               >
                 {item.text}
               </MenuLink>
             );
           })}
-          <MenuLink to="/join-bdc">Join BDC</MenuLink>
+          <MenuLink
+            to="/join-bdc"
+            onClick={() => {
+              handleCloseMenu();
+              trackNavLink(pathname, "/join-bdc", "Join BDC", "mobile")();
+            }}
+          >
+            Join BDC
+          </MenuLink>
         </MobileNav>
       </MobileNavDrawer>
       <Toggler onClick={handleToggleMenu}>
