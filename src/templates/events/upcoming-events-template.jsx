@@ -9,7 +9,6 @@ import BDCLogo from '../../images/favicon.png'
 
 
 const UpcomingEventsList = ({ data }) => {
-  console.log(data)
   const upcomingEvents = data.events.nodes.filter(event => {
     const todaysDate = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD'
     return event.frontmatter.date >= todaysDate;
