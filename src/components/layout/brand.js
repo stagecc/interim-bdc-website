@@ -1,8 +1,10 @@
 import React from "react";
+import { useLocation } from "@reach/router";
 import { Link } from "../link";
 import styled from "styled-components";
 import bdcLogo from "../../images/bdc-logo.svg";
 import bdcLogoWhite from "../../images/bdc-logo-white.svg";
+import { trackNavLink } from "../../utils/analytics";
 
 const BrandContainer = styled(Link).attrs({
   className: "brand"
@@ -20,9 +22,17 @@ export const Brand = ({
   width = "auto",
   style,
   compact,
+  navType,
 }) => {
+  const { pathname } = useLocation();
+
   return (
-    <BrandContainer to={path} style={{ ...style, maxWidth: width }} compact={ compact }>
+    <BrandContainer
+      to={path}
+      style={{ ...style, maxWidth: width }}
+      compact={compact}
+      onClick={trackNavLink(pathname, path, "Brand logo", navType)}
+    >
       <img
         src={white ? bdcLogoWhite : bdcLogo}
         height="auto"

@@ -27,6 +27,7 @@ import { SkipLink } from './skip-link';
 import "../../styles/normalize.css";
 import "../../styles/customize.css";
 import { Banner } from "../../components/banner";
+import { trackFooterLink } from "../../utils/analytics";
 
 const LayoutWrapper = styled.div(
   ({ compact }) => `
@@ -151,13 +152,16 @@ export function Layout({ children }) {
         }
         <Visible md>
           <Header style={{ backgroundColor: '#f9f6f3' }}>
-            <Brand width="380px" />
+            <Brand width="380px" navType="desktop" />
           </Header>
         </Visible>
         <StickyWrapper stuck={true}>
           <Header>
-            <Visible xs sm lg xl xxl>
-              <Brand width="380px" />
+            <Visible xs sm>
+              <Brand width="380px" navType="mobile-brand" />
+            </Visible>
+            <Visible lg xl xxl>
+              <Brand width="380px" navType="desktop" />
             </Visible>
             <Visible md lg xl xxl>
               <span />
@@ -182,49 +186,53 @@ export function Layout({ children }) {
               <Row>
                 <Col xs={12} md={5} push={{ md: 7 }}>
                   <List center={isCompact} right={!isCompact}>
-                    <ListItem primary={<Link to="/user-resources/user-faqs/">FAQs</Link>} />
-                    <ListItem
-                      primary={<Link to="/accessibility">Accessibility</Link>}
-                    />
-                    <ListItem
-                      primary={<Link to="/privacy">Privacy Policy</Link>}
-                    />
-                    <ListItem
-                      primary={
-                        <Link
-                          lightIcon
-                          to="https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/"
-                        >
-                          Documentation
-                        </Link>
-                      }
-                    />
-                    <ListItem
-                      primary={
-                        <Link
-                          lightIcon
-                          to="https://www.hhs.gov/vulnerability-disclosure-policy/index.html"
-                        >
-                          HHS Vulnerability Disclosure
-                        </Link>
-                      }
-                    />
-                    <ListItem
-                      primary={
-                        <Link to="https://www.nhlbi.nih.gov/about/foia-fee-for-service-office">
-                          Freedom of Information Act (FOIA)
-                        </Link>
-                      }
-                    />
+                    <ListItem primary={
+                      <Link to="/user-resources/user-faqs/" onClick={trackFooterLink(pathname, "/user-resources/user-faqs/", "FAQs")}>
+                        FAQs
+                      </Link>
+                    } />
+                    <ListItem primary={
+                      <Link to="/accessibility" onClick={trackFooterLink(pathname, "/accessibility", "Accessibility")}>
+                        Accessibility
+                      </Link>
+                    } />
+                    <ListItem primary={
+                      <Link to="/privacy" onClick={trackFooterLink(pathname, "/privacy", "Privacy Policy")}>
+                        Privacy Policy
+                      </Link>
+                    } />
+                    <ListItem primary={
+                      <Link lightIcon to="https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/" onClick={trackFooterLink(pathname, "https://bdcatalyst.gitbook.io/biodata-catalyst-documentation/", "Documentation")}>
+                        Documentation
+                      </Link>
+                    } />
+                    <ListItem primary={
+                      <Link lightIcon to="https://www.hhs.gov/vulnerability-disclosure-policy/index.html" onClick={trackFooterLink(pathname, "https://www.hhs.gov/vulnerability-disclosure-policy/index.html", "HHS Vulnerability Disclosure")}>
+                        HHS Vulnerability Disclosure
+                      </Link>
+                    } />
+                    <ListItem primary={
+                      <Link to="https://www.nhlbi.nih.gov/about/foia-fee-for-service-office" onClick={trackFooterLink(pathname, "https://www.nhlbi.nih.gov/about/foia-fee-for-service-office", "Freedom of Information Act (FOIA)")}>
+                        Freedom of Information Act (FOIA)
+                      </Link>
+                    } />
                   </List>
                 </Col>
                 <Col xs={12} md={7} pull={{ md: 5 }}>
                   <Paragraph center={isCompact} left={!isCompact ? "true" : undefined}>
-                    BDC is a product of the <Link to="https://www.nhlbi.nih.gov/">National
-                    Heart, Lung, and Blood Institute</Link> of the <Link to="https://www.nih.gov/">
-                    National Institutes of Health.</Link>
+                    BDC is a product of the{" "}
+                    <Link to="https://www.nhlbi.nih.gov/" onClick={trackFooterLink(pathname, "https://www.nhlbi.nih.gov/", "National Heart, Lung, and Blood Institute")}>
+                      National Heart, Lung, and Blood Institute
+                    </Link>{" "}
+                    of the{" "}
+                    <Link to="https://www.nih.gov/" onClick={trackFooterLink(pathname, "https://www.nih.gov/", "National Institutes of Health")}>
+                      National Institutes of Health.
+                    </Link>
                     <LineBreak count={2} />
-                    For general inquiries, <Link to="/help-and-support/contact-us/">contact us</Link>.
+                    For general inquiries,{" "}
+                    <Link to="/help-and-support/contact-us/" onClick={trackFooterLink(pathname, "/help-and-support/contact-us/", "contact us")}>
+                      contact us
+                    </Link>.
                     <LineBreak count={2} />
                     &copy; {new Date().getFullYear()}
                   </Paragraph>
@@ -233,10 +241,7 @@ export function Layout({ children }) {
               <Row>
                 <Col xs={12} style={{ textAlign: "center" }}>
                   <strong style={{ textTransform: "uppercase" }}>
-                    <Link
-                      lightIcon
-                      to="http://www.biodatacatalyst.org/Security/login"
-                    >
+                    <Link lightIcon to="http://www.biodatacatalyst.org/Security/login" onClick={trackFooterLink(pathname, "http://www.biodatacatalyst.org/Security/login", "Consortium Member Portal")}>
                       Consortium Member Portal
                     </Link>
                   </strong>
@@ -245,30 +250,28 @@ export function Layout({ children }) {
             </Grid>
           </Container>
         </Footer>
+
         <Subfooter compact={isCompact ? true : undefined}>
-          <Link to="https://www.hhs.gov/">
+          <Link to="https://www.hhs.gov/" onClick={trackFooterLink(pathname, "https://www.hhs.gov/", "U.S. Department of Health & Human Services")}>
             U.S. Department of Health & Human Services
           </Link>
-          <Visible md lg xl xxl>
-            <strong>&bull;</strong>
-          </Visible>
-          <Link to="https://www.nih.gov/">
+          <Visible md lg xl xxl><strong>&bull;</strong></Visible>
+          <Link to="https://www.nih.gov/" onClick={trackFooterLink(pathname, "https://www.nih.gov/", "National Institutes of Health")}>
             National Institutes of Health
           </Link>
-          <Visible md lg xl xxl>
-            <strong>&bull;</strong>
-          </Visible>
-          <Link to="https://www.nhlbi.nih.gov/">
+          <Visible md lg xl xxl><strong>&bull;</strong></Visible>
+          <Link to="https://www.nhlbi.nih.gov/" onClick={trackFooterLink(pathname, "https://www.nhlbi.nih.gov/", "National Heart, Lung, and Blood Institute")}>
             National Heart, Lung, and Blood Institute
           </Link>
-          <Visible md lg xl xxl>
-            <strong>&bull;</strong>
-          </Visible>
-          <Link to="https://www.usa.gov/">USA.gov</Link>
+          <Visible md lg xl xxl><strong>&bull;</strong></Visible>
+          <Link to="https://www.usa.gov/" onClick={trackFooterLink(pathname, "https://www.usa.gov/", "USA.gov")}>
+            USA.gov
+          </Link>
         </Subfooter>
       </LayoutWrapper>
-    ))
-};
+    )
+  );
+}
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired
