@@ -499,7 +499,7 @@ export const CloudCreditsForm = (props) => {
             />
             <HelpText>
               Include all the individuals using BDC to analyze data for the same project
-              or the instructors for the Academic Class and Group Educational Session)*
+              or the instructors for the Academic Class and Group Educational Session)
             </HelpText>
           </FormControl>
           <FormControl>
@@ -512,6 +512,10 @@ export const CloudCreditsForm = (props) => {
               onChange={handleChangeHlbsRelation}
               maxLength="3000"
             />
+            <HelpText>
+              In 300 - 500 words, briefly describe your proposed research objectives, 
+              outline your analysis plan, and explain how your research aligns with HLBS.
+            </HelpText>
           </FormControl>
           <FormControl>
             <label required htmlFor="grapevine">How did the requestor learn about BDC? *</label>
