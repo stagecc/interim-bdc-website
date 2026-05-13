@@ -174,6 +174,11 @@ export const JoinForm = (props) => {
               </FormControl>
               <FormControl>
                 <label required htmlFor="commons">eRA Commons ID</label>
+                <HelpText>
+                  eRA Commons ID is a common way to authenticate through the ecosystem.
+                  Please include your eRA Commons ID if you already have an account.
+                  You can still join the community if you do not yet have an eRA Commons account.
+                </HelpText>
                 <TextInput
                   type="commons"
                   id="commons"
@@ -181,14 +186,13 @@ export const JoinForm = (props) => {
                   value={eraCommonsId}
                   onChange={handleChangeCommons}
                 />
-                <HelpText>
-                  eRA Commons ID is a common way to authenticate through the ecosystem.
-                  Please include your eRA Commons ID if you already have an account.
-                  You can still join the community if you do not yet have an eRA Commons account.
-                </HelpText>
               </FormControl>
               <FormControl>
                 <label htmlFor="email">Email Address *</label>
+                <HelpText>
+                  Please use an organization email address.
+                  Your email address will serve as your user account name.
+                </HelpText>
                 <TextInput
                   type="email"
                   required
@@ -197,10 +201,6 @@ export const JoinForm = (props) => {
                   value={email}
                   onChange={handleChangeEmail}
                 />
-                <HelpText>
-                  Please use an organization email address.
-                  Your email address will serve as your user account name.
-                </HelpText>
               </FormControl>
               <FormControl>
                 <label htmlFor="organization">Organization *</label>
