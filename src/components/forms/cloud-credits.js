@@ -363,6 +363,7 @@ export const CloudCreditsForm = (props) => {
           </FormControl>
           <FormControl>
             <label htmlFor="email">Requestor's Email *</label>
+            <HelpText>Please use an organizational email address.</HelpText>
             <TextInput
               type="email"
               required
@@ -371,10 +372,10 @@ export const CloudCreditsForm = (props) => {
               value={email}
               onChange={handleChangeEmail}
             />
-            <HelpText>Please use an organizational email address.</HelpText>
           </FormControl>
           <FormControl>
             <label htmlFor="projectPi">Project PI</label>
+            <HelpText>(if applicable)</HelpText>
             <TextInput
               type="text"
               id="projectPi"
@@ -382,7 +383,6 @@ export const CloudCreditsForm = (props) => {
               value={projectPi}
               onChange={handleChangeProjectPi}
             />
-            <HelpText>(if applicable)</HelpText>
           </FormControl>
           <FormControl>
             <label htmlFor="role">Requestor's Role *</label>
@@ -488,6 +488,10 @@ export const CloudCreditsForm = (props) => {
           </FormControl>
           <FormControl>
             <label required htmlFor="team-members">Team members *</label>
+            <HelpText>
+              Include all the individuals using BDC to analyze data for the same project
+              or the instructors for the Academic Class and Group Educational Session)
+            </HelpText>
             <TextArea
               id="team-members"
               required
@@ -497,13 +501,13 @@ export const CloudCreditsForm = (props) => {
               maxLength="3000"
               placeholder="name, title, affilition (one person per line)"
             />
-            <HelpText>
-              Include all the individuals using BDC to analyze data for the same project
-              or the instructors for the Academic Class and Group Educational Session)
-            </HelpText>
           </FormControl>
           <FormControl>
             <label required htmlFor="hlbs-relation">How is your research related to HLBS (heart, lung, blood, and sleep)? *</label>
+            <HelpText>
+              In 300 - 500 words, briefly describe your proposed research objectives, 
+              outline your analysis plan, and explain how your research aligns with HLBS.
+            </HelpText>
             <TextArea
               id="hlbs-relation"
               required
@@ -512,10 +516,6 @@ export const CloudCreditsForm = (props) => {
               onChange={handleChangeHlbsRelation}
               maxLength="3000"
             />
-            <HelpText>
-              In 300 - 500 words, briefly describe your proposed research objectives, 
-              outline your analysis plan, and explain how your research aligns with HLBS.
-            </HelpText>
           </FormControl>
           <FormControl>
             <label required htmlFor="grapevine">How did the requestor learn about BDC? *</label>
