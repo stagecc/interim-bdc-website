@@ -282,5 +282,9 @@
   {
     "from": "/news-and-events/published-research",
     "to": "/news-and-events/bdc-enabled-research"
+  },
+  {
+    "from": "/user-resources/usage-terms/",
+    "to": "/user-resources/terms-of-use"
   }
 ]
