@@ -36,47 +36,42 @@ Researchers can explore available NSRR studies, access harmonized variables, and
 
 Currently available studies (with more to come\!) include:
 
-* Multi-Ethnic Study of Atherosclerosis (MESA; phs003288)
-
-* Sleep Heart Health Study (phs003637)
-
-* Cleveland Family Study (phs002715)
-
-* Hispanic Community Health Study / Study of Latinos (phs003543)
+- Multi-Ethnic Study of Atherosclerosis (MESA; phs003288)
+- Sleep Heart Health Study (phs003637)
+- Cleveland Family Study (phs002715)
+- Hispanic Community Health Study / Study of Latinos (phs003543)
 
 To view all hosted datasets from NSRR on BDC, refer to:  **[National Sleep Research Resource (NSRR) | Research Community Data | BDC](/about/studies/?program=National+Sleep+Research+Resource+%28NSRR%29)** 
 
 NSRR datasets include a broad range of raw and derived sleep data in future studies, including polysomnography and actigraphy data. The harmonization process began by identifying an initial set of target terms, such as AHI3%, AHI4%, total sleep duration, overall arousal index, and sleep/wake signal quality flags. The process then mapped the major steps in PSG data generation to identify where heterogeneity is commonly introduced across studies. Using both study-level and variable-level metadata, components were categorized as to the most likely to affect cross-study comparability and revisited the initial target terms to determine whether they needed to be refined, expanded, or redefined to adequately capture this variation. The deposited NSRR data were then mapped to these refined target terms, with further review to identify any additional sources of heterogeneity that should be incorporated. Throughout this process, metadata was standardized accompanying each target term, including harmonized definitions, provenance information, version of AASM definitions for respiratory events, describing the source data and any transformations applied, and standardized NSRR tags to support forward-compatible harmonization.
 
-**Tools for Sleep Data Analysis on BDC**
+### **Tools for Sleep Data Analysis on BDC**
 
 NSRR-supported tools for sleep data analysis through the Luna pipeline are freely available within the Public Apps Gallery on *BDC Powered by Seven Bridges*:
 
-* **Luna Build**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/00-luna-buildLuna](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/00-luna-buildLuna)
-* **Luna Validate**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-validate](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-validate)
-* **Luna Describe**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-describe](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-describe)
-* **Transform EDFs**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-write-edfs](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-write-edfs)
-* **Transform Annotations**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-write-annots](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-write-annots)
-* **Hypnogram generation**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-sleep-macro-architecture](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-sleep-macro-architecture)
-* **Evaluate sleep staging**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-evaluate-staging](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-evaluate-staging)
-* **Automated sleep staging**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-automated-staging](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-automated-staging)
-* **Time-domain statistics**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-time-stats](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-time-stats)
-* **Artifact detection**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-artifacts](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-artifacts)
-* **EEG power spectra**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-spectral](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-spectral)
-* **NREM transient analysis**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-nrem-transients](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-nrem-transients)
+- **Luna Build**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/00-luna-buildLuna](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/00-luna-buildLuna)
+- **Luna Validate**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-validate](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-validate)
+- **Luna Describe**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-describe](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-describe)
+- **Transform EDFs**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-write-edfs](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-write-edfs)
+- **Transform Annotations**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-write-annots](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-write-annots)
+- **Hypnogram generation**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-sleep-macro-architecture](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-sleep-macro-architecture)
+- **Evaluate sleep staging**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-evaluate-staging](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-evaluate-staging)
+- **Automated sleep staging**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-automated-staging](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-automated-staging)
+- **Time-domain statistics**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-time-stats](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-time-stats)
+- **Artifact detection**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-artifacts](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-artifacts)
+- **EEG power spectra**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-spectral](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-spectral)
+- **NREM transient analysis**: [https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-nrem-transients](https://platform.sb.biodatacatalyst.nhlbi.nih.gov/public/apps/biodatacatalyst/commit-project-nsrr-luna/luna-nrem-transients)
 
 These integrated BDC tools provide a workflow for sleep data processing and analysis, spanning data manipulation (build, validate, describe, transform-edfs, transform-annots), sleep macro-architecture analyses (hypnogram, evaluate-staging, automated-staging), and basic EEG micro-architecture analyses (time-stats, artifacts, spectral, nrem-transients). Collectively, these tools enable users to construct and validate sample lists, transform EDFs and annotations, perform automated and quality-controlled sleep staging, and extract both large-scale sleep metrics and fine-grained EEG features such as power spectra, artifacts, and NREM transients. More tools, including interactive JupyterLab-based viewers, are planned for future inclusion. 
 
+*Susan Redline, PhD contributed to this article*
+
+---
 ### Learn More
 
-Learn more about the NSRR approach to FAIR data principles by reading this paper, featured in SLEEP: [The National Sleep Research Resource: making data findable, accessible, interoperable, reusable and promoting sleep science](https://doi.org/10.1093/sleep/zsae088)
-
-Explore the Luna family of tools: [https://zzz.nyspi.org/luna/](https://zzz.nyspi.org/luna/)
-
-NSRR Harmonization efforts: [https://github.com/nsrr/nsrr\_data\_harmonization](https://github.com/nsrr/nsrr_data_harmonization) 
-
-[BDC hosts many other datasets](/resources/data/), including those from the TOPMed program, several sickle cell disease studies, and COVID research.
-
-Learn more about all the data in BDC by visiting the [Explore Data in BDC](/use-bdc/explore-data/) webpage.
-
-To stay current on the data, tools, and events BDC offers, [Join the BDC Community](/join-bdc/).
+- Learn more about the NSRR approach to FAIR data principles by reading this paper, featured in SLEEP: [The National Sleep Research Resource: making data findable, accessible, interoperable, reusable and promoting sleep science](https://doi.org/10.1093/sleep/zsae088)
+- Explore the Luna family of tools: [https://zzz.nyspi.org/luna/](https://zzz.nyspi.org/luna/)
+- NSRR Harmonization efforts: [https://github.com/nsrr/nsrr\_data\_harmonization](https://github.com/nsrr/nsrr_data_harmonization) 
+- [BDC hosts many other datasets](/use-bdc/explore-data/), including those from the TOPMed program, several sickle cell disease studies, and COVID research.
+- Learn more about all the data in BDC by visiting the [Explore Data in BDC](/use-bdc/explore-data/) webpage.
+- To stay current on the data, tools, and events BDC offers, [Join the BDC Community](/join-bdc/).
