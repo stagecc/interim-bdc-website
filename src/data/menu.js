@@ -12,6 +12,10 @@ export const menuItems = [
         path: "/use-bdc/analyze-data",
       },
       {
+        text: "Bring Your Own Tools",
+        path: "/use-bdc/bring-your-own-tools",
+      },
+      {
         text: "Share Data",
         path: "/use-bdc/share-data",
       },
