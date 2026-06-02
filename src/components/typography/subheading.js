@@ -9,6 +9,7 @@ export const Subheading = styled.h3`
   margin-top: 0;
   line-height: 1.5;
   text-align: center;
+  scroll-margin-top: 7rem;
   ${props => props.left && "text-align: left;"}
   ${props => props.noMargin && "margin: 0;"}
   ${props => props.eventHeading && "font-size: 13pt;"}
