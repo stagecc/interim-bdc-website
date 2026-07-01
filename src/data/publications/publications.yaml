@@ -49,11 +49,6 @@
   location: "Cell Genomics"
   url: https://www.cell.com/ajhg/fulltext/S0002-9297(22)00407-4?\_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0002929722004074%3Fshowall%3Dtrue
 -
-  title: "CureSCi Metadata Catalog-Making sickle cell studies findable"
-  date: 2022-12-12
-  location: "PLOS One"
-  url: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0256248
--
   title: "Long-term Survival after Hematopoietic Cell Transplant for Sickle Cell Disease Compared to the United States Population"
   date: 2022-03-15
   location: "Transplantation and Cellular Therapy"
@@ -323,11 +318,6 @@
   date: 2025-07-16
   location: "Circulation: Genomic and Precision Medicine"
   url: https://www.ahajournals.org/doi/10.1161/CIRCGEN.124.004953
--
-  title: "CureSCi Metadata Catalog-finding and harmonizing studies for secondary analysis of hydroxyurea use for sickle cell disease"
-  date: 2024-08-19
-  location: bioRxiv
-  url: https://doi.org/10.1371/journal.pone.0309572
 -
   title: "Genetic Architecture and Analysis Practices of Circulating Metabolites in the NHLBI Trans-Omics for Precision Medicine (TOPMed) Program"
   date: 2025-11-06
