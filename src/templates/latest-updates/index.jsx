@@ -10,8 +10,8 @@ import './module.css'
 const LatestUpdatesPost = ({ data: { mdx }, pageContext, children }) => {
   const { 
     frontmatter: { 
-      title, subtitle, date, author, tags, 
-      researcher,
+      title, subtitle, date, tags, 
+      researchers,
       contributor
     }, 
     fields: { timeToRead }} = mdx
@@ -19,7 +19,6 @@ const LatestUpdatesPost = ({ data: { mdx }, pageContext, children }) => {
 
   return (
     <PageContent maxWidth="1000px" title={title}>
-
       {
         subtitle && (
           <Subtitle className="article-subtitle">
@@ -28,18 +27,20 @@ const LatestUpdatesPost = ({ data: { mdx }, pageContext, children }) => {
         )
       }
 
-      <PublishDateByLine date={date} author={author} timeToRead={Math.ceil(timeToRead.minutes)}/>
+      <PublishDateByLine date={date} timeToRead={Math.ceil(timeToRead.minutes)}/>
       
       { tags && <TagsList tags={tags}/>}
 
       {/* todo: consider moving this researcher card inside the mdx file */}
 
       {
-        researcher && (
-          <ResearcherCard researcher={researcher} partial/>
+        researchers && (
+          <ResearcherCard researchers={researchers} partial/>
         )
       }
-      {children}
+      <main>
+        {children}
+      </main>
 
       { contributor && (
         <Fragment>
@@ -82,10 +83,10 @@ export const newsItemQuery = graphql`
         path
         title
         subtitle
-        author
         tags
-        researcher {
+        researchers {
           name
+          titleAffiliation
           description
           image {
             childImageSharp {
