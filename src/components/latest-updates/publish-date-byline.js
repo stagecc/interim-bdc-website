@@ -8,13 +8,12 @@ const LineContainer = styled.div`
   flex-direction: row;
 `
 
-export const PublishDateByLine = ({date, author, timeToRead}) => {
+export const PublishDateByLine = ({date, timeToRead}) => {
 
   return (
     <LineContainer>
       <Meta>
-        Published on {date} {' '}
-        {author && <span>| Authored by {author}</span>}
+        Published on {date}
       </Meta>
       <Meta>
         {timeToRead} minute read

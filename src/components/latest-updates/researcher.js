@@ -7,19 +7,23 @@ import { getImage } from "gatsby-plugin-image"
 import { HeadshotPhoto } from "./"
 
 const ResearcherWrapper = styled.div(({ compact, partial }) => (`
-  display: flex;
-  flex-direction: column;
   max-width: ${compact ? '100%' : '350px'};
   float: left;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1rem;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
   margin-right: ${compact ? '0' : '2rem'};
   background-color: #EFEFEF;
-  padding: 0 1rem 1rem ;
   border-radius: 5px;
   filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 0.1));
 `));
+
+const ResearcherInnerWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1rem;
+`
 
 const ResearcherDetails = styled.div`
   flex: 1;
@@ -30,23 +34,38 @@ const ResearcherDetails = styled.div`
   width: 100%;
 `;
 
-export const ResearcherCard = ({researcher, partial}) => {
+export const ResearcherCard = ({ researchers, partial }) => {
   const { isCompact } = useWindowWidth()
-  const image = getImage(researcher.image)
-  
+
+  if (!researchers || researchers.length === 0) {
+    return null
+  }
+
   return (
     <ResearcherWrapper compact={isCompact} partial={partial}>
-      <HeadshotPhoto image={image} />
+      {
+        researchers.map((researcher) => {
+          const image = getImage(researcher.image)
 
-        <ResearcherDetails >
-          {researcher.name && (
-            <Fragment>
-              <Heading> About {researcher.name}</Heading>
-              <Subheading>Researcher, University of Colorado</Subheading>
-              <Markdown>{researcher.description}</Markdown>
-            </Fragment>
-          )}
-        </ResearcherDetails>
+          return (
+            <ResearcherInnerWrapper key={researcher.name || researcher.id}>
+              <HeadshotPhoto image={image} />
+
+              <ResearcherDetails>
+                {researcher.name && (
+                  <Fragment>
+                    <Heading noMargin> About {researcher.name}</Heading>
+                    { researcher.titleAffiliation && (
+                      <Subheading>{researcher.titleAffiliation}</Subheading>
+                    ) }
+                    <Markdown>{researcher.description}</Markdown>
+                  </Fragment>
+                )}
+              </ResearcherDetails>
+            </ResearcherInnerWrapper>
+          )
+        })
+      }
     </ResearcherWrapper>
   )
-}
+} 
