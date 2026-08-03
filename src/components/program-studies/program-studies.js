@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { PageContent } from "../../components/layout";
 import { QueryCacheProvider } from "../../hooks/use-query";
@@ -11,6 +11,13 @@ import { Seo } from "../seo";
 
 export const ProgramStudiesTable = () => {
   const [program, setProgram] = useQueryParams(null, "program");
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("program") === "Cure Sickle Cell Initiative") {
+      params.set("program", "Sickle Cell Disease");
+      window.location.replace(`${window.location.pathname}?${params.toString()}`);
+    }
+  }, []);
 
   return (
     <PageContent maxWidth="1600px" center gutters>
