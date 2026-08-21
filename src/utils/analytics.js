@@ -1,14 +1,29 @@
 // src/utils/analytics.js
 
 export function sendCustomEvent(eventName, params = {}) {
-  // Don't run during SSR (Gatsby builds server-side first)
   if (typeof window === "undefined") return;
 
   if (process.env.NODE_ENV === "development") {
     console.log(`[analytics] ${eventName}`, params);
   }
 
-  window.gtag("event", eventName, params);
+  try {
+    if (typeof window.gtag === "function") {
+      window.gtag("event", eventName, params);
+      return;
+    }
+
+    if (Array.isArray(window.dataLayer)) {
+      window.dataLayer.push({
+        event: eventName,
+        ...params,
+      });
+    }
+  } catch (error) {
+    if (process.env.NODE_ENV === "development") {
+      console.warn("[analytics] sendCustomEvent failed", error);
+    }
+  }
 }
 
 export const trackFooterLink = (pathname, url, text) => () =>
