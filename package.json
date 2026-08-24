@@ -2,6 +2,10 @@
   "name": "biodata-catalyst",
   "version": "2.0.0",
   "private": true,
+  "engines": {
+    "node": "22.x",
+    "npm": ">=10 <12"
+  },
   "description": "biodata-catalyst",
   "author": "Matt Watson",
   "keywords": [
@@ -18,29 +22,29 @@
     "@emotion/react": "11.11.4",
     "@emotion/styled": "11.11.5",
     "@fontsource/roboto": "5.0.14",
-    "@mdx-js/react": "3.0.1",
+    "@mdx-js/react": "2.3.0",
     "@mui/base": "5.0.0-beta.40",
     "@mui/icons-material": "5.16.4",
     "@mui/material": "5.16.4",
-    "babel-plugin-styled-components": "2.1.4",
-    "gatsby": "5.13.5",
+    "babel-plugin-styled-components": "2.3.0",
+    "gatsby": "5.16.1",
     "gatsby-plugin-csp": "^1.1.4",
-    "gatsby-plugin-google-gtag": "5.13.1",
-    "gatsby-plugin-google-tagmanager": "5.13.1",
-    "gatsby-plugin-image": "3.13.1",
-    "gatsby-plugin-manifest": "5.13.1",
-    "gatsby-plugin-mdx": "5.13.1",
+    "gatsby-plugin-google-gtag": "5.16.0",
+    "gatsby-plugin-google-tagmanager": "5.16.0",
+    "gatsby-plugin-image": "3.16.0",
+    "gatsby-plugin-manifest": "5.16.0",
+    "gatsby-plugin-mdx": "5.16.0",
     "gatsby-plugin-robots-txt": "1.8.0",
-    "gatsby-plugin-sharp": "5.13.1",
-    "gatsby-plugin-sitemap": "6.13.1",
-    "gatsby-plugin-styled-components": "6.13.1",
+    "gatsby-plugin-sharp": "5.16.0",
+    "gatsby-plugin-sitemap": "6.16.0",
+    "gatsby-plugin-styled-components": "6.16.0",
     "gatsby-plugin-web-font-loader": "1.0.4",
-    "gatsby-remark-autolink-headers": "6.13.1",
-    "gatsby-remark-images": "7.13.1",
-    "gatsby-source-filesystem": "5.13.1",
-    "gatsby-transformer-json": "5.13.1",
-    "gatsby-transformer-sharp": "5.13.1",
-    "gatsby-transformer-yaml": "5.13.1",
+    "gatsby-remark-autolink-headers": "6.16.0",
+    "gatsby-remark-images": "7.16.0",
+    "gatsby-source-filesystem": "5.16.0",
+    "gatsby-transformer-json": "5.16.0",
+    "gatsby-transformer-sharp": "5.16.0",
+    "gatsby-transformer-yaml": "5.16.0",
     "jwt-decode": "4.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -51,9 +55,13 @@
     "react-player": "2.16.0",
     "react-spring": "8.0.27",
     "reading-time": "1.5.0",
-    "styled-components": "6.1.11"
+    "styled-components": "6.5.3"
   },
   "devDependencies": {
-    "ajv": "8.17.1"
+    "ajv": "8.20.0"
+  },
+  "overrides": {
+    "path-to-regexp": "0.1.13",
+    "tmp": "0.2.7"
   }
 }
