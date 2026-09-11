@@ -1,11 +1,21 @@
 import React, { Fragment } from "react"
 import { graphql } from "gatsby"
+import styled from "styled-components"
 import { PageContent } from '../../components/layout'
 import { Subtitle, Heading, Paragraph } from "../../components/typography";
 import { HorizontalRule } from "../../components/horizontal-rule";
 import { PublishDateByLine, ArticleNavigation, ResearcherCard, ContributorCard } from '../../components/latest-updates';
 import { TagsList } from "../../components/tags"
 import './module.css'
+
+const ArticleBody = styled.main`
+  p,
+  li,
+  a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+`
 
 const LatestUpdatesPost = ({ data: { mdx }, pageContext, children }) => {
   const { 
@@ -38,9 +48,9 @@ const LatestUpdatesPost = ({ data: { mdx }, pageContext, children }) => {
           <ResearcherCard researchers={researchers} partial/>
         )
       }
-      <main>
+      <ArticleBody>
         {children}
-      </main>
+      </ArticleBody>
 
       { contributor && (
         <Fragment>
